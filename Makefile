@@ -6,27 +6,24 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/01/05 20:33:24 by ajones           ###   ########.fr        #
+#    Updated: 2023/01/18 15:08:57 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := lem-in
+NAME := 
 
 #FLAGS:
 FLAGS := -Wall -Werror -Wextra
 
 #INCLUDES:
-LEM_INC := -I./includes/
-LIB_INC := -I./libft/
+COR_INC := -I./includes/
+LIB_INC := -I./libft/includes
 LIBFT := libft/libft.a
-LIB := -L./libft/ -lft
+LIB := -L./libft/includes -lft
 
 #SOURCES:
-SRCS := l_main.c l_init.c l_errors.c l_read_input.c l_free.c l_read_ants.c \
-		l_read_rooms.c l_read_links.c l_bfs.c l_solver.c l_helpers.c \
-		l_room_array.c l_bfs_helpers.c l_calculations.c l_free_all.c \
-		l_vertex_disjoint.c l_printing.c l_print_extra.c l_ants.c \
-		l_bfs_vertex.c l_delete_edge.c l_line_helpers.c
+SRCS := 
+
 SRCS_PATH := ./srcs/
 SRCS_DIR := $(addprefix $(SRCS_PATH), $(SRCS))
 
@@ -45,7 +42,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(O_PATH) $(O_DIR)
 	@echo ${CYAN}"Making $(@) executable...${RESET}"
-	@gcc $(FLAGS) $(LEM_INC) $(LIB_INC) $(O_DIR) $(LIB) -o $(NAME)
+	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(O_DIR) $(LIB) -o $(NAME)
 	@echo ${GREEN}"Executable successfully made${RESET}"
 
 $(LIBFT):
