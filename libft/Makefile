@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 10:56:43 by ajones            #+#    #+#              #
-#    Updated: 2023/01/18 15:01:49 by ajones           ###   ########.fr        #
+#    Updated: 2023/01/19 15:48:39 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,23 +43,25 @@ P_LIB := ft_printf/libftprintf.a
 LIB_INC := -I./includes/
 
 all: $(NAME)
-
+	
 $(NAME): $(O_PATH) $(O_DIR)
-	@echo ${CYAN}"Compiling libft...${RESET}"
+	@echo ${CYAN}"Creating libft.a...${RESET}"
 	@ar rc $(NAME) $(O_DIR)
 	@make -C ft_printf
 	@cp $(P_LIB) $(NAME)
 	@echo ${GREEN}"Libft compiled successfully${RESET}"
 
 $(O_PATH):
+	@echo ${CYAN}"Creating obj subdirectory...${RESET}"
 	@mkdir -p $(O_PATH)
+	@echo ${CYAN}"Compiling libft...${RESET}"
 
 $(O_PATH)%.o: $(SRC_PATH)%.c
 	@gcc $(FLAGS) $(LIB_INC) -c $< -o $@
 
 	
 clean:
-	@echo ${RED}"Removing libft .o files...${RESET}"
+	@echo ${RED}"Removing libft obj directory and files...${RESET}"
 	@rm -rf $(O_PATH)
 	@make -C ft_printf clean
 	
