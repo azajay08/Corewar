@@ -6,11 +6,11 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:54:30 by ajones            #+#    #+#             */
-/*   Updated: 2023/01/17 20:32:21 by ajones           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:44:52 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 int	ft_isalpha(int c)
 {

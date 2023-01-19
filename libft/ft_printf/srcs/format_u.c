@@ -6,11 +6,11 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 10:54:19 by ajones            #+#    #+#             */
-/*   Updated: 2022/09/05 10:54:22 by ajones           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:45:37 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 char	*manage_u_width(char *str, t_spec *fspec, int i)
 {

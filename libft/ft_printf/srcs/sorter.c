@@ -6,11 +6,11 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 10:54:49 by ajones            #+#    #+#             */
-/*   Updated: 2022/09/08 17:10:14 by ajones           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:45:37 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 int	is_mod(char c)
 {

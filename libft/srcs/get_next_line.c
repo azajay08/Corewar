@@ -6,11 +6,11 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 14:18:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/01/17 20:37:00 by ajones           ###   ########.fr       */
+/*   Updated: 2023/01/19 17:44:52 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 /*
 ** This function is used if we know we are at the last
