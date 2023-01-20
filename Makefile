@@ -6,11 +6,12 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/01/18 15:08:57 by ajones           ###   ########.fr        #
+#    Updated: 2023/01/20 03:10:56 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := 
+NAME_ASM := asm
+NAME_CW := corewar
 
 #FLAGS:
 FLAGS := -Wall -Werror -Wextra
@@ -22,13 +23,21 @@ LIBFT := libft/libft.a
 LIB := -L./libft/includes -lft
 
 #SOURCES:
-SRCS := 
+ASM_SRCS := 
 
-SRCS_PATH := ./srcs/
-SRCS_DIR := $(addprefix $(SRCS_PATH), $(SRCS))
+ASM_DIR := $(addprefix srcs/asm/, $(ASM_SRCS))
+
+ASM_OBJ := $(ASM_SRCS:%.c=%.o)
+
+
+CW_SRCS := 
+
+CW_DIR := $(addprefix srcs/vm/, $(CW_SRCS))
+
+CW_OBJ := $(CW_SRCS:%.c=%.o)
 
 #OBJECTS:
-O_FILES := $(SRCS:%.c=%.o)
+
 O_PATH := ./obj/
 O_DIR := $(addprefix $(O_PATH), $(O_FILES))
 
@@ -40,7 +49,21 @@ RESET := \033[0m
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(O_PATH) $(O_DIR)
+$(NAME_ASM): $(LIBFT) $(O_PATH) $(O_DIR)
+	@echo ${CYAN}"Making $(@) executable...${RESET}"
+	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(O_DIR) $(LIB) -o $(NAME)
+	@echo ${GREEN}"Executable successfully made${RESET}"
+
+$(LIBFT):
+	@make -C libft
+
+$(O_PATH):
+	@mkdir -p $(O_PATH)
+
+$(O_PATH)%.o: $(SRCS_PATH)%.c
+	@gcc -c $(FLAGS) $(LEM_INC) $(LIB_INC)  -o $@ $<
+
+$(NAME_CW): $(LIBFT) $(O_PATH) $(O_DIR)
 	@echo ${CYAN}"Making $(@) executable...${RESET}"
 	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(O_DIR) $(LIB) -o $(NAME)
 	@echo ${GREEN}"Executable successfully made${RESET}"
