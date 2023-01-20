@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/01/18 15:39:38 by ajones           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:15:14 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 # define ASM_H
 
 # include "../libft/includes/libft.h"
+
+int	main(int argc, char **argv);
 
 #endif

@@ -6,7 +6,14 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/01/20 03:17:37 by ajones           ###   ########.fr       */
+/*   Updated: 2023/01/20 17:09:53 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "asm.h"
+
+int	main(int argc, char **argv)
+{
+	
+	return (0);
+}

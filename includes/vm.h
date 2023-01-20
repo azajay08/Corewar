@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/01/20 17:14:00 by ajones           ###   ########.fr       */
+/*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
+/*   Updated: 2023/01/20 17:15:03 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#ifndef VM_H
+# define VM_H
 
-static void	print_usage()
-{
-	
-}
+# include "../libft/includes/libft.h"
 
-int	main(int argc, char **argv)
-{
-	if (argc < 2)
-		print_usage();
-	return (0);
-}
+int	main(int argc, char **argv);
+
+#endif
