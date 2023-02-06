@@ -6,11 +6,11 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 19:21:12 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/06 15:18:22 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:31:50 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/asm.h"
+#include "asm.h"
 
 void	init_asm(t_asm *assem, char *file_input)
 {

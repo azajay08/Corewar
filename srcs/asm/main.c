@@ -6,15 +6,16 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/06 15:18:26 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:34:21 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/asm.h"
+#include "asm.h"
 
 static void	verify_filename(char *filename)
 {
-	if (!ft_strequ(ft_strrchr(filename, '.'), ".s"))
+	// ft_strrchr check too ? 
+	if (!ft_strequ(ft_strchr(filename, '.'), ".s"))
 	{
 		ft_putstr(EXT_S);
 		error_exit(USAGE);
