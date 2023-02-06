@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/06 14:54:12 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/06 15:29:06 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,17 +37,17 @@ ASM_O_DIR := $(addprefix $(ASM_O_PATH), $(ASM_OBJ))
 
 # VIRTUAL MACHINE
 
-VM_SRCS := main.c
+CW_SRCS := main.c
 
-VM_PATH := srcs/vm/
+CW_PATH := srcs/vm/
 
-VM_DIR := $(addprefix $(VM_PATH), $(VM_SRCS))
+CW_DIR := $(addprefix $(CW_PATH), $(CW_SRCS))
 
-VM_OBJ := $(VM_SRCS:%.c=%.o)
+CW_OBJ := $(CW_SRCS:%.c=%.o)
 
-VM_O_PATH := srcs/vm/obj/
+CW_O_PATH := srcs/vm/obj/
 
-VM_O_DIR := $(addprefix $(VM_O_PATH), $(VM_OBJ))
+CW_O_DIR := $(addprefix $(CW_O_PATH), $(CW_OBJ))
 
 O_PATH := ./obj/
 O_DIR := $(addprefix $(O_PATH), $(O_FILES))
@@ -58,11 +58,11 @@ CYAN := '\033[2;3;36m'
 RED := '\033[2;3;31m'
 RESET := \033[0m
 
-all: $(NAME)
+all: $(NAME_ASM) $(NAME_CW)
 
 $(NAME_ASM): $(LIBFT) $(ASM_O_PATH) $(ASM_O_DIR)
 	@echo ${CYAN}"Making $(@) executable...${RESET}"
-	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(ASM_O_DIR) $(LIB) -o $(NAME_ASM)
+	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(ASM_O_DIR) $(LIBFT) -o $(NAME_ASM)
 	@echo ${GREEN}"Executable successfully made${RESET}"
 
 $(LIBFT):
@@ -72,30 +72,29 @@ $(ASM_O_PATH):
 	@mkdir -p $(ASM_O_PATH)
 
 $(ASM_O_PATH)%.o: $(ASM_PATH)%.c
-	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC)  -o $@ $<
+	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC) -o $@ $<
 
-$(NAME_CW): $(VM_O_PATH) $(VM_O_DIR)
+$(NAME_CW): $(CW_O_PATH) $(CW_O_DIR)
 	@echo ${CYAN}"Making $(@) executable...${RESET}"
-	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(O_DIR) $(LIB) -o $(NAME)
+	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(CW_O_DIR) $(LIBFT) -o $(NAME_CW)
 	@echo ${GREEN}"Executable successfully made${RESET}"
 
+$(CW_O_PATH):
+	@mkdir -p $(CW_O_PATH)
 
-$(VM_O_PATH):
-	@mkdir -p $(VM_O_PATH)
-
-$(VM_O_PATH)%.o: $(VM_PATH)%.c
-	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC)  -o $@ $<
+$(CW_O_PATH)%.o: $(CW_PATH)%.c
+	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC) -o $@ $<
 
 clean:
 	@echo ${RED}"Removing obj directory...${RESET}"
 	@rm -rf $(ASM_O_PATH)
-	@rm -rf $(VMM_O_PATH)
+	@rm -rf $(CW_O_PATH)
 	@make -C libft clean
 
 fclean: clean
 	@echo ${RED}"Removing $(NAME)...${RESET}"
-	@rm -f $(ASM_NAME)
-	@rm -f $(CW_NAME)
+	@rm -f $(NAME_ASM)
+	@rm -f $(NAME_CW)
 	@make -C libft fclean
 
 re: fclean all

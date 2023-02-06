@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/06 04:05:30 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:07:37 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,11 @@ int		main(int argc, char **argv);
 */
 
 void	init_asm(t_asm *assem, char *file_input);
+
+/*
+	Errors
+*/
+
+void	error_exit(char *exit_str);
 
 #endif
