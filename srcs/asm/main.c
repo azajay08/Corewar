@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/06 15:34:21 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:54:28 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static void	verify_filename(char *filename)
 {
-	// ft_strrchr check too ? 
-	if (!ft_strequ(ft_strchr(filename, '.'), ".s"))
+	if (!ft_strequ(ft_strrchr(filename, '.'), ".s"))
 	{
 		ft_putstr(EXT_S);
 		error_exit(USAGE);
