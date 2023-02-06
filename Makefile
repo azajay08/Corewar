@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/06 16:04:52 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/06 16:07:09 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,8 +86,8 @@ $(CW_O_PATH)%.o: $(CW_PATH)%.c
 	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC) -o $@ $<
 
 clean:
-	@echo ${RED}"Removing libft obj directory & files...${RESET}"
-	@echo ${RED}"Removing asm & corewar obj directories & files...${RESET}"
+	@echo ${RED}"Removing libft obj directory & files..."
+	@echo "Removing $(NAME_ASM) & $(NAME_CW) obj directories & files...${RESET}"
 	@rm -rf $(ASM_O_PATH)
 	@rm -rf $(CW_O_PATH)
 	@make -C libft clean
