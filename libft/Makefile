@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 10:56:43 by ajones            #+#    #+#              #
-#    Updated: 2023/01/19 15:48:39 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/06 16:02:33 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,6 @@ $(O_PATH)%.o: $(SRC_PATH)%.c
 
 	
 clean:
-	@echo ${RED}"Removing libft obj directory and files...${RESET}"
 	@rm -rf $(O_PATH)
 	@make -C ft_printf clean
 	

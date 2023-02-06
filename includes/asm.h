@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/06 15:07:37 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:58:54 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define ASM_H
 
 # define USAGE "Usage: ./asm [filename.s]\n"
-# define EXT_S "Invalid file! Input file must have [.s] extension\n"
+# define EXT_S "Invalid file! Input file must have [.s] extension\n\n"
 # define ASSEM "ERROR! Memory allocation of t_asm failed!\n"
 
 # include "../libft/includes/libft.h"
