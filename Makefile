@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/01/20 03:10:56 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/06 14:39:14 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,21 +22,23 @@ LIB_INC := -I./libft/includes
 LIBFT := libft/libft.a
 LIB := -L./libft/includes -lft
 
-#SOURCES:
+# ASSEMBLER
 ASM_SRCS := 
 
-ASM_DIR := $(addprefix srcs/asm/, $(ASM_SRCS))
+ASM_PATH := srcs/asm/
+
+ASM_DIR := $(addprefix $(ASM_PATH), $(ASM_SRCS))
 
 ASM_OBJ := $(ASM_SRCS:%.c=%.o)
 
+# VIRTUAL MACHINE
 
-CW_SRCS := 
+VM_SRCS := 
 
-CW_DIR := $(addprefix srcs/vm/, $(CW_SRCS))
+VM_DIR := $(addprefix srcs/vm/, $(VM_SRCS))
 
-CW_OBJ := $(CW_SRCS:%.c=%.o)
+VM_OBJ := $(VM_SRCS:%.c=%.o)
 
-#OBJECTS:
 
 O_PATH := ./obj/
 O_DIR := $(addprefix $(O_PATH), $(O_FILES))
