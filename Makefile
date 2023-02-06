@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/06 14:39:14 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/06 14:40:26 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT := libft/libft.a
 LIB := -L./libft/includes -lft
 
 # ASSEMBLER
-ASM_SRCS := 
+ASM_SRCS := main.c init.c errors.c
 
 ASM_PATH := srcs/asm/
 
@@ -34,6 +34,8 @@ ASM_OBJ := $(ASM_SRCS:%.c=%.o)
 # VIRTUAL MACHINE
 
 VM_SRCS := 
+
+ASM_PATH := srcs/asm/
 
 VM_DIR := $(addprefix srcs/vm/, $(VM_SRCS))
 
