@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/06 14:40:53 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/06 14:41:44 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,9 @@ ASM_OBJ := $(ASM_SRCS:%.c=%.o)
 
 VM_SRCS := main.c
 
-ASM_PATH := srcs/asm/
+VM_PATH := srcs/vm/
 
-VM_DIR := $(addprefix srcs/vm/, $(VM_SRCS))
+VM_DIR := $(addprefix $(VM_PATH), $(VM_SRCS))
 
 VM_OBJ := $(VM_SRCS:%.c=%.o)
 
