@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/06 14:40:26 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/06 14:40:53 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ ASM_OBJ := $(ASM_SRCS:%.c=%.o)
 
 # VIRTUAL MACHINE
 
-VM_SRCS := 
+VM_SRCS := main.c
 
 ASM_PATH := srcs/asm/
 
