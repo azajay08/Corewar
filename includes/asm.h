@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/07 14:13:09 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/07 15:45:46 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	init_asm(t_asm *assem, char *file_input);
 */
 
 void	error_exit(char *exit_str);
-void	error_exit1(t_asm *assem, char *exit_str);
+void	error_exit1(char *exit_str, t_asm *assem);
 
 /*
 	Reading functions
