@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 19:21:12 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/07 13:43:26 by ajones           ###   ########.fr       */
+/*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
+/*   Updated: 2023/02/07 14:15:48 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	init_asm(t_asm *assem, char *file_input)
+void	read_file(t_asm *assem, char *file)
 {
-	int	len;
+	int fd;
 
-	len = ft_strlen(file_input) - 2;
-	assem->filename = ft_strsub(file_input, 0, len);
-	assem->filename = ft_strjoin_free1(assem->filename, ".cor");
-	assem->champ_name = NULL;
-	assem->comment = NULL;
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		error_exit1(assem, ERR_FILE);
 }

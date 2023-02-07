@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/07 03:34:12 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/07 13:58:13 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	main(int argc, char **argv)
 	if (!assem)
 		error_exit(ASSEM);
 	init_asm(assem, argv[1]);
+	read_file(assem, argv[1]);
 	return (0);
 }

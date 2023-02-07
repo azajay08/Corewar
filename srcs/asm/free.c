@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/22 19:21:12 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/07 13:43:26 by ajones           ###   ########.fr       */
+/*   Created: 2023/02/07 13:59:41 by ajones            #+#    #+#             */
+/*   Updated: 2023/02/07 14:13:56 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	init_asm(t_asm *assem, char *file_input)
+void	free_asm(t_asm *assem)
 {
-	int	len;
-
-	len = ft_strlen(file_input) - 2;
-	assem->filename = ft_strsub(file_input, 0, len);
-	assem->filename = ft_strjoin_free1(assem->filename, ".cor");
-	assem->champ_name = NULL;
-	assem->comment = NULL;
+	if (assem->champ_name)
+		free(assem->champ_name);
+	if (assem->filename)
+		free(assem->filename);
+	if (assem->comment)
+		free(assem->comment);
 }

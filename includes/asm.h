@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/06 23:31:08 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/07 14:13:09 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # include "../libft/includes/libft.h"
 # include "op.h"
 
-# define USAGE "Usage: ./asm [filename.s]\n"
-# define EXT_S "Invalid file! Input file must have [.s] extension\n\n"
-# define ASSEM "ERROR! Memory allocation of t_asm failed!\n"
+# define USAGE		"Usage: ./asm [filename.s]\n"
+# define EXT_S		"Invalid file! Input file must have [.s] extension\n\n"
+# define ASSEM		"ERROR! Memory allocation of t_asm failed!\n"
+# define ERR_FILE	"ERROR! Unable to open file!\n"
 
 # define LIVE 1
 # define LD 2
@@ -40,7 +41,8 @@
 typedef struct	s_asm
 {
 	char		*filename;
-	char		*cor_name;
+	char		*champ_name;
+	char		*comment;
 }				t_asm;
 
 int		main(int argc, char **argv);
@@ -56,5 +58,18 @@ void	init_asm(t_asm *assem, char *file_input);
 */
 
 void	error_exit(char *exit_str);
+void	error_exit1(t_asm *assem, char *exit_str);
+
+/*
+	Reading functions
+*/
+
+void	read_file(t_asm *assem, char *file);
+
+/*
+	Freeing functions
+*/
+
+void	free_asm(t_asm *assem);
 
 #endif

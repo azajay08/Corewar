@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/06 16:07:09 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/07 14:14:32 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT := libft/libft.a
 LIB := -L./libft/includes -lft
 
 # ASSEMBLER
-ASM_SRCS := main.c init.c errors.c
+ASM_SRCS := main.c init.c errors.c free.c read_file.c
 
 ASM_PATH := srcs/asm/
 
