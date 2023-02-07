@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/06 15:52:07 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/07 16:36:04 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	main(int argc, char **argv)
 {
 	if (argc < 2)
 		print_usage();
-	ft_putstr(argv[1]); // just for compilation
+	ft_putstr(argv[1]); // just for compilation - remove
 	return (0);
 }
