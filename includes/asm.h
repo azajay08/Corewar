@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/07 15:45:46 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/09 13:20:12 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct	s_asm
 {
 	char		*filename;
 	char		*champ_name;
-	char		*comment;
+	char		*champ_com;
 }				t_asm;
 
 int		main(int argc, char **argv);
