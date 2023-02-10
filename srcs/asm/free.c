@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/07 14:13:56 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/10 16:20:45 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	free_asm(t_asm *assem)
 		free(assem->champ_name);
 	if (assem->filename)
 		free(assem->filename);
-	if (assem->comment)
-		free(assem->comment);
+	if (assem->champ_com)
+		free(assem->champ_com);
 }
