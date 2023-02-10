@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/09 21:12:33 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/10 16:08:35 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define USAGE		"Usage: ./asm [filename.s]\n"
 # define EXT_S		"Invalid file! Input file must have [.s] extension\n\n"
 # define ASSEM		"ERROR! Memory allocation of t_asm failed!\n"
+# define LINE_FAIL	"ERROR! Memory allocation of t_line failed!\n"
 # define ERR_FILE	"ERROR! Unable to open file!\n"
 
 # define LIVE 1
@@ -38,12 +39,13 @@
 # define LFORK 15
 # define AFF 16
 
-typedef struct	s_asm
+typedef struct		s_asm
 {
-	char		*filename;
-	char		*champ_name;
-	char		*champ_com;
-}				t_asm;
+	char			*filename;
+	char			*champ_name;
+	char			*champ_com;
+	struct s_line	*line;
+}					t_asm;
 
 int		main(int argc, char **argv);
 

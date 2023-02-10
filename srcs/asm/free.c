@@ -6,18 +6,33 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/07 14:13:56 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/10 16:14:20 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
+void	free_line(t_line *head)
+{
+	t_line	*temp;
+
+	while (head != NULL)
+	{
+		temp = head;
+		head = head->next;
+		free(temp->line);
+		free(temp);
+	}
+}
+
 void	free_asm(t_asm *assem)
 {
+	if(assem->line)
+		free_line(assem->line);
 	if (assem->champ_name)
 		free(assem->champ_name);
 	if (assem->filename)
 		free(assem->filename);
-	if (assem->comment)
-		free(assem->comment);
+	if (assem->champ_com)
+		free(assem->champ_com);
 }
