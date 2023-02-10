@@ -1,5 +1,6 @@
 # comment
-.name "testing if this is working"
+.name "I am the champion,
+ I have no name"
 .comment "This is the comment"
 line 1
 line 2
