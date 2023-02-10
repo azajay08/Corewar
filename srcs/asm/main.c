@@ -6,24 +6,24 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/10 16:19:36 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/10 22:40:36 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-// void	print_map(t_asm *assem)
-// {
-// 	t_line	*tmp;
+void	print_map(t_asm *assem)
+{
+	t_line	*tmp;
 
-// 	tmp = assem->line;
-// 	while (tmp)
-// 	{
-// 		ft_putstr(tmp->line);
-// 		ft_putchar('\n');
-// 		tmp = tmp->next;
-// 	}
-// }
+	tmp = assem->line;
+	while (tmp)
+	{
+		ft_putstr(tmp->line);
+		ft_putchar('\n');
+		tmp = tmp->next;
+	}
+}
 
 static void	verify_filename(char *filename)
 {
@@ -46,7 +46,12 @@ int	main(int argc, char **argv)
 		error_exit(ASSEM);
 	init_asm(assem, argv[1]);
 	read_file(assem, argv[1]);
-	// print_map(assem);
+	parse_champ(assem);
+	ft_putchar('\n');
+	print_map(assem);
+	
+	ft_putchar('\n');
+	ft_putstr(assem->champ_name);
 	// system("leaks asm");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/10 16:17:34 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/10 16:22:35 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void	read_file(t_asm *assem, char *file)
 			append_line(assem, line_str);
 		ft_strdel(&line);
 	}
+	close(fd);
 }

@@ -1,8 +1,11 @@
-testing
-dshsh
-shsdh
-datad
-data
+# comment
+.name "testing if this is working"
+.comment "This is the comment"
+line 1
+line 2
+line 3
+
+line 5
 1
 1
 

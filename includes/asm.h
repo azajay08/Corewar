@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/10 16:08:35 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/10 16:58:26 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define ASSEM		"ERROR! Memory allocation of t_asm failed!\n"
 # define LINE_FAIL	"ERROR! Memory allocation of t_line failed!\n"
 # define ERR_FILE	"ERROR! Unable to open file!\n"
+# define INV_FILE	"ERROR! Inavlid File!\n"
 
 # define LIVE 1
 # define LD 2
@@ -73,5 +74,11 @@ void	read_file(t_asm *assem, char *file);
 */
 
 void	free_asm(t_asm *assem);
+
+/*
+	Parsing
+*/
+
+void	parse_champ(t_asm *assem);
 
 #endif
