@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/10 23:12:08 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/11 22:58:50 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	main(int argc, char **argv)
 	parse_champ(assem);
 	// print_map(assem);
 	ft_printf("Champion Name:\n%s",assem->champ_name);
+	ft_printf("\nChampion Comment:\n%s",assem->champ_com);
 	ft_putchar('\n');
-	// system("leaks asm");
+	system("leaks asm");
 	return (0);
 }

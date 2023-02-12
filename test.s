@@ -1,7 +1,9 @@
 # comment
-.name "I am the champion,
- I have no name"
-.comment "This is the comment"
+.name"I am the champion,
+I have no name
+.comment This is 
+the comment
+
 line 1
 line 2
 line 3
