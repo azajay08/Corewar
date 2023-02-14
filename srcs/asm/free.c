@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/11 22:51:59 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/13 16:49:18 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	free_line(t_asm *assem)
 	while (assem->line)
 	{
 		temp = assem->line;
-		ft_printf("\nline: %s", temp->line);
+		// ft_printf("\nline: %s", temp->line);
 		assem->line = assem->line->next;
 		ft_strdel(&temp->line);
 		free(temp);

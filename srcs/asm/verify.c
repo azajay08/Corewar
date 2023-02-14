@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   verify.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 21:40:37 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/13 17:00:26 by ajones           ###   ########.fr       */
+/*   Created: 2023/02/13 16:58:16 by ajones            #+#    #+#             */
+/*   Updated: 2023/02/14 19:51:32 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	error_exit(char *exit_str)
+void	verify_name_com(t_asm *assem, t_line *line)
 {
-	ft_putstr(exit_str);
-	exit(1);
-}
-
-void	error_exit1(char *exit_str, t_asm *assem)
-{
-	free_asm(assem);
-	free(assem);
-	ft_putstr(exit_str);
-	system("leaks asm");
-	exit(1);
+	if (!assem->champ_name || !assem->champ_com || !line)
+		error_exit1(INV_FILE, assem);
+	if (ft_strlen(assem->champ_name) > PROG_NAME_LENGTH)
+		error_exit1(LONG_NAME, assem);
+	if (ft_strlen(assem->champ_com) > COMMENT_LENGTH)
+		error_exit1(LONG_COM, assem);
 }

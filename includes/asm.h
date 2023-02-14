@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/10 16:58:26 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/14 19:52:22 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define LINE_FAIL	"ERROR! Memory allocation of t_line failed!\n"
 # define ERR_FILE	"ERROR! Unable to open file!\n"
 # define INV_FILE	"ERROR! Inavlid File!\n"
+# define LONG_NAME	"ERROR! Name too long\n"
+# define LONG_COM	"ERROR! Comment too long\n"
 
 # define LIVE 1
 # define LD 2
@@ -80,5 +82,8 @@ void	free_asm(t_asm *assem);
 */
 
 void	parse_champ(t_asm *assem);
+void	verify_name_com(t_asm *assem, t_line *line);
+int		line_check(char *line);
+int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 
 #endif
