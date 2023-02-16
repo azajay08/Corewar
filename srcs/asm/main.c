@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/11 22:58:50 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:37:14 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	verify_filename(char *filename)
 int	main(int argc, char **argv)
 {
 	t_asm	*assem;
-	
+
 	if (argc != 2)
 		error_exit(USAGE);
 	verify_filename(argv[1]);
@@ -48,8 +48,8 @@ int	main(int argc, char **argv)
 	read_file(assem, argv[1]);
 	parse_champ(assem);
 	// print_map(assem);
-	ft_printf("Champion Name:\n%s",assem->champ_name);
-	ft_printf("\nChampion Comment:\n%s",assem->champ_com);
+	ft_printf("Champion Name:\n%s", assem->champ_name);
+	ft_printf("\nChampion Comment:\n%s", assem->champ_com);
 	ft_putchar('\n');
 	system("leaks asm");
 	return (0);

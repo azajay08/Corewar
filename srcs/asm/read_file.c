@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/11 23:10:25 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:36:25 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	read_file(t_asm *assem, char *file)
 	int		fd;
 	char	*line;
 	t_line	*line_str;
-	
+
 	line = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
