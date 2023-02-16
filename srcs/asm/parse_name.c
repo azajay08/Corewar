@@ -6,26 +6,11 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/16 16:45:20 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/16 17:32:25 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-void	parse_exec(t_asm *assem, t_line *line)
-{
-	while (line)
-	{
-		ft_putstr(line->line);
-		ft_putchar('\n');
-		if (ft_strstr(line->line, "live"))
-			ft_printf("live here\n");
-		if (ft_strstr(line->line, "ld"))
-			ft_printf("ld here\n");
-		line = line->next;
-	}
-	line = assem->line;
-}
 
 t_line	*get_comment(t_asm *assem, t_line *line, int start, int end)
 {
@@ -145,5 +130,4 @@ void	parse_champ(t_asm *assem)
 			break ;
 	}
 	verify_name_com(assem, line);
-	parse_exec(assem, line);
 }
