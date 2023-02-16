@@ -2,10 +2,9 @@
 
 .name "I am the champion ,I have no name"
 .comment "This is.comment the comment"
+live
 
-
-
-
+ld
 
 line 1
 line 2
@@ -18,5 +17,3 @@ line 5
 3
 4
 5
-6\n
-6  .comment
