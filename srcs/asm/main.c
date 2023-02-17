@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/16 17:37:14 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/17 15:58:37 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ void	print_map(t_asm *assem)
 		ft_putchar('\n');
 		tmp = tmp->next;
 	}
+}
+
+void	parse_champ(t_asm *assem)
+{
+	t_line	*line;
+
+	line = assem->line;
+	line = parse_name(assem, line);
+	parse_labels(assem, line);
 }
 
 static void	verify_filename(char *filename)

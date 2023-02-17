@@ -1,8 +1,7 @@
 # .comment
 
-.name "I am the champion ,I have no name
-.comment "
-.comment""
+.name "I am the champion, I have no name"
+.comment"This is the comment"
 live
 
 ld
