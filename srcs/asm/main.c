@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/17 15:58:37 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/18 19:15:23 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	parse_champ(t_asm *assem)
 	t_line	*line;
 
 	line = assem->line;
-	line = parse_name(assem, line);
+	line = parse_header(assem, line);
 	parse_labels(assem, line);
 }
 
