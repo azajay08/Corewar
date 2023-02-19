@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/18 19:18:04 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/19 23:07:54 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define EXT_S		"Invalid file! Input file must have [.s] extension\n\n"
 # define ASSEM		"ERROR! Memory allocation of t_asm failed!\n"
 # define LINE_FAIL	"ERROR! Memory allocation of t_line failed!\n"
+# define LBL_FAIL	"ERROR! Memory allocation of t_label failed!\n"
+# define LBL_NAME	"ERROR! Failed to create label name\n"
 # define ERR_FILE	"ERROR! Unable to open file!\n"
 # define INV_FILE	"ERROR! Inavlid File!\n"
 # define LONG_NAME	"ERROR! Name too long\n"
@@ -48,7 +50,17 @@ typedef struct		s_asm
 	char			*champ_name;
 	char			*champ_com;
 	struct s_line	*line;
+	struct s_label	*label;
 }					t_asm;
+
+typedef struct		s_label
+{
+	int				line_nb;
+	char			*label_name;
+	struct s_label	*next;
+	
+}					t_label;
+
 
 int		main(int argc, char **argv);
 

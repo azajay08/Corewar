@@ -6,11 +6,23 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/18 19:15:23 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/19 23:15:54 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void	print_labels(t_asm *assem)
+{
+	t_label	*tmp;
+
+	tmp = assem->label;
+	while (tmp)
+	{
+		ft_printf("\nLabel: (%s)\nLine: (%i)\n", tmp->label_name, tmp->line_nb);
+		tmp = tmp->next;
+	}
+}
 
 void	print_map(t_asm *assem)
 {
@@ -56,9 +68,10 @@ int	main(int argc, char **argv)
 	init_asm(assem, argv[1]);
 	read_file(assem, argv[1]);
 	parse_champ(assem);
-	// print_map(assem);
 	ft_printf("Champion Name:\n%s", assem->champ_name);
-	ft_printf("\nChampion Comment:\n%s", assem->champ_com);
+	ft_printf("\nChampion Comment:\n%s\n\n", assem->champ_com);
+	// print_map(assem);
+	print_labels(assem);
 	ft_putchar('\n');
 	system("leaks asm");
 	return (0);
