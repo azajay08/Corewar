@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2023/02/22 01:50:43 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/22 01:55:01 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define MAX_PLAYERS			4
 # define MEM_SIZE				(4*1024) // 4096
 # define IDX_MOD				(MEM_SIZE / 8) // 512
-# define CHAMP_MAX_SIZE			(MEM_SIZE / 6) // 683?
+# define CHAMP_MAX_SIZE			(MEM_SIZE / 6) // 682 
 
 # define COMMENT_CHAR			'#'
 # define ALT_COMMENT_CHAR		';'
