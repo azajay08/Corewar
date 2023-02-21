@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2023/02/20 16:53:17 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/22 01:47:58 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,23 @@ typedef char					t_arg_type;
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
 # define STATEMENT_MAX 			16
+
+# define LIVE 1
+# define LD 2
+# define ST 3
+# define ADD 4
+# define SUB 5
+# define AND 6
+# define OR 7
+# define XOR 8
+# define ZJMP 9
+# define LDI 10
+# define STI 11
+# define FORK 12
+# define LLD 13
+# define LLDI 14
+# define LFORK 15
+# define AFF 16
 
 typedef struct s_header
 {
