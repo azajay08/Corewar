@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/19 23:15:54 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/20 15:51:28 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	parse_champ(t_asm *assem)
 	parse_labels(assem, line);
 }
 
-static void	verify_filename(char *filename)
+void	verify_filename(char *filename)
 {
 	if (!ft_strequ(ft_strrchr(filename, '.'), ".s"))
 	{

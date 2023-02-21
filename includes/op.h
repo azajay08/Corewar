@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2023/02/07 15:59:15 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/20 16:53:17 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 /*
 **
 */
-typedef char	t_arg_type;
+typedef char					t_arg_type;
 
 # define T_REG					1
 # define T_DIR					2
@@ -65,6 +65,8 @@ typedef char	t_arg_type;
 # define COMMENT_LENGTH			(2048)
 # define COREWAR_EXEC_MAGIC		0xea83f3
 
+# define STATEMENT_MAX 			16
+
 typedef struct s_header
 {
 	unsigned int				magic;
@@ -72,5 +74,163 @@ typedef struct s_header
 	unsigned int				prog_size;
 	char						comment[COMMENT_LENGTH + 1];
 }								t_header;
+
+typedef struct s_op
+{
+	int							arg_num;
+	int							arg_type[3];
+	int							arg_type_code;
+	int							size_t_dir;
+	int							cycles;
+	int							state_code;
+	char						*state_name;
+}								t_op;
+
+static const t_op				g_op_tab[STATEMENT_MAX] = {
+{
+	.state_code = 0x01,
+	.state_name = "live",
+	.arg_num = 1,
+	.arg_type = {T_DIR, 0, 0},
+	.arg_type_code = 0,
+	.size_t_dir = 0,
+	.cycles = 10
+},
+{
+	.state_code = 0x02,
+	.state_name = "ld",
+	.arg_num = 2,
+	.arg_type = {T_DIR | T_IND, T_REG, 0},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 5
+},
+{
+	.state_code = 0x03,
+	.state_name = "st",
+	.arg_num = 2,
+	.arg_type = {T_REG, T_IND | T_REG, 0},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 5
+},
+{
+	.state_code = 0x04,
+	.state_name = "add",
+	.arg_num = 3,
+	.arg_type = {T_REG, T_REG, T_REG},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 10
+},
+{
+	.state_code = 0x05,
+	.state_name = "sub",
+	.arg_num = 3,
+	.arg_type = {T_REG, T_REG, T_REG},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 10
+},
+{
+	.state_code = 0x06,
+	.state_name = "and",
+	.arg_num = 3,
+	.arg_type = {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 6
+},
+{
+	.state_code = 0x07,
+	.state_name = "or",
+	.arg_num = 3,
+	.arg_type = {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 6
+},
+{
+	.state_code = 0x08,
+	.state_name = "xor",
+	.arg_num = 3,
+	.arg_type = {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 6
+},
+{
+	.state_code = 0x09,
+	.state_name = "zjmp",
+	.arg_num = 1,
+	.arg_type = {T_DIR, 0, 0},
+	.arg_type_code = 0,
+	.size_t_dir = 1,
+	.cycles = 20
+},
+{
+	.state_code = 0x0a,
+	.state_name = "ldi",
+	.arg_num = 3,
+	.arg_type = {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
+	.arg_type_code = 1,
+	.size_t_dir = 1,
+	.cycles = 25
+},
+{
+	.state_code = 0x0b,
+	.state_name = "sti",
+	.arg_num = 3,
+	.arg_type = {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG},
+	.arg_type_code = 1,
+	.size_t_dir = 1,
+	.cycles = 25
+},
+{
+	.state_code = 0x0c,
+	.state_name = "fork",
+	.arg_num = 1,
+	.arg_type = {T_DIR, 0, 0},
+	.arg_type_code = 0,
+	.size_t_dir = 1,
+	.cycles = 800
+},
+{
+	.state_code = 0x0d,
+	.state_name = "lld",
+	.arg_num = 2,
+	.arg_type = {T_DIR | T_IND, T_REG, 0},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 10
+},
+{
+	.state_code = 0x0e,
+	.state_name = "lldi",
+	.arg_num = 3,
+	.arg_type = {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
+	.arg_type_code = 1,
+	.size_t_dir = 1,
+	.cycles = 50
+},
+{
+	.state_code = 0x0f,
+	.state_name = "lfork",
+	.arg_num = 1,
+	.arg_type = {T_DIR, 0, 0},
+	.arg_type_code = 0,
+	.size_t_dir = 1,
+	.cycles = 1000
+},
+{
+	.state_code = 0x10,
+	.state_name = "aff",
+	.arg_num = 1,
+	.arg_type = {T_REG, 0, 0},
+	.arg_type_code = 1,
+	.size_t_dir = 0,
+	.cycles = 2
+}
+};
 
 #endif

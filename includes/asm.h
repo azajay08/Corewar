@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/19 23:07:54 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/20 16:55:07 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 # define LFORK 15
 # define AFF 16
 
-typedef struct		s_asm
+typedef struct s_asm
 {
 	char			*filename;
 	char			*champ_name;
@@ -53,14 +53,12 @@ typedef struct		s_asm
 	struct s_label	*label;
 }					t_asm;
 
-typedef struct		s_label
+typedef struct s_label
 {
 	int				line_nb;
 	char			*label_name;
 	struct s_label	*next;
-	
 }					t_label;
-
 
 int		main(int argc, char **argv);
 
