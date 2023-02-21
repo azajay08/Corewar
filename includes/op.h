@@ -6,16 +6,12 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2023/02/22 01:49:34 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/22 01:50:43 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OP_H
 # define OP_H
-/*
-** Toutes les tailles sont en octets.
-** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
-*/
 
 # define IND_SIZE				2
 # define REG_SIZE				4
@@ -48,18 +44,13 @@
 # define CYCLE_DELTA			50
 # define NBR_LIVE				21
 # define MAX_CHECKS				10
-/*
-**
-*/
+
 typedef char					t_arg_type;
 
 # define T_REG					1
 # define T_DIR					2
 # define T_IND					4
 # define T_LAB					8
-/*
-**
-*/
 
 # define PROG_NAME_LENGTH		(128)
 # define COMMENT_LENGTH			(2048)
