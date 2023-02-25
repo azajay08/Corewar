@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/22 01:47:34 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/25 20:45:14 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/includes/libft.h"
 # include "op.h"
+# include "op_table.h"
 
 # define USAGE		"Usage: ./asm [filename.s]\n"
 # define EXT_S		"Invalid file! Input file must have [.s] extension\n\n"
