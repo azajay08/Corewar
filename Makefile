@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/07 14:14:32 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/25 20:11:24 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ LIBFT := libft/libft.a
 LIB := -L./libft/includes -lft
 
 # ASSEMBLER
-ASM_SRCS := main.c init.c errors.c free.c read_file.c
+ASM_SRCS := main.c init.c errors.c free.c read_file.c verify.c parse_header.c \
+parse_labels.c parse_utils.c 
 
 ASM_PATH := srcs/asm/
 
@@ -60,13 +61,13 @@ RESET := \033[0m
 
 all: $(NAME_ASM) $(NAME_CW)
 
+$(LIBFT):
+	@make -C libft
+
 $(NAME_ASM): $(LIBFT) $(ASM_O_PATH) $(ASM_O_DIR)
 	@echo ${CYAN}"Making $(@) executable...${RESET}"
 	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(ASM_O_DIR) $(LIBFT) -o $(NAME_ASM)
 	@echo ${GREEN}"Executable successfully made${RESET}"
-
-$(LIBFT):
-	@make -C libft
 
 $(ASM_O_PATH):
 	@mkdir -p $(ASM_O_PATH)
@@ -74,7 +75,7 @@ $(ASM_O_PATH):
 $(ASM_O_PATH)%.o: $(ASM_PATH)%.c
 	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC) -o $@ $<
 
-$(NAME_CW): $(CW_O_PATH) $(CW_O_DIR)
+$(NAME_CW): $(LIBFT) $(CW_O_PATH) $(CW_O_DIR)
 	@echo ${CYAN}"Making $(@) executable...${RESET}"
 	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(CW_O_DIR) $(LIBFT) -o $(NAME_CW)
 	@echo ${GREEN}"Executable successfully made${RESET}"
@@ -86,18 +87,17 @@ $(CW_O_PATH)%.o: $(CW_PATH)%.c
 	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC) -o $@ $<
 
 clean:
-	@echo ${RED}"Removing libft obj directory & files..."
-	@echo "Removing $(NAME_ASM) & $(NAME_CW) obj directories & files...${RESET}"
+	@echo ${RED}"Removing obj directory & files...${RESET}"
 	@rm -rf $(ASM_O_PATH)
 	@rm -rf $(CW_O_PATH)
 	@make -C libft clean
 
 fclean: clean
-	@echo ${RED}"Removing $(NAME_ASM) & $(NAME_CW) executables...${RESET}"
+	@echo ${RED}"Removing executables...${RESET}"
 	@rm -f $(NAME_ASM)
 	@rm -f $(NAME_CW)
 	@make -C libft fclean
 
 re: fclean all
 
-.PHONY := all re clean fclean make
+.PHONY := all re clean fclean make asm corewar

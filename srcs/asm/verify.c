@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
+/*   verify.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/25 20:45:26 by ajones           ###   ########.fr       */
+/*   Created: 2023/02/13 16:58:16 by ajones            #+#    #+#             */
+/*   Updated: 2023/02/14 19:51:32 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VM_H
-# define VM_H
+#include "asm.h"
 
-# include "../libft/includes/libft.h"
-
-typedef struct s_vm
+void	verify_name_com(t_asm *assem, t_line *line)
 {
-	int			i;
-}				t_vm;
-
-int	main(int argc, char **argv);
-
-#endif
+	if (!assem->champ_name || !assem->champ_com || !line)
+		error_exit1(INV_FILE, assem);
+	if (ft_strlen(assem->champ_name) > PROG_NAME_LENGTH)
+		error_exit1(LONG_NAME, assem);
+	if (ft_strlen(assem->champ_com) > COMMENT_LENGTH)
+		error_exit1(LONG_COM, assem);
+}
