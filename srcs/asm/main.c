@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/22 01:55:07 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/27 21:45:19 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,6 @@ int	main(int argc, char **argv)
 	// print_map(assem);
 	print_labels(assem);
 	ft_putchar('\n');
-	system("leaks asm");
+	// system("leaks asm");
 	return (0);
 }
