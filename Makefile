@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/25 20:11:24 by ajones           ###   ########.fr        #
+#    Updated: 2023/02/27 21:54:10 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,31 +27,20 @@ ASM_SRCS := main.c init.c errors.c free.c read_file.c verify.c parse_header.c \
 parse_labels.c parse_utils.c 
 
 ASM_PATH := srcs/asm/
-
 ASM_DIR := $(addprefix $(ASM_PATH), $(ASM_SRCS))
-
 ASM_OBJ := $(ASM_SRCS:%.c=%.o)
-
 ASM_O_PATH := srcs/asm/obj/
-
 ASM_O_DIR := $(addprefix $(ASM_O_PATH), $(ASM_OBJ))
 
 # VIRTUAL MACHINE
-
 CW_SRCS := main.c
 
 CW_PATH := srcs/vm/
-
 CW_DIR := $(addprefix $(CW_PATH), $(CW_SRCS))
-
 CW_OBJ := $(CW_SRCS:%.c=%.o)
-
 CW_O_PATH := srcs/vm/obj/
-
 CW_O_DIR := $(addprefix $(CW_O_PATH), $(CW_OBJ))
 
-O_PATH := ./obj/
-O_DIR := $(addprefix $(O_PATH), $(O_FILES))
 
 #COLORS:
 GREEN := '\033[1;3;32m'
