@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/28 03:30:50 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/28 03:51:16 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	main(int argc, char **argv)
 	init_asm(assem, argv[1]);
 	read_file(assem, argv[1]);
 	parse_champ(assem);
-	ft_printf("Champion Name:\n%s", assem->champ_name);
-	ft_printf("\nChampion Comment:\n%s\n\n", assem->champ_com);
+	ft_printf("Champion Name:\n(%s)", assem->champ_name);
+	ft_printf("\nChampion Comment:\n(%s)\n\n", assem->champ_com);
 	print_array(assem);
 	print_labels(assem);
 	ft_putchar('\n');
