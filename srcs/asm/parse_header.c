@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/18 19:27:56 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/28 03:34:39 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,11 @@ t_line	*get_name_comment(t_asm *assem, t_line *line)
 	return (line);
 }
 
-t_line	*parse_header(t_asm *assem, t_line *line)
+int	parse_header(t_asm *assem)
 {
+	t_line	*line;
+
+	line = assem->line;
 	while (line)
 	{
 		if (line_check(line->line))
@@ -127,5 +130,5 @@ t_line	*parse_header(t_asm *assem, t_line *line)
 			break ;
 	}
 	verify_name_com(assem, line);
-	return (line);
+	return (line->num);
 }

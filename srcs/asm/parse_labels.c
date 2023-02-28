@@ -6,11 +6,22 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:59:03 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/27 21:41:48 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/28 03:32:03 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void	append_label(t_asm *assem, t_label *label)
+{
+	t_label	*temp;
+
+	temp = assem->label;
+	while (assem->label->next)
+		assem->label = assem->label->next;
+	assem->label->next = label;
+	assem->label = temp;
+}
 
 char	*get_label(char *line, int i)
 {
@@ -31,28 +42,17 @@ char	*get_label(char *line, int i)
 	return (label);
 }
 
-void	append_label(t_asm *assem, t_label *label)
-{
-	t_label	*temp;
-
-	temp = assem->label;
-	while (assem->label->next)
-		assem->label = assem->label->next;
-	assem->label->next = label;
-	assem->label = temp;
-}
-
-t_label	*make_label(t_asm *assem, t_line *line, int i)
+t_label	*make_label(t_asm *assem, int index, int i)
 {
 	t_label	*label;
 
 	label = (t_label *)malloc(sizeof(t_label));
 	if (!label)
 		error_exit1(LBL_FAIL, assem);
-	label->label_name = get_label(line->line, i);
+	label->label_name = get_label(assem->l_array[index]->line, i);
 	if (!label->label_name)
 		error_exit1(LBL_NAME, assem);
-	label->line_nb = line->num;
+	label->line_nb = index;
 	label->next = NULL;
 	return (label);
 }
@@ -83,29 +83,29 @@ int	is_statement(char *line, int start)
 	return (0);
 }
 
-void	parse_labels(t_asm *assem, t_line *head)
+void	parse_labels(t_asm *assem, int index)
 {
 	int		i;
-	t_line	*line;
 	t_label	*label;
+	t_line	**line;
 
-	line = head;
-	if (!line)
-		error_exit1(LINE_FAIL, assem);
-	while (line)
+	line = assem->l_array;
+	if (index >= assem->line_count)
+		error_exit1(INV_FILE, assem);
+	while (index < assem->line_count)
 	{
 		i = 0;
-		while (line->line[i] && ft_isspace(line->line[i]))
+		while (line[index]->line[i] && ft_isspace(line[index]->line[i]))
 			i++;
-		if (line->line[i] && ft_strchr(LABEL_CHARS, line->line[i])
-			&& !is_statement(line->line, i))
+		if (line[index]->line[i] && ft_strchr(LABEL_CHARS, line[index]->line[i])
+			&& !is_statement(line[index]->line, i))
 		{
-			label = make_label(assem, line, i);
+			label = make_label(assem, index, i);
 			if (!assem->label)
 				assem->label = label;
 			else
 				append_label(assem, label);
 		}
-		line = line->next;
+		index++;
 	}
 }

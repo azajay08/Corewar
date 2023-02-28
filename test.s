@@ -4,7 +4,7 @@
 .comment"This is the comment"
 
 live:
-	livr:
+	live :
 
 2_label:
 

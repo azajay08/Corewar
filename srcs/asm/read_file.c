@@ -6,11 +6,44 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/18 19:27:48 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/28 03:06:11 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+t_line	*make_array_line(t_asm *assem, t_line *old)
+{
+	t_line	*line;
+
+	line = (t_line *)malloc(sizeof(t_line));
+	if (!line)
+		error_exit1(LINE_FAIL, assem);
+	line->line = ft_strdup(old->line);
+	line->next = NULL;
+	line->num = 0;
+	return (line);
+}
+
+t_line	**make_line_array(t_asm *assem)
+{
+	int		i;
+	t_line	*old;
+	t_line	**line;
+
+	i = 0;
+	old = assem->line;
+	line = (t_line **)malloc(sizeof(t_line *) * (assem->line_count));
+	if (!line)
+		error_exit1(LINE_FAIL, assem);
+	while (i < assem->line_count)
+	{
+		line[i] = make_array_line(assem, old);
+		old = old->next;
+		i++;
+	}
+	return (line);
+}
 
 void	append_line(t_asm *assem, t_line *line)
 {
@@ -43,7 +76,7 @@ void	read_file(t_asm *assem, char *file)
 	char	*line;
 	t_line	*line_str;
 
-	line_num = 1;
+	line_num = 0;
 	fd = open(file, O_RDONLY);
 	line = NULL;
 	if (fd == -1)
@@ -59,4 +92,6 @@ void	read_file(t_asm *assem, char *file)
 		line_num++;
 	}
 	close(fd);
+	assem->line_count = line_num;
+	assem->l_array = make_line_array(assem);
 }

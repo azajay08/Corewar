@@ -6,11 +6,20 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:58:16 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/14 19:51:32 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/28 02:45:11 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void	verify_filename(char *filename)
+{
+	if (!ft_strequ(ft_strrchr(filename, '.'), ".s"))
+	{
+		ft_putstr(EXT_S);
+		error_exit(USAGE);
+	}
+}
 
 void	verify_name_com(t_asm *assem, t_line *line)
 {
