@@ -6,11 +6,11 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/07 16:36:04 by ajones           ###   ########.fr       */
+/*   Updated: 2023/02/06 15:52:07 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vm.h"
+#include "../../includes/vm.h"
 
 static void	print_usage()
 {
@@ -20,8 +20,13 @@ static void	print_usage()
 
 int	main(int argc, char **argv)
 {
+	t_player	players[MAX_PLAYERS];
+	t_vm		vm;
+
 	if (argc < 2)
 		print_usage();
-	ft_putstr(argv[1]); // just for compilation - remove
+	init_vm(&vm);
+	parse(argc, argv, players, &vm);
+	ft_printf("MADE IT\n");
 	return (0);
 }
