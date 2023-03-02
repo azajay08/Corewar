@@ -1,33 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/02 14:18:44 by sam              ###   ########.fr       */
+/*   Created: 2023/03/02 14:12:14 by sam               #+#    #+#             */
+/*   Updated: 2023/03/02 14:12:58 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void	print_usage()
+/*
+** :
+**
+*/
+int	get_n_byte(uint32_t n, unsigned char *data, uint32_t idx)
 {
-	ft_putstr("Usage: ./corewar ");
-	ft_putstr("[filename.cor] ([filename.cor] [filename.cor]\n");
+	uint32_t	i;
+	int			value;
+
+	value = 0;
+	i = 0;
+	if (data)
+	{
+		while (i < n)
+			value = (value * 0x100) + data[idx + i++];
+	}
+	return (value);
 }
 
-int	main(int argc, char **argv)
+/*
+** :
+**
+*/
+void	get_player_count(int ac, char **av, uint32_t *player_count)
 {
-	t_player	players[MAX_PLAYERS];
-	t_vm		vm;
+	int	i;
 
-	if (argc < 2)
-		print_usage();
-	init_vm(&vm);
-	parse(argc, argv, players, &vm);
-	ft_printf("MADE IT\n");
-	exit(EXIT_SUCCESS);
-	return (0);
+	i = 1;
+	while (i < ac)
+	{
+			if (ft_strstr(av[i], ".cor") != NULL)
+				*player_count += 1;
+		i++;
+	}
 }

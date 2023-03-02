@@ -19,7 +19,7 @@ void	init_vm(t_vm *vm)
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->latest_live = NULL;
 	vm->player_count = 0;
-	vm->processors = NULL;
+	vm->process = NULL;
 }
 
 void	init_players(t_player *players, unsigned int player_count)

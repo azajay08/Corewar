@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
+#    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/02/25 20:11:24 by ajones           ###   ########.fr        #
+#    Updated: 2023/03/02 14:27:57 by sam              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIB := -L./libft/includes -lft
 
 # ASSEMBLER
 ASM_SRCS := main.c init.c errors.c free.c read_file.c verify.c parse_header.c \
-parse_labels.c parse_utils.c 
+parse_labels.c parse_utils.c
 
 ASM_PATH := srcs/asm/
 
@@ -38,7 +38,9 @@ ASM_O_DIR := $(addprefix $(ASM_O_PATH), $(ASM_OBJ))
 
 # VIRTUAL MACHINE
 
-CW_SRCS := main.c
+CW_SRCS := \
+main.c init.c exit_program.c \
+parse_players_1.c parse_players_2.c parse_utils.c
 
 CW_PATH := srcs/vm/
 

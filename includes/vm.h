@@ -3,58 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/01/20 17:46:48 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/02 14:28:31 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include "op.h"
 
-typedef struct s_processor	t_processor;
-typedef struct s_vm			t_vm;
-typedef struct s_player		t_player;
-
-struct	s_processor
+typedef struct	s_process
 {
-	int			id;
-	int			registers[REG_NUMBER];
-	int			cool_down;
-	t_processor	*next;
-};
+	int					id;
+	int					carry;
+	int					registers[REG_NUMBER];
+	int					cool_down;
+	struct s_process	*next;
+}				t_process;
 
-struct s_player
+typedef struct	s_player
 {
 	unsigned int		id;
+	int					last_live;
+	int					live_count;
 	unsigned int		magic;
 	unsigned char		name[PROG_NAME_LENGTH + 1];
-	unsigned int		exec_size;
 	unsigned char		comment[COMMENT_LENGTH + 1];
 	unsigned char		*exec;
+	unsigned int		exec_size;
 	unsigned char		file[MEM_SIZE];
-};
+	struct s_player		*next;
+}				t_player;
 
-struct	s_vm
+typedef struct	s_vm
 {
-	t_processor		*processors;
+	t_process		*process;
 	t_player		*latest_live;
+	uint8_t			arena[MEM_SIZE];
+	size_t			process_amount;
+	size_t			total_processes;
 	int				cycle;
 	int				cycle_to_die;
 	int				checks;
 	unsigned int	player_count;
-};
+}				t_vm;
 
-// registers?? x16
-
-int		main(int argc, char **argv);
-void	parse(int argc, char **argv, t_player *players, t_vm *vm);
+// Initialisation:
 void	init_vm(t_vm *vm);
-int		get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
 void	init_players(t_player *players, unsigned int player_count);
+
+// Parsing:
+void	parse(int argc, char **argv, t_player *players, t_vm *vm);
+int		read_cor(char **av, int i, t_player *player);
+int		parse_file(unsigned char *player_data, unsigned char *data, int len);
+int		parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
+int		get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
+void	get_player_count(int ac, char **av, uint32_t *player_count);
+
+// Exit program:
+void	exit_vm(char *error_message);
 
 #endif

@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_program.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/02 14:18:44 by sam              ###   ########.fr       */
+/*   Created: 2023/03/02 14:13:42 by sam               #+#    #+#             */
+/*   Updated: 2023/03/02 14:25:42 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void	print_usage()
+void	exit_vm(char *error_message)
 {
-	ft_putstr("Usage: ./corewar ");
-	ft_putstr("[filename.cor] ([filename.cor] [filename.cor]\n");
-}
-
-int	main(int argc, char **argv)
-{
-	t_player	players[MAX_PLAYERS];
-	t_vm		vm;
-
-	if (argc < 2)
-		print_usage();
-	init_vm(&vm);
-	parse(argc, argv, players, &vm);
-	ft_printf("MADE IT\n");
-	exit(EXIT_SUCCESS);
-	return (0);
+	ft_printf("ERROR: %s\n", error_message);
+	exit(EXIT_FAILURE);
 }
