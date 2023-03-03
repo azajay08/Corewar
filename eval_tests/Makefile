@@ -31,4 +31,5 @@ test:		all
 
 compare:	all
 			sh $(COMPARE)
+
 .PHONY: all clean fclean re norm test compare
