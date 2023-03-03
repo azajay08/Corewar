@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:59:03 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/28 03:32:03 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 17:29:43 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	append_label(t_asm *assem, t_label *label)
 	assem->label = temp;
 }
 
-char	*get_label(char *line, int i)
+char	*get_label(t_asm *assem, char *line, int i)
 {
 	int		start;
 	char	*label;
@@ -39,48 +39,38 @@ char	*get_label(char *line, int i)
 		label = NULL;
 	else
 		label = ft_strsub(line, start, i - start);
+	if (duplicate_label(assem, label))
+		return (NULL);
 	return (label);
 }
 
 t_label	*make_label(t_asm *assem, int index, int i)
 {
 	t_label	*label;
+	char	*str;
 
+	str = get_label(assem, assem->l_array[index]->line, i);
+	if (!str)
+		return (NULL);
 	label = (t_label *)malloc(sizeof(t_label));
 	if (!label)
 		error_exit1(LBL_FAIL, assem);
-	label->label_name = get_label(assem->l_array[index]->line, i);
+	label->label_name = ft_strdup(str);
 	if (!label->label_name)
 		error_exit1(LBL_NAME, assem);
 	label->line_nb = index;
 	label->next = NULL;
+	label->state = false;
+	free(str);
 	return (label);
 }
 
-int	is_statement(char *line, int start)
+void	sort_label(t_asm *assem, t_label *label)
 {
-	int		i;
-	char	*str;
-
-	i = start;
-	str = NULL;
-	while (line[i] && !ft_isspace(line[i]))
-		i++;
-	if (i == start)
-		return (1);
-	str = ft_strsub(line, start, i - start);
-	i = 0;
-	while (i < STATEMENT_MAX)
-	{
-		if (ft_strequ(str, g_op_tab[i].state_name))
-		{
-			free(str);
-			return (1);
-		}
-		i++;
-	}
-	free(str);
-	return (0);
+	if (!assem->label)
+		assem->label = label;
+	else
+		append_label(assem, label);
 }
 
 void	parse_labels(t_asm *assem, int index)
@@ -101,10 +91,12 @@ void	parse_labels(t_asm *assem, int index)
 			&& !is_statement(line[index]->line, i))
 		{
 			label = make_label(assem, index, i);
-			if (!assem->label)
-				assem->label = label;
-			else
-				append_label(assem, label);
+			if (!label)
+			{
+				index++;
+				continue ;
+			}
+			sort_label(assem, label);
 		}
 		index++;
 	}

@@ -6,20 +6,20 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/28 03:41:58 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 14:51:52 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-t_line	*get_comment(t_asm *assem, t_line *line, int start, int end)
+void	get_comment(t_asm *assem, t_line *line, int start, int end)
 {
 	int	i;
 
 	i = 0;
 	assem->champ_com = ft_strnew(end);
 	if (!assem->champ_com)
-		error_exit1(INV_FILE, assem);
+		error_exit1(COM_FAIL, assem);
 	while (i < end)
 	{
 		if (line->line[start] == '\0')
@@ -32,17 +32,16 @@ t_line	*get_comment(t_asm *assem, t_line *line, int start, int end)
 		i++;
 		start++;
 	}
-	return (line);
 }
 
-t_line	*get_name(t_asm *assem, t_line *line, int start, int end)
+void	get_name(t_asm *assem, t_line *line, int start, int end)
 {
 	int	i;
 
 	i = 0;
 	assem->champ_name = ft_strnew(end);
 	if (!assem->champ_name)
-		error_exit1(INV_FILE, assem);
+		error_exit1(NAME_FAIL, assem);
 	while (i < end)
 	{
 		if (line->line[start] == '\0')
@@ -55,21 +54,18 @@ t_line	*get_name(t_asm *assem, t_line *line, int start, int end)
 		i++;
 		start++;
 	}
-	return (line);
 }
 
-t_line	*get_champ_cmd(t_asm *assem, t_line *line, char *cmd)
+t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
 {
 	int		i;
 	int		start;
 	int		end;
-	t_line	*temp;
 
 	i = cmd_str_check(assem, line->line, cmd) + 1;
 	end = 0;
 	start = i;
-	temp = line;
-	while (line->line[i] != '"' && line)
+	while (line && line->line[i] != '"')
 	{	
 		if (line->line[i] == '\0')
 		{
@@ -80,19 +76,24 @@ t_line	*get_champ_cmd(t_asm *assem, t_line *line, char *cmd)
 		end++;
 		i++;
 	}
+	if (!line)
+		error_exit1(INV_HDR, assem);
 	if (ft_strequ(cmd, NAME_CMD_STRING))
-		line = get_name(assem, temp, start, end);
+		get_name(assem, temp, start, end);
 	else
-		line = get_comment(assem, temp, start, end);
+		get_comment(assem, temp, start, end);
 	return (line);
 }
 
 t_line	*get_name_comment(t_asm *assem, t_line *line)
 {
+	t_line	*temp;
+
+	temp = line;
 	if (ft_strstr(line->line, NAME_CMD_STRING))
-		line = get_champ_cmd(assem, line, NAME_CMD_STRING);
+		line = get_champ_cmd(assem, line, temp, NAME_CMD_STRING);
 	else
-		line = get_champ_cmd(assem, line, COMMENT_CMD_STRING);
+		line = get_champ_cmd(assem, line, temp, COMMENT_CMD_STRING);
 	while (line->next)
 	{
 		if (assem->champ_com && assem->champ_name)
@@ -100,10 +101,11 @@ t_line	*get_name_comment(t_asm *assem, t_line *line)
 		line = line->next;
 		if (line_check(line->line))
 			continue ;
+		temp = line;
 		if (ft_strstr(line->line, NAME_CMD_STRING) && !assem->champ_name)
-			line = get_champ_cmd(assem, line, NAME_CMD_STRING);
+			line = get_champ_cmd(assem, line, temp, NAME_CMD_STRING);
 		else if (ft_strstr(line->line, COMMENT_CMD_STRING) && !assem->champ_com)
-			line = get_champ_cmd(assem, line, COMMENT_CMD_STRING);
+			line = get_champ_cmd(assem, line, temp, COMMENT_CMD_STRING);
 		else
 			break ;
 	}
@@ -123,7 +125,8 @@ int	parse_header(t_asm *assem)
 			|| ft_strstr(line->line, COMMENT_CMD_STRING))
 		{
 			line = get_name_comment(assem, line);
-			line = line->next;
+			if (line->next)
+				line = line->next;
 			break ;
 		}
 		else

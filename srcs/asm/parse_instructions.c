@@ -6,11 +6,30 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 03:22:07 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 17:31:22 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+int	is_state(char *state, t_asm *assem)
+{
+	int	i;
+
+	i = 0;
+	while (i < STATEMENT_MAX)
+	{
+		if (ft_strequ(state, g_op_tab[i].state_name))
+		{
+			free(state);
+			return (1);
+		}
+		i++;
+	}
+	free(state);
+	error_exit1(INV_STATE, assem);
+	return (0);
+}
 
 int	is_label(t_asm *assem, int index)
 {
@@ -20,38 +39,55 @@ int	is_label(t_asm *assem, int index)
 	while (label)
 	{
 		if (label->line_nb == index)
+		{
+			label->state = true;
 			return (1);
+		}
 		label = label->next;
 	}
 	return (0);
 }
 
-int	line_has_statment(t_asm *assem, int index)
+int	line_has_statement(t_asm *assem, int index, char *line)
 {
-	int	i;
+	int		i;
+	int		end;
+	char	*state;
 
 	i = 0;
-	if (is_label(assem, i));
+	end = 0;
+	state = NULL;
+	if (is_label(assem, index))
 	{
-		while (assem->l_array[index]->line[i] != LABEL_CHAR)
-			i++;
+		line = ft_strchr(line, LABEL_CHAR) + 1;
 	}
+	while (ft_isspace(line[i]))
+		i++;
+	if (!line[i])
+		return (0);
+	end = i;
+	while (line[end] && ft_strchr(LABEL_CHARS, line[end]))
+		end++;
+	if (!line[end])
+		error_exit1(INV_STATE, assem);
+	state = ft_strsub(line, i, end - i);
+	if (is_state(state, assem))
+		return (1);
 	return (0);
 }
 
-void	parse_instructions(t_asm *assem, int i)
+void	parse_instructions(t_asm *assem, int index)
 {
-	t_line	**line;
-
-	line = assem->l_array;
-	while (i < assem->line_count)
+	while (index < assem->line_count)
 	{
-		if (line[i]->line[0] && line_has_statement(assem, i))
+		if (assem->l_array[index]->line[0]
+			&& line_has_statement(assem, index, assem->l_array[index]->line))
 		{
-			get_statement(assem, i);
+			ft_printf("\nThere is a statment!\n");
+			// get_statement(assem, index);
 		}
-		i++;
+		index++;
 	}
-	if (!assem->state)
-		error_exit1(INSTRUCT, assem);
+	// if (!assem->state)
+	// 	error_exit1(INSTRUCT, assem);
 }

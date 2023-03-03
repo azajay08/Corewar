@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:51:25 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/14 20:07:33 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 17:29:55 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,47 @@ int	cmd_str_check(t_asm *assem, char *line, char *cmd)
 	if (line[i] != '"' || (int)ft_strlen(cmd) != j)
 		error_exit1(INV_FILE, assem);
 	return (i);
+}
+
+int	duplicate_label(t_asm *assem, char *str)
+{
+	t_label	*label;
+
+	label = assem->label;
+	while (label)
+	{
+		if (ft_strequ(str, label->label_name))
+		{
+			free(str);
+			return (1);
+		}
+		label = label->next;
+	}
+	return (0);
+}
+
+int	is_statement(char *line, int start)
+{
+	int		i;
+	char	*str;
+
+	i = start;
+	str = NULL;
+	while (line[i] && !ft_isspace(line[i]))
+		i++;
+	if (i == start)
+		return (1);
+	str = ft_strsub(line, start, i - start);
+	i = 0;
+	while (i < STATEMENT_MAX)
+	{
+		if (ft_strequ(str, g_op_tab[i].state_name))
+		{
+			free(str);
+			return (1);
+		}
+		i++;
+	}
+	free(str);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/02 14:27:48 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 17:30:13 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@
 # include "../libft/includes/libft.h"
 # include "op.h"
 # include "op_table.h"
+# include <stdbool.h>
 
 # define USAGE		"Usage: ./asm [filename.s]\n"
 # define EXT_S		"Invalid file! Input file must have [.s] extension\n\n"
 # define ASSEM		"ERROR! Memory allocation of t_asm failed!\n"
 # define LINE_FAIL	"ERROR! Memory allocation of t_line failed!\n"
 # define LBL_FAIL	"ERROR! Memory allocation of t_label failed!\n"
+# define NAME_FAIL	"ERROR! Memory allocation of champion name failed!\n"
+# define COM_FAIL	"ERROR! Memory allocation of champion comment failed!\n"
 # define LBL_NAME	"ERROR! Failed to create label name\n"
 # define ERR_FILE	"ERROR! Unable to open file!\n"
 # define INV_FILE	"ERROR! Inavlid File!\n"
+# define INV_HDR	"ERROR! Inavlid name or comment!\n"
+# define INV_STATE	"ERROR! Inavlid statement!\n"
 # define LONG_NAME	"ERROR! Name too long!\n"
 # define LONG_COM	"ERROR! Comment too long!\n"
 # define INSTRUCT	"ERROR! No instructions found!\n"
@@ -44,6 +49,7 @@ typedef struct s_asm
 typedef struct s_label
 {
 	int				line_nb;
+	bool			state;
 	char			*label_name;
 	struct s_label	*next;
 }					t_label;
@@ -52,6 +58,10 @@ typedef struct s_state
 {
 	int				index;
 	int				label;
+	int				arg_count;
+	t_arg_type		arg_type[3];
+	struct s_state	*next;
+	
 }					t_state;
 
 int		main(int argc, char **argv);
@@ -94,6 +104,8 @@ void	verify_filename(char *filename);
 int		line_check(char *line);
 int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 int		parse_header(t_asm *assem);
+int		duplicate_label(t_asm *assem, char *str);
+int		is_statement(char *line, int start);
 void	parse_labels(t_asm *assem, int index);
 void	parse_instructions(t_asm *assem, int index);
 
