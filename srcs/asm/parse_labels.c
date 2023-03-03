@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:59:03 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 17:29:43 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 20:19:05 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	parse_labels(t_asm *assem, int index)
 		while (line[index]->line[i] && ft_isspace(line[index]->line[i]))
 			i++;
 		if (line[index]->line[i] && ft_strchr(LABEL_CHARS, line[index]->line[i])
-			&& !is_statement(line[index]->line, i))
+			&& !statement_label(line[index]->line, i))
 		{
 			label = make_label(assem, index, i);
 			if (!label)

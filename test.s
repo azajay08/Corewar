@@ -4,11 +4,11 @@
 I have no name"
 .comment"This is the comment"
 
-live:
+live: ;hello
 
+	# hello
 
-
-2_label: ld 
+2_label:
 
 
 3_label:

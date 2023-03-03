@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 16:53:53 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 20:19:48 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	print_labels(t_asm *assem)
 	while (tmp)
 	{
 		ft_printf("\nLabel: (%s)\nLine: (%i)\n", tmp->label_name, tmp->line_nb);
+		ft_printf("Bool: %d \n", tmp->state);
 		tmp = tmp->next;
 	}
 }

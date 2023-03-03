@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:51:25 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 17:29:55 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 20:13:52 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	duplicate_label(t_asm *assem, char *str)
 	return (0);
 }
 
-int	is_statement(char *line, int start)
+int	statement_label(char *line, int start)
 {
 	int		i;
 	char	*str;
