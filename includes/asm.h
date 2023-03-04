@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/04 20:56:41 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:23:13 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,15 @@ void	verify_filename(char *filename);
 /*
 	Parsing & parsing tools
 */
-
-
 int		line_check(char *line);
-int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 int		parse_header(t_asm *assem);
-int		duplicate_label(t_asm *assem, char *str);
+int		is_label(t_asm *assem, int index);
 int		statement_label(char *line, int start);
+int		is_statement(char *state, t_asm *assem);
+int		duplicate_label(t_asm *assem, char *str);
+int		cmd_str_check(t_asm *assem, char *line, char *cmd);
+int		line_has_statement(t_asm *assem, int index, char *line);
+void	label_check(t_asm *assem, int index);
 void	parse_labels(t_asm *assem, int index);
 void	parse_instructions(t_asm *assem, int index);
 

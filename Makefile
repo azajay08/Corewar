@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/03/02 13:58:51 by ajones           ###   ########.fr        #
+#    Updated: 2023/03/04 21:19:07 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIB := -L./libft/includes -lft
 
 # ASSEMBLER
 ASM_SRCS := main.c init.c errors.c free.c read_file.c verify.c parse_header.c \
-parse_labels.c parse_utils.c parse_instructions.c
+parse_labels.c parse_utils1.c parse_utils2.c parse_instructions.c
 
 ASM_PATH := srcs/asm/
 ASM_DIR := $(addprefix $(ASM_PATH), $(ASM_SRCS))

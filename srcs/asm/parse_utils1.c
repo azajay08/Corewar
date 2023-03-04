@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_utils.c                                      :+:      :+:    :+:   */
+/*   parse_utils1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:51:25 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 20:13:52 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:20:24 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,23 @@ int	cmd_str_check(t_asm *assem, char *line, char *cmd)
 	if (line[i] != '"' || (int)ft_strlen(cmd) != j)
 		error_exit1(INV_FILE, assem);
 	return (i);
+}
+
+int	is_label(t_asm *assem, int index)
+{
+	t_label	*label;
+
+	label = assem->label;
+	while (label)
+	{
+		if (label->line_nb == index)
+		{
+			label->state = true;
+			return (1);
+		}
+		label = label->next;
+	}
+	return (0);
 }
 
 int	duplicate_label(t_asm *assem, char *str)
