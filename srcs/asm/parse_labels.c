@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:59:03 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/04 21:12:52 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/04 22:06:46 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_label	*make_label(t_asm *assem, int index, int i)
 	label->label_name = ft_strdup(str);
 	if (!label->label_name)
 		error_exit1(LBL_NAME, assem);
-	label->line_nb = 0;
+	label->line_nb = index;
 	label->next = NULL;
 	label->state = false;
 	free(str);

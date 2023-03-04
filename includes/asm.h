@@ -6,14 +6,14 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/04 21:23:13 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/04 21:48:41 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include "op.h"
 # include "op_table.h"
 # include <stdbool.h>
@@ -106,7 +106,7 @@ int		line_check(char *line);
 int		parse_header(t_asm *assem);
 int		is_label(t_asm *assem, int index);
 int		statement_label(char *line, int start);
-int		is_statement(char *state, t_asm *assem);
+int		is_statement(char *state);
 int		duplicate_label(t_asm *assem, char *str);
 int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 int		line_has_statement(t_asm *assem, int index, char *line);

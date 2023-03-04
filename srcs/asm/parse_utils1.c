@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:51:25 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/04 21:20:24 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/04 22:05:51 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ int	is_label(t_asm *assem, int index)
 	t_label	*label;
 
 	label = assem->label;
+	ft_printf("\nindex: %i\n", index);
 	while (label)
 	{
+		ft_printf("\nlabel index: %i\n", label->line_nb);
 		if (label->line_nb == index)
 		{
 			label->state = true;

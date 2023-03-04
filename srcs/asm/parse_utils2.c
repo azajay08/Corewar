@@ -6,13 +6,13 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 21:19:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/04 21:22:12 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/04 22:08:55 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	is_statement(char *state, t_asm *assem)
+int	is_statement(char *state)
 {
 	int	i;
 
@@ -27,7 +27,6 @@ int	is_statement(char *state, t_asm *assem)
 		i++;
 	}
 	free(state);
-	error_exit1(INV_STATE, assem);
 	return (0);
 }
 
@@ -42,6 +41,7 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	state = NULL;
 	if (is_label(assem, index))
 		line = ft_strchr(line, LABEL_CHAR) + 1;
+	ft_printf("line: %s\n", line);
 	if (line_check(line))
 		return (0);
 	while (ft_isspace(line[i]))
@@ -54,7 +54,7 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	if (!line[end])
 		error_exit1(INV_STATE, assem);
 	state = ft_strsub(line, i, end - i);
-	if (is_statement(state, assem))
+	if (is_statement(state))
 		return (1);
 	return (0);
 }
@@ -68,7 +68,7 @@ void	label_check(t_asm *assem, int index)
 	{
 		if (assem->label->state == true)
 		{
-			assem->label->state == false
+			assem->label->state = false;
 			assem->label->line_nb = index;
 		}
 		assem->label = assem->label->next;
