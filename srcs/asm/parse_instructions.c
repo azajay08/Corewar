@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 21:45:19 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/04 20:56:22 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,16 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	return (0);
 }
 
-void	get_statement(t_asm *assem, int index)
+t_state	*make_statement(t_asm *assem, int index)
 {
 	t_state	*statement;
-	
-	statement = NULL;
+
+	statement = (t_state *)malloc(sizeof(t_state));
+	if (!statement)
+		error_exit1(STATE_FAIL, assem);
+	statement->index = index;
+	get_statement(assem, index);
+	return (statement);
 }
 
 void	parse_instructions(t_asm *assem, int index)
@@ -98,10 +103,14 @@ void	parse_instructions(t_asm *assem, int index)
 			else
 				append_statement(assem, index, statement);
 			ft_printf("\nThere is a statment!\n");
-			get_statement(assem, index);
 		}
 		index++;
 	}
 	if (!assem->state)
 		error_exit1(INSTRUCT, assem);
+	ft_printf("\n\nType arg: %i\n\n", g_op_tab[6].arg_type[0]);
+	ft_printf("\n\nType arg: %i\n\n", g_op_tab[6].arg_type[1]);
+	ft_printf("\n\nType arg: %i\n\n", g_op_tab[6].arg_type[2]);
+	if (6 & 1)
+		ft_printf("\n?%i\n", 7 & 4);
 }

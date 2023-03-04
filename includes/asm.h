@@ -6,14 +6,14 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 20:14:06 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/04 20:56:41 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include "op.h"
 # include "op_table.h"
 # include <stdbool.h>
@@ -23,6 +23,7 @@
 # define ASSEM		"ERROR! Memory allocation of t_asm failed!\n"
 # define LINE_FAIL	"ERROR! Memory allocation of t_line failed!\n"
 # define LBL_FAIL	"ERROR! Memory allocation of t_label failed!\n"
+# define STATE_FAIL	"ERROR! Memory allocation of t_state failed!\n"
 # define NAME_FAIL	"ERROR! Memory allocation of champion name failed!\n"
 # define COM_FAIL	"ERROR! Memory allocation of champion comment failed!\n"
 # define LBL_NAME	"ERROR! Failed to create label name\n"
@@ -56,6 +57,8 @@ typedef struct s_label
 
 typedef struct s_state
 {
+	int				byte_count;
+	int				state_num;
 	int				index;
 	int				label;
 	int				arg_count;

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/28 03:38:21 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/03 23:04:29 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,32 @@ void	free_line(t_asm *assem)
 	}
 }
 
+void	free_statement(t_asm *assem)
+{
+	t_state	*temp;
+
+	while (assem->state)
+	{
+		temp = assem->state;
+		assem->state = assem->state->next;
+		free(temp);
+	}
+}
+
 void	free_asm(t_asm *assem)
 {
+	if (assem->filename)
+		free(assem->filename);
+	if (assem->champ_name)
+		free(assem->champ_name);
+	if (assem->champ_com)
+		free(assem->champ_com);
 	if (assem->line)
 		free_line(assem);
 	if (assem->l_array)
 		free_line_array(assem);
 	if (assem->label)
 		free_label(assem);
-	if (assem->champ_name)
-		free(assem->champ_name);
-	if (assem->filename)
-		free(assem->filename);
-	if (assem->champ_com)
-		free(assem->champ_com);
+	if (assem->state)
+		free_statement(assem);
 }
