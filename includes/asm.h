@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/04 21:48:41 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 04:05:44 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,17 +91,20 @@ void	read_file(t_asm *assem, char *file);
 /*
 	Freeing functions
 */
+
 void	free_asm(t_asm *assem);
 
 /*
 	verifying
 */
+
 void	verify_name_com(t_asm *assem, t_line *line);
 void	verify_filename(char *filename);
 
 /*
 	Parsing & parsing tools
 */
+
 int		line_check(char *line);
 int		parse_header(t_asm *assem);
 int		is_label(t_asm *assem, int index);
@@ -113,5 +116,7 @@ int		line_has_statement(t_asm *assem, int index, char *line);
 void	label_check(t_asm *assem, int index);
 void	parse_labels(t_asm *assem, int index);
 void	parse_instructions(t_asm *assem, int index);
+void	append_statement(t_asm *assem, t_state *statement);
+t_state	*make_statement(t_asm *assem, int index);
 
 #endif

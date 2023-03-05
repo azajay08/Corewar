@@ -6,47 +6,57 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/04 21:57:14 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 04:06:59 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-// void	get_statement(t_asm *assem)
-// {
-// 	int i = 0;
-
-// 	assem->line->num = 0;
-// 	while (i < STATEMENT_MAX)
-// 	{
-// 		ft_printf("\nState Name: %s\n", g_op_tab[i].state_name);
-// 		i++;
-// 	}
-// }
-
-void	append_statement(t_asm *assem, t_state *statement)
+int	is_statement(char *state)
 {
-	t_state	*tmp;
+	int	i;
 
-	tmp = assem->state;
-	while (assem->state)
-		assem->state = assem->state->next;
-	assem->state->next = statement;
-	assem->state = tmp;
+	i = 0;
+	while (i < STATEMENT_MAX)
+	{
+		if (ft_strequ(state, g_op_tab[i].state_name))
+		{
+			free(state);
+			return (1);
+		}
+		i++;
+	}
+	free(state);
+	return (0);
 }
 
-t_state	*make_statement(t_asm *assem, int index)
+int	line_has_statement(t_asm *assem, int index, char *line)
 {
-	t_state	*statement;
+	int		i;
+	int		end;
+	char	*state;
 
-	statement = (t_state *)malloc(sizeof(t_state));
-	if (!statement)
-		error_exit1(STATE_FAIL, assem);
-	// get_statement(assem);
-	statement->index = index;
-	statement->byte_count = 0;
-	label_check(assem, index);
-	return (statement);
+	i = 0;
+	end = 0;
+	state = NULL;
+	if (is_label(assem, index))
+		line = ft_strchr(line, LABEL_CHAR) + 1;
+	ft_printf("line: %s\n", line);
+	if (line_check(line))
+		return (0);
+	while (ft_isspace(line[i]))
+		i++;
+	if (!line[i])
+		return (0);
+	end = i;
+	while (line[end] && ft_strchr(LABEL_CHARS, line[end]))
+		end++;
+	if (!line[end])
+		error_exit1(INV_STATE, assem);
+	state = ft_strsub(line, i, end - i);
+	if (is_statement(state))
+		return (1);
+	return (0);
 }
 
 void	parse_instructions(t_asm *assem, int index)
