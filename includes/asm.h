@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 22:20:58 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 23:00:27 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define LONG_NAME	"ERROR! Name too long!\n"
 # define LONG_COM	"ERROR! Comment too long!\n"
 # define INSTRUCT	"ERROR! No instructions found!\n"
+# define NO_ARGS	"ERROR! No statement arguments found!\n"
 
 typedef struct s_asm
 {
@@ -108,12 +109,14 @@ void	verify_filename(char *filename);
 
 int		line_check(char *line);
 int		parse_header(t_asm *assem);
+int		line_has_comment(char *line);
 int		is_label(t_asm *assem, int index);
 int		statement_label(char *line, int start);
-int		is_statement(char *state);
+int		is_statement(t_asm *assem, char *state);
 int		duplicate_label(t_asm *assem, char *str);
 int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 int		line_has_statement(t_asm *assem, int index, char *line);
+char	*remove_comments(char *line);
 void	label_check(t_asm *assem, int index);
 void	parse_labels(t_asm *assem, int index);
 void	parse_instructions(t_asm *assem, int index);

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 22:30:59 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 23:05:21 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	append_statement(t_asm *assem, t_state *statement)
 {
 	t_state	*tmp;
 
+	ft_printf("\nhere\n");
 	tmp = assem->state;
 	while (assem->state)
 		assem->state = assem->state->next;
@@ -41,6 +42,7 @@ char	*line_trim(t_asm *assem, int index)
 	int		start;
 	int		end;
 	char	*line;
+	char	*args;
 	
 	start = 0;
 	if (is_label(assem, index))
@@ -52,15 +54,19 @@ char	*line_trim(t_asm *assem, int index)
 		start++;
 	while (line[start] && !ft_isspace(line[start]))
 		start++;
-	if (line_has_comment(line))
-		line = remove_comments(line);
+	args = ft_strsub(line, start, end - start);
+	// free(line);
+	if (!args)
+		error_exit1(NO_ARGS, assem);
+	if (line_has_comment(args))
+		args = remove_comments(args);
+	return (args);
 }
 
 t_state	*make_statement(t_asm *assem, int index)
 {
 	t_state	*statement;
 	char	*line;
-	char	**args;
 
 	line = line_trim(assem, index);
 	statement = (t_state *)malloc(sizeof(t_state));

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 21:19:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 04:07:02 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 22:59:15 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,38 @@ void	label_check(t_asm *assem, int index)
 		assem->label = assem->label->next;
 	}
 	assem->label = label;
+}
+
+int	line_has_comment(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == COMMENT_CHAR || line[i] == ALT_COMMENT_CHAR)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char	*remove_comments(char *line)
+{
+	int		i;
+	char	*str;
+
+	i = ft_strlen(line);
+	str = NULL;
+	while (i)
+	{
+		if (line[i] == COMMENT_CHAR || line[i] == ALT_COMMENT_CHAR)
+		{
+			str = ft_strsub(line, 0, i - 1);
+			free(line);
+			return (str);
+		}
+		i--;
+	}
+	return (line);
 }
