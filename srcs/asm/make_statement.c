@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 18:28:32 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 22:30:59 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char	*line_trim(t_asm *assem, int index)
 	char	*line;
 	
 	start = 0;
-	end = ft_strlen(line);
 	if (is_label(assem, index))
 		line = ft_strchr(assem->l_array[index]->line, LABEL_CHAR) + 1;
 	else
@@ -51,6 +50,10 @@ char	*line_trim(t_asm *assem, int index)
 	end = ft_strlen(line);
 	while (line[start] && ft_isspace(line[start]))
 		start++;
+	while (line[start] && !ft_isspace(line[start]))
+		start++;
+	if (line_has_comment(line))
+		line = remove_comments(line);
 }
 
 t_state	*make_statement(t_asm *assem, int index)

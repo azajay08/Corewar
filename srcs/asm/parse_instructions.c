@@ -6,13 +6,13 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 20:25:48 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 22:23:49 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int	is_statement(char *state)
+int	is_statement(t_asm *assem, char *state)
 {
 	int	i;
 
@@ -21,6 +21,7 @@ int	is_statement(char *state)
 	{
 		if (ft_strequ(state, g_op_tab[i].state_name))
 		{
+			assem->state_code = i;
 			free(state);
 			return (1);
 		}
@@ -54,7 +55,7 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	if (!line[end])
 		error_exit1(INV_STATE, assem);
 	state = ft_strsub(line, i, end - i);
-	if (is_statement(state))
+	if (is_statement(assem, state))
 		return (1);
 	return (0);
 }

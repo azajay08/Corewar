@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 04:05:44 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 22:20:58 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 
 typedef struct s_asm
 {
+	int				state_code;
 	int				line_count;
 	char			*filename;
 	char			*champ_name;
