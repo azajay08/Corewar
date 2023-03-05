@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 04:06:59 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 20:25:48 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 void	parse_instructions(t_asm *assem, int index)
 {
 	t_state	*statement;
-	
+
 	while (index < assem->line_count)
 	{
 		if (assem->l_array[index]->line[0]
