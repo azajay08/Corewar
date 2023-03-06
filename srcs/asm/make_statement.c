@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 16:11:35 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 16:43:09 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,16 @@ char	**get_arguments(t_asm *assem, char **args)
 	return (state_arg);
 }
 
+int	get_byte_count(t_asm *assem, char **args)
+{
+	int	byte_count;
+	int	i;
+
+	i = 0;
+	byte_count = 0;
+	while (args[i])
+}
+
 t_state	*make_statement(t_asm *assem, int index)
 {
 	t_state	*statement;
@@ -95,7 +105,7 @@ t_state	*make_statement(t_asm *assem, int index)
 		error_exit1(STATE_FAIL, assem);
 	statement->args = get_arguments(assem, args);
 	statement->index = index;
-	statement->byte_count = 0;
+	statement->byte_count = get_byte_count(assem, statement->args);
 	statement->next = NULL;
 	label_check(assem, index);
 	return (statement);

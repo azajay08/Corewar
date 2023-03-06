@@ -4,7 +4,7 @@
 l1:
 
 
-l1:sti r1,%:live,%0
+l1:sti r1,-2,%0
 
  zjmp	%:l1
 

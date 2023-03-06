@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 14:51:52 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 16:32:41 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,5 @@ int	parse_header(t_asm *assem)
 			break ;
 	}
 	verify_name_com(assem, line);
-	ft_printf("\n%i\n", line->num);
 	return (line->num);
 }
