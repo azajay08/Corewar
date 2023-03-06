@@ -1,0 +1,9 @@
+./corewar
+./asm
+./obj/*.o
+./asm/obj/*.o
+./vm/obj/*.o
+./libft/libft.a
+*.o
+*.a
+.DS_Store
