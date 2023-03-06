@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 21:19:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 03:57:57 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 15:36:55 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,23 @@ char	*remove_comments(char *line)
 	{
 		if (line[i] == COMMENT_CHAR || line[i] == ALT_COMMENT_CHAR)
 		{
-			str = ft_strsub(line, 0, i - 1);
+			str = ft_strsub(line, 0, i);
 			free(line);
 			return (str);
 		}
 		i--;
 	}
 	return (line);
+}
+
+int	comma_at_end(char *line)
+{
+	int	i;
+
+	i = ft_strlen(line) - 1;
+	while (i && ft_isspace(line[i]))
+		i--;
+	if (line[i] == SEPARATOR_CHAR)
+		return (1);
+	return (0);
 }

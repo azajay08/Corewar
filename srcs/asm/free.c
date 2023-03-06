@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/03 23:04:29 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 16:03:45 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,19 @@ void	free_line(t_asm *assem)
 	}
 }
 
+void	free_2d(char **str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
 void	free_statement(t_asm *assem)
 {
 	t_state	*temp;
@@ -59,6 +72,8 @@ void	free_statement(t_asm *assem)
 	while (assem->state)
 	{
 		temp = assem->state;
+		if (temp->args)
+			ft_2d_free(temp->args);
 		assem->state = assem->state->next;
 		free(temp);
 	}

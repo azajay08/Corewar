@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 03:53:37 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 16:07:23 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define INSTRUCT	"ERROR! No instructions found!\n"
 # define NO_ARGS	"ERROR! No statement arguments found!\n"
 # define ARG_COUNT	"ERROR! Incorrect argument count!\n"
+# define COMMA		"ERROR! Comma at the end of the line!\n"
+# define ARG_STR	"ERROR! Failed to create argument string!\n"
 
 typedef struct s_asm
 {
@@ -66,6 +68,7 @@ typedef struct s_state
 	int				label;
 	int				arg_count;
 	t_arg_type		arg_type[3];
+	char			**args;
 	char			*str;
 	struct s_state	*next;
 	
@@ -110,6 +113,7 @@ void	verify_filename(char *filename);
 */
 
 int		line_check(char *line);
+int		comma_at_end(char *line);
 int		parse_header(t_asm *assem);
 int		line_has_comment(char *line);
 int		is_label(t_asm *assem, int index);
