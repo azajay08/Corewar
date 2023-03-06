@@ -23,7 +23,7 @@ int	read_cor(char **av, int i, t_player *player)
 
 	fd = open(av[i], O_RDONLY);
 	ret = read(fd, player->file, MEM_SIZE);
-	if (get_n_byte(4, player->file, 0) != COREWAR_EXEC_MAGIC) //check the first 4 bytes of the file corresspond to corewar magic macro
+	if (get_n_byte(4, player->file, 0) != COREWAR_EXEC_MAGIC)
 		exit_vm("Invalid magic header.");
 	close(fd);
 	return (ret);

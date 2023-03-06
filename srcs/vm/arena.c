@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/06 14:24:58 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/06 14:47:18 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	introduce_players(t_vm *vm)
 	while (i <= vm->player_count)
 	{
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", \
-		vm->player[i]->id, vm->player[i]->exec_size, vm->player[i]->name, vm->player[i]->comment);
+		vm->player[i]->id, vm->player[i]->exec_size, \
+		vm->player[i]->name, vm->player[i]->comment);
 		i++;
 	}
 	ft_putchar('\n');
@@ -55,7 +56,7 @@ void	introduce_players(t_vm *vm)
 ** add_players_to_arena:
 ** - Adds each players executable commands to the battle arena.
 */
-static void	add_players_to_arena(t_player *player, t_vm *vm, size_t starting_point)
+static void	add_players_to_arena(t_player *player, t_vm *vm, size_t start)
 {
 	uint32_t	i;
 
@@ -64,7 +65,7 @@ static void	add_players_to_arena(t_player *player, t_vm *vm, size_t starting_poi
 		exit_vm("Error when adding players.");
 	while (i < player->exec_size)
 	{
-		vm->arena[starting_point + i] = player->exec[i];
+		vm->arena[start + i] = player->exec[i];
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/06 14:23:04 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/06 14:46:16 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** get_id:
-** - 
+** -
 */
 static void	get_id(int ac, char **av, int i, t_player *player)
 {
@@ -40,14 +40,14 @@ static void	get_id(int ac, char **av, int i, t_player *player)
 */
 static void	assign_player(t_vm *vm, t_player *player, int ret)
 {
-	int i;
+	int	i;
 
 	i = 4;
-	i += parse_file(player->name, &player->file[i], PROG_NAME_LENGTH); // get name
-	i += parse_size(&player->exec_size, player->file, i); // get exec size
-	i += parse_file(player->comment, &player->file[i], COMMENT_LENGTH); //get comment
+	i += parse_file(player->name, &player->file[i], PROG_NAME_LENGTH);
+	i += parse_size(&player->exec_size, player->file, i);
+	i += parse_file(player->comment, &player->file[i], COMMENT_LENGTH);
 	player->exec = ft_memalloc(ret - i);
-	parse_file(player->exec, &player->file[i], player->exec_size); // get exec code
+	parse_file(player->exec, &player->file[i], player->exec_size);
 	ft_printf("ID: %u\n", player->id);
 	ft_printf("Name: %s\n", player->name);
 	ft_printf("Exec_size: %u\n", player->exec_size);
@@ -70,7 +70,7 @@ static void	assign_player(t_vm *vm, t_player *player, int ret)
 static int	add_first(t_vm *vm, int ac, char **av, t_player *player)
 {
 	int	i;
-	int ret;
+	int	ret;
 
 	i = 1;
 	while (i < ac)
@@ -99,11 +99,11 @@ static int	do_player(int ac, char **av, t_vm *vm, unsigned int player_id)
 	int			i;
 	int			ret;
 
-	i = 0;
+	i = -1;
 	player = ft_memalloc(sizeof(t_player));
 	if (!player)
 		exit_vm("Memory allocation failure in do_player.");
-	while (i < ac)
+	while (++i < ac)
 	{
 		if (av[i] && (!ft_strcmp(av[i], "-n")))
 		{
@@ -117,7 +117,6 @@ static int	do_player(int ac, char **av, t_vm *vm, unsigned int player_id)
 			}
 			i += 2;
 		}
-		i++;
 	}
 	player->id = player_id;
 	return (add_first(vm, ac, av, player));
@@ -129,7 +128,7 @@ static int	do_player(int ac, char **av, t_vm *vm, unsigned int player_id)
 */
 void	parse(int ac, char **av, t_vm *vm)
 {
-	uint32_t 	player_id;
+	uint32_t	player_id;
 
 	player_id = 1;
 	get_player_count(ac, av, &vm->player_count);

@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:12:14 by sam               #+#    #+#             */
-/*   Updated: 2023/03/02 14:12:58 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/06 14:44:43 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	get_player_count(int ac, char **av, uint32_t *player_count)
 	i = 1;
 	while (i < ac)
 	{
-			if (ft_strstr(av[i], ".cor") != NULL)
-				*player_count += 1;
+		if (ft_strstr(av[i], ".cor") != NULL)
+			*player_count += 1;
 		i++;
 	}
 }

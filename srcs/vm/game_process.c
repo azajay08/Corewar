@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/06 14:22:17 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/06 14:44:29 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	init_corewar(t_corewar *corewar)
 */
 void	execute_cycle(t_vm *vm, t_corewar *corewar)
 {
-	t_process *temp_process;
+	t_process	*temp_process;
 
 	temp_process = vm->processes;
 	corewar->cycles_total++;
