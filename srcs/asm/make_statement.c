@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 03:53:02 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 03:57:41 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	get_statement(t_asm *assem)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	assem->line->num = 0;
 	while (i < STATEMENT_MAX)
 	{
@@ -40,18 +41,17 @@ char	*line_trim(t_asm *assem, int index, char *line)
 	int		start;
 	int		end;
 	char	*args;
-	
+
 	start = 0;
-	
 	if (is_label(assem, index))
 		line = ft_strchr(line, LABEL_CHAR) + 1;
 	end = ft_strlen(line);
 	while (line[start] && ft_isspace(line[start]))
 		start++;
-	while (line[start] && !ft_isspace(line[start]) && ft_strchr(LABEL_CHARS, line[start]))
+	while (line[start] && !ft_isspace(line[start])
+		&& ft_strchr(LABEL_CHARS, line[start]))
 		start++;
 	args = ft_strsub(line, start, end - start);
-	// ft_printf("\nline:\n%s\nargs:\n%s\n", line, args);
 	if (!args)
 		error_exit1(NO_ARGS, assem);
 	if (line_has_comment(args))
