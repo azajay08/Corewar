@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 16:43:09 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 18:47:45 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,60 @@ char	**get_arguments(t_asm *assem, char **args)
 	return (state_arg);
 }
 
+int	byte_length(t_asm *assem, int type)
+{
+	if (type == T_REG)
+		return (1);
+	else if (type == T_IND)
+		return (2);
+	else if (type == T_DIR)
+	{
+		if (g_op_tab[assem->state_code].size_t_dir == 4)
+			return (4);
+		else
+			return (2);
+	}
+	else
+		return (0);
+}
+
+int	arg_value(char *arg)
+{
+	if (!arg[0])
+		return (0);
+	if (arg[0] == DIRECT_CHAR)
+		return (T_DIR);
+	if (arg[0] == REG_CHAR)
+		return (T_REG);
+	return (T_IND);
+}
+
 int	get_byte_count(t_asm *assem, char **args)
 {
 	int	byte_count;
+	int	type;
 	int	i;
 
 	i = 0;
 	byte_count = 0;
+	type = 0;
 	while (args[i])
+	{
+		// ft_printf("\narg: (%s)\n", args[i]);
+		type = arg_value(args[i]);
+		if (!type)
+			error_exit1(ARG_TYPE, assem);
+		if (!(g_op_tab[assem->state_code].arg_type[i] & type))
+			error_exit1(ARG_TYPE, assem);
+		type = byte_length(assem, type);
+		if (!type)
+			error_exit1(ARG_TYPE, assem);
+		byte_count += type;
+		i++;
+	}
+	if (g_op_tab[assem->state_code].arg_type_code == 1)
+		byte_count++;
+	return (byte_count + 1);
 }
 
 t_state	*make_statement(t_asm *assem, int index)
@@ -107,6 +153,7 @@ t_state	*make_statement(t_asm *assem, int index)
 	statement->index = index;
 	statement->byte_count = get_byte_count(assem, statement->args);
 	statement->next = NULL;
+	assem->l_array[index]->num = statement->byte_count;
 	label_check(assem, index);
 	return (statement);
 }

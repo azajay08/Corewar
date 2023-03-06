@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 03:56:22 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 18:51:53 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	print_array(t_asm *assem)
 	i = 0;
 	while (i < assem->line_count)
 	{
-		ft_printf("line %i:\n(%s)\n", i, assem->l_array[i]->line);
+		ft_printf("\n unsigned char: %u", i);
+		ft_printf("\n%s (%i) bytes", assem->l_array[i]->line, assem->l_array[i]->num);
 		i++;
 	}
 }
@@ -60,6 +61,7 @@ int	main(int argc, char **argv)
 	read_file(assem, argv[1]);
 	parse_champ(assem);
 	ft_putchar('\n');
+	print_array(assem);
 	free_asm(assem);
 	system("leaks asm");
 	return (0);

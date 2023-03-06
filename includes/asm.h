@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 16:07:23 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 17:05:21 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define NO_ARGS	"ERROR! No statement arguments found!\n"
 # define ARG_COUNT	"ERROR! Incorrect argument count!\n"
 # define COMMA		"ERROR! Comma at the end of the line!\n"
+# define ARG_TYPE	"ERROR! Incorrect argument type!\n"
 # define ARG_STR	"ERROR! Failed to create argument string!\n"
 
 typedef struct s_asm

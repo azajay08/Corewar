@@ -6,7 +6,7 @@
 
 # On bombarde derriere notre programme
 
-arriere:	ld	%-5, r5
+arriere:	ld	%-5f, r5
 		ld	%1024,r4
 arriere2:	ld	%-5, r3
 arriere_live:	live %42

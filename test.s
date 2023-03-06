@@ -4,10 +4,7 @@
 I have no name"
 .comment"This is the comment"
 
-zjmp: lld r2,%:live
-lld 3,%:live
-		lld r1	, %:live
-		lld r1, %:live     
+zjmp: lld 2, r1 
 
 live:sti r1,%:live,%0
 		sti r1,%:live,%0;hello
