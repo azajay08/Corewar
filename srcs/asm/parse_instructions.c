@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 23:01:37 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 03:48:02 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	state = NULL;
 	if (is_label(assem, index))
 		line = ft_strchr(line, LABEL_CHAR) + 1;
-	ft_printf("line: %s\n", line);
 	if (line_check(line))
 		return (0);
 	while (ft_isspace(line[i]))
@@ -57,6 +56,7 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	state = ft_strsub(line, i, end - i);
 	if (is_statement(assem, state))
 		return (1);
+	error_exit1(INV_STATE, assem);
 	return (0);
 }
 
@@ -74,7 +74,6 @@ void	parse_instructions(t_asm *assem, int index)
 				assem->state = statement;
 			else
 				append_statement(assem, statement);
-			ft_printf("\nThere is a statment!:\n%s\n", assem->l_array[index]->line);
 		}
 		index++;
 	}

@@ -11,5 +11,5 @@ live:
 	zjmp	%:live
 	zjmp	%:live
 	and	r1,%0,r1
-	and	r1,%0,r1
+	and %0,%0,r1
 	zjmp	%:live

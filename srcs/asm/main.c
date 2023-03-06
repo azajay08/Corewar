@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/04 14:38:19 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 03:10:45 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	parse_champ(t_asm *assem)
 	int	index;
 
 	index = parse_header(assem);
-	ft_printf("\nindex: %i\n", index);
+	// ft_printf("\nindex: %i\n", index);
 	parse_labels(assem, index);
 	parse_instructions(assem, index);
 }
@@ -63,8 +63,9 @@ int	main(int argc, char **argv)
 	// ft_printf("Champion Name:\n(%s)", assem->champ_name);
 	// ft_printf("\nChampion Comment:\n(%s)\n\n", assem->champ_com);
 	// print_array(assem);
-	print_labels(assem);
+	// print_labels(assem);
 	ft_putchar('\n');
-	// system("leaks asm");
+	free_asm(assem);
+	system("leaks asm");
 	return (0);
 }

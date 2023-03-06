@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/05 23:00:27 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 03:53:37 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define LONG_COM	"ERROR! Comment too long!\n"
 # define INSTRUCT	"ERROR! No instructions found!\n"
 # define NO_ARGS	"ERROR! No statement arguments found!\n"
+# define ARG_COUNT	"ERROR! Incorrect argument count!\n"
 
 typedef struct s_asm
 {
@@ -65,6 +66,7 @@ typedef struct s_state
 	int				label;
 	int				arg_count;
 	t_arg_type		arg_type[3];
+	char			*str;
 	struct s_state	*next;
 	
 }					t_state;
