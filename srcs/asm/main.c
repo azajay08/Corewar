@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 18:51:53 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 19:37:01 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 void	print_array(t_asm *assem)
 {
 	int	i;
+	int	bytes;
+	int fd;
 
 	i = 0;
+	bytes = -11;
+	fd = open("hello.cor", O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	ft_printf("\nbyte string:\n");
+	write(fd, &((unsigned char*)&bytes)[3], 1);
+	write(fd, &((unsigned char*)&bytes)[2], 1);
+	write(fd, &((unsigned char*)&bytes)[1], 1);
+	write(fd, &((unsigned char*)&bytes)[0], 1);
 	while (i < assem->line_count)
 	{
-		ft_printf("\n unsigned char: %u", i);
 		ft_printf("\n%s (%i) bytes", assem->l_array[i]->line, assem->l_array[i]->num);
 		i++;
 	}
