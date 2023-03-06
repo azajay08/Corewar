@@ -6,28 +6,28 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/02 14:18:44 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/06 14:19:31 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void	print_usage()
+static void	print_usage(void)
 {
-	ft_putstr("Usage: ./corewar ");
-	ft_putstr("[filename.cor] ([filename.cor] [filename.cor]\n");
+	exit_vm("Usage: ./corewar champ1.cor (champ2.cor champ3.cor)");
 }
 
 int	main(int argc, char **argv)
 {
-	t_player	players[MAX_PLAYERS];
 	t_vm		vm;
 
 	if (argc < 2)
 		print_usage();
 	init_vm(&vm);
-	parse(argc, argv, players, &vm);
-	ft_printf("MADE IT\n");
+	ft_printf("Parsing assembled files...\n");
+	parse(argc, argv, &vm);
+	ft_printf("Initiating Corewar process...\n");
+	game_process(&vm);
 	exit(EXIT_SUCCESS);
 	return (0);
 }

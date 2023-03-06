@@ -12,24 +12,31 @@
 
 #include "vm.h"
 
+/*
+** init_vm:
+** - 
+*/
 void	init_vm(t_vm *vm)
 {
 	vm->player_count = 0;
-	vm->player = NULL;
 	vm->checks = 0;
 	vm->cycle = 0;
 	vm->cycle_to_die = CYCLE_TO_DIE;
 	vm->latest_live = 0;
 	vm->process_count = 0;
 	vm->total_processes = 0;
-	vm->process = NULL;
+	vm->processes = NULL;
 }
 
-void	init_players(t_player *players, unsigned int player_count)
+/*
+** init_players:
+** -
+*/
+void	init_players(t_vm *vm, unsigned int player_count)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (++i < player_count)
-		players[i].id = 0;
+		vm->player[i]->id = 0;
 }

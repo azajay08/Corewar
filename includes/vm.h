@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/02 14:28:31 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/06 14:17:11 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,6 @@
 
 # include "libft.h"
 # include "op.h"
-
-typedef struct	s_process
-{
-	int					id;
-	int					carry;
-	int					registers[REG_NUMBER];
-	int					cool_down;
-	struct s_process	*next;
-}				t_process;
 
 typedef struct	s_player
 {
@@ -39,30 +30,57 @@ typedef struct	s_player
 	struct s_player		*next;
 }				t_player;
 
+typedef struct	s_process
+{
+	int					id;
+	int					carry;
+	int					registers[REG_NUMBER];
+	int					cool_down;
+	struct s_process	*next;
+}				t_process;
+
+typedef struct	s_corewar
+{
+	int					cycles_total;
+	int					cycles;
+	int					cycles_to_die;
+	int					lives_this_round;
+	int					checks;
+	int					carry;
+}				t_corewar;
+
 typedef struct	s_vm
 {
-	t_process		*process;
-	t_player		*latest_live;
+	uint32_t		player_count;
+	t_process		*processes;
+	t_player		*player[MAX_PLAYERS];
+	int				latest_live;
 	uint8_t			arena[MEM_SIZE];
-	size_t			process_amount;
+	size_t			process_count;
 	size_t			total_processes;
 	int				cycle;
 	int				cycle_to_die;
 	int				checks;
-	unsigned int	player_count;
+	int				cycle_dump;
 }				t_vm;
 
 // Initialisation:
 void	init_vm(t_vm *vm);
-void	init_players(t_player *players, unsigned int player_count);
+void	init_players(t_vm *vm, unsigned int player_count);
+void	init_arena(t_vm *vm);
 
 // Parsing:
-void	parse(int argc, char **argv, t_player *players, t_vm *vm);
+void	parse(int argc, char **argv, t_vm *vm);
 int		read_cor(char **av, int i, t_player *player);
 int		parse_file(unsigned char *player_data, unsigned char *data, int len);
 int		parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
 int		get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
 void	get_player_count(int ac, char **av, uint32_t *player_count);
+
+// Game process:
+void	introduce_players(t_vm *vm);
+void	print_arena(t_vm *vm);
+void	game_process(t_vm *vm);
 
 // Exit program:
 void	exit_vm(char *error_message);

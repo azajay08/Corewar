@@ -6,12 +6,16 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/03 12:15:41 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/06 14:24:58 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+** print_arena:
+** - Prints the contents of the battle arena.
+*/
 void	print_arena(t_vm *vm)
 {
 	int	i;
@@ -28,32 +32,59 @@ void	print_arena(t_vm *vm)
 	}
 }
 
+/*
+** introduce_players:
+** - Prints the ID, weight, name and comment of each player.
+*/
+void	introduce_players(t_vm *vm)
+{
+	uint32_t	i;
+
+	i = 1;
+	ft_printf("Introducing our %d contestants!\n", vm->player_count);
+	while (i <= vm->player_count)
+	{
+		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", \
+		vm->player[i]->id, vm->player[i]->exec_size, vm->player[i]->name, vm->player[i]->comment);
+		i++;
+	}
+	ft_putchar('\n');
+}
+
+/*
+** add_players_to_arena:
+** - Adds each players executable commands to the battle arena.
+*/
 static void	add_players_to_arena(t_player *player, t_vm *vm, size_t starting_point)
 {
 	uint32_t	i;
 
 	i = 0;
+	if (player->exec_size <= 0)
+		exit_vm("Error when adding players.");
 	while (i < player->exec_size)
 	{
 		vm->arena[starting_point + i] = player->exec[i];
 		i++;
 	}
-
 }
 
+/*
+** init_arena:
+** - Initialises the contents of the arena.
+*/
 void	init_arena(t_vm *vm)
 {
-	t_player	*temp_player;
 	size_t		starting_point;
 	uint32_t	i;
 
-	temp_player = vm->player;
-	starting_point = 0;
 	i = 0;
-	while (++i < vm->player_count + 1)
+	starting_point = 0;
+	while (++i <= vm->player_count)
 	{
-		add_players_to_arena(temp_player, vm, starting_point);
-		temp_player = temp_player->next;
+		if (vm->player[i] == NULL)
+			exit_vm("Invalid player.");
+		add_players_to_arena(vm->player[i], vm, starting_point);
 		starting_point += MEM_SIZE / vm->player_count;
 	}
 }
