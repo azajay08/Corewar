@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 14:58:33 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 16:51:37 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define ARG_TYPE	"ERROR! Incorrect argument type!\n"
 # define ARG_STR	"ERROR! Failed to create argument string!\n"
 # define TOO_BIG	"ERROR! Executable code size too large!\n"
+# define ARG_ERR	"ERROR! Incorrect argument input!\n"
 
 typedef struct s_asm
 {
@@ -69,8 +70,9 @@ typedef struct s_state
 	int				state_code;
 	int				arg_count;
 	int				label;
+	int				index;
 	unsigned char	result;
-	int				arg[3];
+	int				arg_val[3];
 	char			**args;
 	struct s_state	*next;
 	
@@ -123,6 +125,7 @@ int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 int		line_has_statement(t_asm *assem, int index, char *line);
 char	*remove_comments(char *line);
 char	get_arg_result(t_asm *assem, char **args);
+void	parse_arguments(t_asm *assem);
 void	label_check(t_asm *assem, int index);
 void	parse_labels(t_asm *assem, int index);
 void	parse_instructions(t_asm *assem, int index);
@@ -134,6 +137,6 @@ t_state	*make_statement(t_asm *assem, int index);
 */
 
 void	write_to_cor(t_asm *assem);
-
+void	write_exec_code(t_asm *assem, int fd);
 
 #endif

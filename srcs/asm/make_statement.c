@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 15:01:39 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 16:20:12 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,16 @@ char	*line_trim(t_asm *assem, int index, char *line)
 	return (args);
 }
 
+void	init_statement(t_asm *assem, t_state *statement, int i, char **args)
+{
+	statement->args = get_arguments(assem, args);
+	statement->arg_count = i;
+	statement->state_code = assem->state_code;
+	statement->byte_count = get_byte_count(assem, statement->args);
+	statement->result = get_arg_result(assem, statement->args);
+	statement->next = NULL;
+}
+
 t_state	*make_statement(t_asm *assem, int index)
 {
 	t_state	*statement;
@@ -99,12 +109,8 @@ t_state	*make_statement(t_asm *assem, int index)
 	statement = (t_state *)malloc(sizeof(t_state));
 	if (!statement)
 		error_exit1(STATE_FAIL, assem);
-	statement->args = get_arguments(assem, args);
-	statement->arg_count = i;
-	statement->state_code = assem->state_code;
-	statement->byte_count = get_byte_count(assem, statement->args);
-	statement->result = get_arg_result(assem, statement->args);
-	statement->next = NULL;
+	init_statement(assem, statement, i, args);
+	statement->index = index;
 	assem->l_array[index]->num = statement->byte_count;
 	label_check(assem, index);
 	return (statement);

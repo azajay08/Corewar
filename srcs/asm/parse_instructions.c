@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 03:24:13 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 16:24:24 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,5 @@ void	parse_instructions(t_asm *assem, int index)
 	}
 	if (!assem->state)
 		error_exit1(INSTRUCT, assem);
+	parse_arguments(assem);
 }
