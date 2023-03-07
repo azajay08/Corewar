@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 03:37:01 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 14:58:33 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define COMMA		"ERROR! Comma at the end of the line!\n"
 # define ARG_TYPE	"ERROR! Incorrect argument type!\n"
 # define ARG_STR	"ERROR! Failed to create argument string!\n"
+# define TOO_BIG	"ERROR! Executable code size too large!\n"
 
 typedef struct s_asm
 {
@@ -65,10 +66,11 @@ typedef struct s_label
 typedef struct s_state
 {
 	int				byte_count;
-	int				state_num;
-	int				index;
+	int				state_code;
+	int				arg_count;
 	int				label;
-	t_arg_type		arg_type[3];
+	unsigned char	result;
+	int				arg[3];
 	char			**args;
 	struct s_state	*next;
 	
@@ -120,6 +122,7 @@ int		get_byte_count(t_asm *assem, char **args);
 int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 int		line_has_statement(t_asm *assem, int index, char *line);
 char	*remove_comments(char *line);
+char	get_arg_result(t_asm *assem, char **args);
 void	label_check(t_asm *assem, int index);
 void	parse_labels(t_asm *assem, int index);
 void	parse_instructions(t_asm *assem, int index);

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 03:32:30 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 15:01:39 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,10 @@ t_state	*make_statement(t_asm *assem, int index)
 	if (!statement)
 		error_exit1(STATE_FAIL, assem);
 	statement->args = get_arguments(assem, args);
-	statement->index = index;
+	statement->arg_count = i;
+	statement->state_code = assem->state_code;
 	statement->byte_count = get_byte_count(assem, statement->args);
+	statement->result = get_arg_result(assem, statement->args);
 	statement->next = NULL;
 	assem->l_array[index]->num = statement->byte_count;
 	label_check(assem, index);

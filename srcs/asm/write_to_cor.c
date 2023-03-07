@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 02:23:35 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 03:22:01 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 14:34:34 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,21 @@ void	write_header(int fd)
 	write(fd, &((unsigned char *)&magic)[0], 1);
 }
 
+void	write_exec_code(t_asm *assem, int fd)
+{
+	t_state 		*state;
+	unsigned char	code;
+
+	state = assem->state;
+	while(state)
+	{
+		code = ((unsigned char)state->state_code + 1);
+		write(fd, &code, 1);
+		write(fd, &state->result, 1);
+		state = state->next;
+	}
+}
+
 void	write_to_cor(t_asm *assem)
 {
 	int	fd;
@@ -74,4 +89,5 @@ void	write_to_cor(t_asm *assem)
 	write_name(assem, fd);
 	write_prog_size(assem, fd);
 	write_comment(assem, fd);
+	write_exec_code(assem, fd);
 }
