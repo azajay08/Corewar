@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 17:05:21 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 03:37:01 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_asm
 {
 	int				state_code;
 	int				line_count;
+	int				prog_size;
 	char			*filename;
 	char			*champ_name;
 	char			*champ_com;
@@ -67,21 +68,13 @@ typedef struct s_state
 	int				state_num;
 	int				index;
 	int				label;
-	int				arg_count;
 	t_arg_type		arg_type[3];
 	char			**args;
-	char			*str;
 	struct s_state	*next;
 	
 }					t_state;
 
 int		main(int argc, char **argv);
-
-/*
-	Initialising
-*/
-
-void	init_asm(t_asm *assem, char *file_input);
 
 /*
 	Errors
@@ -113,14 +106,17 @@ void	verify_filename(char *filename);
 	Parsing & parsing tools
 */
 
+int		arg_value(char *arg);
 int		line_check(char *line);
 int		comma_at_end(char *line);
 int		parse_header(t_asm *assem);
 int		line_has_comment(char *line);
 int		is_label(t_asm *assem, int index);
+int		byte_length(t_asm *assem, int type);
 int		statement_label(char *line, int start);
 int		is_statement(t_asm *assem, char *state);
 int		duplicate_label(t_asm *assem, char *str);
+int		get_byte_count(t_asm *assem, char **args);
 int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 int		line_has_statement(t_asm *assem, int index, char *line);
 char	*remove_comments(char *line);
@@ -129,5 +125,12 @@ void	parse_labels(t_asm *assem, int index);
 void	parse_instructions(t_asm *assem, int index);
 void	append_statement(t_asm *assem, t_state *statement);
 t_state	*make_statement(t_asm *assem, int index);
+
+/*
+	writing functions
+*/
+
+void	write_to_cor(t_asm *assem);
+
 
 #endif

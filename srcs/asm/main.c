@@ -6,26 +6,77 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 19:37:01 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 03:39:41 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
+void	get_prog_size(t_asm *assem)
+{
+	int	i;
+
+	i = 0;
+	while (i < assem->line_count)
+	{
+		assem->prog_size += assem->l_array[i]->num;
+		i++;
+	}
+}
+
+void	parse_champ(t_asm *assem)
+{
+	int	index;
+
+	index = parse_header(assem);
+	parse_labels(assem, index);
+	parse_instructions(assem, index);
+	get_prog_size(assem);
+}
+
+void	init_asm(t_asm *assem, char *file_input)
+{
+	int	len;
+
+	len = ft_strlen(file_input) - 2;
+	assem->filename = ft_strsub(file_input, 0, len);
+	assem->filename = ft_strjoin_free1(assem->filename, ".cor");
+	assem->line_count = 0;
+	assem->state_code = 0;
+	assem->prog_size = 0;
+	assem->champ_name = NULL;
+	assem->champ_com = NULL;
+	assem->line = NULL;
+	assem->l_array = NULL;
+	assem->label = NULL;
+	assem->state = NULL;
+}
+
+int	main(int argc, char **argv)
+{
+	t_asm	*assem;
+
+	if (argc != 2)
+		error_exit(USAGE);
+	verify_filename(argv[1]);
+	assem = (t_asm *)malloc(sizeof(t_asm));
+	if (!assem)
+		error_exit(ASSEM);
+	init_asm(assem, argv[1]);
+	read_file(assem, argv[1]);
+	parse_champ(assem);
+	write_to_cor(assem);
+	free_asm(assem);
+	// system("leaks asm");
+	return (0);
+}
+
+/*
 void	print_array(t_asm *assem)
 {
 	int	i;
-	int	bytes;
-	int fd;
 
 	i = 0;
-	bytes = -11;
-	fd = open("hello.cor", O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	ft_printf("\nbyte string:\n");
-	write(fd, &((unsigned char*)&bytes)[3], 1);
-	write(fd, &((unsigned char*)&bytes)[2], 1);
-	write(fd, &((unsigned char*)&bytes)[1], 1);
-	write(fd, &((unsigned char*)&bytes)[0], 1);
 	while (i < assem->line_count)
 	{
 		ft_printf("\n%s (%i) bytes", assem->l_array[i]->line, assem->l_array[i]->num);
@@ -45,37 +96,6 @@ void	print_labels(t_asm *assem)
 		tmp = tmp->next;
 	}
 }
-
-void	parse_champ(t_asm *assem)
-{
-	int	index;
-
-	index = parse_header(assem);
-	parse_labels(assem, index);
-	parse_instructions(assem, index);
-}
-
-int	main(int argc, char **argv)
-{
-	t_asm	*assem;
-
-	if (argc != 2)
-		error_exit(USAGE);
-	verify_filename(argv[1]);
-	assem = (t_asm *)malloc(sizeof(t_asm));
-	if (!assem)
-		error_exit(ASSEM);
-	init_asm(assem, argv[1]);
-	read_file(assem, argv[1]);
-	parse_champ(assem);
-	ft_putchar('\n');
-	print_array(assem);
-	free_asm(assem);
-	system("leaks asm");
-	return (0);
-}
-
-/*
 	// ft_printf("Champion Name:\n(%s)", assem->champ_name);
 	// ft_printf("\nChampion Comment:\n(%s)\n\n", assem->champ_com);
 	// print_array(assem);

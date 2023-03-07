@@ -6,21 +6,51 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 18:47:45 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 03:32:30 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	append_statement(t_asm *assem, t_state *statement)
+void	label_check(t_asm *assem, int index)
 {
-	t_state	*tmp;
+	t_label	*label;
 
-	tmp = assem->state;
-	while (assem->state->next)
-		assem->state = assem->state->next;
-	assem->state->next = statement;
-	assem->state = tmp;
+	label = assem->label;
+	while (assem->label)
+	{
+		if (assem->label->state == true)
+		{
+			assem->label->state = false;
+			assem->label->line_nb = index;
+		}
+		assem->label = assem->label->next;
+	}
+	assem->label = label;
+}
+
+char	**get_arguments(t_asm *assem, char **args)
+{
+	int		i;
+	char	**state_arg;
+
+	i = 0;
+	while (args[i])
+		i++;
+	state_arg = (char **)malloc(sizeof(char *) * (i + 1));
+	if (!state_arg)
+		error_exit1(ERR_FILE, assem);
+	i = 0;
+	while (args[i])
+	{
+		state_arg[i] = ft_strtrim(args[i]);
+		if (!state_arg[i])
+			error_exit1(ARG_STR, assem);
+		i++;
+	}
+	state_arg[i] = NULL;
+	ft_2d_free(args);
+	return (state_arg);
 }
 
 char	*line_trim(t_asm *assem, int index, char *line)
@@ -49,86 +79,6 @@ char	*line_trim(t_asm *assem, int index, char *line)
 		error_exit1(COMMA, assem);
 	}
 	return (args);
-}
-
-char	**get_arguments(t_asm *assem, char **args)
-{
-	int		i;
-	char	**state_arg;
-
-	i = 0;
-	while (args[i])
-		i++;
-	state_arg = (char **)malloc(sizeof(char *) * (i + 1));
-	if (!state_arg)
-		error_exit1(ERR_FILE, assem);
-	i = 0;
-	while (args[i])
-	{
-		state_arg[i] = ft_strtrim(args[i]);
-		if (!state_arg[i])
-			error_exit1(ARG_STR, assem);
-		i++;
-	}
-	state_arg[i] = NULL;
-	ft_2d_free(args);
-	return (state_arg);
-}
-
-int	byte_length(t_asm *assem, int type)
-{
-	if (type == T_REG)
-		return (1);
-	else if (type == T_IND)
-		return (2);
-	else if (type == T_DIR)
-	{
-		if (g_op_tab[assem->state_code].size_t_dir == 4)
-			return (4);
-		else
-			return (2);
-	}
-	else
-		return (0);
-}
-
-int	arg_value(char *arg)
-{
-	if (!arg[0])
-		return (0);
-	if (arg[0] == DIRECT_CHAR)
-		return (T_DIR);
-	if (arg[0] == REG_CHAR)
-		return (T_REG);
-	return (T_IND);
-}
-
-int	get_byte_count(t_asm *assem, char **args)
-{
-	int	byte_count;
-	int	type;
-	int	i;
-
-	i = 0;
-	byte_count = 0;
-	type = 0;
-	while (args[i])
-	{
-		// ft_printf("\narg: (%s)\n", args[i]);
-		type = arg_value(args[i]);
-		if (!type)
-			error_exit1(ARG_TYPE, assem);
-		if (!(g_op_tab[assem->state_code].arg_type[i] & type))
-			error_exit1(ARG_TYPE, assem);
-		type = byte_length(assem, type);
-		if (!type)
-			error_exit1(ARG_TYPE, assem);
-		byte_count += type;
-		i++;
-	}
-	if (g_op_tab[assem->state_code].arg_type_code == 1)
-		byte_count++;
-	return (byte_count + 1);
 }
 
 t_state	*make_statement(t_asm *assem, int index)

@@ -6,11 +6,22 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 03:48:02 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 03:24:13 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void	append_statement(t_asm *assem, t_state *statement)
+{
+	t_state	*tmp;
+
+	tmp = assem->state;
+	while (assem->state->next)
+		assem->state = assem->state->next;
+	assem->state->next = statement;
+	assem->state = tmp;
+}
 
 int	is_statement(t_asm *assem, char *state)
 {

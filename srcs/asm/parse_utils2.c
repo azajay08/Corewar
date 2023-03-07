@@ -6,28 +6,11 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 21:19:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 15:36:55 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 03:29:18 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
-
-void	label_check(t_asm *assem, int index)
-{
-	t_label	*label;
-
-	label = assem->label;
-	while (assem->label)
-	{
-		if (assem->label->state == true)
-		{
-			assem->label->state = false;
-			assem->label->line_nb = index;
-		}
-		assem->label = assem->label->next;
-	}
-	assem->label = label;
-}
 
 int	line_has_comment(char *line)
 {
