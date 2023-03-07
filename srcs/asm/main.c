@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 20:38:52 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 20:40:07 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,37 +69,5 @@ int	main(int argc, char **argv)
 	parse_champ(assem);
 	write_to_cor(assem);
 	free_asm(assem);
-	// system("leaks asm");
 	return (0);
 }
-
-/*
-void	print_array(t_asm *assem)
-{
-	int	i;
-
-	i = 0;
-	while (i < assem->line_count)
-	{
-		ft_printf("\n%s (%i) bytes", assem->l_array[i]->line, assem->l_array[i]->num);
-		i++;
-	}
-}
-
-void	print_labels(t_asm *assem)
-{
-	t_label	*tmp;
-
-	tmp = assem->label;
-	while (tmp)
-	{
-		ft_printf("\nLabel: (%s)\nLine: (%i)\n", tmp->label_name, tmp->line_nb);
-		ft_printf("Bool: %d \n", tmp->state);
-		tmp = tmp->next;
-	}
-}
-	// ft_printf("Champion Name:\n(%s)", assem->champ_name);
-	// ft_printf("\nChampion Comment:\n(%s)\n\n", assem->champ_com);
-	// print_array(assem);
-	// print_labels(assem);
-*/

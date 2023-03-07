@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:23:45 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 20:00:07 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 20:40:47 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,20 @@ int	label_value(t_asm *assem, t_state *state, int i)
 int	get_arg_value(t_asm *assem, t_state *state, int i)
 {
 	if (arg_value(state->args[i]) == T_REG)
-		return(ft_atoi(ft_strchr(state->args[i], REG_CHAR) + 1));
+		return (ft_atoi(ft_strchr(state->args[i], REG_CHAR) + 1));
 	else if (arg_value(state->args[i]) == T_DIR)
 	{
 		if (state->args[i][1] == LABEL_CHAR)
 			return (label_value(assem, state, i));
 		else
-			return(ft_atoi(ft_strchr(state->args[i], DIRECT_CHAR) + 1));
+			return (ft_atoi(ft_strchr(state->args[i], DIRECT_CHAR) + 1));
 	}
 	else if (arg_value(state->args[i]) == T_IND)
 	{
 		if (state->args[i][0] == LABEL_CHAR)
 			return (label_value(assem, state, i));
 		else
-			return(ft_atoi(state->args[i]));
+			return (ft_atoi(state->args[i]));
 	}
 	else
 		error_exit1(ARG_ERR, assem);

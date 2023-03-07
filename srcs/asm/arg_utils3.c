@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:44:06 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 19:04:12 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 20:40:26 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	check_reg_arg(t_asm *assem, char *arg)
 		|| ft_atoi(ft_strchr(arg, 'r') + 1) < 1)
 		error_exit1(ARG_ERR, assem);
 }
-
 
 void	check_dir_arg(t_asm *assem, char *arg)
 {
