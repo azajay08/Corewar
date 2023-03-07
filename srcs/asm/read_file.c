@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/28 03:06:11 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 23:47:22 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_line	**make_line_array(t_asm *assem)
 	int		i;
 	t_line	*old;
 	t_line	**line;
+	int x = 0;
 
 	i = 0;
 	old = assem->line;
@@ -42,6 +43,17 @@ t_line	**make_line_array(t_asm *assem)
 		old = old->next;
 		i++;
 	}
+	i--;
+	while (line[i]->line[x])
+	{
+		if (line[i]->line[x] == '\n')
+			ft_printf("\nline count: %i\n", assem->line_count);	
+		x++;
+	}
+	// i--;
+	// ft_printf("\nline: (%s)\n", line[i]->line);
+	// if (!line[i]->line || !line_check(line[i]->line))
+	// 	error_exit1(LAST_LINE, assem);
 	return (line);
 }
 
@@ -83,6 +95,7 @@ void	read_file(t_asm *assem, char *file)
 		error_exit1(ERR_FILE, assem);
 	while (get_next_line(fd, &line) > 0)
 	{
+		ft_printf("\n(%s)\n", line);
 		line_str = make_line(assem, line, line_num);
 		if (!assem->line)
 			assem->line = line_str;

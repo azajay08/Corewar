@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 19:03:31 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 23:17:57 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 # define TOO_BIG	"ERROR! Executable code size too large!\n"
 # define ARG_ERR	"ERROR! Incorrect argument input!\n"
 # define INV_LBL	"ERROR! No matching label!\n"
+# define LAST_LINE	"ERROR! Unexpected end of input!\n"
 
 typedef struct s_asm
 {

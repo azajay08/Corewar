@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 20:40:07 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 23:06:42 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int	main(int argc, char **argv)
 	parse_champ(assem);
 	write_to_cor(assem);
 	free_asm(assem);
+	ft_putstr("\n******\n");
 	return (0);
 }

@@ -8,7 +8,8 @@ I have No
 
 
 name
-.comment"This is the comment"
+"
+.comment"This is the  comment"
 
 zjmp: lld 2, r1 
 
@@ -26,4 +27,5 @@ sti: zjmp	%:zjmp
 2_label:
 
 
-3_label: 
+3_label:
+

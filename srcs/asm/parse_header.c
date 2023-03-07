@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 20:38:40 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 23:05:09 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	get_comment(t_asm *assem, t_line *line, int start, int end)
 		i++;
 		start++;
 	}
+	start++;
+	if (!line_check(&line->line[start]))
+		error_exit1(INV_HDR, assem);
 }
 
 void	get_name(t_asm *assem, t_line *line, int start, int end)
@@ -58,6 +61,9 @@ void	get_name(t_asm *assem, t_line *line, int start, int end)
 		i++;
 		start++;
 	}
+	start++;
+	if (!line_check(&line->line[start]))
+		error_exit1(INV_HDR, assem);
 }
 
 t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
@@ -71,14 +77,13 @@ t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
 	start = i;
 	while (line && line->line[i] != '"')
 	{	
+		end++;
 		if (line->line[i] == '\0')
 		{
-			end++;
 			line = line->next;
 			i = 0;
 			continue ;
 		}
-		end++;
 		i++;
 	}
 	if (!line)
