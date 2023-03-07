@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 17:16:27 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 19:03:31 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,10 @@ void	free_asm(t_asm *assem);
 /*
 	verifying
 */
-
+void	check_reg_arg(t_asm *assem, char *arg);
+void	check_dir_arg(t_asm *assem, char *arg);
+void	check_ind_arg(t_asm *assem, char *arg);
+void	verify_arguments(t_asm *assem, t_state *state);
 void	verify_name_com(t_asm *assem, t_line *line);
 void	verify_filename(char *filename);
 

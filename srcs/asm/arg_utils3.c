@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:44:06 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 17:32:59 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 19:04:12 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	check_reg_arg(t_asm *assem, char *arg)
 	i = 1;
 	while (arg[i])
 	{
-		if (!ft_isdigit(arg[i]));
+		if (!ft_isdigit(arg[i]))
 			error_exit1(ARG_ERR, assem);
 		i++;
 	}
@@ -65,7 +65,7 @@ void	check_dir_arg(t_asm *assem, char *arg)
 			i++;
 		while (arg[i])
 		{
-			if (!ft_isdigit(arg[i]));
+			if (!ft_isdigit(arg[i]))
 				error_exit1(ARG_ERR, assem);
 			i++;
 		}
@@ -94,7 +94,7 @@ void	check_ind_arg(t_asm *assem, char *arg)
 			i++;
 		while (arg[i])
 		{
-			if (!ft_isdigit(arg[i]));
+			if (!ft_isdigit(arg[i]))
 				error_exit1(ARG_ERR, assem);
 			i++;
 		}

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 16:32:41 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/07 20:38:40 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	get_comment(t_asm *assem, t_line *line, int start, int end)
 	{
 		if (line->line[start] == '\0')
 		{
+			assem->champ_name[i] = 10;
+			i++;
 			line = line->next;
 			start = 0;
 			continue ;
@@ -46,6 +48,8 @@ void	get_name(t_asm *assem, t_line *line, int start, int end)
 	{
 		if (line->line[start] == '\0')
 		{
+			assem->champ_name[i] = 10;
+			i++;
 			line = line->next;
 			start = 0;
 			continue ;
@@ -69,6 +73,7 @@ t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
 	{	
 		if (line->line[i] == '\0')
 		{
+			end++;
 			line = line->next;
 			i = 0;
 			continue ;
