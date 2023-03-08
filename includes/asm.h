@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 23:17:57 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 15:44:23 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ typedef struct s_state
 	int				arg_val[3];
 	char			**args;
 	struct s_state	*next;
-	
 }					t_state;
 
 int		main(int argc, char **argv);

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 03:23:00 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:48:20 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	get_prog_size(t_asm *assem)
 		assem->prog_size += assem->l_array[i]->num;
 		i++;
 	}
-	// if (assem->prog_size > CHAMP_MAX_SIZE)
-	// 	error_exit1(TOO_BIG, assem);
 }
 
 void	parse_champ(t_asm *assem)
@@ -69,6 +67,5 @@ int	main(int argc, char **argv)
 	parse_champ(assem);
 	write_to_cor(assem);
 	free_asm(assem);
-	system("leaks asm");
 	return (0);
 }

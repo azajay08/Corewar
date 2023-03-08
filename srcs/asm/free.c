@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 16:12:10 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:08:40 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void	free_asm(t_asm *assem)
 		free_label(assem);
 	if (assem->state)
 		free_statement(assem);
+	free(assem);
 }
