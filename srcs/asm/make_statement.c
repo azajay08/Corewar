@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 16:20:12 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 03:52:21 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**get_arguments(t_asm *assem, char **args)
 		i++;
 	state_arg = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!state_arg)
-		error_exit1(ERR_FILE, assem);
+		error_exit1(ARG_STR, assem);
 	i = 0;
 	while (args[i])
 	{
@@ -68,16 +68,15 @@ char	*line_trim(t_asm *assem, int index, char *line)
 	while (line[start] && !ft_isspace(line[start])
 		&& ft_strchr(LABEL_CHARS, line[start]))
 		start++;
+	if (!ft_isspace(line[start]))
+		error_exit1(ARG_ERR, assem);
 	args = ft_strsub(line, start, end - start);
 	if (!args)
 		error_exit1(NO_ARGS, assem);
 	if (line_has_comment(args))
 		args = remove_comments(args);
 	if (comma_at_end(args))
-	{
-		ft_strdel(&args);
 		error_exit1(COMMA, assem);
-	}
 	return (args);
 }
 

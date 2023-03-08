@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 21:19:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 03:29:18 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 03:42:40 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	comma_at_end(char *line)
 	while (i && ft_isspace(line[i]))
 		i--;
 	if (line[i] == SEPARATOR_CHAR)
+	{
+		ft_strdel(&line);
 		return (1);
+	}
 	return (0);
 }

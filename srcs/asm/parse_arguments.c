@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:23:45 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 20:40:47 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 02:53:47 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	label_value(t_asm *assem, t_state *state, int i)
 	{
 		while (index > state->index)
 		{
-			label_val += assem->l_array[index]->num;
+			label_val += assem->l_array[index - 1]->num;
 			index--;
 		}
 	}
