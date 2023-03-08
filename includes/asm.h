@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 15:44:23 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 16:55:20 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,36 +82,7 @@ typedef struct s_state
 int		main(int argc, char **argv);
 
 /*
-	Errors
-*/
-
-void	error_exit(char *exit_str);
-void	error_exit1(char *exit_str, t_asm *assem);
-
-/*
-	Reading functions
-*/
-
-void	read_file(t_asm *assem, char *file);
-
-/*
-	Freeing functions
-*/
-
-void	free_asm(t_asm *assem);
-
-/*
-	verifying
-*/
-void	check_reg_arg(t_asm *assem, char *arg);
-void	check_dir_arg(t_asm *assem, char *arg);
-void	check_ind_arg(t_asm *assem, char *arg);
-void	verify_arguments(t_asm *assem, t_state *state);
-void	verify_name_com(t_asm *assem, t_line *line);
-void	verify_filename(char *filename);
-
-/*
-	Parsing & parsing tools
+	Parsing & Reading
 */
 
 int		arg_value(char *arg);
@@ -130,6 +101,7 @@ int		line_has_statement(t_asm *assem, int index, char *line);
 char	*remove_comments(char *line);
 char	get_arg_result(t_asm *assem, char **args);
 void	parse_arguments(t_asm *assem);
+void	read_file(t_asm *assem, char *file);
 void	label_check(t_asm *assem, int index);
 void	parse_labels(t_asm *assem, int index);
 void	parse_instructions(t_asm *assem, int index);
@@ -137,10 +109,29 @@ void	append_statement(t_asm *assem, t_state *statement);
 t_state	*make_statement(t_asm *assem, int index);
 
 /*
-	writing functions
+	Verifying
+*/
+
+void	check_reg_arg(t_asm *assem, char *arg);
+void	check_dir_arg(t_asm *assem, char *arg);
+void	check_ind_arg(t_asm *assem, char *arg);
+void	verify_arguments(t_asm *assem, t_state *state);
+void	verify_name_com(t_asm *assem, t_line *line);
+void	verify_filename(char *filename);
+
+/*
+	Writing
 */
 
 void	write_to_cor(t_asm *assem);
 void	write_exec_code(t_asm *assem, int fd);
+
+/*
+	Errors & Freeing
+*/
+
+void	error_exit(char *exit_str);
+void	error_exit1(char *exit_str, t_asm *assem);
+void	free_asm(t_asm *assem);
 
 #endif
