@@ -6,11 +6,15 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 16:48:20 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 22:23:30 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+	Gets the executable code size.
+*/
 
 void	get_prog_size(t_asm *assem)
 {
@@ -23,6 +27,11 @@ void	get_prog_size(t_asm *assem)
 		i++;
 	}
 }
+
+/*
+	Sorts out the order of the parsing. The index will return
+	the index of the line that is just after the name/comment.
+*/
 
 void	parse_champ(t_asm *assem)
 {
@@ -51,6 +60,29 @@ void	init_asm(t_asm *assem, char *file_input)
 	assem->label = NULL;
 	assem->state = NULL;
 }
+
+/*
+	Verify_filename goes to verify.c. It checks whether the file input
+	is a valid.
+	
+	Init_asm is is just for initialising the t_asm struct.
+
+	Read_file goes to read_file.c, this will open the input file, read it
+	line by line, then will save each line to the t_line struct so it can be
+	referred to later on. Eventually the lines will be saved as an array of
+	line using the t_linestruct.
+	
+	Parse_champ will deal with all the parsing of the file. It will verify
+	everything is in the correct format, then it will assign values to the 
+	respective structs, ready for the writing phase.
+	
+	write_to_cor goes to write_to_cor.c. This is a function that will
+	sort the order of writing bytes to the output file.
+
+	Free_asm goes to free.c. This is will free all of the structs that have
+	been used. All heads of the structs have been saved in the main t_asm
+	which makes it easier to free them all in one place.
+*/
 
 int	main(int argc, char **argv)
 {

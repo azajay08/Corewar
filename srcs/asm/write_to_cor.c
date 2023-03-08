@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 02:23:35 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 16:47:38 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 21:22:50 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,4 @@ void	write_to_cor(t_asm *assem)
 	write_prog_size(assem, fd);
 	write_comment(assem, fd);
 	write_exec_code(assem, fd);
-	ft_printf("Writing output program to %s\n", assem->filename);
 }

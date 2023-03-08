@@ -1,4 +1,4 @@
-# .comment
+
 
 .name "I am the champion,
 I have No
@@ -9,7 +9,9 @@ I have No
 
 name
 "
-.cmment"This is the  comment"
+.comment "This is the
+
+comment"
 
 zjmp: lld :3_label, r1 
 

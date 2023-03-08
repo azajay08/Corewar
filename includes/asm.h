@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 16:55:20 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 20:48:28 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 # define COM_FAIL	"ERROR! Memory allocation of champion comment failed!\n"
 # define LBL_NAME	"ERROR! Failed to create label name\n"
 # define ERR_FILE	"ERROR! Unable to open file!\n"
-# define INV_FILE	"ERROR! Inavlid File!\n"
-# define INV_HDR	"ERROR! Inavlid name or comment!\n"
-# define INV_STATE	"ERROR! Inavlid statement!\n"
+# define INV_FILE	"ERROR! Invalid File!\n"
+# define INV_HDR	"ERROR! Invalid name or comment!\n"
+# define INV_STATE	"ERROR! Invalid statement!\n"
 # define LONG_NAME	"ERROR! Name too long!\n"
 # define LONG_COM	"ERROR! Comment too long!\n"
 # define INSTRUCT	"ERROR! No instructions found!\n"
@@ -42,7 +42,7 @@
 # define TOO_BIG	"ERROR! Executable code size too large!\n"
 # define ARG_ERR	"ERROR! Incorrect argument input!\n"
 # define INV_LBL	"ERROR! No matching label!\n"
-# define LAST_LINE	"ERROR! Unexpected end of input!\n"
+# define LAST_LINE	"ERROR! No newline at end of file!\n"
 
 typedef struct s_asm
 {
@@ -115,9 +115,10 @@ t_state	*make_statement(t_asm *assem, int index);
 void	check_reg_arg(t_asm *assem, char *arg);
 void	check_dir_arg(t_asm *assem, char *arg);
 void	check_ind_arg(t_asm *assem, char *arg);
-void	verify_arguments(t_asm *assem, t_state *state);
-void	verify_name_com(t_asm *assem, t_line *line);
 void	verify_filename(char *filename);
+void	verify_newline(t_asm *assem, char *file);
+void	verify_name_com(t_asm *assem, t_line *line);
+void	verify_arguments(t_asm *assem, t_state *state);
 
 /*
 	Writing
@@ -130,8 +131,8 @@ void	write_exec_code(t_asm *assem, int fd);
 	Errors & Freeing
 */
 
+void	free_asm(t_asm *assem);
 void	error_exit(char *exit_str);
 void	error_exit1(char *exit_str, t_asm *assem);
-void	free_asm(t_asm *assem);
 
 #endif

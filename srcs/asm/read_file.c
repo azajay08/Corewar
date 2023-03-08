@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 03:26:55 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/08 23:11:31 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,15 @@ t_line	*make_line(t_asm *assem, char *line, int line_num)
 	return (line_str);
 }
 
+/*
+	This will read line by line and save each line to the t_line struct. Once
+	everything has been saved. It is also be saved as an array of t_line structs
+	to make it easier to find lines by index. The original t_line struct will
+	only be used to parse the name/comment and for the data to save everything
+	to the array of t_line. Verify_newline check if there is a newline at the 
+	end of the file. If one has not been found then it will exit the program.
+*/
+
 void	read_file(t_asm *assem, char *file)
 {
 	int		fd;
@@ -92,6 +101,7 @@ void	read_file(t_asm *assem, char *file)
 		line_num++;
 	}
 	close(fd);
+	verify_newline(assem, file);
 	assem->line_count = line_num;
 	assem->l_array = make_line_array(assem);
 }
