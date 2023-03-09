@@ -6,27 +6,11 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/09 16:48:51 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:58:13 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-void	print_processes(t_vm *vm)
-{
-	t_process	*temp_process;
-
-	temp_process = vm->processes;
-	while (temp_process)
-	{
-		if (!temp_process->executed)
-		{
-			ft_printf("ID: %d | Position: %d | Player: %s\n", \
-			temp_process->id, temp_process->pos, temp_process->player->name);
-		}
-		temp_process = temp_process->next;
-	}
-}
 
 t_process	*initialise_process(t_player *player, uint32_t pos)
 {
@@ -64,7 +48,6 @@ void	set_processes(t_vm *vm)
 	{
 		new_process(&(vm->processes), initialise_process(vm->player[id], pos));
 		vm->process_count++;
-		ft_printf("pos = %d\n", pos);
 		pos += MEM_SIZE / vm->player_count;
 	}
 	print_processes(vm);
