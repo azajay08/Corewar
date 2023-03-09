@@ -6,11 +6,29 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 21:19:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 21:55:54 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 01:50:58 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+int	end_line_space(t_asm *assem)
+{
+	int		i;
+	t_line	*line;
+
+	i = 0;
+	line = assem->line;
+	while (line->next)
+		line = line->next;
+	while (line->line[i])
+	{
+		if (!ft_isspace(line->line[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	line_has_comment(char *line)
 {
@@ -25,26 +43,6 @@ int	line_has_comment(char *line)
 	}
 	return (0);
 }
-
-// char	*remove_comments(char *line)
-// {
-// 	int		i;
-// 	char	*str;
-
-// 	i = ft_strlen(line);
-// 	str = NULL;
-// 	while (i)
-// 	{
-// 		if (line[i] == COMMENT_CHAR || line[i] == ALT_COMMENT_CHAR)
-// 		{
-// 			str = ft_strsub(line, 0, i);
-// 			free(line);
-// 			return (str);
-// 		}
-// 		i--;
-// 	}
-// 	return (line);
-// }
 
 char	*remove_comments(char *line)
 {

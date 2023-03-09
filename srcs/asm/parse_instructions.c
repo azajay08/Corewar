@@ -6,11 +6,15 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 16:24:24 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 04:08:18 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+	Adds the stateement element to the end of the t_state list
+*/
 
 void	append_statement(t_asm *assem, t_state *statement)
 {
@@ -42,6 +46,13 @@ int	is_statement(t_asm *assem, char *state)
 	return (0);
 }
 
+/*
+	line_has_statement contains is_label which is in parse_utils1.c. This will
+	recognise if a label is on that line. If it find a label, a boolean is
+	triggered to be on alert to be assigned to a statement. Multiple labels
+	can refer the the same statement line.
+*/
+
 int	line_has_statement(t_asm *assem, int index, char *line)
 {
 	int		i;
@@ -70,6 +81,22 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	error_exit1(INV_STATE, assem);
 	return (0);
 }
+
+/*
+	Parse_instructions goes through all the lines and checks which lines have
+	statements and then saves them to the t_state struct. The head, like all 
+	the other structs will be saved to the t_asm struct.
+
+	Line_has_statement acts as a verification for statements It also gathers
+	information about which statements they are and the lines they are on, so
+	they can be referred to by index.
+
+	Once a valid statement has been found, we then go to make_statement.c
+	where the line will be disected more.
+
+	Once all statements have been parsed and verified, we then go to
+	parse_arguments.
+*/
 
 void	parse_instructions(t_asm *assem, int index)
 {

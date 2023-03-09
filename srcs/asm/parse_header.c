@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 22:22:56 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 02:18:15 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void	get_comment(t_asm *assem, t_line *line, int start, int end)
 /*
 	With the lines verified, these functions will save the name or comment
 	to the t_asm struct. The char that is assigned the value 10, is assgined
-	as the 'nl' character in the ascii table. 
+	as the 'nl' character in the ascii table in the case of the name/comment
+	being on multiple lines.
 */
 
 void	get_name(t_asm *assem, t_line *line, int start, int end)
@@ -71,6 +72,12 @@ void	get_name(t_asm *assem, t_line *line, int start, int end)
 	if (!line_check(&line->line[start]))
 		error_exit1(INV_HDR, assem);
 }
+
+/*
+	Get_champ_cmd essentialy gets the length of the name/comment as they can
+	be spread out over multiple lines. Depending on the command string given
+	as an argument, it will then go to get either the name or comment.
+*/
 
 t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
 {
@@ -102,7 +109,7 @@ t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
 }
 
 /*
-	Line_check goes to parse_utils.c. This file contains fucntions that
+	Line_check goes to parse_utils.c which contains fucntions that
 	aid the parsing process. line_check will check if the line is okay to
 	be parsed, or of the line is just a comment or empty line. 
 */
@@ -137,7 +144,7 @@ t_line	*get_name_comment(t_asm *assem, t_line *line)
 /*
 	This function will parse the lines to find the valid name and comment.
 	If there is nothing found or the name or comment are invalid. It will
-	exit the program and not create the .cor file
+	exit the program.
 */
 
 int	parse_header(t_asm *assem)

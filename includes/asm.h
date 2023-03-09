@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 20:48:28 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 01:54:40 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,11 @@ int		main(int argc, char **argv);
 /*
 	Parsing & Reading
 */
-
 int		arg_value(char *arg);
 int		line_check(char *line);
 int		comma_at_end(char *line);
 int		parse_header(t_asm *assem);
+int		end_line_space(t_asm *assem);
 int		line_has_comment(char *line);
 int		is_label(t_asm *assem, int index);
 int		byte_length(t_asm *assem, int type);

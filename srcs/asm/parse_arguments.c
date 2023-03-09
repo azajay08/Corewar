@@ -6,11 +6,15 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:23:45 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 14:40:53 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 04:06:52 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+	label_index returns the index of a matching label name
+*/
 
 int	label_index(t_asm *assem, char *arg)
 {
@@ -25,6 +29,12 @@ int	label_index(t_asm *assem, char *arg)
 	}
 	return (0);
 }
+
+/*
+	label_value calculates the distance from the current position to the
+	targeted label. The calculations differ slightly when moving forwards, to
+	moving to a label backwards.
+*/
 
 int	label_value(t_asm *assem, t_state *state, int i)
 {
@@ -52,6 +62,14 @@ int	label_value(t_asm *assem, t_state *state, int i)
 	return (label_val);
 }
 
+/*
+	Now that the arguments have been verified, we move onto actually assigning
+	the number value to each argument depending on what kind of argument it
+	is. The value can just be whatever numbers are given as arguments in the
+	correct format. If it is a label however, the value needs to be calculated
+	by distance of bytes to that particular label, using label_value.
+*/
+
 int	get_arg_value(t_asm *assem, t_state *state, int i)
 {
 	if (arg_value(state->args[i]) == T_REG)
@@ -75,6 +93,11 @@ int	get_arg_value(t_asm *assem, t_state *state, int i)
 	return (0);
 }
 
+/*
+	Parse_arg_values goes through the arguments of the statement and gets
+	each value, only after being verified with verify_arguments in verify.c
+*/
+
 void	parse_arg_values(t_asm *assem, t_state *state)
 {
 	int	i;
@@ -87,6 +110,11 @@ void	parse_arg_values(t_asm *assem, t_state *state)
 		i++;
 	}
 }
+
+/*
+	Parse_arguments goes through the t_state list, verifies the arguments
+	for that particular statement and then gets the values for them.
+*/
 
 void	parse_arguments(t_asm *assem)
 {

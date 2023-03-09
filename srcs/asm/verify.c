@@ -6,11 +6,16 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:58:16 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 22:58:25 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 03:57:21 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+	Verify_arguments checks what the argument types are and then goes onto
+	check if that argument type is in the correct format in arg_utils3.c
+*/
 
 void	verify_arguments(t_asm *assem, t_state *state)
 {

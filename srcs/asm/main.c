@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 22:23:30 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 02:12:32 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	get_prog_size(t_asm *assem)
 }
 
 /*
-	Sorts out the order of the parsing. The index will return
+	Parse_champ sorts out the order of the parsing. The index will return
 	the index of the line that is just after the name/comment.
 */
 

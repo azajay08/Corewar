@@ -6,11 +6,18 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 21:43:18 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 03:49:58 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+	label_check will iterate through the label list and if a boolean is on 
+	for any of the labels, the index of the current statement is given to the 
+	label/labels. This is so the position of the label can be found easily
+	if a label is given as an argument.
+*/
 
 void	label_check(t_asm *assem, int index)
 {
@@ -28,6 +35,11 @@ void	label_check(t_asm *assem, int index)
 	}
 	assem->label = label;
 }
+
+/*
+	get_arguments returns a 2d array of arguments. Each argument will be
+	trimmed down to make it easier to extract the data from it.
+*/
 
 char	**get_arguments(t_asm *assem, char **args)
 {
@@ -52,6 +64,11 @@ char	**get_arguments(t_asm *assem, char **args)
 	ft_2d_free(args);
 	return (state_arg);
 }
+
+/*
+	line_trim returns the line back but without all the uneccesary things such
+	as comments or trailing commas. This is also another verification check
+*/
 
 char	*line_trim(t_asm *assem, int index, char *line)
 {
@@ -80,6 +97,19 @@ char	*line_trim(t_asm *assem, int index, char *line)
 	return (args);
 }
 
+/*
+	Init_statement assigns the data to the t_state element. From here, it gets
+	the arguments from the statement in the form of a 2d char array so the
+	argument can be looked at more closely as an individual string.
+
+	get_byte_count goes to arg_utils1.c. This returns the number of bytes that
+	this particular statement has. This can then be used to calculate distances
+	to labels if given as an argument.
+
+	get_arg_result goes to arg_utils2.c which returns result of the argument
+	types.
+*/
+
 void	init_statement(t_asm *assem, t_state *statement, int i, char **args)
 {
 	statement->args = get_arguments(assem, args);
@@ -89,6 +119,12 @@ void	init_statement(t_asm *assem, t_state *statement, int i, char **args)
 	statement->result = get_arg_result(assem, statement->args);
 	statement->next = NULL;
 }
+
+/*
+	Make_statement returns data about a statement to the t_state struct.
+
+	The byte count is added to the line array as the value of the line.
+*/
 
 t_state	*make_statement(t_asm *assem, int index)
 {

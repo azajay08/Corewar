@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 23:11:31 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 02:31:47 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ t_line	*make_array_line(t_asm *assem, t_line *old)
 	line->num = 0;
 	return (line);
 }
+
+/*
+	This turns the t_line sturct into an array rather than a list so it can
+	be referred to by index.
+*/
 
 t_line	**make_line_array(t_asm *assem)
 {
@@ -44,6 +49,10 @@ t_line	**make_line_array(t_asm *assem)
 	}
 	return (line);
 }
+
+/*
+	Adds the line element to the end of the t_line list.
+*/
 
 void	append_line(t_asm *assem, t_line *line)
 {
@@ -74,8 +83,15 @@ t_line	*make_line(t_asm *assem, char *line, int line_num)
 	everything has been saved. It is also be saved as an array of t_line structs
 	to make it easier to find lines by index. The original t_line struct will
 	only be used to parse the name/comment and for the data to save everything
-	to the array of t_line. Verify_newline check if there is a newline at the 
-	end of the file. If one has not been found then it will exit the program.
+	to the array of t_line.
+	
+	End_line_space checks whether the last has only 
+	whitespace. If it does, like the the original asm, the program will
+	compile.
+	 
+	If the last line is not whitespace, we check with Verify_newline
+	to see if there is a newline at the end of the file. If one has not been
+	found then, it will exit the program.
 */
 
 void	read_file(t_asm *assem, char *file)
@@ -101,7 +117,8 @@ void	read_file(t_asm *assem, char *file)
 		line_num++;
 	}
 	close(fd);
-	verify_newline(assem, file);
+	if (!end_line_space(assem))
+		verify_newline(assem, file);
 	assem->line_count = line_num;
 	assem->l_array = make_line_array(assem);
 }
