@@ -4,6 +4,8 @@
 ./asm/obj/*.o
 ./vm/obj/*.o
 ./libft/libft.a
+./eval_tests/logs
+./eval_tests/logs/*
 *.o
 *.a
 .DS_Store

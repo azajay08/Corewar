@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
+#    By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/03/02 14:27:57 by sam              ###   ########.fr        #
+#    Updated: 2023/03/09 13:45:33 by swilliam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ ASM_O_DIR := $(addprefix $(ASM_O_PATH), $(ASM_OBJ))
 
 CW_SRCS := \
 main.c init.c exit_program.c \
-parse_players_1.c parse_players_2.c parse_utils.c
+parse_players_1.c parse_players_2.c parse_utils.c \
+game_process.c arena.c
 
 CW_PATH := srcs/vm/
 

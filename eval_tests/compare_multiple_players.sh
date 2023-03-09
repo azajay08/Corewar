@@ -1,8 +1,8 @@
-FILE_DIR=( asm_tests/compiled/*)
-FT_OUTPUT="./vm_champs/corewar42.txt"
-OUR_OUTPUT="../corewar.txt"
+FILE_DIR=( ./champs/compiled/*)
+FT_OUTPUT="./logs/corewar42.txt"
+OUR_OUTPUT="./logs/corewar.txt"
 OUR_WAR="../corewar"
-SCHOOL_WAR="./vm_champs/corewar42"
+SCHOOL_WAR="./42/corewar42"
 
 PASS=0
 TEST_OK=0
