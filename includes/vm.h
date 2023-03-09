@@ -35,7 +35,11 @@ typedef struct	s_process
 	int					id;
 	int					carry;
 	int					registers[REG_NUMBER];
+	int					pos;
 	int					cool_down;
+	int					bytes_to_next;
+	int					last_live_cycle;
+	//var to store arg? get_n_byte?
 	struct s_process	*next;
 }				t_process;
 
