@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/06 14:44:29 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/09 16:42:35 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ void	init_corewar(t_corewar *corewar)
 	corewar->carry = 0;
 }
 
+static void	apply_statement(t_vm *vm, t_process *process)
+{
+	if (vm || process)
+		ft_printf("");
+	process->op_code = vm->arena[process->pos];
+	ft_printf("process now at %x\n", process->op_code);
+}
+
+static void	execute_statement(t_vm *vm, t_process *process)
+{
+	if (vm || process)
+		ft_printf("");
+	ft_printf("Executing process %d\n", process->id);
+	process->executed = true;
+	vm->process_count--;
+}
+
 /*
 ** execute_cycle:
 ** -
@@ -34,15 +51,19 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 {
 	t_process	*temp_process;
 
+	ft_printf("%sExecuting cycle %d%s\n", RED, corewar->cycles_total, RESET);
 	temp_process = vm->processes;
-	corewar->cycles_total++;
 	while (temp_process)
 	{
-		//apply statements
-		//reduce cooldowns
-		//execute statements
+		if (temp_process->cycles_until_exec == 0 && !temp_process->executed)
+			apply_statement(vm, temp_process);
+		if (temp_process->cycles_until_exec > 0 && !temp_process->executed)
+			temp_process->cycles_until_exec--;
+		if (temp_process->cycles_until_exec == 0 && !temp_process->executed)
+			execute_statement(vm, temp_process);
 		temp_process = temp_process->next;
 	}
+	corewar->cycles_total++;
 }
 
 /*
@@ -55,8 +76,7 @@ void	game_process(t_vm *vm)
 
 	init_corewar(&corewar);
 	init_arena(vm);
-	introduce_players(vm);
-	ft_printf("Initiating game.\n");
+	vm->latest_live = vm->player_count;
 	while (vm->processes != NULL && vm->process_count > 0)
 	{
 		if (corewar.cycles == vm->cycle_dump)
@@ -65,5 +85,9 @@ void	game_process(t_vm *vm)
 			exit(EXIT_FAILURE);
 		}
 		execute_cycle(vm, &corewar);
+		if (vm->cycles_to_die <= 0)
+			ft_printf("ended\n");
+		else
+			vm->cycles_to_die--;
 	}
 }

@@ -14,14 +14,14 @@
 
 /*
 ** init_vm:
-** - 
+** -
 */
 void	init_vm(t_vm *vm)
 {
 	vm->player_count = 0;
 	vm->checks = 0;
 	vm->cycle = 0;
-	vm->cycle_to_die = CYCLE_TO_DIE;
+	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->latest_live = 0;
 	vm->process_count = 0;
 	vm->total_processes = 0;

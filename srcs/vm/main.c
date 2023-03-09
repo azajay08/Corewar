@@ -6,7 +6,7 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 14:29:17 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:01:31 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main(int argc, char **argv)
 	init_vm(&vm);
 	ft_printf("%sParsing assembled files...%s\n", UGRN, RESET);
 	parse(argc, argv, &vm);
+	ft_printf("%sInitialising processes...%s\n", UGRN, RESET);
+	set_processes(&vm);
 	ft_printf("%sIntroducing players...%s\n", UGRN, RESET);
 	introduce_players(&vm);
 	ft_printf("%sInitiating Corewar process...%s\n", UGRN, RESET);

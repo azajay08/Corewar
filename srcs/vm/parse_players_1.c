@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_players_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/06 14:46:16 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/09 16:01:02 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,6 @@ static void	assign_player(t_vm *vm, t_player *player, int ret)
 	i += parse_file(player->comment, &player->file[i], COMMENT_LENGTH);
 	player->exec = ft_memalloc(ret - i);
 	parse_file(player->exec, &player->file[i], player->exec_size);
-	ft_printf("ID: %u\n", player->id);
-	ft_printf("Name: %s\n", player->name);
-	ft_printf("Exec_size: %u\n", player->exec_size);
-	ft_printf("Comment: %s\n", player->comment);
-	// unsigned int j = 0;
-	// ft_printf("Exec_code: ");
-	// while (j < player->exec_size)
-	// {
-	// 	ft_printf("%hhX ", player->exec[j]);
-	// 	j++;
-	// }
-	ft_printf("\n");
 	vm->player[player->id] = player;
 }
 

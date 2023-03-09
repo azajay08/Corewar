@@ -36,7 +36,7 @@ int	read_cor(char **av, int i, t_player *player)
 int	parse_file(unsigned char *player_data, unsigned char *data, int len)
 {
 	ft_memcpy(player_data, data, len);
-	return (len + 4); // len + NULL
+	return (len + 4);
 }
 
 /*

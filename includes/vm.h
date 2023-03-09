@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 14:17:11 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/09 16:49:06 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "op.h"
+# include <stdbool.h>
 
 typedef struct	s_player
 {
@@ -32,13 +33,16 @@ typedef struct	s_player
 
 typedef struct	s_process
 {
+	t_player			*player;
 	int					id;
 	int					carry;
 	int					registers[REG_NUMBER];
 	int					pos;
-	int					cool_down;
+	int					cycles_until_exec;
 	int					bytes_to_next;
 	int					last_live_cycle;
+	uint32_t			op_code;
+	bool				executed;
 	//var to store arg? get_n_byte?
 	struct s_process	*next;
 }				t_process;
@@ -63,7 +67,7 @@ typedef struct	s_vm
 	size_t			process_count;
 	size_t			total_processes;
 	int				cycle;
-	int				cycle_to_die;
+	int				cycles_to_die;
 	int				checks;
 	int				cycle_dump;
 }				t_vm;
@@ -74,6 +78,7 @@ void	init_players(t_vm *vm, unsigned int player_count);
 void	init_arena(t_vm *vm);
 
 // Parsing:
+void	parse_flags(t_vm *vm, int argc, char **argv);
 void	parse(int argc, char **argv, t_vm *vm);
 int		read_cor(char **av, int i, t_player *player);
 int		parse_file(unsigned char *player_data, unsigned char *data, int len);
@@ -84,7 +89,12 @@ void	get_player_count(int ac, char **av, uint32_t *player_count);
 // Game process:
 void	introduce_players(t_vm *vm);
 void	print_arena(t_vm *vm);
+void	print_processes(t_vm *vm);
 void	game_process(t_vm *vm);
+
+// Processes:
+void		set_processes(t_vm *vm);
+t_process	*initialise_process(t_player *player, uint32_t pos);
 
 // Exit program:
 void	exit_vm(char *error_message);
