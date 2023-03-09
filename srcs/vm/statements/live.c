@@ -16,3 +16,10 @@
 ** handle_live:
 ** -
 */
+
+void	live(t_process *process, t_corewar *corewar)
+{
+	process->last_live_cycle = corewar->cycles;
+	corewar->lives_this_round++;
+	//last_live = player?
+}
