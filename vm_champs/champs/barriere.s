@@ -205,7 +205,6 @@ kfork6:		ld	%24,r2
 		ld	%204,r5
 		and	r6,%0,r6
 		zjmp	%:kdebut
-
 kdebut:		ldi	%:kdebut,r2,r3 
 		sti	r3,r5,%:kfin   
 		live	%42

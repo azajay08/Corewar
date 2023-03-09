@@ -6,11 +6,53 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/18 19:27:48 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 02:31:47 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+t_line	*make_array_line(t_asm *assem, t_line *old)
+{
+	t_line	*line;
+
+	line = (t_line *)malloc(sizeof(t_line));
+	if (!line)
+		error_exit1(LINE_FAIL, assem);
+	line->line = ft_strdup(old->line);
+	line->next = NULL;
+	line->num = 0;
+	return (line);
+}
+
+/*
+	This turns the t_line sturct into an array rather than a list so it can
+	be referred to by index.
+*/
+
+t_line	**make_line_array(t_asm *assem)
+{
+	int		i;
+	t_line	*old;
+	t_line	**line;
+
+	i = 0;
+	old = assem->line;
+	line = (t_line **)malloc(sizeof(t_line *) * (assem->line_count));
+	if (!line)
+		error_exit1(LINE_FAIL, assem);
+	while (i < assem->line_count)
+	{
+		line[i] = make_array_line(assem, old);
+		old = old->next;
+		i++;
+	}
+	return (line);
+}
+
+/*
+	Adds the line element to the end of the t_line list.
+*/
 
 void	append_line(t_asm *assem, t_line *line)
 {
@@ -36,6 +78,22 @@ t_line	*make_line(t_asm *assem, char *line, int line_num)
 	return (line_str);
 }
 
+/*
+	This will read line by line and save each line to the t_line struct. Once
+	everything has been saved. It is also be saved as an array of t_line structs
+	to make it easier to find lines by index. The original t_line struct will
+	only be used to parse the name/comment and for the data to save everything
+	to the array of t_line.
+	
+	End_line_space checks whether the last has only 
+	whitespace. If it does, like the the original asm, the program will
+	compile.
+	 
+	If the last line is not whitespace, we check with Verify_newline
+	to see if there is a newline at the end of the file. If one has not been
+	found then, it will exit the program.
+*/
+
 void	read_file(t_asm *assem, char *file)
 {
 	int		fd;
@@ -43,7 +101,7 @@ void	read_file(t_asm *assem, char *file)
 	char	*line;
 	t_line	*line_str;
 
-	line_num = 1;
+	line_num = 0;
 	fd = open(file, O_RDONLY);
 	line = NULL;
 	if (fd == -1)
@@ -59,4 +117,8 @@ void	read_file(t_asm *assem, char *file)
 		line_num++;
 	}
 	close(fd);
+	if (!end_line_space(assem))
+		verify_newline(assem, file);
+	assem->line_count = line_num;
+	assem->l_array = make_line_array(assem);
 }
