@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:59:41 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/08 16:08:40 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 04:35:28 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ void	free_statement(t_asm *assem)
 		free(temp);
 	}
 }
+
+/*
+	Goes through the asm struct and frees anything that has been allocated.
+*/
 
 void	free_asm(t_asm *assem)
 {

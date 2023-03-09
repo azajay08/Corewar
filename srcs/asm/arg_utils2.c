@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:02:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 15:03:02 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 04:26:20 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	arg_code(char *arg)
 	return (IND_CODE);
 }
 
+/*
+	bit_shift uses the bitwise operator to shift 1s along the binary string
+	depending on the argument type
+*/
+
 char	bit_shift(unsigned char byte, int type, int shift)
 {
 	if (type == DIR_CODE || type == IND_CODE)
@@ -32,6 +37,17 @@ char	bit_shift(unsigned char byte, int type, int shift)
 		byte |= 1UL << shift;
 	return (byte);
 }
+
+/*
+	get_arg_result returns the results from the argument types as binary.
+	The argument types in the case, can only be one of 3 values, 1,2 and 3. Or
+	in binary 01, 10 and 11. To complete the binary string, the unused
+	argument space is filled with 00. For example a complete string that
+	contains IND as arg 1, DIR as arg 2, and REG as arg 3. The binary would
+	look like this '11100100' 11 = IND, 10 = DIR, 01 = REG, 00 to fill.
+	11100100 = 228 in decimal, which = E4 in hexadecimal. That would be
+	the result.
+*/
 
 char	get_arg_result(t_asm *assem, char **args)
 {
