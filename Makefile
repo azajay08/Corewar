@@ -37,16 +37,12 @@ ASM_O_PATH := srcs/asm/obj/
 ASM_O_DIR := $(addprefix $(ASM_O_PATH), $(ASM_OBJ))
 
 # VIRTUAL MACHINE
-<<<<<<< HEAD
 
 CW_SRCS := \
 main.c init.c exit_program.c \
 parse_players_1.c parse_players_2.c parse_utils.c \
 game_process.c arena.c processes.c \
 debug_printing.c
-=======
-CW_SRCS := main.c
->>>>>>> main
 
 CW_PATH := srcs/vm/
 CW_DIR := $(addprefix $(CW_PATH), $(CW_SRCS))
