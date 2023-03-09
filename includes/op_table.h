@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 20:31:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/25 20:52:16 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/05 03:52:46 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,28 +48,28 @@ typedef struct s_op
 }						t_op;
 
 static const t_op		g_op_tab[17] = {
-{1, "live", 1, {T_DIR}, 10, 0, 0},
-{2, "ld", 2, {T_DIR | T_IND, T_REG}, 5, 1, 0},
-{3, "st", 2, {T_REG, T_IND | T_REG}, 5, 1, 0},
-{4, "add", 3, {T_REG, T_REG, T_REG}, 10, 1, 0},
-{5, "sub", 3, {T_REG, T_REG, T_REG}, 10, 1, 0},
+{1, "live", 1, {T_DIR}, 10, 0, 4},
+{2, "ld", 2, {T_DIR | T_IND, T_REG}, 5, 1, 4},
+{3, "st", 2, {T_REG, T_IND | T_REG}, 5, 1, 4},
+{4, "add", 3, {T_REG, T_REG, T_REG}, 10, 1, 4},
+{5, "sub", 3, {T_REG, T_REG, T_REG}, 10, 1, 4},
 {6, "and", 3, {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6,
-	1, 0},
+	1, 4},
 {7, "or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 6,
-	1, 0},
+	1, 4},
 {8, "xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 6,
-	1, 0},
-{9, "zjmp", 1, {T_DIR}, 20, 0, 1},
+	1, 4},
+{9, "zjmp", 1, {T_DIR}, 20, 0, 2},
 {10, "ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 25,
-	1, 1},
+	1, 2},
 {11, "sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 25,
-	1, 1},
-{12, "fork", 1, {T_DIR}, 800, 0, 1},
-{13, "lld", 2, {T_DIR | T_IND, T_REG}, 10, 1, 0},
+	1, 2},
+{12, "fork", 1, {T_DIR}, 800, 0, 2},
+{13, "lld", 2, {T_DIR | T_IND, T_REG}, 10, 1, 4},
 {14, "lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 50,
-	1, 1},
-{15, "lfork", 1, {T_DIR}, 1000, 0, 1},
-{16, "aff", 1, {T_REG}, 2, 1, 0},
+	1, 2},
+{15, "lfork", 1, {T_DIR}, 1000, 0, 2},
+{16, "aff", 1, {T_REG}, 2, 1, 4},
 {0, 0, 0, {0}, 0, 0, 0}
 };
 

@@ -6,7 +6,7 @@
 #    By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/03/09 17:26:40 by swilliam         ###   ########.fr        #
+#    Updated: 2023/03/09 17:29:16 by swilliam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,10 @@ LIBFT := libft/libft.a
 LIB := -L./libft/includes -lft
 
 # ASSEMBLER
-ASM_SRCS := main.c init.c errors.c free.c read_file.c verify.c parse_header.c \
-parse_labels.c parse_utils.c
+ASM_SRCS := main.c errors.c free.c read_file.c verify.c parse_header.c \
+parse_labels.c parse_utils1.c parse_utils2.c parse_instructions.c \
+make_statement.c write_to_cor.c write_exec.c arg_utils1.c arg_utils2.c \
+arg_utils3.c parse_arguments.c
 
 ASM_PATH := srcs/asm/
 ASM_DIR := $(addprefix $(ASM_PATH), $(ASM_SRCS))

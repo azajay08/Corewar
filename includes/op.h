@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2023/02/25 20:48:02 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/06 17:14:23 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define MEM_SIZE				4096
 # define IDX_MOD				512
 # define CHAMP_MAX_SIZE			682
+# define REG_CHAR				'r'
 # define COMMENT_CHAR			'#'
 # define ALT_COMMENT_CHAR		';'
 # define LABEL_CHAR				':'
