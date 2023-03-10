@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 11:09:48 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/10 11:34:47 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "op.h"
+# include "op_table.h"
 # include <stdbool.h>
 
 typedef struct	s_player
