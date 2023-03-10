@@ -6,54 +6,83 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/02/22 01:55:07 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/09 02:12:32 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void	print_labels(t_asm *assem)
-{
-	t_label	*tmp;
+/*
+	Gets the executable code size.
+*/
 
-	tmp = assem->label;
-	while (tmp)
+void	get_prog_size(t_asm *assem)
+{
+	int	i;
+
+	i = 0;
+	while (i < assem->line_count)
 	{
-		ft_printf("\nLabel: (%s)\nLine: (%i)\n", tmp->label_name, tmp->line_nb);
-		tmp = tmp->next;
+		assem->prog_size += assem->l_array[i]->num;
+		i++;
 	}
 }
 
-void	print_map(t_asm *assem)
-{
-	t_line	*tmp;
-
-	tmp = assem->line;
-	while (tmp)
-	{
-		ft_putstr(tmp->line);
-		ft_putchar('\n');
-		tmp = tmp->next;
-	}
-}
+/*
+	Parse_champ sorts out the order of the parsing. The index will return
+	the index of the line that is just after the name/comment.
+*/
 
 void	parse_champ(t_asm *assem)
 {
-	t_line	*line;
+	int	index;
 
-	line = assem->line;
-	line = parse_header(assem, line);
-	parse_labels(assem, line);
+	index = parse_header(assem);
+	parse_labels(assem, index);
+	parse_instructions(assem, index);
+	get_prog_size(assem);
 }
 
-void	verify_filename(char *filename)
+void	init_asm(t_asm *assem, char *file_input)
 {
-	if (!ft_strequ(ft_strrchr(filename, '.'), ".s"))
-	{
-		ft_putstr(EXT_S);
-		error_exit(USAGE);
-	}
+	int	len;
+
+	len = ft_strlen(file_input) - 2;
+	assem->filename = ft_strsub(file_input, 0, len);
+	assem->filename = ft_strjoin_free1(assem->filename, ".cor");
+	assem->line_count = 0;
+	assem->state_code = 0;
+	assem->prog_size = 0;
+	assem->champ_name = NULL;
+	assem->champ_com = NULL;
+	assem->line = NULL;
+	assem->l_array = NULL;
+	assem->label = NULL;
+	assem->state = NULL;
 }
+
+/*
+	Verify_filename goes to verify.c. It checks whether the file input
+	is a valid.
+	
+	Init_asm is is just for initialising the t_asm struct.
+
+	Read_file goes to read_file.c, this will open the input file, read it
+	line by line, then will save each line to the t_line struct so it can be
+	referred to later on. Eventually the lines will be saved as an array of
+	line using the t_linestruct.
+	
+	Parse_champ will deal with all the parsing of the file. It will verify
+	everything is in the correct format, then it will assign values to the 
+	respective structs, ready for the writing phase.
+	
+	write_to_cor goes to write_to_cor.c. This is a function that will
+	sort the order of writing bytes to the output file.
+
+	Free_asm goes to free.c. This is will free all of the structs that have
+	been used. All heads of the structs have been saved in the main t_asm
+	which makes it easier to free them all in one place.
+*/
 
 int	main(int argc, char **argv)
 {
@@ -68,11 +97,7 @@ int	main(int argc, char **argv)
 	init_asm(assem, argv[1]);
 	read_file(assem, argv[1]);
 	parse_champ(assem);
-	ft_printf("Champion Name:\n%s", assem->champ_name);
-	ft_printf("\nChampion Comment:\n%s\n\n", assem->champ_com);
-	// print_map(assem);
-	print_labels(assem);
-	ft_putchar('\n');
-	system("leaks asm");
+	write_to_cor(assem);
+	free_asm(assem);
 	return (0);
 }
