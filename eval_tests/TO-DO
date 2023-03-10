@@ -1,0 +1,28 @@
+Howdy pardners, this is what needs doing for the VM:
+
+- Rewrite parsing functions to be able to read flags
+	(e.g. -d 420 stores the dump_cycle, so that the arena prints at cycle 420).
+	Currently, only -n is read and it's hardcoded, so the system could use a little
+	regorganisation.
+
+	Currently working on this:
+
+- Writing statement commands. Currently Teemu is handling those, so if you're up for
+	helping, hit ya boi up. The current framework is ready to have them implemented.
+
+	Currently working on this: Teemu,
+
+- Documentation. If you're writing functions, try to document them so it's easier for
+	us to read your code. Not super necessary, but will streamline the teamwork.
+
+	Currently working on this:
+
+- Updating cycles_to_die after each cycle. Currently it's just decreased, but I believe
+	there's cases where it's decreased differently (minus CYCLES_DELTA)
+
+	Currently working on this: Sam
+
+- Refining the project to align with the game rules. I need to remind myself of what the
+	fucking rules are, but there should be some checks and shit.
+
+	Currently working on this:
