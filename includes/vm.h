@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 11:34:47 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/10 11:53:52 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_process
 	t_player			*player;
 	int					id;
 	int					carry;
+	uint8_t				args[3];
 	int					registers[REG_NUMBER];
 	int					pos;
 	int					cycles_until_exec;

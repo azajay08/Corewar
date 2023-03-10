@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/10 11:33:56 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/10 11:54:11 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	init_corewar(t_corewar *corewar)
 static void	apply_statement(t_vm *vm, t_process *process)
 {
 	int	byte_as_int;
+	int	i;
 
+	i = -1;
 	byte_as_int = byte_to_int(vm->arena, process->pos);
 	process->op_code = vm->arena[process->pos];
 	ft_printf(" | %.2x : %3d", process->op_code, byte_as_int);
@@ -42,6 +44,8 @@ static void	apply_statement(t_vm *vm, t_process *process)
 		process->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
 		ft_printf(" | Cycles until execution: %2d", process->cycles_until_exec);
 	}
+	while (++i < 3)
+		process->args[i] = 0;
 }
 
 /*
