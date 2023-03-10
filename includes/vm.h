@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 11:53:52 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/10 12:38:54 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "op.h"
 # include "op_table.h"
 # include <stdbool.h>
+
+# define DEBUG 0
 
 typedef struct	s_player
 {

@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/10 12:09:35 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/10 12:42:53 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ static void	apply_statement(t_vm *vm, t_process *process)
 	i = -1;
 	byte_as_int = byte_to_int(vm->arena, process->pos);
 	process->op_code = vm->arena[process->pos];
-	ft_printf(" | %.2x : %3d", process->op_code, byte_as_int);
+	if (DEBUG == true)
+		ft_printf(" | %.2x : %3d", process->op_code, byte_as_int);
 	if (byte_as_int >= 1 && byte_as_int <= 16)
 	{
 		process->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
-		ft_printf(" | Cycles until execution: %2d", process->cycles_until_exec);
+		if (DEBUG == true)
+			ft_printf(" | Cycles until execution: %2d", process->cycles_until_exec);
 	}
 	while (++i < 3)
 		process->args[i] = 0;
@@ -58,7 +60,8 @@ static void	apply_statement(t_vm *vm, t_process *process)
 */
 static void	execute_statement(t_vm *vm, t_process *process)
 {
-	ft_printf(" | Executing...");
+	if (DEBUG == true)
+		ft_printf(" | Executing...");
 	process->executed = true;
 	vm->process_count--;
 }
@@ -71,13 +74,15 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 {
 	t_process	*temp_process;
 
-	ft_printf("%sCycle %d%s\n", URED, corewar->cycles, RESET);
+	if (DEBUG == true)
+		ft_printf("%sCycle %d%s\n", URED, corewar->cycles, RESET);
 	temp_process = vm->processes;
 	while (temp_process)
 	{
 		if (!temp_process->executed)
 		{
-			ft_printf("Process %d | Position %4d | Player: %1d", \
+			if (DEBUG == true)
+				ft_printf("Process %d | Position %4d | Player: %1d", \
 				temp_process->id, temp_process->pos, temp_process->player->id);
 			if (temp_process->cycles_until_exec == 0 && !temp_process->executed)
 				apply_statement(vm, temp_process);
@@ -85,7 +90,8 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 				temp_process->cycles_until_exec--;
 			if (temp_process->cycles_until_exec == 0 && !temp_process->executed)
 				execute_statement(vm, temp_process);
-			ft_printf("\n");
+			if (DEBUG == true)
+				ft_printf("\n");
 		}
 		temp_process = temp_process->next;
 	}
@@ -103,18 +109,20 @@ void	game_process(t_vm *vm)
 	init_corewar(&corewar);
 	init_arena(vm);
 	vm->latest_live = vm->player_count;
+	vm->cycle_dump = 0; // temporary until parsing is fixed to take flags.
 	while (vm->processes != NULL && vm->process_count > 0)
 	{
-		// if (corewar.cycles == vm->cycle_dump)
-		// {
-		// 	print_arena(vm);
-		// 	exit(EXIT_FAILURE);
-		// }
+		if (corewar.cycles == vm->cycle_dump)
+		{
+			print_arena(vm);
+			exit(EXIT_SUCCESS);
+		}
 		execute_cycle(vm, &corewar);
 		if (vm->cycles_to_die <= 0)
 			ft_printf("ended\n");
 		else
 			vm->cycles_to_die--;
 	}
-	ft_printf("%sGame ended.\n%s", UGRN, RESET);
+	if (DEBUG == true)
+		ft_printf("%sGame ended.\n%s", UGRN, RESET);
 }
