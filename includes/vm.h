@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 16:49:06 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/10 11:09:48 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	introduce_players(t_vm *vm);
 void	print_arena(t_vm *vm);
 void	print_processes(t_vm *vm);
 void	game_process(t_vm *vm);
+int		byte_to_int(uint8_t *arena, int position);
 
 // Processes:
 void		set_processes(t_vm *vm);
