@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/10 11:27:35 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/10 12:46:59 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ t_process	*initialise_process(t_player *player, uint32_t pos)
 		exit_vm("Memory allocation failure in initialise_process.");
 	new->player = player;
 	new->id = ++id;
-	new->op_id = 0;
 	new->pos = pos;
 	new->carry = 0;
 	new->cycles_until_exec = 0;
@@ -31,7 +30,7 @@ t_process	*initialise_process(t_player *player, uint32_t pos)
 	return (new);
 }
 
-static void	new_process(t_process **processes, t_process *new_process)
+void	new_process(t_process **processes, t_process *new_process)
 {
 	if (new_process)
 		new_process->next = *processes;

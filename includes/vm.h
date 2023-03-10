@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 12:38:54 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/10 12:47:12 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ int		byte_to_int(uint8_t *arena, int position);
 // Processes:
 void		set_processes(t_vm *vm);
 t_process	*initialise_process(t_player *player, uint32_t pos);
+void		new_process(t_process **processes, t_process *new_process);
 
 // Exit program:
 void	exit_vm(char *error_message);
