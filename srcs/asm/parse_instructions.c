@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 04:08:18 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/10 23:13:10 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	i = 0;
 	end = 0;
 	state = NULL;
-	if (is_label(assem, index))
+	if (is_label(assem, index) || skip_duplicate_label(assem, line))
 		line = ft_strchr(line, LABEL_CHAR) + 1;
 	if (line_check(line))
 		return (0);
@@ -78,7 +78,7 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	state = ft_strsub(line, i, end - i);
 	if (is_statement(assem, state))
 		return (1);
-	error_exit1(INV_STATE, assem);
+	error_exit1("lex error\n", assem);
 	return (0);
 }
 
@@ -104,6 +104,7 @@ void	parse_instructions(t_asm *assem, int index)
 
 	while (index < assem->line_count)
 	{
+		assem->lex_index = index;
 		if (assem->l_array[index]->line[0]
 			&& line_has_statement(assem, index, assem->l_array[index]->line))
 		{
@@ -115,7 +116,5 @@ void	parse_instructions(t_asm *assem, int index)
 		}
 		index++;
 	}
-	if (!assem->state)
-		error_exit1(INSTRUCT, assem);
 	parse_arguments(assem);
 }

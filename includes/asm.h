@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 17:28:53 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/10 23:33:01 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 
 typedef struct s_asm
 {
+	int				lex_index;
 	int				state_code;
 	int				line_count;
 	int				prog_size;
@@ -96,6 +97,7 @@ int		statement_label(char *line, int start);
 int		is_statement(t_asm *assem, char *state);
 int		duplicate_label(t_asm *assem, char *str);
 int		get_byte_count(t_asm *assem, char **args);
+int		skip_duplicate_label(t_asm *assem, char *line);
 int		cmd_str_check(t_asm *assem, char *line, char *cmd);
 int		line_has_statement(t_asm *assem, int index, char *line);
 char	*remove_comments(char *line);

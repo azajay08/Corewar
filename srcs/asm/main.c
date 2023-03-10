@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 02:12:32 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/10 23:11:54 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	init_asm(t_asm *assem, char *file_input)
 	assem->line_count = 0;
 	assem->state_code = 0;
 	assem->prog_size = 0;
+	assem->lex_index = 0;
 	assem->champ_name = NULL;
 	assem->champ_com = NULL;
 	assem->line = NULL;

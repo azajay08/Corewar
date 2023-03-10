@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:59:03 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 02:26:23 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/10 23:11:39 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_label	*make_label(t_asm *assem, int index, int i)
 	t_label	*label;
 	char	*str;
 
+	assem->lex_index = index;
 	str = get_label(assem, assem->l_array[index]->line, i);
 	if (!str)
 		return (NULL);
