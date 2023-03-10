@@ -3,7 +3,7 @@ Howdy pardners, this is what needs doing for the VM:
 - Rewrite parsing functions to be able to read flags
 	(e.g. -d 420 stores the dump_cycle, so that the arena prints at cycle 420).
 	Currently, only -n is read and it's hardcoded, so the system could use a little
-	regorganisation.
+	regorganisation. Currently handled in parse_players_1.c
 
 	Currently working on this:
 
