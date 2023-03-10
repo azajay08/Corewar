@@ -14,6 +14,8 @@ Howdy pardners, this is what needs doing for the VM:
 
 - Documentation. If you're writing functions, try to document them so it's easier for
 	us to read your code. Not super necessary, but will streamline the teamwork.
+	Place comments on the line directly above the function so that each function has
+	it's description updated in VS_Code!
 
 	Currently working on this:
 
