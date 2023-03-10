@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/10 11:54:11 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/10 12:09:35 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	init_corewar(t_corewar *corewar)
 /*
 ** apply_statement:
 ** - Updates the process to contain the code at the given arena position.
+** - Converts the op_code at the position into an integer. If this integer
+**   correlates to one of the registry statements, the process grabs the cycles
+**   until its execution from the op_table and stores it.
+** - Initialises the argument array for later use with the statement.
 */
 static void	apply_statement(t_vm *vm, t_process *process)
 {
@@ -112,4 +116,5 @@ void	game_process(t_vm *vm)
 		else
 			vm->cycles_to_die--;
 	}
+	ft_printf("%sGame ended.\n%s", UGRN, RESET);
 }
