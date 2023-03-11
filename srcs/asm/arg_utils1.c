@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 03:25:34 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/07 16:43:34 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:39:35 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ int	get_byte_count(t_asm *assem, char **args)
 	{
 		type = arg_value(args[i]);
 		if (!type)
-			error_exit1(ARG_TYPE, assem);
+			error_exit1(ARG_TYPE, LINE_REF, assem);
 		if (!(g_op_tab[assem->state_code].arg_type[i] & type))
-			error_exit1(ARG_TYPE, assem);
+			error_exit1(ARG_TYPE, LINE_REF, assem);
 		type = byte_length(assem, type);
 		if (!type)
-			error_exit1(ARG_TYPE, assem);
+			error_exit1(ARG_TYPE, LINE_REF, assem);
 		byte_count += type;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 03:49:58 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:40:21 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,50 +51,18 @@ char	**get_arguments(t_asm *assem, char **args)
 		i++;
 	state_arg = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!state_arg)
-		error_exit1(ARG_STR, assem);
+		error_exit1(ARG_STR, NO_REF, assem);
 	i = 0;
 	while (args[i])
 	{
 		state_arg[i] = ft_strtrim(args[i]);
 		if (!state_arg[i])
-			error_exit1(ARG_STR, assem);
+			error_exit1(ARG_STR, NO_REF, assem);
 		i++;
 	}
 	state_arg[i] = NULL;
 	ft_2d_free(args);
 	return (state_arg);
-}
-
-/*
-	line_trim returns the line back but without all the uneccesary things such
-	as comments or trailing commas. This is also another verification check
-*/
-
-char	*line_trim(t_asm *assem, int index, char *line)
-{
-	int		start;
-	int		end;
-	char	*args;
-
-	start = 0;
-	if (is_label(assem, index))
-		line = ft_strchr(line, LABEL_CHAR) + 1;
-	end = ft_strlen(line);
-	while (line[start] && ft_isspace(line[start]))
-		start++;
-	while (line[start] && !ft_isspace(line[start])
-		&& ft_strchr(LABEL_CHARS, line[start]))
-		start++;
-	if (!ft_isspace(line[start]))
-		error_exit1(ARG_ERR, assem);
-	args = ft_strsub(line, start, end - start);
-	if (!args)
-		error_exit1(NO_ARGS, assem);
-	if (line_has_comment(args))
-		args = remove_comments(args);
-	if (comma_at_end(args))
-		error_exit1(COMMA, assem);
-	return (args);
 }
 
 /*
@@ -121,6 +89,38 @@ void	init_statement(t_asm *assem, t_state *statement, int i, char **args)
 }
 
 /*
+	line_trim returns the line back but without all the uneccesary things such
+	as comments or trailing commas. This is also another verification check.
+*/
+
+char	*line_trim(t_asm *assem, int index, char *line)
+{
+	int		start;
+	int		end;
+	char	*args;
+
+	start = 0;
+	if (is_label(assem, index) || skip_duplicate_label(assem, line))
+		line = ft_strchr(line, LABEL_CHAR) + 1;
+	end = ft_strlen(line);
+	while (line[start] && ft_isspace(line[start]))
+		start++;
+	while (line[start] && !ft_isspace(line[start])
+		&& ft_strchr(LABEL_CHARS, line[start]))
+		start++;
+	if (!ft_isspace(line[start]) && line[start] != DIRECT_CHAR)
+		error_exit1(ARG_ERR, LINE_REF, assem);
+	args = ft_strsub(line, start, end - start);
+	if (!args)
+		error_exit1(NO_ARGS, LINE_REF, assem);
+	if (line_has_comment(args))
+		args = remove_comments(args);
+	if (comma_at_end(args))
+		error_exit1(COMMA, LINE_REF, assem);
+	return (args);
+}
+
+/*
 	Make_statement returns data about a statement to the t_state struct.
 
 	The byte count is added to the line array as the value of the line.
@@ -134,16 +134,17 @@ t_state	*make_statement(t_asm *assem, int index)
 	int		i;
 
 	i = 0;
+	assem->lex_index = index;
 	line = line_trim(assem, index, assem->l_array[index]->line);
 	args = ft_strsplit(line, SEPARATOR_CHAR);
 	free(line);
 	while (args[i])
 		i++;
 	if (i != g_op_tab[assem->state_code].arg_num)
-		error_exit1(ARG_COUNT, assem);
+		error_exit1(ARG_COUNT, LINE_REF, assem);
 	statement = (t_state *)malloc(sizeof(t_state));
 	if (!statement)
-		error_exit1(STATE_FAIL, assem);
+		error_exit1(STATE_FAIL, NO_REF, assem);
 	init_statement(assem, statement, i, args);
 	statement->index = index;
 	assem->l_array[index]->num = statement->byte_count;

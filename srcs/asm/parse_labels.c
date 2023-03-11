@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:59:03 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 02:26:23 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:20:36 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,16 @@ t_label	*make_label(t_asm *assem, int index, int i)
 	t_label	*label;
 	char	*str;
 
+	assem->lex_index = index;
 	str = get_label(assem, assem->l_array[index]->line, i);
 	if (!str)
 		return (NULL);
 	label = (t_label *)malloc(sizeof(t_label));
 	if (!label)
-		error_exit1(LBL_FAIL, assem);
+		error_exit1(LBL_FAIL, NO_REF, assem);
 	label->label_name = ft_strdup(str);
 	if (!label->label_name)
-		error_exit1(LBL_NAME, assem);
+		error_exit1(LBL_NAME, NO_REF, assem);
 	label->line_nb = index;
 	label->next = NULL;
 	label->state = false;
@@ -99,7 +100,7 @@ void	parse_labels(t_asm *assem, int index)
 
 	line = assem->l_array;
 	if (index >= assem->line_count)
-		error_exit1(INV_FILE, assem);
+		error_exit1(INV_FILE, NO_REF, assem);
 	while (index < assem->line_count)
 	{
 		i = 0;

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 02:18:15 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:16:19 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_comment(t_asm *assem, t_line *line, int start, int end)
 	i = 0;
 	assem->champ_com = ft_strnew(end);
 	if (!assem->champ_com)
-		error_exit1(COM_FAIL, assem);
+		error_exit1(COM_FAIL, NO_REF, assem);
 	while (i < end)
 	{
 		if (line->line[start] == '\0')
@@ -36,7 +36,7 @@ void	get_comment(t_asm *assem, t_line *line, int start, int end)
 	}
 	start++;
 	if (!line_check(&line->line[start]))
-		error_exit1(INV_HDR, assem);
+		error_exit1(INV_HDR, NO_REF, assem);
 }
 
 /*
@@ -53,7 +53,7 @@ void	get_name(t_asm *assem, t_line *line, int start, int end)
 	i = 0;
 	assem->champ_name = ft_strnew(end);
 	if (!assem->champ_name)
-		error_exit1(NAME_FAIL, assem);
+		error_exit1(NAME_FAIL, NO_REF, assem);
 	while (i < end)
 	{
 		if (line->line[start] == '\0')
@@ -70,7 +70,7 @@ void	get_name(t_asm *assem, t_line *line, int start, int end)
 	}
 	start++;
 	if (!line_check(&line->line[start]))
-		error_exit1(INV_HDR, assem);
+		error_exit1(INV_HDR, NO_REF, assem);
 }
 
 /*
@@ -100,7 +100,7 @@ t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
 		i++;
 	}
 	if (!line)
-		error_exit1(INV_HDR, assem);
+		error_exit1(INV_HDR, NO_REF, assem);
 	if (ft_strequ(cmd, NAME_CMD_STRING))
 		get_name(assem, temp, start, end);
 	else
