@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:50:11 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 20:28:29 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define ERR_FILE	"Unable to open file!\n"
 # define NO_EXE		"No executable code or labels!\n"
 # define EMPTY		"Empty file!\n"
-# define INV_FILE	"Invalid File!\n"
+# define INV_FILE	"Invalid file!\n"
 # define INV_HDR	"Invalid header!\n"
 # define INV_STATE	"Invalid statement!\n"
 # define LONG_NAME	"Name too long!\n"
