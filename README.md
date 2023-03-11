@@ -4,6 +4,32 @@
 
 _Short Summary_
 
+As with all Hive projects, they come with restraints and limitations. We have to abide by the rules of `Norminette`. Here are some of the rules we must follow:
+
+```
+* The mandatory part must be written in C
+* 25 lines maximum per function
+* 5 functions maximum per file
+* 80 columns wide maximum
+* 5 variables per function maximum
+* For loops are forbidden
+* Declaration and an initialisation cannot be on the same line
+* A function can take 4 named parameters maximum
+* Printf is forbidden - But we can use our own version made in a previous project (ft_printf)
+* Functions allowed:
+  * write
+  * malloc
+  * realloc
+  * free
+  * open
+  * close
+  * read
+  * sterror
+  * perror
+  * lseek
+  * exit
+```
+
 
 
 ## Assembler
