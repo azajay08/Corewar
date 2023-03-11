@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 23:14:25 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:40:21 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ char	**get_arguments(t_asm *assem, char **args)
 		i++;
 	state_arg = (char **)malloc(sizeof(char *) * (i + 1));
 	if (!state_arg)
-		error_exit1(ARG_STR, assem);
+		error_exit1(ARG_STR, NO_REF, assem);
 	i = 0;
 	while (args[i])
 	{
 		state_arg[i] = ft_strtrim(args[i]);
 		if (!state_arg[i])
-			error_exit1(ARG_STR, assem);
+			error_exit1(ARG_STR, NO_REF, assem);
 		i++;
 	}
 	state_arg[i] = NULL;
@@ -109,14 +109,14 @@ char	*line_trim(t_asm *assem, int index, char *line)
 		&& ft_strchr(LABEL_CHARS, line[start]))
 		start++;
 	if (!ft_isspace(line[start]) && line[start] != DIRECT_CHAR)
-		error_exit1(ARG_ERR, assem);
+		error_exit1(ARG_ERR, LINE_REF, assem);
 	args = ft_strsub(line, start, end - start);
 	if (!args)
-		error_exit1(NO_ARGS, assem);
+		error_exit1(NO_ARGS, LINE_REF, assem);
 	if (line_has_comment(args))
 		args = remove_comments(args);
 	if (comma_at_end(args))
-		error_exit1(COMMA, assem);
+		error_exit1(COMMA, LINE_REF, assem);
 	return (args);
 }
 
@@ -141,10 +141,10 @@ t_state	*make_statement(t_asm *assem, int index)
 	while (args[i])
 		i++;
 	if (i != g_op_tab[assem->state_code].arg_num)
-		error_exit1(ARG_COUNT, assem);
+		error_exit1(ARG_COUNT, LINE_REF, assem);
 	statement = (t_state *)malloc(sizeof(t_state));
 	if (!statement)
-		error_exit1(STATE_FAIL, assem);
+		error_exit1(STATE_FAIL, NO_REF, assem);
 	init_statement(assem, statement, i, args);
 	statement->index = index;
 	assem->l_array[index]->num = statement->byte_count;

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:02:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 04:26:20 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:39:01 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	get_arg_result(t_asm *assem, char **args)
 	{
 		type = arg_code(args[i]);
 		if (!type)
-			error_exit1(ARG_TYPE, assem);
+			error_exit1(ARG_TYPE, LINE_REF, assem);
 		byte = bit_shift(byte, type, shift);
 		shift -= 2;
 		i++;

@@ -1,2 +1,0 @@
-.name "MORO"
-.comment "MORJESTA!"

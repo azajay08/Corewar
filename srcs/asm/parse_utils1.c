@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 19:51:25 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/06 03:55:30 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:17:42 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	cmd_str_check(t_asm *assem, char *line, char *cmd)
 	while (ft_isspace(line[i]) && line[i])
 		i++;
 	if (line[i] != '"' || (int)ft_strlen(cmd) != j)
-		error_exit1(INV_FILE, assem);
+		error_exit1(INV_HDR, NO_REF, assem);
 	return (i);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:23:45 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 23:16:58 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:35:07 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	get_arg_value(t_asm *assem, t_state *state, int i)
 			return (ft_atoi(state->args[i]));
 	}
 	else
-		error_exit1(ARG_ERR, assem);
+		error_exit1(ARG_ERR, LINE_REF, assem);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 23:13:10 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:29:47 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ int	is_statement(t_asm *assem, char *state)
 	line_has_statement contains is_label which is in parse_utils1.c. This will
 	recognise if a label is on that line. If it find a label, a boolean is
 	triggered to be on alert to be assigned to a statement. Multiple labels
-	can refer the the same statement line.
+	can refer the the same statement line. skip_duplicate_labels in
+	parse_utils2.c checks whether the label is a duplicate so it can be
+	ignored for argument reference.
 */
 
 int	line_has_statement(t_asm *assem, int index, char *line)
@@ -74,11 +76,11 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	while (line[end] && ft_strchr(LABEL_CHARS, line[end]))
 		end++;
 	if (!line[end])
-		error_exit1(INV_STATE, assem);
+		error_exit1(SYNT_ERR, LINE_REF, assem);
 	state = ft_strsub(line, i, end - i);
 	if (is_statement(assem, state))
 		return (1);
-	error_exit1("lex error\n", assem);
+	error_exit1(SYNT_ERR, LINE_REF, assem);
 	return (0);
 }
 
@@ -116,5 +118,7 @@ void	parse_instructions(t_asm *assem, int index)
 		}
 		index++;
 	}
+	if (!assem->state && !assem->label)
+		error_exit1(NO_EXE, NO_REF, assem);
 	parse_arguments(assem);
 }

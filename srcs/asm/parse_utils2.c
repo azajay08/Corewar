@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 21:19:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 22:56:40 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/11 17:30:00 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,7 @@ int	skip_duplicate_label(t_asm *assem, char *line)
 		i++;
 	label = ft_strsub(line, 0, i);
 	if (duplicate_label(assem, label))
-	{
 		return (1);
-	}
 	else
 	{
 		free(label);
