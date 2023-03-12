@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:44:06 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:37:48 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/12 17:52:30 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	check_reg_arg(t_asm *assem, char *arg)
 		i++;
 	}
 	if (i == 1)
+		error_exit1(ARG_ERR, LINE_REF, assem);
+	if (ft_atoi(&arg[1]) > 99)
 		error_exit1(ARG_ERR, LINE_REF, assem);
 }
 
