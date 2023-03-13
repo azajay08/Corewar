@@ -35,20 +35,24 @@ typedef struct	s_player
 	struct s_player		*next;
 }				t_player;
 
+typedef struct	s_arg
+{
+	uint8_t		type;
+	int32_t		value;
+}				t_arg;
+
 typedef struct	s_process
 {
 	t_player			*player;
 	int					id;
 	int					carry;
-	uint8_t				args[3];
+	t_arg				args;
 	int					registers[REG_NUMBER];
 	int					pos;
 	int					cycles_until_exec;
-	int					bytes_to_next;
 	int					last_live_cycle;
 	uint32_t			op_code;
 	bool				executed;
-	//var to store arg? get_n_byte?
 	struct s_process	*next;
 }				t_process;
 
