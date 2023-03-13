@@ -1,5 +1,5 @@
-corewar
-asm
+./corewar
+./asm
 ./srcs/asm/obj/
 ./srcs/vm/obj/
 ./libft/libft.a
