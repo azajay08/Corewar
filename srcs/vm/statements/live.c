@@ -17,9 +17,15 @@
 ** -
 */
 
-void	live(t_process *process, t_corewar *corewar)
+void	live(t_process *process, t_corewar *corewar, t_vm *vm)
 {
+	int value;
+
 	process->last_live_cycle = corewar->cycles;
 	corewar->lives_this_round++;
-	//last_live = player?
+	value = get_n_byte(4, vm->arena, (process->pos  + 1) % MEM_SIZE);
+	value *= -1;
+	if (value > 0 && value <= vm->player_count)
+		vm->latest_live = value;
+	process->pos = (process->pos + 5) % MEM_SIZE;
 }
