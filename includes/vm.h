@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 12:49:02 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/13 15:58:49 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,12 @@ typedef struct	s_player
 	struct s_player		*next;
 }				t_player;
 
-typedef struct	s_arg
-{
-	uint8_t		type;
-	int32_t		value;
-}				t_arg;
-
 typedef struct	s_process
 {
 	t_player			*player;
 	int					id;
 	int					carry;
-	t_arg				args;
+	uint8_t				args[3];
 	int					registers[REG_NUMBER];
 	int					pos;
 	int					cycles_until_exec;
