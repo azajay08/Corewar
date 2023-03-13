@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   live.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:37 by sam               #+#    #+#             */
-/*   Updated: 2023/03/02 13:29:33 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/13 23:23:31 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** -
 */
 
-void	live(t_process *process, t_corewar *corewar, t_vm *vm)
+void	ft_live(t_process *process, t_corewar *corewar, t_vm *vm)
 {
 	int value;
 
