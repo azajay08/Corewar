@@ -1,29 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ld.c                                               :+:      :+:    :+:   */
+/*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tlahin <tlahin@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 12:47:30 by sam               #+#    #+#             */
-/*   Updated: 2023/03/02 13:29:45 by sam              ###   ########.fr       */
+/*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
+/*   Updated: 2023/03/13 12:39:25 by tlahin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-/*
-** handle_ld:
-** -
-*/
-
-/*
-Statement Code		Argument Type Code			Argument # 1		Argument # 2
-1 byte				1 byte						2/4 bytes			1 byte
-02					first 2 pairs of bits		(dir/ind)			register number
-*/
-
-void	ld()
-{
-
-}

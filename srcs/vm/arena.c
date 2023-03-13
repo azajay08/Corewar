@@ -6,7 +6,7 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/09 16:45:27 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:05:28 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ void	print_arena(t_vm *vm)
 	while (i < MEM_SIZE)
 	{
 		j = -1;
-		while (++j < 64)
+		ft_printf("%.4p : ", i);
+		while (++j < vm->print_octets)
 		{
 			temp_process = vm->processes;
 			while (temp_process)
 			{
 				if (i + j == temp_process->pos && !temp_process->executed)
 				{
-					ft_printf("%s", URED);
+					ft_printf("%s", REDB);
 					break ;
 				}
 				temp_process = temp_process->next;
@@ -94,6 +95,7 @@ void	init_arena(t_vm *vm)
 
 	i = 0;
 	starting_point = 0;
+	ft_bzero(vm->arena, 4096);
 	while (++i <= vm->player_count)
 	{
 		if (vm->player[i] == NULL)

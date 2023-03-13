@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
+#    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 10:56:43 by ajones            #+#    #+#              #
-#    Updated: 2023/02/06 16:02:33 by ajones           ###   ########.fr        #
+#    Updated: 2023/03/10 13:18:50 by sam              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c \
 ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c \
 ft_lstadd_toend.c ft_lstcount.c ft_lstfree.c ft_lstlast.c ft_abs.c ft_intlen.c \
 ft_isspace.c ft_2d_free.c ft_strjoin_free1.c ft_strjoin_free2.c ft_power.c \
-ft_power_double.c ft_round.c ft_is_neg.c ft_strjoin_line.c get_next_line.c 
+ft_power_double.c ft_round.c ft_is_neg.c ft_strjoin_line.c get_next_line.c
 
 SRC_PATH := ./srcs/
 SRC_DIR := $(addprefix $(SRC_PATH), $(SRC_FILES))
@@ -43,27 +43,27 @@ P_LIB := ft_printf/libftprintf.a
 LIB_INC := -I./includes/
 
 all: $(NAME)
-	
+
 $(NAME): $(O_PATH) $(O_DIR)
 	@echo ${CYAN}"Creating libft.a...${RESET}"
 	@ar rc $(NAME) $(O_DIR)
 	@make -C ft_printf
 	@cp $(P_LIB) $(NAME)
-	@echo ${GREEN}"Libft compiled successfully${RESET}"
+	@echo ${GREEN}"Libft compiled successfully.${RESET}"
 
 $(O_PATH):
-	@echo ${CYAN}"Creating obj subdirectory...${RESET}"
+	@echo ${CYAN}"Creating object subdirectory...${RESET}"
 	@mkdir -p $(O_PATH)
 	@echo ${CYAN}"Compiling libft...${RESET}"
 
 $(O_PATH)%.o: $(SRC_PATH)%.c
 	@gcc $(FLAGS) $(LIB_INC) -c $< -o $@
 
-	
+
 clean:
 	@rm -rf $(O_PATH)
 	@make -C ft_printf clean
-	
+
 fclean: clean
 	@echo ${RED}"Removing libft.a...${RESET}"
 	@rm -f $(NAME)
