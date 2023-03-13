@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arena.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/09 16:45:27 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/10 13:07:01 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	print_arena(t_vm *vm)
 	while (i < MEM_SIZE)
 	{
 		j = -1;
+		ft_printf("%.4p : ", i);
 		while (++j < 64)
 		{
 			temp_process = vm->processes;
@@ -33,7 +34,7 @@ void	print_arena(t_vm *vm)
 			{
 				if (i + j == temp_process->pos && !temp_process->executed)
 				{
-					ft_printf("%s", URED);
+					ft_printf("%s", REDB);
 					break ;
 				}
 				temp_process = temp_process->next;

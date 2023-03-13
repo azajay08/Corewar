@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 16:49:06 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:49:02 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 # include "libft.h"
 # include "op.h"
+# include "op_table.h"
 # include <stdbool.h>
+
+// DEBUG: Set to 1 if you wish to see debug messages
+# define DEBUG 0
 
 typedef struct	s_player
 {
@@ -36,6 +40,7 @@ typedef struct	s_process
 	t_player			*player;
 	int					id;
 	int					carry;
+	uint8_t				args[3];
 	int					registers[REG_NUMBER];
 	int					pos;
 	int					cycles_until_exec;
@@ -91,10 +96,12 @@ void	introduce_players(t_vm *vm);
 void	print_arena(t_vm *vm);
 void	print_processes(t_vm *vm);
 void	game_process(t_vm *vm);
+int		byte_to_int(uint8_t *arena, int position);
 
 // Processes:
 void		set_processes(t_vm *vm);
 t_process	*initialise_process(t_player *player, uint32_t pos);
+void		new_process(t_process **processes, t_process *new_process);
 
 // Exit program:
 void	exit_vm(char *error_message);

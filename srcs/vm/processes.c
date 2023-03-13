@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   processes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/09 16:58:13 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/10 12:46:59 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_process	*initialise_process(t_player *player, uint32_t pos)
 	return (new);
 }
 
-static void	new_process(t_process **processes, t_process *new_process)
+void	new_process(t_process **processes, t_process *new_process)
 {
 	if (new_process)
 		new_process->next = *processes;
@@ -50,5 +50,4 @@ void	set_processes(t_vm *vm)
 		vm->process_count++;
 		pos += MEM_SIZE / vm->player_count;
 	}
-	print_processes(vm);
 }
