@@ -6,7 +6,7 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/13 17:45:22 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:11:15 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	game_process(t_vm *vm)
 	init_corewar(&corewar);
 	init_arena(vm);
 	vm->latest_live = vm->player_count;
+	vm->cycle_dump = 0; // temporary until parsing is fixed to take flags.
 	while (vm->processes != NULL && vm->process_count > 0)
 	{
 		if (corewar.cycles == vm->cycle_dump)

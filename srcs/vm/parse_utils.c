@@ -47,3 +47,12 @@ void	get_player_count(int ac, char **av, uint32_t *player_count)
 		i++;
 	}
 }
+
+/*
+** :
+**
+*/
+u_int8_t get_bit_pair(u_int8_t byte, u_int8_t pos)
+{
+	return ((byte >> pos) & 3);
+}
