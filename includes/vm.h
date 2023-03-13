@@ -35,18 +35,12 @@ typedef struct	s_player
 	struct s_player		*next;
 }				t_player;
 
-typedef struct	s_arg
-{
-	uint8_t		type;
-	int32_t		value;
-}				t_arg;
-
 typedef struct	s_process
 {
 	t_player			*player;
 	int					id;
 	int					carry;
-	t_arg				args;
+	uint8_t				args[3];
 	int					registers[REG_NUMBER];
 	int					pos;
 	int					cycles_until_exec;

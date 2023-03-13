@@ -23,7 +23,15 @@ Statement Code		Argument Type Code			Argument # 1		Argument # 2
 02					first 2 pairs of bits		(dir/ind)			register number
 */
 
-void	ld()
+void	ld(t_process *process, t_vm *vm)
 {
+	u_int8_t value;
 
+
+	//process->args[0] = get_bits();
+	if (process->args[0] & IND_CODE) //check if its indirect value
+	{
+		get_pos();
+		get_n_byte(4, vm->arena, indirect_index);
+	}
 }
