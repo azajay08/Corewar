@@ -6,7 +6,7 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/13 15:58:49 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:10:41 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct	s_vm
 	t_player		*player[MAX_PLAYERS];
 	int				latest_live;
 	uint8_t			arena[MEM_SIZE];
+	uint8_t			print_octets;
 	size_t			process_count;
 	size_t			total_processes;
 	int				cycle;
@@ -81,6 +82,7 @@ void		init_players(t_vm *vm, unsigned int player_count);
 void		init_arena(t_vm *vm);
 
 // Parsing:
+<<<<<<< HEAD
 void		parse_flags(t_vm *vm, int argc, char **argv);
 void		parse(int argc, char **argv, t_vm *vm);
 int			read_cor(char **av, int i, t_player *player);
@@ -88,6 +90,17 @@ int			parse_file(unsigned char *player_data, unsigned char *data, int len);
 int			parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
 int			get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
 void		get_player_count(int ac, char **av, uint32_t *player_count);
+=======
+void	parse_flags(t_vm *vm, int argc, char **argv);
+void	set_player_order(t_player *player, char *input_id);
+int		set_dump_cycle(t_vm *vm, char *input, char *value);
+void	parse(int argc, char **argv, t_vm *vm);
+int		read_cor(char **av, int i, t_player *player);
+int		parse_file(unsigned char *player_data, unsigned char *data, int len);
+int		parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
+int		get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
+void	get_player_count(int ac, char **av, uint32_t *player_count);
+>>>>>>> c87453a1228d6937ed4512a76e6dee3b6724c2b0
 
 // Game process:
 void		introduce_players(t_vm *vm);

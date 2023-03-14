@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/10 12:42:53 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/13 18:11:15 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static void	apply_statement(t_vm *vm, t_process *process)
 	{
 		process->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
 		if (DEBUG == true)
-			ft_printf(" | Cycles until execution: %2d", process->cycles_until_exec);
+			ft_printf(" | Cycles until execution: %2d", \
+			process->cycles_until_exec);
 	}
 	while (++i < 3)
 		process->args[i] = 0;
