@@ -49,10 +49,19 @@ void	get_player_count(int ac, char **av, uint32_t *player_count)
 }
 
 /*
-** :
-**
+** Gets the n th pair of bits from a byte
+** example byte '90' is 10010000 in binary
+** 1st pair = 10, 2nd pair = 01, 3rd pair = 00, 4th pair = 00
 */
-u_int8_t get_bit_pair(u_int8_t byte, u_int8_t pos)
+int8_t get_bit_pair(u_int8_t byte, u_int8_t nth_pair)
 {
-	return ((byte >> pos) & 3);
+	if (nth_pair == 1)
+		return ((byte >> 6) & 3);
+	else if (nth_pair == 2)
+		return ((byte >> 4) & 3);
+	else if (nth_pair == 3)
+		return ((byte >> 2) & 3);
+	else if (nth_pair == 4)
+		return (byte & 3);
+	return (-1);
 }

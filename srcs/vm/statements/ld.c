@@ -16,22 +16,11 @@
 ** handle_ld:
 ** -
 */
-
-/*
-Statement Code		Argument Type Code			Argument # 1		Argument # 2
-1 byte				1 byte						2/4 bytes			1 byte
-02					first 2 pairs of bits		(dir/ind)			register number
-*/
-
-void	ld(t_process *process, t_vm *vm)
+void	ld(t_process *process)
 {
-	u_int8_t value;
-
-
-	//process->args[0] = get_bits();
-	if (process->args[0] & IND_CODE) //check if its indirect value
-	{
-		get_pos();
-		get_n_byte(4, vm->arena, indirect_index);
-	}
+	process->registers[process->args[1]] = process->args[0];
+	if (process->args[0] == 0)
+		process->carry = 1;
+	else
+		process->carry = 0;
 }

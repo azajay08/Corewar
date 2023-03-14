@@ -76,25 +76,25 @@ typedef struct	s_vm
 }				t_vm;
 
 // Initialisation:
-void	init_vm(t_vm *vm);
-void	init_players(t_vm *vm, unsigned int player_count);
-void	init_arena(t_vm *vm);
+void		init_vm(t_vm *vm);
+void		init_players(t_vm *vm, unsigned int player_count);
+void		init_arena(t_vm *vm);
 
 // Parsing:
-void	parse_flags(t_vm *vm, int argc, char **argv);
-void	parse(int argc, char **argv, t_vm *vm);
-int		read_cor(char **av, int i, t_player *player);
-int		parse_file(unsigned char *player_data, unsigned char *data, int len);
-int		parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
-int		get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
-void	get_player_count(int ac, char **av, uint32_t *player_count);
+void		parse_flags(t_vm *vm, int argc, char **argv);
+void		parse(int argc, char **argv, t_vm *vm);
+int			read_cor(char **av, int i, t_player *player);
+int			parse_file(unsigned char *player_data, unsigned char *data, int len);
+int			parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
+int			get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
+void		get_player_count(int ac, char **av, uint32_t *player_count);
 
 // Game process:
-void	introduce_players(t_vm *vm);
-void	print_arena(t_vm *vm);
-void	print_processes(t_vm *vm);
-void	game_process(t_vm *vm);
-int		byte_to_int(uint8_t *arena, int position);
+void		introduce_players(t_vm *vm);
+void		print_arena(t_vm *vm);
+void		print_processes(t_vm *vm);
+void		game_process(t_vm *vm);
+int			byte_to_int(uint8_t *arena, int position);
 
 // Processes:
 void		set_processes(t_vm *vm);
@@ -102,6 +102,11 @@ t_process	*initialise_process(t_player *player, uint32_t pos);
 void		new_process(t_process **processes, t_process *new_process);
 
 // Exit program:
-void	exit_vm(char *error_message);
+void		exit_vm(char *error_message);
+
+//statement stuff:
+int8_t		get_bit_pair(u_int8_t byte, u_int8_t nth_pair);
+int8_t		check_args(t_process *process);
+u_int16_t	get_pos(u_int16_t pos);
 
 #endif
