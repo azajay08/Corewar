@@ -24,6 +24,6 @@ Statement Code		Argument Type Code			Argument # 1		Argument # 2
 */
 
 void	ft_ld(t_process *process, t_corewar *corewar, t_vm *vm)
-[
-	
-]
+{
+
+}
