@@ -14,7 +14,7 @@
 
 /*
 ** init_vm:
-** -
+** - Initialises the necessary data for use throughout the program.
 */
 void	init_vm(t_vm *vm)
 {
@@ -24,14 +24,13 @@ void	init_vm(t_vm *vm)
 	vm->cycle_dump = -1;
 	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->latest_live = 0;
-	vm->process_count = 0;
-	vm->total_processes = 0;
-	vm->processes = NULL;
+	vm->carriage_count = 0;
+	vm->carriages = NULL;
 }
 
 /*
 ** init_players:
-** -
+** - Initialises the id of each player to 0.
 */
 void	init_players(t_vm *vm, unsigned int player_count)
 {

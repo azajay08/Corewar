@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/13 18:10:41 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:00:22 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_player
 	struct s_player		*next;
 }				t_player;
 
-typedef struct	s_process
+typedef struct	s_carriage
 {
 	t_player			*player;
 	int					id;
@@ -46,16 +46,16 @@ typedef struct	s_process
 	int					cycles_until_exec;
 	int					last_live_cycle;
 	uint32_t			op_code;
-	bool				executed;
-	struct s_process	*next;
-}				t_process;
+	bool				dead;
+	struct s_carriage	*next;
+}				t_carriage;
 
 typedef struct	s_corewar
 {
-	int					cycles_total;
 	int					cycles;
 	int					cycles_to_die;
-	int					lives_this_round;
+	int					cycles_since_check;
+	int					lives_this_period;
 	int					checks;
 	int					carry;
 }				t_corewar;
@@ -63,13 +63,13 @@ typedef struct	s_corewar
 typedef struct	s_vm
 {
 	uint32_t		player_count;
-	t_process		*processes;
+	t_carriage		*carriages;
 	t_player		*player[MAX_PLAYERS];
 	int				latest_live;
 	uint8_t			arena[MEM_SIZE];
 	uint8_t			print_octets;
-	size_t			process_count;
-	size_t			total_processes;
+	size_t			carriage_count;
+	size_t			total_carriagees;
 	int				cycle;
 	int				cycles_to_die;
 	int				checks;
@@ -95,21 +95,24 @@ void	get_player_count(int ac, char **av, uint32_t *player_count);
 // Game process:
 void		introduce_players(t_vm *vm);
 void		print_arena(t_vm *vm);
-void		print_processes(t_vm *vm);
+void		print_carriages(t_vm *vm);
 void		game_process(t_vm *vm);
 int			byte_to_int(uint8_t *arena, int position);
+void		cycle_check(t_vm *vm, t_corewar *corewar);
+void		apply_statement(t_vm *vm, t_carriage *carriage);
+void		execute_statement(t_vm *vm, t_carriage *carriage);
 
 // Processes:
-void		set_processes(t_vm *vm);
-t_process	*initialise_process(t_player *player, uint32_t pos);
-void		new_process(t_process **processes, t_process *new_process);
+void		set_carriages(t_vm *vm);
+t_carriage	*initialise_carriage(t_player *player, uint32_t pos);
+void		new_carriage(t_carriage **carriagees, t_carriage *new_carriage);
 
 // Exit program:
 void		exit_vm(char *error_message);
 
 //statement stuff:
 int8_t		get_bit_pair(u_int8_t byte, u_int8_t nth_pair);
-int8_t		check_args(t_process *process);
+int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
 
 #endif

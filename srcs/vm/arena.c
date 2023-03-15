@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arena.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/13 18:11:21 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:23:52 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 void	print_arena(t_vm *vm)
 {
-	t_process	*temp_process;
+	t_carriage	*temp_carriage;
 	int			i;
 	int			j;
 
@@ -29,15 +29,15 @@ void	print_arena(t_vm *vm)
 		ft_printf("%.4p : ", i);
 		while (++j < vm->print_octets)
 		{
-			temp_process = vm->processes;
-			while (temp_process)
+			temp_carriage = vm->carriages;
+			while (temp_carriage)
 			{
-				if (i + j == temp_process->pos && !temp_process->executed)
+				if (i + j == temp_carriage->pos && !temp_carriage->dead)
 				{
 					ft_printf("%s", REDB);
 					break ;
 				}
-				temp_process = temp_process->next;
+				temp_carriage = temp_carriage->next;
 			}
 			ft_printf("%02x%s ", vm->arena[i + j], RESET);
 		}

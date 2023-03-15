@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse_players_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/13 18:07:37 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:09:18 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** :
-**
+** assign_player:
+** - Stores the .cor file data inside the player struct
 */
 static void	assign_player(t_vm *vm, t_player *player, int ret)
 {
@@ -97,7 +97,7 @@ static void	do_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 
 /*
 ** parse:
-** -
+** - Parses the input until each player is assigned their id and data.
 */
 void	parse(int ac, char **av, t_vm *vm)
 {

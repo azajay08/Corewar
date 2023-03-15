@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/13 18:11:09 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:03:52 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+** print_usage:
+** - When the given input is incorrect, the correct program usage is printed.
+*/
 static void	print_usage(void)
 {
 	exit_vm("Usage: ./corewar champ1.cor (champ2.cor champ3.cor)");
@@ -30,8 +34,8 @@ int	main(int argc, char **argv)
 		ft_printf("%sParsing assembled files...%s\n", UGRN, RESET);
 	parse(argc, argv, &vm);
 	if (DEBUG == true)
-		ft_printf("%sInitialising processes...%s\n", UGRN, RESET);
-	set_processes(&vm);
+		ft_printf("%sInitialising carriages...%s\n", UGRN, RESET);
+	set_carriages(&vm);
 	if (DEBUG == true)
 		ft_printf("%sIntroducing players...%s\n", UGRN, RESET);
 	introduce_players(&vm);
