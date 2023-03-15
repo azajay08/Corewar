@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 02:10:56 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 03:39:41 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/15 03:53:25 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	atoi_limit_neg(char *arg)
 			free(ll_min);
 			return (-1);
 		}
-		i++;	
+		i++;
 	}
 	free(ll_min);
 	return (ft_atoi(arg));
@@ -46,7 +46,7 @@ int	atoi_limit_pos(char *arg)
 			free(ll_max);
 			return (-1);
 		}
-		i++;	
+		i++;
 	}
 	free(ll_max);
 	return (ft_atoi(arg));
