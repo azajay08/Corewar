@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 12:49:02 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/15 13:56:27 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_process
 	int					cycles_until_exec;
 	int					bytes_to_next;
 	int					last_live_cycle;
+	int					result_code;
 	uint32_t			op_code;
 	bool				executed;
 	//var to store arg? get_n_byte?
