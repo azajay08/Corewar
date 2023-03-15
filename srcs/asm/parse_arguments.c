@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:23:45 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:35:07 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/15 03:32:08 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ int	label_value(t_asm *assem, t_state *state, int i)
 	is. The value can just be whatever numbers are given as arguments in the
 	correct format. If it is a label however, the value needs to be calculated
 	by distance of bytes to that particular label, using label_value.
+
+	atoi_limit go to arg_utils4.c. The purpose of this function is to
+	check whether the number given as an argument goes out of the limits of a 
+	long long int. If this is the case, the value will either be set to 0 or -1
+	depending if the number agruemnt given has surpassed the the LONG_MIN or
+	LONG_MAX. If it is within the limits, a normal ft_atoi returns an integar
+	value.
 */
 
 int	get_arg_value(t_asm *assem, t_state *state, int i)
@@ -79,14 +86,14 @@ int	get_arg_value(t_asm *assem, t_state *state, int i)
 		if (state->args[i][1] == LABEL_CHAR)
 			return (label_value(assem, state, i));
 		else
-			return (ft_atoi(ft_strchr(state->args[i], DIRECT_CHAR) + 1));
+			return (atoi_limit(ft_strchr(state->args[i], DIRECT_CHAR) + 1));
 	}
 	else if (arg_value(state->args[i]) == T_IND)
 	{
 		if (state->args[i][0] == LABEL_CHAR)
 			return (label_value(assem, state, i));
 		else
-			return (ft_atoi(state->args[i]));
+			return (atoi_limit(state->args[i]));
 	}
 	else
 		error_exit1(ARG_ERR, LINE_REF, assem);
