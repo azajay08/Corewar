@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 13:56:27 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:06:38 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,18 @@ typedef struct	s_player
 	struct s_player		*next;
 }				t_player;
 
+typedef struct	s_args
+{
+	int 				type;
+	int					value;
+} 				t_args;
+
 typedef struct	s_process
 {
 	t_player			*player;
 	int					id;
 	int					carry;
-	uint8_t				args[3];
+	t_args				args[3];
 	int					registers[REG_NUMBER];
 	int					pos;
 	int					cycles_until_exec;
