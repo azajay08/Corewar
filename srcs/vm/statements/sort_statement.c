@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   statement_sort.c                                   :+:      :+:    :+:   */
+/*   sort_statement.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/13 23:18:12 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/15 19:40:16 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,4 @@ void	sort_state_16(int state, t_process *process, t_corewar *cw, t_vm *vm)
 		ft_lfork(process, cw, vm);
 	else if (state == AFF)
 		ft_aff(process, cw, vm);
-	else
-		skip_statement(process, cw, vm);
 }
