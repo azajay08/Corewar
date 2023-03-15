@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/15 17:07:18 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/15 17:45:51 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	set_dump_cycle(t_vm *vm, char *input, char *value)
 {
 	if (!ft_isnumber(value))
 		exit_vm("Invalid dump value.");
-	vm->cycle_dump = ft_atoi(value);
-	if (vm->cycle_dump < 0)
+	vm->dump = ft_atoi(value);
+	if (vm->dump < 0)
 		exit_vm("Invalid dump cycle.");
 	if (ft_strlen(input) == 2)
 		vm->print_octets = 32;

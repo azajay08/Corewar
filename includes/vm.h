@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 17:00:22 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/15 17:50:16 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 // DEBUG: Set to 1 if you wish to see debug messages
 # define DEBUG 0
 
-typedef struct	s_player
+typedef struct s_player
 {
 	unsigned int		id;
 	int					last_live;
@@ -35,7 +35,7 @@ typedef struct	s_player
 	struct s_player		*next;
 }				t_player;
 
-typedef struct	s_carriage
+typedef struct s_carriage
 {
 	t_player			*player;
 	int					id;
@@ -50,7 +50,7 @@ typedef struct	s_carriage
 	struct s_carriage	*next;
 }				t_carriage;
 
-typedef struct	s_corewar
+typedef struct s_corewar
 {
 	int					cycles;
 	int					cycles_to_die;
@@ -60,7 +60,7 @@ typedef struct	s_corewar
 	int					carry;
 }				t_corewar;
 
-typedef struct	s_vm
+typedef struct s_vm
 {
 	uint32_t		player_count;
 	t_carriage		*carriages;
@@ -73,7 +73,7 @@ typedef struct	s_vm
 	int				cycle;
 	int				cycles_to_die;
 	int				checks;
-	int				cycle_dump;
+	int				dump;
 }				t_vm;
 
 // Initialisation:
@@ -82,15 +82,16 @@ void		init_players(t_vm *vm, unsigned int player_count);
 void		init_arena(t_vm *vm);
 
 // Parsing:
-void	parse_flags(t_vm *vm, int argc, char **argv);
-void	set_player_order(t_player *player, char *input_id);
-int		set_dump_cycle(t_vm *vm, char *input, char *value);
-void	parse(int argc, char **argv, t_vm *vm);
-int		read_cor(char **av, int i, t_player *player);
-int		parse_file(unsigned char *player_data, unsigned char *data, int len);
-int		parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
-int		get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
-void	get_player_count(int ac, char **av, uint32_t *player_count);
+void		parse_flags(t_vm *vm, int argc, char **argv);
+void		set_player_order(t_player *player, char *input_id);
+int			set_dump_cycle(t_vm *vm, char *input, char *value);
+void		parse(int argc, char **argv, t_vm *vm);
+int			read_cor(char **av, int i, t_player *player);
+int			parse_file(\
+			unsigned char *player_data, unsigned char *data, int len);
+int			parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
+int			get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
+void		get_player_count(int ac, char **av, uint32_t *player_count);
 
 // Game process:
 void		introduce_players(t_vm *vm);

@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:12:14 by sam               #+#    #+#             */
-/*   Updated: 2023/03/15 17:13:00 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/15 17:47:07 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	get_player_count(int ac, char **av, uint32_t *player_count)
 **   - Byte '90' is 10010000 in binary.
 **   - 1st pair = 10, 2nd pair = 01, 3rd pair = 00, 4th pair = 00.
 */
-int8_t get_bit_pair(u_int8_t byte, u_int8_t nth_pair)
+int8_t	get_bit_pair(u_int8_t byte, u_int8_t nth_pair)
 {
 	if (nth_pair == 1)
 		return ((byte >> 6) & 3);
