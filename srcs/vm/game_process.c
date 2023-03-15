@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/10 12:42:53 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/15 13:57:51 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,47 @@ static void	apply_statement(t_vm *vm, t_process *process)
 	int	i;
 
 	i = -1;
-	byte_as_int = byte_to_int(vm->arena, process->pos);
-	process->op_code = vm->arena[process->pos];
+	byte_as_int = vm->arena[process->pos];
+	// process->op_code = vm->arena[process->pos];
 	if (DEBUG == true)
 		ft_printf(" | %.2x : %3d", process->op_code, byte_as_int);
 	if (byte_as_int >= 1 && byte_as_int <= 16)
 	{
+		process->op_code = byte_as_int;
 		process->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
 		if (DEBUG == true)
 			ft_printf(" | Cycles until execution: %2d", process->cycles_until_exec);
 	}
-	while (++i < 3)
-		process->args[i] = 0;
+	else
+		process->pos = (process->pos + 1) % MEM_SIZE;
+	// while (++i < 3)
+	// 	process->args[i] = 0;
 }
 
 /*
 ** execute_statement:
 ** - Executes the statement correlating to the op code at the arena position.
 */
-static void	execute_statement(t_vm *vm, t_process *process)
+static void	execute_statement(t_vm *vm, t_process *process, t_corewar *cw)
 {
+	int position;
+	
 	if (DEBUG == true)
 		ft_printf(" | Executing...");
-	process->executed = true;
-	vm->process_count--;
+	position = vm->arena[process->pos];
+	if (position >= 1 && position <= 16)
+	{
+		process->op_code = position;
+		process->result_code = (vm->arena[(process->pos + 1) % MEM_SIZE]);
+		if (check_args_validity(vm, process))
+			sort_state_8(process->op_code, process, cw, vm);
+		count_bytes_to_skip(process); //calculate how much to move
+		move_to_next_statement(process); //need to move player to next
+	}
+	else
+		process->pos = (process->pos + 1) % MEM_SIZE;
+	// process->executed = true;
+	// vm->process_count--;
 }
 
 /*

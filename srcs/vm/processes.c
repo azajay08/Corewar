@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   processes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/10 12:46:59 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/15 13:56:05 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_process	*initialise_process(t_player *player, uint32_t pos)
 	new->cycles_until_exec = 0;
 	new->executed = false;
 	new->next = NULL;
+	new->result_code = 0;
 	return (new);
 }
 
