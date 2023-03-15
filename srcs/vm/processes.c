@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/15 13:56:05 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:46:59 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_process	*initialise_process(t_player *player, uint32_t pos)
 	new->executed = false;
 	new->next = NULL;
 	new->result_code = 0;
+	new->args[0].type = 0;
+	new->args[0].value = 0;
 	return (new);
 }
 

@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/15 13:57:51 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/15 20:10:07 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	apply_statement(t_vm *vm, t_process *process)
 			ft_printf(" | Cycles until execution: %2d", process->cycles_until_exec);
 	}
 	else
-		process->pos = (process->pos + 1) % MEM_SIZE;
+		process->pos = (process->pos + 1) % MEM_SIZE;  // do we move vm->process
 	// while (++i < 3)
 	// 	process->args[i] = 0;
 }
@@ -61,6 +61,19 @@ static void	apply_statement(t_vm *vm, t_process *process)
 ** execute_statement:
 ** - Executes the statement correlating to the op code at the arena position.
 */
+void	count_bytes_to_skip(t_process *process)
+{
+	int	i;
+
+	i = 0;
+	process->bytes_to_next = 0; // DONT NEED IF RESET
+	process->bytes_to_next += g_op_tab[process->op_code - 1].arg_type_code + 1;
+	while (i < g_op_tab[process->op_code - 1].arg_num)
+	{
+		process->bytes_to_next +=
+	}
+}
+
 static void	execute_statement(t_vm *vm, t_process *process, t_corewar *cw)
 {
 	int position;
@@ -72,13 +85,16 @@ static void	execute_statement(t_vm *vm, t_process *process, t_corewar *cw)
 	{
 		process->op_code = position;
 		process->result_code = (vm->arena[(process->pos + 1) % MEM_SIZE]);
-		if (check_args_validity(vm, process))
-			sort_state_8(process->op_code, process, cw, vm);
-		count_bytes_to_skip(process); //calculate how much to move
+		if (check_args_validity(&process))
+		{
+			if (reg_check(&process, &vm))
+				get_arg_values(&process, &vm, &cw);
+		}
+		count_bytes_to_skip(&process); //calculate how much to move
 		move_to_next_statement(process); //need to move player to next
 	}
 	else
-		process->pos = (process->pos + 1) % MEM_SIZE;
+		process->pos = (process->pos + 1) % MEM_SIZE; // do we move vm->process
 	// process->executed = true;
 	// vm->process_count--;
 }
@@ -106,7 +122,7 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 			if (temp_process->cycles_until_exec > 0 && !temp_process->executed)
 				temp_process->cycles_until_exec--;
 			if (temp_process->cycles_until_exec == 0 && !temp_process->executed)
-				execute_statement(vm, temp_process);
+				execute_statement(&vm, &temp_process, &corewar);
 			if (DEBUG == true)
 				ft_printf("\n");
 		}
