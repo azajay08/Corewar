@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 03:27:10 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/15 03:57:05 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define SYNT_ERR	"Syntax error!\n"
 # define LINE_REF	1
 # define NO_REF		0
-# define MIN_LEN	20	// Long long max 
+# define MIN_LEN	20
 # define MAX_LEN	19
 
 typedef struct s_asm
