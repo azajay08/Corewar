@@ -56,6 +56,7 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 		temp_carriage = temp_carriage->next;
 	}
 	corewar->cycles++;
+	corewar->cycles_since_check++;
 }
 
 /*
@@ -78,7 +79,10 @@ void	game_process(t_vm *vm)
 			exit(EXIT_SUCCESS);
 		}
 		execute_cycle(vm, &corewar);
-		cycle_check(vm, &corewar);
+		corewar.cycles_to_die--;
+		if (corewar.cycles_to_die <= 0 || \
+			corewar.cycles_since_check == corewar.cycles_to_die)
+			cycle_check(vm, &corewar);
 	}
 	if (DEBUG == true)
 		ft_printf("%sGame ended.\n%s", UGRN, RESET);
