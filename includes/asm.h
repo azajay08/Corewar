@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 15:12:53 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 02:48:08 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/15 03:27:10 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 # define SYNT_ERR	"Syntax error!\n"
 # define LINE_REF	1
 # define NO_REF		0
+# define MIN_LEN	20	// Long long max 
+# define MAX_LEN	19
 
 typedef struct s_asm
 {
@@ -92,10 +94,9 @@ int		main(int argc, char **argv);
 */
 
 int		arg_value(char *arg);
+int		atoi_limit(char *arg);
 int		line_check(char *line);
 int		comma_at_end(char *line);
-int		atoi_limit_neg(char *arg);
-int		atoi_limit_pos(char *arg);
 int		parse_header(t_asm *assem);
 int		end_line_space(t_asm *assem);
 int		line_has_comment(char *line);
