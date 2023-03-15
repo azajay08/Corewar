@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 02:10:56 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 02:21:48 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/15 02:51:20 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ int	atoi_limit_neg(char *arg)
 	return (ft_atoi(arg));
 }
 
+/*
+	The limtits have to be checked by string lengths and char values becuase 
+	if the number is out of range, it cannot be dealth with. If these checks
+	are not performed and the number is out of range, ft_atoi would return a 
+	value that has cycled back round from the MIN or MAX.
+*/
+
 int	atoi_limit_pos(char *arg)
 {
 	int		i;
@@ -66,12 +73,4 @@ int	atoi_limit_pos(char *arg)
 	}
 	free(l_max);
 	return (ft_atoi(arg));
-}
-
-int	atoi_limit(char *arg)
-{
-	if (arg[0] == '-')
-		return (atoi_limit_neg(arg));
-	else
-		return (atoi_limit_pos(arg));
 }
