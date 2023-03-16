@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/15 20:10:07 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:02:47 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	apply_statement(t_vm *vm, t_process *process)
 
 	i = -1;
 	byte_as_int = vm->arena[process->pos];
-	// process->op_code = vm->arena[process->pos];
+
 	if (DEBUG == true)
 		ft_printf(" | %.2x : %3d", process->op_code, byte_as_int);
 	if (byte_as_int >= 1 && byte_as_int <= 16)
@@ -52,28 +52,13 @@ static void	apply_statement(t_vm *vm, t_process *process)
 			ft_printf(" | Cycles until execution: %2d", process->cycles_until_exec);
 	}
 	else
-		process->pos = (process->pos + 1) % MEM_SIZE;  // do we move vm->process
-	// while (++i < 3)
-	// 	process->args[i] = 0;
+		process->pos = (process->pos + 1) % MEM_SIZE;
 }
 
 /*
 ** execute_statement:
 ** - Executes the statement correlating to the op code at the arena position.
 */
-void	count_bytes_to_skip(t_process *process)
-{
-	int	i;
-
-	i = 0;
-	process->bytes_to_next = 0; // DONT NEED IF RESET
-	process->bytes_to_next += g_op_tab[process->op_code - 1].arg_type_code + 1;
-	while (i < g_op_tab[process->op_code - 1].arg_num)
-	{
-		process->bytes_to_next +=
-	}
-}
-
 static void	execute_statement(t_vm *vm, t_process *process, t_corewar *cw)
 {
 	int position;
@@ -90,8 +75,8 @@ static void	execute_statement(t_vm *vm, t_process *process, t_corewar *cw)
 			if (reg_check(&process, &vm))
 				get_arg_values(&process, &vm, &cw);
 		}
-		count_bytes_to_skip(&process); //calculate how much to move
-		move_to_next_statement(process); //need to move player to next
+		count_bytes_to_skip(&process);
+		move_to_next_statement(process, vm);
 	}
 	else
 		process->pos = (process->pos + 1) % MEM_SIZE; // do we move vm->process
