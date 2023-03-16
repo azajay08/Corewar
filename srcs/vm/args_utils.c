@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:37:51 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:08:45 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	reset_args(t_carriage *carriage)
 	}
 }
 
+/*
+- Validates which arg is correct.
+*/
 int	arg_byte_count(t_carriage *carriage, int type)
 {
 	if (type == T_REG)
