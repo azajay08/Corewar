@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 17:20:10 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 17:21:54 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 		{
 			if (DEBUG == true)
 				ft_printf("Carriage %d | Position %4d | Player: %1d", \
-				carriage->id, carriage->pos, \carriage->player->id);
+				carriage->id, carriage->pos, carriage->player->id);
 			if (carriage->cycles_until_exec == 0)
 				apply_statement(vm, carriage);
 			if (carriage->cycles_until_exec > 0)
