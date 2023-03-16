@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:37:51 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 16:08:45 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:15:19 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ int	arg_byte_count(t_carriage *carriage, int type)
 		return (g_op_tab[carriage->op_code - 1].size_t_dir);
 }
 
+/*
+** Runs through the arguments and checks if any of them are an argument of type
+** REG, it will then go to check if it is a valid argument being 1-16.
+*/
 int	reg_check(t_carriage *carriage, t_vm *vm)
 {
 	int	i;
