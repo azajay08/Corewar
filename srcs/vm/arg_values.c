@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:08:35 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 16:52:24 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 17:13:17 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
 	offset = g_op_tab[carriage->op_code - 1].arg_type_code + 1;
 	while (i < g_op_tab[carriage->op_code - 1].arg_num)
 	{
-		byte_skip = arg_val(&carriage, carriage->args[i].type);
+		byte_skip = arg_byte_count(&carriage, carriage->args[i].type);
 		if (carriage->args[i].type == T_REG)
 			carriage->args[i].value = get_reg_value(carriage, vm, offset);
 		else if (carriage->args[i].type == T_IND)

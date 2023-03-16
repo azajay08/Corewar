@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/16 16:55:27 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 17:13:46 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,18 +118,20 @@ void		new_carriage(t_carriage **carriagees, t_carriage *new_carriage);
 
 // Game utilities
 void		reset_args(t_carriage *carriage);
-int			arg_byte_count(t_carriage *carriage, int type);
-int			reg_check(t_carriage *carriage, t_vm *vm);
 void		move_to_next_statement(t_carriage *carriage);
 void		count_bytes_to_skip(t_carriage *carriage);
+int			arg_byte_count(t_carriage *carriage, int type);
+int			reg_check(t_carriage *carriage, t_vm *vm);
 int			byte_to_int(uint8_t *arena, int position);
+int			arg_byte_count(t_carriage *carriage, int type);
 
 // Exit program:
 void		exit_vm(char *error_message);
 
 //Statements:
-int			check_args_validity(t_carriage *carriage);
 void		get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw);
+int			check_args_validity(t_carriage *carriage);
+int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
 int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
