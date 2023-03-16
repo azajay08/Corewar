@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ld.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:30 by sam               #+#    #+#             */
-/*   Updated: 2023/03/02 13:29:45 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Statement Code		Argument Type Code			Argument # 1		Argument # 2
 02					first 2 pairs of bits		(dir/ind)			register number
 */
 
-void	ld()
+void	ft_ld(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
 
 }

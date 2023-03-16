@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   live.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:37 by sam               #+#    #+#             */
-/*   Updated: 2023/03/02 13:29:33 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 ** -
 */
 
-void	live(t_process *process, t_corewar *corewar, t_vm *vm)
+void	ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
 	int value;
 
-	process->last_live_cycle = corewar->cycles;
+	carriage->last_live_cycle = corewar->cycles;
 	corewar->lives_this_round++;
-	value = get_n_byte(4, vm->arena, (process->pos  + 1) % MEM_SIZE);
+	value = get_n_byte(4, vm->arena, (carriage->pos  + 1) % MEM_SIZE);
 	value *= -1;
 	if (value > 0 && value <= vm->player_count)
 		vm->latest_live = value;
-	process->pos = (process->pos + 5) % MEM_SIZE;
+	carriage->pos = (carriage->pos + 5) % MEM_SIZE;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sti.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:48 by sam               #+#    #+#             */
-/*   Updated: 2023/03/02 13:28:45 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,3 +16,8 @@
 ** handle_sti:
 ** -
 */
+
+void	ft_sti(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
+[
+	
+]

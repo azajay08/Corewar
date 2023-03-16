@@ -23,9 +23,9 @@ void	init_vm(t_vm *vm)
 	vm->cycle = 0;
 	vm->cycles_to_die = CYCLE_TO_DIE;
 	vm->latest_live = 0;
-	vm->process_count = 0;
-	vm->total_processes = 0;
-	vm->processes = NULL;
+	vm->carriage_count = 0;
+	vm->total_carriages = 0;
+	vm->carriages = NULL;
 }
 
 /*
