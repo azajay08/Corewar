@@ -3,15 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:09:20 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:36:34 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+** byte_to_int:
+** - Takes the value of the given position in the arena, casting it as an int
+**   so that it can be used to find which statement to execute.
+*/
 int	byte_to_int(uint8_t *arena, int position)
 {
 	return ((int)arena[position]);
@@ -36,7 +41,7 @@ void	count_bytes_to_skip(t_carriage *carriage)
 	}
 }
 
-void	move_to_next_statement(t_carriage *carriage, t_vm *vm)
+void	move_to_next_statement(t_carriage *carriage)
 {
 	if (carriage->op_code == 9 && carriage->carry == 1)
 	{

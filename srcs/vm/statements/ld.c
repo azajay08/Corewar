@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ld.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:30 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:25:26 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ Statement Code		Argument Type Code			Argument # 1		Argument # 2
 
 void	ft_ld(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
-
+	process->registers[process->args[1]] = process->args[0];
+	if (process->args[0] == 0)
+		process->carry = 1;
+	else
+		process->carry = 0;
 }

@@ -2,7 +2,7 @@
 WAR_DIR = ..
 OUR_WAR = $(WAR_DIR)/corewar
 SCH_WAR = ./42/corewar42
-FLAGS =
+FLAGS = -d 5
 
 CHAMP_D = ./champs/compiled
 CHAMP_1 = $(CHAMP_D)/Gagnant.cor
@@ -25,15 +25,15 @@ fclean:		clean
 re:			fclean all
 
 norm:
-			@norminette ../libft
-			@norminette ../srcs
-			@norminette ../includes
+			@norminette -R CheckForbiddenSourceHeader ../libft
+			@norminette -R CheckForbiddenSourceHeader ../srcs
+			@norminette -R CheckForbiddenSourceHeader ../includes
 
 42:
 			@$(SCH_WAR) -n $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
 
 test:		all
-			@$(OUR_WAR) $(FLAGS) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
+			@$(OUR_WAR) $(FLAGS) -n 3 $(CHAMP_1) -n 1 $(CHAMP_2) -n 2 $(CHAMP_3)
 
 compare:	all
 			@mkdir -p $(LOG_DIR)

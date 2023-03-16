@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arena.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 15:43:27 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:20:59 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	print_arena(t_vm *vm)
 	{
 		j = -1;
 		ft_printf("%.4p : ", i);
-		while (++j < 64)
+		while (++j < vm->print_octets)
 		{
 			temp_carriage = vm->carriages;
 			while (temp_carriage)
 			{
-				if (i + j == temp_carriage->pos && !temp_carriage->executed)
+				if (i + j == temp_carriage->pos && !temp_carriage->dead)
 				{
 					ft_printf("%s", REDB);
 					break ;
@@ -95,6 +95,7 @@ void	init_arena(t_vm *vm)
 
 	i = 0;
 	starting_point = 0;
+	ft_bzero(vm->arena, 4096);
 	while (++i <= vm->player_count)
 	{
 		if (vm->player[i] == NULL)

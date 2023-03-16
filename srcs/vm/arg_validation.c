@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_args.c                                    :+:      :+:    :+:   */
+/*   arg_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:51:46 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ int	arg_validity(t_carriage *carriage)
 	return (1);
 }
 
+/*
+** get_bit_pair:
+** - Gets the n th pair of bits from a byte.
+** - Example:
+**   - Byte '90' is 10010000 in binary.
+**   - 1st pair = 10, 2nd pair = 01, 3rd pair = 00, 4th pair = 00.
+*/
 int8_t get_bit_pair(int byte, u_int8_t nth_pair)
 {
 	if (nth_pair == 1)
@@ -49,7 +56,7 @@ int8_t get_bit_pair(int byte, u_int8_t nth_pair)
 	return (0);
 }
 
-int check_result_code(t_carriage *carriage)
+static int check_result_code(t_carriage *carriage)
 {
 	int	i;
 	int	bit_pair;
@@ -63,7 +70,7 @@ int check_result_code(t_carriage *carriage)
 		carriage->args[i].type = bit_pair;
 		i++;
 	}
-	return (arg_validity(&carriage));
+	return (arg_validity(carriage));
 }
 
 int		check_args_validity(t_carriage *carriage)
@@ -71,6 +78,6 @@ int		check_args_validity(t_carriage *carriage)
 	if (!g_op_tab[carriage->op_code - 1].arg_type_code)
 		return (1);
 	else
-		return (check_result_code(&carriage));
+		return (check_result_code(carriage));
 }
 

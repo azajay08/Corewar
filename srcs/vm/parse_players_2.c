@@ -13,8 +13,8 @@
 #include "vm.h"
 
 /*
-** :
-**
+** read_cor:
+** - Reads the contents of the given .cor file.
 */
 int	read_cor(char **av, int i, t_player *player)
 {
@@ -30,8 +30,8 @@ int	read_cor(char **av, int i, t_player *player)
 }
 
 /*
-** :
-**
+** parse_file:
+** - 
 */
 int	parse_file(unsigned char *player_data, unsigned char *data, int len)
 {
@@ -40,8 +40,8 @@ int	parse_file(unsigned char *player_data, unsigned char *data, int len)
 }
 
 /*
-** :
-**
+** parse_size:
+** - Reads the .cor file, returning the size of the champion.
 */
 int	parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i)
 {

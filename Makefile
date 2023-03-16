@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
+#    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/03/15 02:19:22 by ajones           ###   ########.fr        #
+#    Updated: 2023/03/16 16:48:19 by sam              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIB := -L./libft/includes -lft
 ASM_SRCS := main.c errors.c free.c read_file.c verify.c parse_header.c \
 parse_labels.c parse_utils1.c parse_utils2.c parse_instructions.c \
 make_statement.c write_to_cor.c write_exec.c arg_utils1.c arg_utils2.c \
-arg_utils3.c arg_utils4.c parse_arguments.c 
+arg_utils3.c arg_utils4.c parse_arguments.c
 
 ASM_PATH := srcs/asm/
 ASM_DIR := $(addprefix $(ASM_PATH), $(ASM_SRCS))
@@ -37,8 +37,10 @@ ASM_O_DIR := $(addprefix $(ASM_O_PATH), $(ASM_OBJ))
 # VIRTUAL MACHINE
 CW_SRCS := \
 main.c init.c exit_program.c \
-parse_players_1.c parse_players_2.c parse_utils.c \
-game_process.c arena.c processes.c game_utils.c \
+parse_players_1.c parse_players_2.c parse_utils.c parse_input_args.c \
+game_process.c game_arena.c game_utils.c game_check.c \
+carriage_init.c carriage_action.c \
+arg_validation.c arg_values.c arg_utils.c \
 debug_printing.c
 
 CW_PATH := srcs/vm/

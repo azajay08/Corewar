@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_args_value.c                                   :+:      :+:    :+:   */
+/*   arg_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:08:35 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:52:24 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
+static int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	dir;
 
@@ -31,7 +31,7 @@ int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
 	}
 	return (dir);
 }
-int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
+static int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	ind;
 
@@ -41,15 +41,15 @@ int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
 	return (ind);
 }
 
-int	get_reg_value(t_carriage *carriage, t_vm *vm, int offset)
+static int	get_reg_value(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	reg;
-	
+
 	reg = vm->arena[(carriage->pos + offset) % MEM_SIZE];
 	return (reg);
 }
 
-void	get_args_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
+void	get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
 {
 	int	i;
 	int offset;
@@ -70,5 +70,4 @@ void	get_args_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
 		offset += byte_skip;
 	}
 	sort_state_8(carriage->op_code, carriage, cw, vm);
-	return (1);
 }

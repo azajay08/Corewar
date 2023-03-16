@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   processes.c                                        :+:      :+:    :+:   */
+/*   carriage_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/16 15:43:27 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:21:38 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_carriage	*initialise_carriage(t_player *player, uint32_t pos)
 	new->pos = pos;
 	new->carry = 0;
 	new->cycles_until_exec = 0;
-	new->executed = false;
+	new->dead = false;
 	new->next = NULL;
 	new->result_code = 0;
 	new->args[0].type = 0;
@@ -49,7 +49,8 @@ void	set_carriages(t_vm *vm)
 	pos = 0;
 	while (++id <= vm->player_count)
 	{
-		new_carriage(&(vm->carriages), initialise_carriage(vm->player[id], pos));
+		new_carriage(&(vm->carriages), \
+			initialise_carriage(vm->player[id], pos));
 		vm->carriage_count++;
 		pos += MEM_SIZE / vm->player_count;
 	}

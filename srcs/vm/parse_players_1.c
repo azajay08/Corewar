@@ -3,40 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse_players_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/09 16:01:02 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/15 17:45:24 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** get_id:
-** -
-*/
-static void	get_id(int ac, char **av, int i, t_player *player)
-{
-	char		*s;
-	uint32_t	nbr;
-	int			j;
-
-	if (i + 1 >= ac)
-		exit_vm("Invalid argument count.");
-	s = av[i + 1];
-	j = 0;
-	while (s[j] && ft_isdigit(s[j]))
-		j++;
-	nbr = ft_atoi(s);
-	if (nbr < 1 || nbr > MAX_PLAYERS)
-		exit_vm("Invalid player ID.");
-	player->id = nbr;
-}
-
-/*
-** :
-**
+** assign_player:
+** - Stores the .cor file data inside the player struct
 */
 static void	assign_player(t_vm *vm, t_player *player, int ret)
 {
@@ -55,33 +33,40 @@ static void	assign_player(t_vm *vm, t_player *player, int ret)
 ** add_first:
 ** -
 */
-static int	add_first(t_vm *vm, int ac, char **av, t_player *player)
+static void	add_first(t_vm *vm, int ac, char **av, t_player *player)
 {
-	int	i;
-	int	ret;
+	int			i;
+	uint32_t	count;
+	int			ret;
+	char		*ext;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	count = 0;
+	while (++i < ac)
 	{
-		if (av[i] && !ft_strcmp(av[i], "-n"))
-			i += 2;
-		else if (av[i])
+		if (av[i])
 		{
-			ret = read_cor(av, i, player);
-			assign_player(vm, player, ret);
-			av[i] = NULL;
-			return (0);
+			ext = ft_strrchr(av[i], '.');
+			if (ext && ft_strcmp(ext, ".cor") == 0)
+			{
+				count++;
+				if (count == player->id)
+				{
+					ret = read_cor(av, i, player);
+					assign_player(vm, player, ret);
+					av[i] = NULL;
+					return ;
+				}
+			}
 		}
-		i++;
 	}
-	return (0);
 }
 
 /*
 ** do_player:
 ** -
 */
-static int	do_player(int ac, char **av, t_vm *vm, unsigned int player_id)
+static void	do_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 {
 	t_player	*player;
 	int			i;
@@ -91,28 +76,28 @@ static int	do_player(int ac, char **av, t_vm *vm, unsigned int player_id)
 	player = ft_memalloc(sizeof(t_player));
 	if (!player)
 		exit_vm("Memory allocation failure in do_player.");
-	while (++i < ac)
+	while (++i < ac && av[i])
 	{
-		if (av[i] && (!ft_strcmp(av[i], "-n")))
+		if (av[i + 2] && ft_strcmp(av[i], "-n") == 0)
 		{
-			get_id(ac, av, i, player);
+			set_player_order(player, av[i + 1]);
 			if (player->id == player_id)
 			{
 				ret = read_cor(av, i + 2, player);
 				assign_player(vm, player, ret);
-				ft_bzero(&av[i], sizeof(char *) * 3);
-				return (0);
+				return ;
 			}
-			i += 2;
 		}
+		if (av[i + 1] && ft_strncmp(av[i], "-dump", 2) == 0 && vm->dump < 0)
+			i += set_dump_cycle(vm, av[i], av[i + 1]);
 	}
 	player->id = player_id;
-	return (add_first(vm, ac, av, player));
+	add_first(vm, ac, av, player);
 }
 
 /*
 ** parse:
-** -
+** - Parses the input until each player is assigned their id and data.
 */
 void	parse(int ac, char **av, t_vm *vm)
 {
