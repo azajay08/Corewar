@@ -19,5 +19,5 @@
 void	ft_zjmp(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
     if (carriage->carry == 1)
-        carriage->pos = carriage->args[0].value;
+        carriage->pos = mod_calculator(carriage->args[0].value % IDX_MOD);
 }

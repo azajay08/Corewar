@@ -12,11 +12,16 @@
 
 #include "vm.h"
 
-u_int16_t	get_pos(u_int16_t pos)
+int    mod_calculator(int pos)
 {
-	if (pos < MEM_SIZE)
-		return (pos);
-	return (pos % MEM_SIZE);
+    if (pos < 0)
+    {
+        pos %= MEM_SIZE;
+        pos += MEM_SIZE;
+    }
+    else
+        pos %= MEM_SIZE;
+    return (pos);
 }
 
 int8_t	check_args(t_carriage *carriage)

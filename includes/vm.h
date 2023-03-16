@@ -137,6 +137,7 @@ int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
 void		write_n_byte(unsigned char *arena, uint32_t index, uint32_t size, uint32_t data);
 int32_t 	get_arg_value(t_carriage *carriage, t_args *arg);
+int			mod_calculator(int pos);
 
 // Statement utilities:
 void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
