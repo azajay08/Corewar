@@ -25,9 +25,9 @@ Statement Code		Argument Type Code			Argument # 1		Argument # 2
 
 void	ft_ld(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
-	process->registers[process->args[1]] = process->args[0];
-	if (process->args[0] == 0)
-		process->carry = 1;
+	carriage->registers[carriage->args[1].value] = carriage->args[0].value;
+	if (carriage->args[0].value == 0)
+		carriage->carry = 1;
 	else
-		process->carry = 0;
+		carriage->carry = 0;
 }
