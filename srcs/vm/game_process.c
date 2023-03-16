@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_process.c                                     :+:      :+:    :+:   */
+/*   game_carriage.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,60 +28,60 @@ void	init_corewar(t_corewar *corewar)
 
 /*
 ** apply_statement:
-** - Updates the process to contain the code at the given arena position.
+** - Updates the carriage to contain the code at the given arena position.
 ** - Converts the op_code at the position into an integer. If this integer
-**   correlates to one of the registry statements, the process grabs the cycles
+**   correlates to one of the registry statements, the carriage grabs the cycles
 **   until its execution from the op_table and stores it.
 ** - Initialises the argument array for later use with the statement.
 */
-static void	apply_statement(t_vm *vm, t_process *process)
+static void	apply_statement(t_vm *vm, t_carriage *carriage)
 {
 	int	byte_as_int;
 	int	i;
 
 	i = -1;
-	byte_as_int = vm->arena[process->pos];
+	byte_as_int = vm->arena[carriage->pos];
 
 	if (DEBUG == true)
-		ft_printf(" | %.2x : %3d", process->op_code, byte_as_int);
+		ft_printf(" | %.2x : %3d", carriage->op_code, byte_as_int);
 	if (byte_as_int >= 1 && byte_as_int <= 16)
 	{
-		process->op_code = byte_as_int;
-		process->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
+		carriage->op_code = byte_as_int;
+		carriage->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
 		if (DEBUG == true)
-			ft_printf(" | Cycles until execution: %2d", process->cycles_until_exec);
+			ft_printf(" | Cycles until execution: %2d", carriage->cycles_until_exec);
 	}
 	else
-		process->pos = (process->pos + 1) % MEM_SIZE;
+		carriage->pos = (carriage->pos + 1) % MEM_SIZE;
 }
 
 /*
 ** execute_statement:
 ** - Executes the statement correlating to the op code at the arena position.
 */
-static void	execute_statement(t_vm *vm, t_process *process, t_corewar *cw)
+static void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 {
 	int position;
 	
 	if (DEBUG == true)
 		ft_printf(" | Executing...");
-	position = vm->arena[process->pos];
+	position = vm->arena[carriage->pos];
 	if (position >= 1 && position <= 16)
 	{
-		process->op_code = position;
-		process->result_code = (vm->arena[(process->pos + 1) % MEM_SIZE]);
-		if (check_args_validity(&process))
+		carriage->op_code = position;
+		carriage->result_code = (vm->arena[(carriage->pos + 1) % MEM_SIZE]);
+		if (check_args_validity(&carriage))
 		{
-			if (reg_check(&process, &vm))
-				get_arg_values(&process, &vm, &cw);
+			if (reg_check(&carriage, &vm))
+				get_arg_values(&carriage, &vm, &cw);
 		}
-		count_bytes_to_skip(&process);
-		move_to_next_statement(process, vm);
+		count_bytes_to_skip(&carriage);
+		move_to_next_statement(carriage, vm);
 	}
 	else
-		process->pos = (process->pos + 1) % MEM_SIZE; // do we move vm->process
-	// process->executed = true;
-	// vm->process_count--;
+		carriage->pos = (carriage->pos + 1) % MEM_SIZE; // do we move vm->carriage
+	// carriage->executed = true;
+	// vm->carriage_count--;
 }
 
 /*
@@ -90,34 +90,34 @@ static void	execute_statement(t_vm *vm, t_process *process, t_corewar *cw)
 */
 void	execute_cycle(t_vm *vm, t_corewar *corewar)
 {
-	t_process	*temp_process;
+	t_carriage	*temp_carriage;
 
 	if (DEBUG == true)
 		ft_printf("%sCycle %d%s\n", URED, corewar->cycles, RESET);
-	temp_process = vm->processes;
-	while (temp_process)
+	temp_carriage = vm->carriages;
+	while (temp_carriage)
 	{
-		if (!temp_process->executed)
+		if (!temp_carriage->dead)
 		{
 			if (DEBUG == true)
-				ft_printf("Process %d | Position %4d | Player: %1d", \
-				temp_process->id, temp_process->pos, temp_process->player->id);
-			if (temp_process->cycles_until_exec == 0 && !temp_process->executed)
-				apply_statement(vm, temp_process);
-			if (temp_process->cycles_until_exec > 0 && !temp_process->executed)
-				temp_process->cycles_until_exec--;
-			if (temp_process->cycles_until_exec == 0 && !temp_process->executed)
-				execute_statement(&vm, &temp_process, &corewar);
+				ft_printf("carriage %d | Position %4d | Player: %1d", \
+				temp_carriage->id, temp_carriage->pos, temp_carriage->player->id);
+			if (temp_carriage->cycles_until_exec == 0 && !temp_carriage->dead)
+				apply_statement(vm, temp_carriage);
+			if (temp_carriage->cycles_until_exec > 0 && !temp_carriage->dead)
+				temp_carriage->cycles_until_exec--;
+			if (temp_carriage->cycles_until_exec == 0 && !temp_carriage->dead)
+				execute_statement(&vm, &temp_carriage, &corewar);
 			if (DEBUG == true)
 				ft_printf("\n");
 		}
-		temp_process = temp_process->next;
+		temp_carriage = temp_carriage->next;
 	}
 	corewar->cycles++;
 }
 
 /*
-** game_process:
+** game_carriage:
 ** - Loops until only one player remains active in the arena.
 */
 void	game_process(t_vm *vm)
@@ -128,7 +128,7 @@ void	game_process(t_vm *vm)
 	init_arena(vm);
 	vm->latest_live = vm->player_count;
 	vm->cycle_dump = 0; // temporary until parsing is fixed to take flags.
-	while (vm->processes != NULL && vm->process_count > 0)
+	while (vm->carriages != NULL && vm->carriage_count > 0)
 	{
 		if (corewar.cycles == vm->cycle_dump)
 		{

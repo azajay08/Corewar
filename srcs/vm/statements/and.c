@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   and.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:25 by sam               #+#    #+#             */
-/*   Updated: 2023/03/13 23:23:09 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** -
 */
 
-void	ft_and(t_process *process, t_corewar *corewar, t_vm *vm)
+void	ft_and(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 [
 	
 ]

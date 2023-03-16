@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 17:06:38 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:43:27 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct	s_args
 	int					value;
 } 				t_args;
 
-typedef struct	s_process
+typedef struct	s_carriage
 {
 	t_player			*player;
 	int					id;
@@ -54,10 +54,9 @@ typedef struct	s_process
 	int					last_live_cycle;
 	int					result_code;
 	uint32_t			op_code;
-	bool				executed;
-	//var to store arg? get_n_byte?
-	struct s_process	*next;
-}				t_process;
+	bool				dead;
+	struct s_carriage	*next;
+}				t_carriage;
 
 typedef struct	s_corewar
 {
@@ -72,12 +71,12 @@ typedef struct	s_corewar
 typedef struct	s_vm
 {
 	uint32_t		player_count;
-	t_process		*processes;
+	t_carriage		*carriages;
 	t_player		*player[MAX_PLAYERS];
 	int				latest_live;
 	uint8_t			arena[MEM_SIZE];
-	size_t			process_count;
-	size_t			total_processes;
+	size_t			carriage_count;
+	size_t			total_carriages;
 	int				cycle;
 	int				cycles_to_die;
 	int				checks;
@@ -98,17 +97,17 @@ int		parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
 int		get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
 void	get_player_count(int ac, char **av, uint32_t *player_count);
 
-// Game process:
+// Game carriage:
 void	introduce_players(t_vm *vm);
 void	print_arena(t_vm *vm);
-void	print_processes(t_vm *vm);
+void	print_carriages(t_vm *vm);
 void	game_process(t_vm *vm);
 int		byte_to_int(uint8_t *arena, int position);
 
-// Processes:
-void		set_processes(t_vm *vm);
-t_process	*initialise_process(t_player *player, uint32_t pos);
-void		new_process(t_process **processes, t_process *new_process);
+// carriages:
+void		set_carriages(t_vm *vm);
+t_carriage	*initialise_carriage(t_player *player, uint32_t pos);
+void		new_carriage(t_carriage **carriages, t_carriage *new_carriage);
 
 // Exit program:
 void	exit_vm(char *error_message);

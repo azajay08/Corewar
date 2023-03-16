@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ldi.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:33 by sam               #+#    #+#             */
-/*   Updated: 2023/03/13 23:23:23 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** -
 */
 
-void	ft_ldi(t_process *process, t_corewar *corewar, t_vm *vm)
+void	ft_ldi(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 [
 	
 ]

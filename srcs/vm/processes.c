@@ -6,20 +6,20 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/15 17:46:59 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 15:43:27 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-t_process	*initialise_process(t_player *player, uint32_t pos)
+t_carriage	*initialise_carriage(t_player *player, uint32_t pos)
 {
-	t_process		*new;
+	t_carriage		*new;
 	static uint32_t	id;
 
-	new = (t_process *)ft_memalloc(sizeof(t_process));
+	new = (t_carriage *)ft_memalloc(sizeof(t_carriage));
 	if (!new)
-		exit_vm("Memory allocation failure in initialise_process.");
+		exit_vm("Memory allocation failure in initialise_carriage.");
 	new->player = player;
 	new->id = ++id;
 	new->pos = pos;
@@ -33,14 +33,14 @@ t_process	*initialise_process(t_player *player, uint32_t pos)
 	return (new);
 }
 
-void	new_process(t_process **processes, t_process *new_process)
+void	new_carriage(t_carriage **carriages, t_carriage *new_carriage)
 {
-	if (new_process)
-		new_process->next = *processes;
-	*processes = new_process;
+	if (new_carriage)
+		new_carriage->next = *carriages;
+	*carriages = new_carriage;
 }
 
-void	set_processes(t_vm *vm)
+void	set_carriages(t_vm *vm)
 {
 	uint32_t	id;
 	uint32_t	pos;
@@ -49,8 +49,8 @@ void	set_processes(t_vm *vm)
 	pos = 0;
 	while (++id <= vm->player_count)
 	{
-		new_process(&(vm->processes), initialise_process(vm->player[id], pos));
-		vm->process_count++;
+		new_carriage(&(vm->carriages), initialise_carriage(vm->player[id], pos));
+		vm->carriage_count++;
 		pos += MEM_SIZE / vm->player_count;
 	}
 }
