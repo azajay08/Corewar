@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_carriage.c                                     :+:      :+:    :+:   */
+/*   game_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:36 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 17:20:10 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,28 @@ void	init_corewar(t_corewar *corewar)
 */
 void	execute_cycle(t_vm *vm, t_corewar *corewar)
 {
-	t_carriage	*temp_carriage;
+	t_carriage	*carriage;
 
 	if (DEBUG == true)
 		ft_printf("%sCycle %d%s\n", URED, corewar->cycles, RESET);
-	temp_carriage = vm->carriages;
-	while (temp_carriage)
+	carriage = vm->carriages;
+	while (carriage)
 	{
-		if (!temp_carriage->dead)
+		if (!carriage->dead)
 		{
 			if (DEBUG == true)
 				ft_printf("Carriage %d | Position %4d | Player: %1d", \
-				temp_carriage->id, temp_carriage->pos, temp_carriage->player->id);
-			if (temp_carriage->cycles_until_exec == 0)
-				apply_statement(vm, temp_carriage);
-			if (temp_carriage->cycles_until_exec > 0)
-				temp_carriage->cycles_until_exec--;
-			if (temp_carriage->cycles_until_exec == 0)
-				execute_statement(vm, temp_carriage, corewar);
+				carriage->id, carriage->pos, \carriage->player->id);
+			if (carriage->cycles_until_exec == 0)
+				apply_statement(vm, carriage);
+			if (carriage->cycles_until_exec > 0)
+				carriage->cycles_until_exec--;
+			if (carriage->cycles_until_exec == 0)
+				execute_statement(vm, carriage, corewar);
 			if (DEBUG == true)
 				ft_printf("\n");
 		}
-		temp_carriage = temp_carriage->next;
+		carriage = carriage->next;
 	}
 	corewar->cycles++;
 	corewar->cycles_since_check++;

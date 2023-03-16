@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_utils.c                                       :+:      :+:    :+:   */
+/*   arg_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:37:51 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 16:15:19 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/16 17:19:10 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	reset_args(t_carriage *carriage)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < g_op_tab[carriage->op_code -1].arg_num)
@@ -45,7 +45,7 @@ int	arg_byte_count(t_carriage *carriage, int type)
 int	reg_check(t_carriage *carriage, t_vm *vm)
 {
 	int	i;
-	int offset;
+	int	offset;
 	int	byte_skip;
 
 	i = 0;

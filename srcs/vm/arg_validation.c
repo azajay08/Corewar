@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 16:51:46 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 17:14:23 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	check_reg_validity(t_carriage *carriage, t_vm *vm, int offset)
 
 int	arg_validity(t_carriage *carriage)
 {
-	int i;
-	int type;
+	int	i;
+	int	type;
 
 	i = 0;
 	while (i < g_op_tab->arg_num)
@@ -45,7 +45,7 @@ int	arg_validity(t_carriage *carriage)
 **   - Byte '90' is 10010000 in binary.
 **   - 1st pair = 10, 2nd pair = 01, 3rd pair = 00, 4th pair = 00.
 */
-int8_t get_bit_pair(int byte, u_int8_t nth_pair)
+int8_t	get_bit_pair(int byte, u_int8_t nth_pair)
 {
 	if (nth_pair == 1)
 		return ((byte >> 6) & 3);
@@ -56,13 +56,13 @@ int8_t get_bit_pair(int byte, u_int8_t nth_pair)
 	return (0);
 }
 
-static int check_result_code(t_carriage *carriage)
+static int	check_result_code(t_carriage *carriage)
 {
 	int	i;
 	int	bit_pair;
 
 	i = 0;
-	while(i < g_op_tab[carriage->op_code].arg_num)
+	while (i < g_op_tab[carriage->op_code].arg_num)
 	{
 		bit_pair = get_bit_pair(carriage->pos + 1, i + 1);
 		if (bit_pair == IND_CODE)
@@ -73,11 +73,10 @@ static int check_result_code(t_carriage *carriage)
 	return (arg_validity(carriage));
 }
 
-int		check_args_validity(t_carriage *carriage)
+int	check_args_validity(t_carriage *carriage)
 {
 	if (!g_op_tab[carriage->op_code - 1].arg_type_code)
 		return (1);
 	else
 		return (check_result_code(carriage));
 }
-

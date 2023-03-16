@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:08:35 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 17:13:17 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:18:43 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
 	}
 	return (dir);
 }
+
 static int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	ind;
@@ -52,7 +53,7 @@ static int	get_reg_value(t_carriage *carriage, t_vm *vm, int offset)
 void	get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
 {
 	int	i;
-	int offset;
+	int	offset;
 	int	byte_skip;
 
 	i = 0;
