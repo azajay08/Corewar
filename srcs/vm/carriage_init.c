@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   carriage_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/16 16:21:38 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 18:43:47 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_carriage	*initialise_carriage(t_player *player, uint32_t pos)
 	new->dead = false;
 	new->next = NULL;
 	new->result_code = 0;
-	new->args[0].type = 0;
-	new->args[0].value = 0;
 	return (new);
 }
 

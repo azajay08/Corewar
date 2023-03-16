@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/16 17:12:47 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 19:57:59 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,16 @@ int8_t	check_args(t_process *process)
 		i++;
 	}
 	return (0);
+}
+
+int	mod_calculator(int pos)
+{
+	if (pos < 0)
+	{
+		pos %= MEM_SIZE;
+		pos += MEM_SIZE;
+	}
+	else
+		pos %= MEM_SIZE;
+	return (pos);
 }

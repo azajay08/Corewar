@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/16 17:13:46 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/16 20:12:02 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
 
 // Statement utilities:
+int		mod_calculator(int pos);
 void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
 void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
 

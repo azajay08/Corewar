@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_statement.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/16 17:08:10 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/16 18:57:59 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	else if (state == XOR)
 		ft_xor(carriage, cw, vm);
 	else
-		sort_state_16(state, carriage, cw, vm);
+		sort_state_16(state, &carriage, &cw, &vm);
 }
 
 void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
@@ -43,13 +43,13 @@ void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	else if (state == STI)
 		ft_sti(carriage, cw, vm);
 	else if (state == FORK)
-		ft_fork(carriage, cw, vm);
+		ft_fork(&carriage, &cw, &vm);
 	else if (state == LLD)
 		ft_lld(carriage, cw, vm);
 	else if (state == LLDI)
 		ft_lldi(carriage, cw, vm);
 	else if (state == LFORK)
-		ft_lfork(carriage, cw, vm);
+		ft_lfork(&carriage, &cw, &vm);
 	else if (state == AFF)
 		ft_aff(carriage, cw, vm);
 }
