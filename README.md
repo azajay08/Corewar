@@ -48,7 +48,7 @@ The project is split into 3 mains parts:
 ## Assembler
 
 The assembler take a file with a `.s` extension and writes the contents to a file with the same name but with a `.cor` extension, in the format of hexadecimal byte code.
-<details open>
+<details>
 <summary>Usage</summary>
 <br>
 
@@ -58,7 +58,7 @@ The assembler take a file with a `.s` extension and writes the contents to a fil
 
 </details>
 
-<details open>
+<details>
 <summary>Statement Table</summary>
 <br>
 
@@ -88,7 +88,7 @@ The assembler take a file with a `.s` extension and writes the contents to a fil
 
 _VM description_
 
-<details open>
+<details>
 <summary>Usage</summary>
 <br>
 
@@ -100,6 +100,8 @@ Flags:
      -d   ...
      -n   ...
 ```
+
+</details>
 
 ## Champion
 
