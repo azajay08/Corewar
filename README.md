@@ -2,7 +2,6 @@
 
 ![corewar_type](https://user-images.githubusercontent.com/86073849/224506544-f46c4665-5658-43bf-a609-c16889879032.gif)
 
-## What is Corewar?
 
 Corewar is the final project of the algorithm branch at Hive Helsinki. Completing this project means completing the core studies at Hive. It is a take on the 80s programming game called Core War. It is a group project consisting of 4 team members.
 ### Our team:
@@ -10,6 +9,8 @@ Corewar is the final project of the algorithm branch at Hive Helsinki. Completin
 * [Elliot](https://github.com/egalibert)
 * [Sam](https://github.com/Samyewel)
 * [Teemu](https://github.com/tlahin)
+
+## What is Corewar?
 
 Core War is a 1984 programming game created by D. G. Jones and A. K. Dewdney in which two or more battle programs (called "warriors") compete for control of a virtual computer. These battle programs are written in an abstract assembly language called Redcode. The standards for the language and the virtual machine were initially set by the International Core Wars Society (ICWS), but later standards were determined by community consensus.
 
@@ -63,6 +64,19 @@ The assembler take a file with a `.s` extension and writes the contents to a fil
 ## Virtual Machine
 
 _VM description_
+
+<details open>
+<summary>Usage</summary>
+<br>
+
+```
+./corewar [-flags] [champion.cor] [champion.cor] [champion.cor]
+ 
+Flags:
+     -a   Description
+     -d   ...
+     -n   ...
+```
 
 ## Champion
 
