@@ -6,7 +6,7 @@
 #    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/03/17 15:18:10 by ajones           ###   ########.fr        #
+#    Updated: 2023/03/17 15:18:52 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ debug_printing.c
 
 ST_SRCS := \
 add.c aff.c and.c fork.c ld.c ldi.c lfork.c live.c lld.c lldi.c or.c \
-sort_statement.c st.c sti.c sub.c utilities.c xor.c zjmp.C
+sort_statement.c st.c sti.c sub.c statement_utilities.c xor.c zjmp.C
 
 CW_PATH := srcs/vm/
 ST_PATH := $(CW_PATH)statements/
