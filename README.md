@@ -8,6 +8,15 @@ Corewar is the final project of the algorithm branch at Hive Helsinki. Completin
 * [Sam](https://github.com/Samyewel)
 * [Teemu](https://github.com/tlahin)
 
+## What is Corewar?
+
+Core War is a 1984 programming game created by D. G. Jones and A. K. Dewdney in which two or more battle programs (called "warriors") compete for control of a virtual computer. These battle programs are written in an abstract assembly language called Redcode. The standards for the language and the virtual machine were initially set by the International Core Wars Society (ICWS), but later standards were determined by community consensus.
+
+The project is split into 3 mains parts:
+- [The Assembler](#assembler)
+- [The Virtual Machine](#virtual-machine)
+- [The Champion](#champion)
+
 As with all Hive projects, they come with restraints and limitations. We have to abide by the rules of `Norminette`. Here are some of the rules we must follow:
 
 ```
@@ -34,15 +43,6 @@ As with all Hive projects, they come with restraints and limitations. We have to
   * exit
 ```
 
-## What is Corewar?
-
-Core War is a 1984 programming game created by D. G. Jones and A. K. Dewdney in which two or more battle programs (called "warriors") compete for control of a virtual computer. These battle programs are written in an abstract assembly language called Redcode. The standards for the language and the virtual machine were initially set by the International Core Wars Society (ICWS), but later standards were determined by community consensus.
-
-The project is split into 3 mains parts:
-- [The Assembler](#assembler)
-- [The Virtual Machine](#virtual-machine)
-- [The Champion](#champion)
-
 
 ## Assembler
 
@@ -57,6 +57,18 @@ The assembler take a file with a `.s` extension and writes the contents to a fil
 
 </details>
 
+<details open>
+<summary>Statements</summary>
+<br>
+
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
+</details>
 
 ## Virtual Machine
 
