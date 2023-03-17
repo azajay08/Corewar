@@ -6,15 +6,14 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/15 17:45:24 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:26:57 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** assign_player:
-** - Stores the .cor file data inside the player struct
+* - Stores the .cor file data inside the player struct
 */
 static void	assign_player(t_vm *vm, t_player *player, int ret)
 {
@@ -30,8 +29,7 @@ static void	assign_player(t_vm *vm, t_player *player, int ret)
 }
 
 /*
-** add_first:
-** -
+* -
 */
 static void	add_first(t_vm *vm, int ac, char **av, t_player *player)
 {
@@ -63,8 +61,7 @@ static void	add_first(t_vm *vm, int ac, char **av, t_player *player)
 }
 
 /*
-** do_player:
-** -
+* -
 */
 static void	do_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 {
@@ -96,8 +93,7 @@ static void	do_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 }
 
 /*
-** parse:
-** - Parses the input until each player is assigned their id and data.
+* - Parses the input until each player is assigned their id and data.
 */
 void	parse(int ac, char **av, t_vm *vm)
 {

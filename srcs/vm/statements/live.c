@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   live.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:37 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:31:47 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** handle_live:
-** -
+* -
 */
-
 void	ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
 	int value;

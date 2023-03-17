@@ -6,12 +6,15 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/16 16:21:38 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:29:11 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+* - Initialises the necessary data for a carriage.
+*/
 t_carriage	*initialise_carriage(t_player *player, uint32_t pos)
 {
 	t_carriage		*new;
@@ -33,6 +36,9 @@ t_carriage	*initialise_carriage(t_player *player, uint32_t pos)
 	return (new);
 }
 
+/*
+* - Adds a fresh carriage to the front of the carriage list.
+*/
 void	new_carriage(t_carriage **carriages, t_carriage *new_carriage)
 {
 	if (new_carriage)
@@ -40,6 +46,10 @@ void	new_carriage(t_carriage **carriages, t_carriage *new_carriage)
 	*carriages = new_carriage;
 }
 
+/*
+* - Creates the starting carriages for each player, placing them at the first
+*   position of each player on the board.
+*/
 void	set_carriages(t_vm *vm)
 {
 	uint32_t	id;

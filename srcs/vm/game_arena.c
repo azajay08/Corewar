@@ -1,54 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arena.c                                            :+:      :+:    :+:   */
+/*   game_arena.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 16:20:59 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:24:57 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** print_arena:
-** - Prints the contents of the battle arena.
+* - Prints the contents of the given line of memory in the arena.
+* - Highlights the byte of it is the position of a carriage.
+*/
+static void	print_memory_line(t_vm *vm, int i, uint8_t octets)
+{
+	t_carriage	*temp_carriage;
+	int			j;
+
+	j = -1;
+	while (++j < octets)
+	{
+		temp_carriage = vm->carriages;
+		while (temp_carriage)
+		{
+			if (i + j == temp_carriage->pos && !temp_carriage->dead)
+			{
+				ft_printf("%s", REDB);
+				break ;
+			}
+			temp_carriage = temp_carriage->next;
+		}
+		ft_printf("%02x%s ", vm->arena[i + j], RESET);
+	}
+	ft_printf("\n");
+}
+
+/*
+* - Prints the contents of the battle arena.
 */
 void	print_arena(t_vm *vm)
 {
-	t_carriage	*temp_carriage;
-	int			i;
-	int			j;
+	int	i;
 
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		j = -1;
 		ft_printf("%.4p : ", i);
-		while (++j < vm->print_octets)
-		{
-			temp_carriage = vm->carriages;
-			while (temp_carriage)
-			{
-				if (i + j == temp_carriage->pos && !temp_carriage->dead)
-				{
-					ft_printf("%s", REDB);
-					break ;
-				}
-				temp_carriage = temp_carriage->next;
-			}
-			ft_printf("%02x%s ", vm->arena[i + j], RESET);
-		}
-		ft_printf("\n");
-		i += j;
+		print_memory_line(vm, i, vm->print_octets);
+		i += vm->print_octets;
 	}
 }
 
 /*
-** introduce_players:
-** - Prints the ID, weight, name and comment of each player.
+* - Prints the ID, weight, name and comment of each player.
 */
 void	introduce_players(t_vm *vm)
 {
@@ -67,8 +75,7 @@ void	introduce_players(t_vm *vm)
 }
 
 /*
-** add_players_to_arena:
-** - Adds each players executable commands to the battle arena.
+* - Adds each players executable commands to the battle arena.
 */
 static void	add_players_to_arena(t_player *player, t_vm *vm, size_t start)
 {
@@ -85,8 +92,7 @@ static void	add_players_to_arena(t_player *player, t_vm *vm, size_t start)
 }
 
 /*
-** init_arena:
-** - Initialises the contents of the arena.
+* - Initialises the contents of the arena.
 */
 void	init_arena(t_vm *vm)
 {

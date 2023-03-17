@@ -6,21 +6,24 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/16 16:28:13 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:26:16 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** print_usage:
-** - When the given input is incorrect, the correct program usage is printed.
+* - When the given input is incorrect, the correct program usage is printed.
 */
 static void	print_usage(void)
 {
 	exit_vm("Usage: ./corewar champ1.cor (champ2.cor champ3.cor)");
 }
 
+/*
+* corewar:
+* -
+*/
 int	main(int argc, char **argv)
 {
 	t_vm	vm;

@@ -6,12 +6,15 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/16 17:12:47 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:33:17 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+* -
+*/
 u_int16_t	get_pos(u_int16_t pos)
 {
 	if (pos < MEM_SIZE)
@@ -19,7 +22,9 @@ u_int16_t	get_pos(u_int16_t pos)
 	return (pos % MEM_SIZE);
 }
 
-//needed?
+/*
+* -
+*/
 int8_t	check_args(t_process *process)
 {
 	int			i;

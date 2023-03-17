@@ -6,12 +6,15 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/16 17:08:10 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:32:40 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+* -
+*/
 void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 {
 	if (state == LIVE)
@@ -34,6 +37,9 @@ void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 		sort_state_16(state, carriage, cw, vm);
 }
 
+/*
+* -
+*/
 void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 {
 	if (state == ZJMP)

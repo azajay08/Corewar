@@ -6,17 +6,15 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:51 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 17:08:39 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:33:08 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** ft_sub:
-** -
+* -
 */
-
 void	ft_sub(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
 
