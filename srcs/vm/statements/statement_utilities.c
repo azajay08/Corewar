@@ -6,36 +6,36 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/16 19:57:59 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 14:10:37 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-u_int16_t	get_pos(u_int16_t pos)
-{
-	if (pos < MEM_SIZE)
-		return (pos);
-	return (pos % MEM_SIZE);
-}
-
-//needed?
-int8_t	check_args(t_process *process)
+t_carriage	*clone_carriage(t_carriage *old, int pos)
 {
 	int			i;
-	u_int8_t	bit_pair;
-
-	if (g_op_tab[process->op_code].arg_type_code == 0)
-		return (0);
+	t_carriage	*new;
+	
+	new = (t_carriage *)ft_memalloc(sizeof(t_carriage));
+	if (!new)
+		exit_vm("Memory allocation failure in initialise_carriage.");
+	new->player = old->player;
+	new->id = old->id;
+	new->pos = pos;
+	new->carry = old->carry;
+	new->cycles_until_exec = 0;
+	new->dead = false;
+	new->next = NULL;
+	new->result_code = 0;
+	new->last_live_cycle = old->last_live_cycle;
 	i = 0;
-	while (i < g_op_tab[process->op_code].arg_num)
+	while (i < REG_NUMBER)
 	{
-		bit_pair = get_bit_pair(process->pos + 1, i);
-		if (bit_pair != g_op_tab[process->op_code].arg_type[i])
-			return (-1);
+		new->registers[i] = old->reg[i];
 		i++;
 	}
-	return (0);
+	return (new);
 }
 
 int	mod_calculator(int pos)

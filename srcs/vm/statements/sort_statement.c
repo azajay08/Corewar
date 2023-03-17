@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/16 18:57:59 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 14:13:28 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	else if (state == LLDI)
 		ft_lldi(carriage, cw, vm);
 	else if (state == LFORK)
-		ft_lfork(&carriage, &cw, &vm);
+		ft_lfork(&carriage, &vm);
 	else if (state == AFF)
 		ft_aff(carriage, cw, vm);
 }

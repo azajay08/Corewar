@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
+#    By: ajones <ajones@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/03/16 16:48:19 by sam              ###   ########.fr        #
+#    Updated: 2023/03/17 14:18:27 by ajones           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,12 @@ parse_players_1.c parse_players_2.c parse_utils.c parse_input_args.c \
 game_process.c game_arena.c game_utils.c game_check.c \
 carriage_init.c carriage_action.c \
 arg_validation.c arg_values.c arg_utils.c \
-debug_printing.c
+debug_printing.c \
+statements/add.c statements/aff.c statements/and.c statements/fork.c \
+statements/ld.c statements/ldi.c statements/lfork.c statements/live.c \
+statements/lld.c statements/lldi.c statements/or.c statements/st.c \
+statements/sort_statements.c statements/sti.c statements/sub.c \
+statements/statement_utilities.c statements/xor.c statements/zjmp.c \
 
 CW_PATH := srcs/vm/
 CW_DIR := $(addprefix $(CW_PATH), $(CW_SRCS))

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/16 20:12:02 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 14:13:53 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int			arg_byte_count(t_carriage *carriage, int type);
 // Exit program:
 void		exit_vm(char *error_message);
 
-//Statements:
+// Argument utilities:
 void		get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw);
 int			check_args_validity(t_carriage *carriage);
 int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
@@ -136,9 +136,14 @@ int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
 int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
 
-// Statement utilities:
-int		mod_calculator(int pos);
-void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
-void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
+// Statements utilities:
+int			mod_calculator(int pos);
+void		sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
+void		sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
+t_carriage	*clone_carriage(t_carriage *old, int pos);
+
+// Statements
+void	ft_fork(t_carriage *carriage, t_vm *vm);
+void	ft_lfork(t_carriage *carriage, t_vm *vm);
 
 #endif
