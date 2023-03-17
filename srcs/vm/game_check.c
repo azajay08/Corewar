@@ -6,17 +6,16 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:38:21 by sam               #+#    #+#             */
-/*   Updated: 2023/03/15 17:43:25 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:40:03 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** check_carriages:
-** - Checks each active carriage in the game. If the carriage has not used
-**   a live statement since the previous cycles_to_die count, the carriage
-**   is considered dead and no longer active.
+* - Checks each active carriage in the game. If the carriage has not used
+*   a live statement since the previous cycles_to_die count, the carriage
+*   is considered dead and no longer active.
 */
 static void	check_carriages(t_vm *vm, t_corewar *corewar)
 {
@@ -39,11 +38,10 @@ static void	check_carriages(t_vm *vm, t_corewar *corewar)
 }
 
 /*
-** check_lives:
-** - If there have been 21 live statements used during this cycles_to_die
-**   period, the cycles_to_die value is lowered by 50.
-** - If the maximum amount of checks after the value of cycles_to_die does not
-**   change, then it will be forcibly reduced by the value of CYCLE_DELTA.
+* - If there have been 21 live statements used during this cycles_to_die
+*   period, the cycles_to_die value is lowered by 50.
+* - If the maximum amount of checks after the value of cycles_to_die does not
+*   change, then it will be forcibly reduced by the value of CYCLE_DELTA.
 */
 static void	check_lives(t_vm *vm, t_corewar *corewar)
 {
@@ -60,8 +58,8 @@ static void	check_lives(t_vm *vm, t_corewar *corewar)
 }
 
 /*
-** cycle_check:
-** -
+* - At the end of each cycles_to_die rotation, a check is used to narrow down
+*   the constraints of the game. 
 */
 void	cycle_check(t_vm *vm, t_corewar *corewar)
 {

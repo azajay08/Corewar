@@ -13,8 +13,7 @@
 #include "vm.h"
 
 /*
-** init_vm:
-** - Initialises the necessary data for use throughout the program.
+* - Initialises the necessary data for use throughout the program.
 */
 void	init_vm(t_vm *vm)
 {
@@ -26,11 +25,11 @@ void	init_vm(t_vm *vm)
 	vm->latest_live = 0;
 	vm->carriage_count = 0;
 	vm->carriages = NULL;
+	vm->a_flag = false;
 }
 
 /*
-** init_players:
-** - Initialises the id of each player to 0.
+* - Initialises the id of each player to 0.
 */
 void	init_players(t_vm *vm, unsigned int player_count)
 {

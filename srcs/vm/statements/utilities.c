@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/16 17:12:47 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 15:03:24 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data)
 	index = mod_calculator(index);
 	while (size >= 0)
 	{
-		vm->arena[index % IDX_MOD] = (unsigned char *)data[size];
+		vm->arena[index % MEM_SIZE] = (unsigned char *)data[size];
 		size--;
 		index++;
 	}

@@ -6,7 +6,7 @@
 #    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 00:15:54 by ajones            #+#    #+#              #
-#    Updated: 2023/03/16 16:48:19 by sam              ###   ########.fr        #
+#    Updated: 2023/03/17 15:50:35 by sam              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,11 +43,21 @@ carriage_init.c carriage_action.c \
 arg_validation.c arg_values.c arg_utils.c \
 debug_printing.c
 
+ST_SRCS := \
+sort_statement.c utilities.c \
+add.c aff.c and.c fork.c ld.c ldi.c lfork.c live.c lld.c lldi.c or.c \
+st.c sti.c sub.c xor.c zjmp.c
+
 CW_PATH := srcs/vm/
+ST_PATH := $(CW_PATH)statements/
 CW_DIR := $(addprefix $(CW_PATH), $(CW_SRCS))
+ST_DIR := $(addprefix $(ST_PATH), $(ST_SRCS))
 CW_OBJ := $(CW_SRCS:%.c=%.o)
+ST_OBJ := $(ST_SRCS:%.c=%.o)
 CW_O_PATH := srcs/vm/obj/
+ST_O_PATH := $(CW_O_PATH)
 CW_O_DIR := $(addprefix $(CW_O_PATH), $(CW_OBJ))
+ST_O_DIR := $(addprefix $(ST_O_PATH), $(ST_OBJ))
 
 #COLORS:
 GREEN := '\033[1;3;32m'
@@ -71,15 +81,18 @@ $(ASM_O_PATH):
 $(ASM_O_PATH)%.o: $(ASM_PATH)%.c
 	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC) -o $@ $<
 
-$(NAME_CW): $(LIBFT) $(CW_O_PATH) $(CW_O_DIR)
+$(NAME_CW): $(LIBFT) $(CW_O_PATH) $(CW_O_DIR) $(ST_O_DIR)
 	@echo ${CYAN}"Compiling $(@) executable...${RESET}"
-	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(CW_O_DIR) $(LIBFT) -o $(NAME_CW)
+	@gcc $(FLAGS) $(COR_INC) $(LIB_INC) $(CW_O_DIR) $(ST_O_DIR) $(LIBFT) -o $(NAME_CW)
 	@echo ${GREEN}"Virtual machine ($(NAME_CW)) compiled successfully.${RESET}"
 
 $(CW_O_PATH):
 	@mkdir -p $(CW_O_PATH)
 
 $(CW_O_PATH)%.o: $(CW_PATH)%.c
+	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC) -o $@ $<
+
+$(ST_O_PATH)%.o: $(ST_PATH)%.c
 	@gcc -c $(FLAGS) $(COR_INC) $(LIB_INC) -o $@ $<
 
 clean:

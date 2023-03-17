@@ -6,12 +6,15 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 17:14:23 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:30:01 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+* -
+*/
 int	check_reg_validity(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	reg;
@@ -22,6 +25,9 @@ int	check_reg_validity(t_carriage *carriage, t_vm *vm, int offset)
 	return (1);
 }
 
+/*
+* -
+*/
 int	arg_validity(t_carriage *carriage)
 {
 	int	i;
@@ -39,11 +45,10 @@ int	arg_validity(t_carriage *carriage)
 }
 
 /*
-** get_bit_pair:
-** - Gets the n th pair of bits from a byte.
-** - Example:
-**   - Byte '90' is 10010000 in binary.
-**   - 1st pair = 10, 2nd pair = 01, 3rd pair = 00, 4th pair = 00.
+* - Gets the n th pair of bits from a byte.
+* - Example:
+*   - Byte '90' is 10010000 in binary.
+*   - 1st pair = 10, 2nd pair = 01, 3rd pair = 00, 4th pair = 00.
 */
 int8_t	get_bit_pair(int byte, u_int8_t nth_pair)
 {
@@ -56,6 +61,9 @@ int8_t	get_bit_pair(int byte, u_int8_t nth_pair)
 	return (0);
 }
 
+/*
+* -
+*/
 static int	check_result_code(t_carriage *carriage)
 {
 	int	i;
@@ -73,6 +81,9 @@ static int	check_result_code(t_carriage *carriage)
 	return (arg_validity(carriage));
 }
 
+/*
+* -
+*/
 int	check_args_validity(t_carriage *carriage)
 {
 	if (!g_op_tab[carriage->op_code - 1].arg_type_code)
