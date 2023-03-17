@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/17 14:44:20 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:29:15 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,22 @@ int	mod_calculator(int pos)
 	else
 		pos %= MEM_SIZE;
 	return (pos);
+}
+
+void	write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data)
+{
+	index = mod_calculator(index);
+	while (size >= 0)
+	{
+		vm->arena[index % MEM_SIZE] = (unsigned char *)data[size];
+		size--;
+		index++;
+	}
+}
+
+int32_t fetch_value(t_carriage *carriage, t_args *arg)
+{
+	if (arg->type == T_REG)
+		return (carriage->registers[arg->value]);
+	return (arg->value);
 }
