@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 16:46:35 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:49:43 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,10 +158,8 @@ void		write_n_byte(\
 int			mod_calculator(int pos);
 int			check_args_validity(t_carriage *carriage);
 int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
-int32_t 	fetch_value(t_carriage *carriage, t_args *arg);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
-int8_t		check_args(t_carriage *carriage);
-u_int16_t	get_pos(u_int16_t pos);
+int32_t 	fetch_value(t_carriage *carriage, t_args *arg);
 t_carriage	*clone_carriage(t_carriage *old, int pos);
 
 
