@@ -6,14 +6,14 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:58:02 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/17 14:27:33 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:41:22 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - Used for debugging purposes to print the contents of a carriage.
 */
 void	print_carriages(t_vm *vm)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/16 17:13:46 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/17 14:44:55 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,25 @@
 
 typedef struct s_player
 {
-	unsigned int		id;
-	int					last_live;
-	int					live_count;
-	unsigned int		magic;
-	unsigned char		name[PROG_NAME_LENGTH + 1];
-	unsigned char		comment[COMMENT_LENGTH + 1];
-	unsigned char		*exec;
-	unsigned int		exec_size;
-	unsigned char		file[MEM_SIZE];
-	struct s_player		*next;
-}				t_player;
+	unsigned int	id;
+	int				last_live;
+	int				live_count;
+	unsigned int	magic;
+	unsigned char	name[PROG_NAME_LENGTH + 1];
+	unsigned char	comment[COMMENT_LENGTH + 1];
+	unsigned char	*exec;
+	unsigned int	exec_size;
+	unsigned char	file[MEM_SIZE];
+	struct s_player	*next;
+}	t_player;
 
-typedef struct	s_args
+typedef struct s_args
 {
-	int 				type;
-	int					value;
-} 				t_args;
+	int		type;
+	int		value;
+}	t_args;
 
-typedef struct	s_carriage
+typedef struct s_carriage
 {
 	t_player			*player;
 	int					id;
@@ -56,33 +56,33 @@ typedef struct	s_carriage
 	uint32_t			op_code;
 	bool				dead;
 	struct s_carriage	*next;
-}				t_carriage;
+}	t_carriage;
 
 typedef struct s_corewar
 {
-	int					cycles;
-	int					cycles_to_die;
-	int					cycles_since_check;
-	int					lives_this_period;
-	int					checks;
-	int					carry;
-}				t_corewar;
+	int				cycles;
+	int				cycles_to_die;
+	int				cycles_since_check;
+	int				lives_this_period;
+	int				checks;
+	int				carry;
+}	t_corewar;
 
 typedef struct s_vm
 {
-	uint32_t		player_count;
-	t_carriage		*carriages;
-	t_player		*player[MAX_PLAYERS];
-	int				latest_live;
-	uint8_t			arena[MEM_SIZE];
-	uint8_t			print_octets;
-	size_t			carriage_count;
-	size_t			total_carriagees;
-	int				cycle;
-	int				cycles_to_die;
-	int				checks;
-	int				dump;
-}				t_vm;
+	uint32_t	player_count;
+	t_carriage	*carriages;
+	t_player	*player[MAX_PLAYERS];
+	int			latest_live;
+	uint8_t		arena[MEM_SIZE];
+	uint8_t		print_octets;
+	size_t		carriage_count;
+	size_t		total_carriagees;
+	int			cycle;
+	int			cycles_to_die;
+	int			checks;
+	int			dump;
+}	t_vm;
 
 // Initialisation:
 void		init_vm(t_vm *vm);
@@ -129,15 +129,17 @@ int			arg_byte_count(t_carriage *carriage, int type);
 void		exit_vm(char *error_message);
 
 //Statements:
+
+// Statement utilities:
+void		sort_state_8(\
+			int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
+void		sort_state_16(\
+			int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
 void		get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw);
 int			check_args_validity(t_carriage *carriage);
 int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
 int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
-
-// Statement utilities:
-void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
-void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
 
 #endif
