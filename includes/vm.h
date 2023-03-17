@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 16:35:42 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:46:35 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,22 +130,22 @@ int			arg_byte_count(t_carriage *carriage, int type);
 void		exit_vm(char *error_message);
 
 //Statements:
-void		ft_add(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_aff(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_and(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_fork(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_ld(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_ldi(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_lfork(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void		ft_add(t_carriage *carriage);
+void		ft_aff(t_carriage *carriage, t_vm *vm);
+void		ft_and(t_carriage *carriage);
+void		ft_fork(t_carriage *carriage, t_vm *vm);
+void		ft_ld(t_carriage *carriage);
+void		ft_ldi(t_carriage *carriage, t_vm *vm);
+void		ft_lfork(t_carriage *carriage, t_vm *vm);
 void		ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_lld(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_lldi(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_or(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_st(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_sti(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_sub(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_xor(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_zjmp(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void		ft_lld(t_carriage *carriage);
+void		ft_lldi(t_carriage *carriage, t_vm *vm);
+void		ft_or(t_carriage *carriage);
+void		ft_st(t_carriage *carriage, t_vm *vm);
+void		ft_sti(t_carriage *carriage, t_vm *vm);
+void		ft_sub(t_carriage *carriage);
+void		ft_xor(t_carriage *carriage);
+void		ft_zjmp(t_carriage *carriage);
 
 // Statement utilities:
 void		sort_state_8(\
@@ -153,13 +153,17 @@ void		sort_state_8(\
 void		sort_state_16(\
 			int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
 void		get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw);
+void		write_n_byte(\
+			t_vm *vm, uint32_t index, uint32_t size, uint32_t data);
+int			mod_calculator(int pos);
 int			check_args_validity(t_carriage *carriage);
 int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
+int32_t 	fetch_value(t_carriage *carriage, t_args *arg);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
 int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
+t_carriage	*clone_carriage(t_carriage *old, int pos);
 
-// Statement utilities:
 
 
 #endif
