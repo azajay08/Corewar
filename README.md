@@ -63,7 +63,7 @@ The assembler take a file with a `.s` extension and writes the contents to a fil
 <br>
 
 
-|Statement num|Hex op code|Statement name|Argument 1|Argument 2|Argument 3|
+|Statement Number|Hex Op Code|Statement Name|Argument 1|Argument 2|Argument 3|
 |:-----------:|:---------:|:-------:|:--------:|:--------:|:--------:|
 1	 |`01`  |`live`|	 T_DIR|	-|	-|
 2  |`02`	 |`ld`|	T_DIR / T_IND|	T_REG|	-|
