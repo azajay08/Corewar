@@ -48,7 +48,16 @@ As with all Hive projects, they come with restraints and limitations. We have to
 
 ## Assembler
 
-_Assembler description_
+The assembler take a file with a `.s` extension and writes the contents to a file with the same name but with a `.cor` extension, in the format of hexadecimal byte code.
+<details open>
+<summary>Usage</summary>
+<br>
+
+```
+./asm [filename.s]
+```
+
+</details>
 
 
 ## Virtual Machine
