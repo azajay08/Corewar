@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:26:57 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 15:47:32 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ static void	do_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 		}
 		if (av[i + 1] && ft_strncmp(av[i], "-dump", 2) == 0 && vm->dump < 0)
 			i += set_dump_cycle(vm, av[i], av[i + 1]);
+		if (ft_strncmp(av[i], "-a", 3) == 0 && vm->a_flag == false)
+			vm->a_flag = true;
 	}
 	player->id = player_id;
 	add_first(vm, ac, av, player);

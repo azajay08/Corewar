@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 15:02:51 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 15:50:54 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdbool.h>
 
 // DEBUG: Set to 1 if you wish to see debug messages
-# define DEBUG 0
+# define DEBUG 1
 
 typedef struct s_player
 {
@@ -82,6 +82,7 @@ typedef struct s_vm
 	int			cycles_to_die;
 	int			checks;
 	int			dump;
+	bool		a_flag;
 }	t_vm;
 
 // Initialisation:
