@@ -6,12 +6,15 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:08:35 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/16 18:59:13 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:20:58 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+* -
+*/
 static int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	dir;
@@ -32,6 +35,9 @@ static int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
 	return (dir);
 }
 
+/*
+* -
+*/
 static int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	ind;
@@ -42,6 +48,9 @@ static int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
 	return (ind);
 }
 
+/*
+* -
+*/
 static int	get_reg_value(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	reg;
@@ -50,6 +59,9 @@ static int	get_reg_value(t_carriage *carriage, t_vm *vm, int offset)
 	return (reg);
 }
 
+/*
+* -
+*/
 void	get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
 {
 	int	i;
@@ -60,7 +72,7 @@ void	get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
 	offset = g_op_tab[carriage->op_code - 1].arg_type_code + 1;
 	while (i < g_op_tab[carriage->op_code - 1].arg_num)
 	{
-		byte_skip = arg_byte_count(&carriage, carriage->args[i].type);
+		byte_skip = arg_byte_count(carriage, carriage->args[i].type);
 		if (carriage->args[i].type == T_REG)
 			carriage->args[i].value = get_reg_value(carriage, vm, offset);
 		else if (carriage->args[i].type == T_IND)

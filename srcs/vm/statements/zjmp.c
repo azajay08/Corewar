@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   zjmp.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:56 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 15:39:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/17 15:07:04 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** handle_zjmp:
-** -
+* -
 */
-
-void	ft_xor(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
-[
-	
-]
+void	ft_zjmp(t_carriage *carriage)
+{
+    if (carriage->carry == 1)
+        carriage->pos = mod_calculator(carriage->args[0].value % IDX_MOD);
+}

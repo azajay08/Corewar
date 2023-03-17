@@ -25,9 +25,8 @@ fclean:		clean
 re:			fclean all
 
 norm:
-			#@norminette -R CheckForbiddenSourceHeader ../libft
-			@norminette -R CheckForbiddenSourceHeader ../srcs
 			@norminette -R CheckForbiddenSourceHeader ../includes
+			@norminette -R CheckForbiddenSourceHeader ../srcs
 
 42:
 			@$(SCH_WAR) -n $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)

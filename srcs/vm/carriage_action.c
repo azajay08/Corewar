@@ -6,18 +6,17 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 17:17:49 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:30:36 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** apply_statement:
-** - Updates the carriage to contain the code at the given arena position.
-** - Converts the op_code at the position into an integer. If this integer
-**   correlates to one of the registry statements, the carriage grabs the cycles
-**   until its execution from the op_table and stores it.
+* - Updates the carriage to contain the code at the given arena position.
+* - Converts the op_code at the position into an integer. If this integer
+*   correlates to one of the registry statements, the carriage grabs the cycles
+*   until its execution from the op_table and stores it.
 */
 void	apply_statement(t_vm *vm, t_carriage *carriage)
 {
@@ -39,8 +38,7 @@ void	apply_statement(t_vm *vm, t_carriage *carriage)
 }
 
 /*
-** execute_statement:
-** - Executes the statement correlating to the op code at the arena position.
+* - Executes the statement correlating to the op code at the arena position.
 */
 void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 {
@@ -62,5 +60,5 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 		move_to_next_statement(carriage);
 	}
 	else
-		carriage->pos = (carriage->pos + 1) % MEM_SIZE; // do we move vm->carriage
+		carriage->pos = (carriage->pos + 1) % MEM_SIZE;
 }

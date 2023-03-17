@@ -6,15 +6,14 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 17:21:54 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:38:35 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** init_corewar:
-** - Initialises the data to be used within the Corewar game.
+* - Initialises the data to be used within the Corewar game.
 */
 void	init_corewar(t_corewar *corewar)
 {
@@ -27,8 +26,9 @@ void	init_corewar(t_corewar *corewar)
 }
 
 /*
-** execute_cycle:
-** - Performs the necessary actions for each game cycle.
+* - Performs the necessary actions for each game cycle.
+* - Loops through the list of carriages, executing their process if their
+*   execution countdown reaches zero.
 */
 void	execute_cycle(t_vm *vm, t_corewar *corewar)
 {
@@ -60,8 +60,9 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 }
 
 /*
-** game_carriage:
-** - Loops until only one player remains active in the arena.
+* - Loops until only one player remains active in the arena.
+* - If -d or -dump flag were used, the game will end at the given cycle and
+*   print the arena.
 */
 void	game_process(t_vm *vm)
 {

@@ -6,17 +6,15 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:46:54 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 15:44:32 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:21:29 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** handle_aff:
-** -
+* -
 */
-
 void	ft_aff(t_carriage *carriage, t_vm *vm)
 {
 	
