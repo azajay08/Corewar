@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 16:19:55 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:35:42 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_vm
 	int				cycles_to_die;
 	int				checks;
 	int				dump;
+	bool			a_flag;
 }				t_vm;
 
 // Initialisation:

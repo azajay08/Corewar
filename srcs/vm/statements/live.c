@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   live.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:37 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:56:27 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 16:33:34 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 void	ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
-	uint8_t value;
+	uint8_t	value;
 
 	carriage->last_live_cycle = corewar->cycles;
 	corewar->lives_this_period++;
