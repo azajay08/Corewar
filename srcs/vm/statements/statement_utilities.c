@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities.c                                        :+:      :+:    :+:   */
+/*   statement_utilities.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/17 14:10:37 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 14:44:20 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_carriage	*clone_carriage(t_carriage *old, int pos)
 	i = 0;
 	while (i < REG_NUMBER)
 	{
-		new->registers[i] = old->reg[i];
+		new->registers[i] = old->registers[i];
 		i++;
 	}
 	return (new);
