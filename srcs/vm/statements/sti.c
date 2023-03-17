@@ -25,5 +25,5 @@ void	ft_sti(t_carriage *carriage, t_vm *vm)
     value_1 = fetch_value(carriage, carriage->args[1]);
     value_2 = fetch_value(carriage, carriage->args[2]);
     result = (value_1 + value_2) % IDX_MOD;
-    write_n_byte(vm, result + carriage->pos, 4, carriage->registers[carriage->args[0].value]);
+    write_n_byte(vm, result + carriage->pos, 4, carriage->registers[carriage->args[0].value - 1]);
 }

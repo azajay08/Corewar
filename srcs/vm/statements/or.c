@@ -25,7 +25,7 @@ void	ft_or(t_carriage *carriage)
     value_1 = fetch_value(carriage, carriage->args[0]);
     value_2 = fetch_value(carriage, carriage->args[1]);
     result = (value_1 | value_2);
-    carriage->registers[carriage->args[2].value] = result;
+    carriage->registers[carriage->args[2].value - 1] = result;
     if (result == 0)
         carriage->carry = 1;
     else

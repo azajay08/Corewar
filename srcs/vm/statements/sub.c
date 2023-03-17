@@ -21,8 +21,8 @@ void	ft_sub(t_carriage *carriage)
 {
     uint8_t value;
 
-    value = carriage->registers[carriage->args[0].value] - carriage->registers[carriage->args[1].value];
-    carriage->registers[carriage->args[2].value] = value;
+    value = carriage->registers[carriage->args[0].value - 1] - carriage->registers[carriage->args[1].value - 1];
+    carriage->registers[carriage->args[2].value] - 1 = value;
     if (value == 0)
         carriage->carry = 1;
     else

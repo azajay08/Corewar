@@ -19,7 +19,7 @@
 
 void	ft_lld(t_carriage *carriage)
 {
-    carriage->registers[carriage->args[1].value] = carriage->args[0].value;
+    carriage->registers[carriage->args[1].value - 1] = carriage->args[0].value;
 	if (carriage->args[0].value == 0)
 		carriage->carry = 1;
 	else
