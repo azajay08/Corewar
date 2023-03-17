@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aff.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:46:54 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:59:16 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 16:21:29 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 /*
 * -
 */
-
-void	ft_aff(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
+void	ft_aff(t_carriage *carriage, t_vm *vm)
 {
-	if (carriage || corewar || vm)
-		ft_printf("");
+	
+	int	reg;
+
+	reg = carriage->registers[carriage->args[0].value - 1];
+	reg %= 256;
+	if (vm->a_flag)
+		ft_printf("AFF: %c\n", (char)reg);
 }

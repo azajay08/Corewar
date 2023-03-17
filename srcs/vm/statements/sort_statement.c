@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_statement.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 15:08:53 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 16:16:43 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	else if (state == STI)
 		ft_sti(carriage, vm);
 	else if (state == FORK)
-		ft_fork(carriage, cw, vm);
+		ft_fork(&carriage, &vm);
 	else if (state == LLD)
 		ft_lld(carriage);
 	else if (state == LLDI)
 		ft_lldi(carriage, vm);
 	else if (state == LFORK)
-		ft_lfork(carriage, cw, vm);
+		ft_lfork(&carriage, &vm);
 	else if (state == AFF)
-		ft_aff(carriage, cw, vm);
+		ft_aff(&carriage, &vm);
 }
 
 /*

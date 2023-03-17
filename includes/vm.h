@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 15:53:55 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 16:19:55 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,19 @@ typedef struct s_corewar
 
 typedef struct s_vm
 {
-	uint32_t	player_count;
-	t_carriage	*carriages;
-	t_player	*player[MAX_PLAYERS];
-	int			latest_live;
-	uint8_t		arena[MEM_SIZE];
-	uint8_t		print_octets;
-	size_t		carriage_count;
-	size_t		total_carriagees;
-	int			cycle;
-	int			cycles_to_die;
-	int			checks;
-	int			dump;
-	bool		a_flag;
-}	t_vm;
+	uint32_t		player_count;
+	t_carriage		*carriages;
+	t_player		*player[MAX_PLAYERS];
+	int				latest_live;
+	uint8_t			arena[MEM_SIZE];
+	uint8_t			print_octets;
+	size_t			carriage_count;
+	size_t			total_carriagees;
+	int				cycle;
+	int				cycles_to_die;
+	int				checks;
+	int				dump;
+}				t_vm;
 
 // Initialisation:
 void		init_vm(t_vm *vm);
@@ -158,8 +157,8 @@ int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
 int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
-void		write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data);
-int32_t 	fetch_value(t_carriage *carriage, t_args *arg);
-int			mod_calculator(int pos);
+
+// Statement utilities:
+
 
 #endif

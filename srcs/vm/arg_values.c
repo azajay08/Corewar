@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:08:35 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/17 14:29:47 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 16:20:58 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,5 @@ void	get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
 		i++;
 		offset += byte_skip;
 	}
-	sort_state_8(carriage->op_code, carriage, cw, vm);
+	sort_state_8(carriage->op_code, &carriage, &cw, &vm);
 }
