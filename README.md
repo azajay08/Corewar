@@ -14,7 +14,7 @@ Corewar is the final project of the algorithm branch at Hive Helsinki. Completin
 Core War is a 1984 programming game created by D. G. Jones and A. K. Dewdney in which two or more battle programs (called "warriors") compete for control of a virtual computer. These battle programs are written in an abstract assembly language called Redcode. The standards for the language and the virtual machine were initially set by the International Core Wars Society (ICWS), but later standards were determined by community consensus.
 
 The project is split into 3 mains parts:
-- [The Assemlber](#assembler)
+- [The Assembler](#assembler)
 - [The Virtual Machine](#virtual-machine)
 - [The Champion](#champion)
 
