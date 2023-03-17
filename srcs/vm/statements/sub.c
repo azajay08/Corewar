@@ -17,11 +17,11 @@
 ** -
 */
 
-void	ft_sub(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
+void	ft_sub(t_carriage *carriage)
 {
     uint8_t value;
 
-    value = carriage->registers[carriage->args[10].value] - carriage->registers[carriage->args[1].value];
+    value = carriage->registers[carriage->args[0].value] - carriage->registers[carriage->args[1].value];
     carriage->registers[carriage->args[2].value] = value;
     if (value == 0)
         carriage->carry = 1;

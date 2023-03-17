@@ -42,18 +42,18 @@ int8_t	check_args(t_carriage *carriage)
 	return (0);
 }
 
-void	write_n_byte(unsigned char *arena, uint32_t index, uint32_t size, uint32_t data)
+void	write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data)
 {
-	index = get_pos(index);
-	while (size)
+	index = mod_calculator(index);
+	while (size >= 0)
 	{
-		arena[index] = (unsigned char *)data[size];
+		vm->arena[index % IDX_MOD] = (unsigned char *)data[size];
 		size--;
-		index--;
+		index++;
 	}
 }
 
-int32_t get_arg_value(t_carriage *carriage, t_args *arg)
+int32_t fetch_value(t_carriage *carriage, t_args *arg)
 {
 	if (arg->type == T_REG)
 		return (carriage->registers[arg->value]);

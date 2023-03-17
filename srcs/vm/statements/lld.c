@@ -17,7 +17,11 @@
 ** -
 */
 
-void	ft_lld(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
-[
-	
-]
+void	ft_lld(t_carriage *carriage)
+{
+    carriage->registers[carriage->args[1].value] = carriage->args[0].value;
+	if (carriage->args[0].value == 0)
+		carriage->carry = 1;
+	else
+		carriage->carry = 0;
+}

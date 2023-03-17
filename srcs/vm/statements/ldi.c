@@ -17,14 +17,14 @@
 ** -
 */
 
-void	ft_ldi(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
+void	ft_ldi(t_carriage *carriage, t_vm *vm)
 {
     uint8_t value_1;
     uint8_t value_2;
     uint8_t result;
 
-    value_1 = get_arg_value(carriage, carriage->args[0]);
-    value_2 = get_arg_value(carriage, carriage->args[1]);
+    value_1 = fetch_value(carriage, carriage->args[0]);
+    value_2 = fetch_value(carriage, carriage->args[1]);
     result = get_n_byte(4, vm->arena, ((value_1 + value_2) % IDX_MOD));
     carriage->registers[carriage->args[2].value] = result;
 }
