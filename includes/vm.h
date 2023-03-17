@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 16:49:43 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:57:23 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,7 @@ void		ft_zjmp(t_carriage *carriage);
 // Statement utilities:
 void		sort_state_8(\
 			int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
-void		sort_state_16(\
-			int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
+void		sort_state_16(int state, t_carriage *carriage, t_vm *vm);
 void		get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw);
 void		write_n_byte(\
 			t_vm *vm, uint32_t index, uint32_t size, uint32_t data);

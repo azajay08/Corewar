@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:35 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 16:21:55 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 17:02:44 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 void	ft_lfork(t_carriage *carriage, t_vm *vm)
 {
 	int			pos;
-	t_carriage	*new;
 
 	pos = carriage->pos + carriage->args[0].value;
 	pos = mod_calculator(pos);

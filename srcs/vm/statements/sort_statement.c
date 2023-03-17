@@ -6,13 +6,13 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 16:16:43 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/17 16:57:07 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
+void	sort_state_16(int state, t_carriage *carriage, t_vm *vm)
 {
 	if (state == ZJMP)
 		ft_zjmp(carriage);
@@ -21,15 +21,15 @@ void	sort_state_16(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	else if (state == STI)
 		ft_sti(carriage, vm);
 	else if (state == FORK)
-		ft_fork(&carriage, &vm);
+		ft_fork(carriage, vm);
 	else if (state == LLD)
 		ft_lld(carriage);
 	else if (state == LLDI)
 		ft_lldi(carriage, vm);
 	else if (state == LFORK)
-		ft_lfork(&carriage, &vm);
+		ft_lfork(carriage, vm);
 	else if (state == AFF)
-		ft_aff(&carriage, &vm);
+		ft_aff(carriage, vm);
 }
 
 /*
@@ -54,5 +54,5 @@ void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	else if (state == XOR)
 		ft_xor(carriage);
 	else
-		sort_state_16(state, carriage, cw, vm);
+		sort_state_16(state, carriage, vm);
 }
