@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 14:44:55 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 15:02:51 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,24 @@ int			arg_byte_count(t_carriage *carriage, int type);
 void		exit_vm(char *error_message);
 
 //Statements:
+void	ft_add(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_aff(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_and(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_fork(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_ld(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_ldi(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_lfork(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_lld(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_lldi(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_or(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_st(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_sti(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_sub(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_xor(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+void	ft_zjmp(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
+
+
 
 // Statement utilities:
 void		sort_state_8(\

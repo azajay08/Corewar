@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:42 by sam               #+#    #+#             */
-/*   Updated: 2023/03/16 17:13:08 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/17 14:58:42 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 
 void	ft_lldi(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {
-
+	if (carriage || corewar || vm)
+		ft_printf("");
 }
