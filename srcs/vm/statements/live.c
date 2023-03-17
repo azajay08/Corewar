@@ -25,5 +25,4 @@ void	ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 	value *= -1;
 	if (value > 0 && value <= vm->player_count)
 		vm->latest_live = value;
-	carriage->pos = (carriage->pos + 5) % MEM_SIZE;
 }

@@ -13,16 +13,17 @@
 #include "vm.h"
 
 /*
-Statement Code		Argument Type Code			Argument # 1		Argument # 2
-1 byte				1 byte						2/4 bytes			1 byte
-02					first 2 pairs of bits		(dir/ind)			register number
+** handle_ld:
+** -
 */
-
-/*
-* -
-*/
-void	ft_ld(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
+void	ft_ld(t_carriage *carriage)
 {
-	if (carriage || corewar || vm)
-		ft_printf("");
+	if (carriage->args[0].type == T_IND)
+		carriage->registers[carriage->args[1].value - 1] = carriage->args[0].value % IDX_MOD;
+	else
+		carriage->registers[carriage->args[1].value - 1] = carriage->args[0].value;
+	if (carriage->args[0].value == 0)
+		carriage->carry = 1;
+	else
+		carriage->carry = 0;
 }

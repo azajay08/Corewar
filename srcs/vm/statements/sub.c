@@ -15,8 +15,14 @@
 /*
 * -
 */
-void	ft_sub(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
+void	ft_sub(t_carriage *carriage)
 {
-	if (carriage || corewar || vm)
-		ft_printf("");
+    uint8_t value;
+
+    value = carriage->registers[carriage->args[0].value - 1] - carriage->registers[carriage->args[1].value - 1];
+    carriage->registers[carriage->args[2].value] - 1 = value;
+    if (value == 0)
+        carriage->carry = 1;
+    else
+        carriage->carry = 0;
 }

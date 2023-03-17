@@ -15,8 +15,10 @@
 /*
 * -
 */
-void	ft_st(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
+void	ft_st(t_carriage *carriage, t_vm *vm)
 {
-	if (carriage || corewar || vm)
-		ft_printf("");
+    if (carriage->args[1].type == T_REG)
+        carriage->registers[carriage->args[1].value - 1] = carriage->args[0].value;
+    else if (carriage->args[1].type == T_IND)
+        write_n_byte(vm, carriage->args[1].value, 4, carriage->registers[carriage->args[0].value - 1]);
 }

@@ -158,5 +158,8 @@ int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
 int8_t		check_args(t_carriage *carriage);
 u_int16_t	get_pos(u_int16_t pos);
+void		write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data);
+int32_t 	fetch_value(t_carriage *carriage, t_args *arg);
+int			mod_calculator(int pos);
 
 #endif

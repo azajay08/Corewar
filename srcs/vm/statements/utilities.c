@@ -12,33 +12,32 @@
 
 #include "vm.h"
 
-/*
-* -
-*/
-u_int16_t	get_pos(u_int16_t pos)
+int    mod_calculator(int pos)
 {
-	if (pos < MEM_SIZE)
-		return (pos);
-	return (pos % MEM_SIZE);
+    if (pos < 0)
+    {
+        pos %= MEM_SIZE;
+        pos += MEM_SIZE;
+    }
+    else
+        pos %= MEM_SIZE;
+    return (pos);
 }
 
-/*
-* -
-*/
-int8_t	check_args(t_carriage *carriage)
+void	write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data)
 {
-	int			i;
-	u_int8_t	bit_pair;
-
-	if (g_op_tab[carriage->op_code].arg_type_code == 0)
-		return (0);
-	i = 0;
-	while (i < g_op_tab[carriage->op_code].arg_num)
+	index = mod_calculator(index);
+	while (size >= 0)
 	{
-		bit_pair = get_bit_pair(carriage->pos + 1, i);
-		if (bit_pair != g_op_tab[carriage->op_code].arg_type[i])
-			return (-1);
-		i++;
+		vm->arena[index % MEM_SIZE] = (unsigned char *)data[size];
+		size--;
+		index++;
 	}
-	return (0);
+}
+
+int32_t fetch_value(t_carriage *carriage, t_args *arg)
+{
+	if (arg->type == T_REG)
+		return (carriage->registers[arg->value]);
+	return (arg->value);
 }
