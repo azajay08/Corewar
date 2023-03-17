@@ -1,8 +1,6 @@
-# Corewar - Hive Helsinki (42)
-
 ![corewar_type](https://user-images.githubusercontent.com/86073849/224506544-f46c4665-5658-43bf-a609-c16889879032.gif)
 
-
+# Corewar - Hive Helsinki (42)
 Corewar is the final project of the algorithm branch at Hive Helsinki. Completing this project means completing the core studies at Hive. It is a take on the 80s programming game called Core War. It is a group project consisting of 4 team members.
 ### Our team:
 * [Aaron](https://github.com/azajay08)
