@@ -21,7 +21,7 @@ void	ft_ld(t_carriage *carriage)
 	if (carriage->args[0].type == T_IND)
 		carriage->registers[carriage->args[1].value - 1] = carriage->args[0].value % IDX_MOD;
 	else
-		carriage->registers[carriage->args[1].value] = carriage->args[0].value;
+		carriage->registers[carriage->args[1].value - 1] = carriage->args[0].value;
 	if (carriage->args[0].value == 0)
 		carriage->carry = 1;
 	else
