@@ -65,7 +65,7 @@ The files are written in assembly language. In these files will be:
 * Labels
 * Statements
 
-`Comments` can either be on an individual line anywhere in the file, or placed on the end of a line containing an instruction. `Comments` are indicated using one of two comment characters `#` or `;`.
+`Comments` can either be on an individual line anywhere in the file, or placed on the end of a line after an instruction. `Comments` are indicated using one of two comment characters `#` or `;`.
 
 The `header` conists of the `Champion's` name and a comment. The champion's name can be anything but has to be under 128 characters. The comment is usually a cheeky comment or some trash talk, which can also be anything but has to be under 2048 characters. The order that they are in doesn't matter. All that matters is that header comes before any `labels` or `statements`.
 
