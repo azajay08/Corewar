@@ -59,10 +59,10 @@ The project is split into 3 mains parts:
 
 The assembler takes a file with a `.s` extension (also known as a `champion`) and writes the contents to a file with the same name but with a `.cor` extension in the format of hexadecimal bytecode. The job of the assembler is to parse through the assembly language from the input file and make sure everything is valid, ready to translate it into bytecode. Of course the input file has to be formatted in a speicifc way to be correctly translated, so we must take care of edge cases and invalid inputs. 
 
-The files are written in assembly language. In these files will be:
-* Comments
+The files are written in assembly language. A valid champion would have:
+* Comments (Not mandatory)
 * Header
-* Labels
+* Labels (Not mandatory)
 * Statements
 
 `Comments` can either be on an individual line anywhere in the file, or placed on the end of a line after an instruction. `Comments` are indicated using one of two comment characters `#` or `;`.
