@@ -73,9 +73,21 @@ The `header` conists of the `Champion's` name and a comment. The champion's name
 .comment "champions comment"
 ```
 
-`Labels` are used as reference to the specific statement that follows it immediately. The label itself as a name means nothing to the program, they are named for readability. If a label is called as an argument, it represents a value. That value is the number of bytes between the beginning of the line in which the call is made from, and the beginning of the line in which the label is on. The name of the label can only consist of these characters `abcdefghijklmnopqrstuvwxyz_0123456789`.
+`Labels` are used as reference to the specific statement that follows it immediately. A statement does not have to be on the same line to be linked to the label. The label itself as a name means nothing to the program, they are named for readability. If a label is called as an argument, it represents a value. That value is the number of bytes between the beginning of the line in which the call is made from, and the beginning of the line in which the label is on. The name of the label can only consist of these characters `abcdefghijklmnopqrstuvwxyz_0123456789`. A label will end with the `LABEL_CHAR` - `:`. A valid example:
+```
+example_label: <statement> <arg> <arg>
 
-`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these statements are functions, they take arguments. It is the assemblers job to parse these statements and their arguments, make sure they are valid to their respective statements. If so, their values will be written in bytecode.
+example_label2:
+               <statement> <arg> <arg>
+```
+
+`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these statements are functions, they take arguments. It is the job of the assembler to parse these statements and their arguments, and make sure they are valid to their respective statements. If so, their values will be written in bytecode. The arguments for the statements can be one of three:
+* `T_REG` - __Registry__ 
+  * This argument is recognised with an `r` infront of number between 1-16 e.g. `r11`
+* `T_DIR` -  __Direct Value__ 
+  * This argument is recognised with `%` before a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `%42`, `%-5`, `%:example_label`
+* `T_IND` -  __Indirect Value__
+  * This argument doesn't have a specific character to recognise it but, it will just be a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `42`, `-5`, `:example_label`
 
 <details>
 <summary>Statement Table</summary>
