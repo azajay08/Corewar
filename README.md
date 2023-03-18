@@ -144,6 +144,13 @@ st r10, 42
 <summary>Assembly to bytecode</summary>
 <br>
 
+<img width="425" alt="Screenshot 2023-03-18 at 4 21 05" src="https://user-images.githubusercontent.com/86073849/226078171-f3e8260e-fd2e-442f-8c07-9fa653dfedae.png">     
+
+
+<img width="425" alt="Screenshot 2023-03-18 at 4 20 35" src="https://user-images.githubusercontent.com/86073849/226078166-6922d23b-83a9-4c7a-9272-170691c023a3.png">
+
+
+
 
 </details> 
                 
