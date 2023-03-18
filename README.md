@@ -102,6 +102,17 @@ example_label2:
   * This argument doesn't have a specific character to recognise it but, it will just be a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `42`, `-5`, `:example_label`
 
 The `statements` themselves
+                
+<details>
+<summary>Example</summary>
+<br>
+
+```
+add r1, r4, r7
+and 42, %:label, r3
+st r10, 42  
+```
+</details>
 
 <details>
 <summary>Statement Table</summary>
