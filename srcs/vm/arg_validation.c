@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/17 14:30:01 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/18 15:55:19 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ static int	check_result_code(t_carriage *carriage)
 	int	bit_pair;
 
 	i = 0;
-	while (i < g_op_tab[carriage->op_code].arg_num)
+	while (i < g_op_tab[carriage->op_code - 1].arg_num)
 	{
-		bit_pair = get_bit_pair(carriage->pos + 1, i + 1);
+		bit_pair = get_bit_pair(carriage->result_code, i + 1);
 		if (bit_pair == IND_CODE)
 			bit_pair = T_IND;
 		carriage->args[i].type = bit_pair;
