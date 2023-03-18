@@ -47,7 +47,6 @@ The project is split into 3 mains parts:
 
 ## Assembler
 
-The assembler take a file with a `.s` extension and writes the contents to a file with the same name but with a `.cor` extension, in the format of hexadecimal byte code.
 <details>
 <summary>Usage</summary>
 <br>
@@ -57,6 +56,26 @@ The assembler take a file with a `.s` extension and writes the contents to a fil
 ```
 
 </details>
+
+The assembler takes a file with a `.s` extension (also known as a `champion`) and writes the contents to a file with the same name but with a `.cor` extension in the format of hexadecimal bytecode. The job of the assembler is to parse through the assembly language from the input file and make sure everything is valid, ready to translate it into bytecode. Of course the input file has to be formatted in a speicifc way to be correctly translated, so we must take care of edge cases and invalid inputs. 
+
+The files are written in assembly language. In these files will be:
+* Comments
+* Header
+* Labels
+* Statements
+
+`Comments` can either be on an individual line anywhere in the file, or placed on the end of a line containing an instrction. `Comments` are indicated using one of two comment characters `#` or `;`.
+
+The `header` conists of the `Champion's` name and a comment. The champion's name can be anything but has to be under 128 characters. The comment is usually a cheeky comment or some trash talk, which can also be anything but has to be under 2048 characters. The order that they are in doesn't matter. All that matters is that header comes before any `labels` or `statements`. A valid example looks something like this
+```
+.name    "champions name"
+.comment "champions comment"
+```
+
+`Labels` are used as reference to the specific statement that follows it immediately. The label itself as a name means nothing to the program, they are named for readability. If a label is called as an argument, it represents a value. That value is the number of bytes between the beginning of the line in which the call is made from, and the beginning of the line in which the label is on. The name of the label can only consist of these characters `abcdefghijklmnopqrstuvwxyz_0123456789`.
+
+`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these statements are functions, they take arguments. It is the assemblers job to parse these statements and their arguments, make sure they are valid to their respective statements. If so, their values will be written in bytecode.
 
 <details>
 <summary>Statement Table</summary>
@@ -86,8 +105,6 @@ The assembler take a file with a `.s` extension and writes the contents to a fil
 
 ## Virtual Machine
 
-_VM description_
-
 <details>
 <summary>Usage</summary>
 <br>
@@ -102,6 +119,8 @@ Flags:
 ```
 
 </details>
+
+_VM description_
 
 ## Champion
 
