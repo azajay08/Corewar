@@ -93,7 +93,7 @@ example_label2:
 ```
 </details>
 
-`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these `statements` are functions, they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written in bytecode. The arguments for the `statements` can be one of three:
+`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these `statements` are functions, they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written in bytecode. The arguments must be separated by the `SEPARATOR_CHAR` - `,`. The arguments for the `statements` can be one of three:
 * `T_REG` - __Registry__ 
   * This argument is recognised with an `r` infront of number between 1-16 e.g. `r11`
 * `T_DIR` -  __Direct Value__ 
