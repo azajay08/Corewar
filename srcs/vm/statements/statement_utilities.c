@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/18 17:22:39 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/18 17:28:02 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data)
 	index = mod_calculator(index);
 	while ((int)size >= 0)
 	{
-		ft_printf("\nsize: %i\n", size);
 		vm->arena[index % MEM_SIZE] = ((unsigned char *)&data)[size];
 		size--;
 		index++;
