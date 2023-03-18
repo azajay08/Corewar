@@ -143,7 +143,7 @@ st r10, 42
 <details>
 <summary>Assembly to bytecode</summary>
 <br>
- 
+
 
 </details> 
                 
