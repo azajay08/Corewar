@@ -140,6 +140,13 @@ st r10, 42
 
 </details>
 
+<details>
+<summary>Assembly to bytecode</summary>
+<br>
+ 
+
+</details> 
+                
 ## Virtual Machine
 
 <details>
