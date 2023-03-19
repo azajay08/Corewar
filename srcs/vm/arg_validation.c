@@ -6,14 +6,14 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/19 16:23:09 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:28:31 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - We make sure that T_Reg argument is between 1 and 16.
 */
 int	check_reg_validity(t_carriage *carriage, t_vm *vm, int offset)
 {
