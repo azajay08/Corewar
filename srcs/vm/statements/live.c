@@ -6,14 +6,14 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:37 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:28:45 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:11:47 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - Live counts that carriage, which performs the live statement, is alive.
 */
 void	ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm)
 {

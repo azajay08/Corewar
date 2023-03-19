@@ -6,12 +6,15 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/19 15:32:25 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:01:26 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+* - Clone the carriage that used fork or lfork.
+*/
 t_carriage	*clone_carriage(t_carriage *old, int pos)
 {
 	int				i;
@@ -38,6 +41,9 @@ t_carriage	*clone_carriage(t_carriage *old, int pos)
 	return (new);
 }
 
+/*
+* - Calculates the correct position.
+*/
 int	mod_calculator(int pos)
 {
 	if (pos < 0)
@@ -50,7 +56,10 @@ int	mod_calculator(int pos)
 	return (pos);
 }
 
-void	write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data)
+/*
+* - Rewrites N amount of bites to the arena.
+*/
+void	write_n_byte(t_vm *vm, int index, int size, int data)
 {
 	index = mod_calculator(index);
 	while ((int)size >= 0)
@@ -61,7 +70,10 @@ void	write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data)
 	}
 }
 
-int32_t	fetch_value(t_carriage *carriage, t_args *arg)
+/*
+* - Gets the inside a registry.
+*/
+int	fetch_value(t_carriage *carriage, t_args *arg)
 {
 	if (arg->type == T_REG)
 		return (carriage->registers[arg->value - 1]);

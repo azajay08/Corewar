@@ -6,14 +6,15 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:48 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:27:56 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:19:08 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - This statement writes the value of the registry.
+* - passed as the first parameter to the address.
 */
 void	ft_sti(t_carriage *carriage, t_vm *vm)
 {

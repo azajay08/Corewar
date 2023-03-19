@@ -6,15 +6,16 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:42 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:30:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:14:27 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** ft_lldi:
-** -
+* - Lldi works similarly to ldi.
+* - The difference is when forming the address,
+* - you shouldn't truncate by modulo IDX_MOD.
 */
 void	ft_lldi(t_carriage *carriage, t_vm *vm)
 {

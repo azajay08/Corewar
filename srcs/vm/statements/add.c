@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:46:32 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:30:48 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:53:28 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 void	ft_add(t_carriage *carriage)
 {
-	uint8_t	value;
+	int	value;
 
 	value = carriage->registers[carriage->args[0].value - 1] + \
 		carriage->registers[carriage->args[1].value - 1];

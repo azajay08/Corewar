@@ -6,16 +6,15 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:33 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:32:39 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:09:05 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - Loads a value to the registry from an address on the arena.
 */
-
 void	ft_ldi(t_carriage *carriage, t_vm *vm)
 {
 	int	value_1;

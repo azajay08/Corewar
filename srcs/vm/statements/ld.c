@@ -6,15 +6,16 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:30 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:31:57 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:07:41 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-** handle_ld:
-** -
+* - Ld loads a value into a registry.
+* - If its a direct value then the value is loaded.
+* - If its an indirect value the bytes from the address will be loaded.
 */
 void	ft_ld(t_carriage *carriage)
 {

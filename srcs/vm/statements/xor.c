@@ -6,14 +6,14 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:53 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:29:35 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:21:00 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
 /*
-* -
+* - Xor is almost identical to the <and> statement.
+* - Only difference is, "bitwise AND" is replaced by "bitwise exclusive OR".
 */
 void	ft_xor(t_carriage *carriage)
 {

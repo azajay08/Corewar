@@ -6,14 +6,14 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:51 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:31:17 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:19:51 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - Sets the value of the third argument as argument1 - argument2.
 */
 void	ft_sub(t_carriage *carriage)
 {

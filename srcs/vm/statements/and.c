@@ -6,14 +6,15 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:25 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:29:51 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:04:20 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - Performs a "bitwise AND" statement for the values​of the first two arguments.
+* - and writes the result to the registry passed as the third argument.
 */
 void	ft_and(t_carriage *carriage)
 {
