@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 11:09:20 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:25:45 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/19 16:29:31 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	byte_to_int(uint8_t *arena, int position)
 }
 
 /*
-* -
+* - Calculates the distance to the next statement.
 */
 void	count_bytes_to_skip(t_carriage *carriage)
 {
@@ -46,7 +46,7 @@ void	count_bytes_to_skip(t_carriage *carriage)
 }
 
 /*
-* -
+* - Moves the carriage to next statement.
 */
 void	move_to_next_statement(t_carriage *carriage)
 {

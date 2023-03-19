@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   aff.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:46:54 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 17:14:03 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 16:03:07 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - Takes a value from a registry that was passed as a single argument.
+* - Converts it to type char. And displays as an ASCII character.
+* - Only if -a flag is on.
 */
 void	ft_aff(t_carriage *carriage, t_vm *vm)
 {

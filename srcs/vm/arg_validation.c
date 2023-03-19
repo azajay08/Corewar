@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   arg_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/19 00:06:56 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 16:28:31 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - We make sure that T_Reg argument is between 1 and 16.
 */
 int	check_reg_validity(t_carriage *carriage, t_vm *vm, int offset)
 {
@@ -26,7 +26,8 @@ int	check_reg_validity(t_carriage *carriage, t_vm *vm, int offset)
 }
 
 /*
-* -
+* - We check if statement is of typecode 1 otherwise
+* we already know the what argument type it should be.
 */
 int	arg_validity(t_carriage *carriage)
 {
@@ -62,7 +63,8 @@ int8_t	get_bit_pair(int byte, u_int8_t nth_pair)
 }
 
 /*
-* -
+* We compare that binary result (result_code) is correct, compared to the
+* statement and arguments.
 */
 static int	check_result_code(t_carriage *carriage)
 {
@@ -82,13 +84,13 @@ static int	check_result_code(t_carriage *carriage)
 }
 
 /*
-* -
+* - We make sure that T_Reg argument is between 1 and 16.
 */
 int	check_args_validity(t_carriage *carriage)
 {
 	if (!g_op_tab[carriage->op_code - 1].arg_type_code)
 	{
-		carriage->args[0].type = T_DIR;	
+		carriage->args[0].type = T_DIR;
 		return (1);
 	}
 	else

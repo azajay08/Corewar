@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 16:57:23 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 16:23:43 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,15 +152,12 @@ void		sort_state_8(\
 			int state, t_carriage *carriage, t_corewar *cw, t_vm *vm);
 void		sort_state_16(int state, t_carriage *carriage, t_vm *vm);
 void		get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw);
-void		write_n_byte(\
-			t_vm *vm, uint32_t index, uint32_t size, uint32_t data);
+void		write_n_byte(t_vm *vm, int index, int size, int data);
 int			mod_calculator(int pos);
 int			check_args_validity(t_carriage *carriage);
 int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
+int			fetch_value(t_carriage *carriage, t_args *arg);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
-int32_t 	fetch_value(t_carriage *carriage, t_args *arg);
 t_carriage	*clone_carriage(t_carriage *old, int pos);
-
-
 
 #endif

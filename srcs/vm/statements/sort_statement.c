@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   sort_statement.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/17 16:57:07 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:56:15 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+* - Picks the corresponding statement 9 - 16.
+*/
 void	sort_state_16(int state, t_carriage *carriage, t_vm *vm)
 {
 	if (state == ZJMP)
@@ -33,7 +36,7 @@ void	sort_state_16(int state, t_carriage *carriage, t_vm *vm)
 }
 
 /*
-* -
+* - Picks the corresponding statement 1 - 8. Or sends to sort_16.
 */
 void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 {
