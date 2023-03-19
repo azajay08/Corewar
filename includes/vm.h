@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/19 16:01:44 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:23:43 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,5 @@ int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
 int			fetch_value(t_carriage *carriage, t_args *arg);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
 t_carriage	*clone_carriage(t_carriage *old, int pos);
-
-
 
 #endif

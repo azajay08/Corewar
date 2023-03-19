@@ -6,7 +6,7 @@
 /*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/19 15:23:15 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:23:09 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	check_args_validity(t_carriage *carriage)
 {
 	if (!g_op_tab[carriage->op_code - 1].arg_type_code)
 	{
-		carriage->args[0].type = T_DIR;	
+		carriage->args[0].type = T_DIR;
 		return (1);
 	}
 	else
