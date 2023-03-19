@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   statement_utilities.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/19 16:01:26 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/19 20:57:41 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	mod_calculator(int pos)
 void	write_n_byte(t_vm *vm, int index, int size, int data)
 {
 	index = mod_calculator(index);
-	while ((int)size >= 0)
+	while (size >= 0)
 	{
 		vm->arena[index % MEM_SIZE] = ((unsigned char *)&data)[size];
 		size--;
