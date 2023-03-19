@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   arg_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:08:35 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/19 15:04:24 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:21:21 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - If the argument is of type T_DIR, we check two or four bytes.
+* - Because T_DIR can change how many bytes the value is.
 */
 static int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
 {
@@ -36,7 +37,8 @@ static int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
 }
 
 /*
-* -
+* - If the argument is of type T_IND, we check two bytes.
+* - Because that is only size T_IND can be.
 */
 static int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
 {
@@ -49,7 +51,8 @@ static int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
 }
 
 /*
-* -
+* - If the argument is of type T_REG, we check one byte.
+* - Because that is only size T_Reg can be.
 */
 static int	get_reg_value(t_carriage *carriage, t_vm *vm, int offset)
 {
@@ -60,7 +63,11 @@ static int	get_reg_value(t_carriage *carriage, t_vm *vm, int offset)
 }
 
 /*
-* -
+* - We check which argument type we are looking for.
+* - We assign often depending if there is a binary code (result code)
+* - Then we start looking what arg types there are to get the byte skip amount,
+* - and also what values the args hold.
+* - Then we send the args to be executed.
 */
 void	get_arg_values(t_carriage *carriage, t_vm *vm, t_corewar *cw)
 {

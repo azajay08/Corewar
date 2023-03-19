@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   arg_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:37:51 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/19 02:53:04 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:21:56 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* -
+* - After a carriage executes a statement
+* - we reset the values of the arguments.
 */
 void	reset_args(t_carriage *carriage)
 {
@@ -30,7 +31,7 @@ void	reset_args(t_carriage *carriage)
 }
 
 /*
-* - Validates which arg is correct.
+* - Validates which arg-type is correct.
 */
 int	arg_byte_count(t_carriage *carriage, int type)
 {

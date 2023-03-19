@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   carriage_action.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:03:22 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:23:29 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	apply_statement(t_vm *vm, t_carriage *carriage)
 
 /*
 * - Executes the statement correlating to the op code at the arena position.
+* - We first make sure that statement is between 1 and 16. If it is, its saved.
+* - Otherwise we skip a byte. Then we save the binary code (result code).
+* - We then start validating and checking arg values for that statement.
+* - After that we count how many bytes we need to move to the next statement.
+* - Finally we move the carriage to the next statement.
 */
 void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 {
