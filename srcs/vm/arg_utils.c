@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 19:37:51 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/17 14:30:16 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/19 02:53:04 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	reset_args(t_carriage *carriage)
 	int	i;
 
 	i = 0;
-	while (i < g_op_tab[carriage->op_code -1].arg_num)
+	carriage->op_code = 0;
+	while (i < 3)
 	{
 		carriage->args[i].type = 0;
 		carriage->args[i].value = 0;

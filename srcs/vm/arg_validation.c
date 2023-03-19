@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/18 15:55:19 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 00:06:56 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ static int	check_result_code(t_carriage *carriage)
 int	check_args_validity(t_carriage *carriage)
 {
 	if (!g_op_tab[carriage->op_code - 1].arg_type_code)
+	{
+		carriage->args[0].type = T_DIR;	
 		return (1);
+	}
 	else
 		return (check_result_code(carriage));
 }

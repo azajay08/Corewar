@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   carriage_action.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:30:36 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/19 15:03:22 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,4 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 		count_bytes_to_skip(carriage);
 		move_to_next_statement(carriage);
 	}
-	else
-		carriage->pos = (carriage->pos + 1) % MEM_SIZE;
 }
