@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:51 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 17:09:46 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:31:17 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 */
 void	ft_sub(t_carriage *carriage)
 {
-	uint8_t value;
+	int	value;
 
-	value = carriage->registers[carriage->args[0].value - 1] - carriage->registers[carriage->args[1].value - 1];
+	value = carriage->registers[carriage->args[0].value - 1] \
+			- carriage->registers[carriage->args[1].value - 1];
 	carriage->registers[carriage->args[2].value - 1] = value;
 	if (value == 0)
 		carriage->carry = 1;

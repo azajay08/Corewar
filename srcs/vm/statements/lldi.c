@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lldi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:42 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 17:03:33 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:30:41 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 */
 void	ft_lldi(t_carriage *carriage, t_vm *vm)
 {
-	uint8_t value_1;
-	uint8_t value_2;
-	uint8_t result;
+	int	value_1;
+	int	value_2;
+	int	result;
 
 	value_1 = fetch_value(carriage, &carriage->args[0]);
 	value_2 = fetch_value(carriage, &carriage->args[1]);

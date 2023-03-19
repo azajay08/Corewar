@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   statement_utilities.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 12:39:23 by tlahin            #+#    #+#             */
-/*   Updated: 2023/03/19 15:08:16 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:32:25 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_carriage	*clone_carriage(t_carriage *old, int pos)
 {
-	int			i;
-	t_carriage	*new;
-	
+	int				i;
+	t_carriage		*new;
+
 	new = (t_carriage *)ft_memalloc(sizeof(t_carriage));
 	if (!new)
 		exit_vm("Memory allocation failure in initialise_carriage.");
@@ -61,7 +61,7 @@ void	write_n_byte(t_vm *vm, uint32_t index, uint32_t size, uint32_t data)
 	}
 }
 
-int32_t fetch_value(t_carriage *carriage, t_args *arg)
+int32_t	fetch_value(t_carriage *carriage, t_args *arg)
 {
 	if (arg->type == T_REG)
 		return (carriage->registers[arg->value - 1]);

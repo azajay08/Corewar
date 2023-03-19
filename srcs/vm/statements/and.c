@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   and.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:25 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 17:01:51 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/19 15:29:51 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 */
 void	ft_and(t_carriage *carriage)
 {
-	uint8_t value_1;
-	uint8_t value_2;
-	uint8_t result;
+	int	value_1;
+	int	value_2;
+	int	result;
 
 	value_1 = fetch_value(carriage, &carriage->args[0]);
 	value_2 = fetch_value(carriage, &carriage->args[1]);
