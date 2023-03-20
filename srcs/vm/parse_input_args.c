@@ -6,26 +6,26 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/17 14:26:37 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/20 19:35:40 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
 /*
-* - Evaluates whether the given string only contains digits.
+* - Returns the ID of the given .cor file name.
 */
-static int	ft_isnumber(char *string)
+static uint8_t	find_player_id(t_vm *vm, char *input)
 {
-	int	i;
+	uint8_t	i;
 
-	i = -1;
-	while (string[++i])
+	i = 0;
+	while (++i <= vm->player_count)
 	{
-		if (!ft_isdigit(string[i]))
-			return (0);
+		if (ft_strcmp(vm->player[i]->input, input) == 0)
+			return (vm->player[i]->id);
 	}
-	return (1);
+	return (0);
 }
 
 /*
@@ -42,23 +42,68 @@ int	set_dump_cycle(t_vm *vm, char *input, char *value)
 	if (vm->dump < 0)
 		exit_vm("Invalid dump cycle.");
 	if (ft_strlen(input) == 2)
-		vm->print_octets = 32;
-	else
 		vm->print_octets = 64;
+	else
+		vm->print_octets = 32;
 	return (2);
+}
+
+/*
+* - Reads the given input arguments, checking for flags.
+*/
+void	read_flags(int ac, char **av, t_vm *vm)
+{
+	int	i;
+
+	i = -1;
+	while (++i < ac)
+	{
+		if (av[i] && av[i + 1] && ft_strncmp(av[i], "-dump", 2) == 0 && vm->dump < 0)
+			i += set_dump_cycle(vm, av[i], av[i + 1]);
+		if (av[i] && ft_strncmp(av[i], "-a", 3) == 0 && vm->a_flag == false)
+			vm->a_flag = true;
+	}
 }
 
 /*
 * - When the -n flag is used, the value given after it determines which
 *   id the next player will have.
 */
-void	set_player_order(
-	t_player *player,
-	char *input_id)
+void	set_player_order(t_vm *vm, char *input_id, t_player *player)
 {
+	uint8_t		to_id;
+	uint8_t		from_id;
+	t_player	*temp_player;
+
+	temp_player = NULL;
 	if (!ft_isnumber(input_id))
 		exit_vm("Invalid player ID value given with -n flag.");
-	player->id = ft_atoi(input_id);
+	to_id = (uint8_t)ft_atoi(input_id);
+	from_id = player->id;
+	temp_player = vm->player[to_id];
+	vm->player[to_id] = vm->player[from_id];
+	vm->player[from_id] = temp_player;
+	vm->player[from_id]->id = from_id;
+	vm->player[to_id]->id = to_id;
 	if (player->id < 1 || player->id > MAX_PLAYERS)
 		exit_vm("Invalid player ID value given with -n flag.");
+}
+
+/*
+* Reads the input arguments, and when an -n is met, the next player is
+* assigned the given ID and swapped with the player already existing there.
+*/
+void	read_n_flags(int ac, char **av, t_vm *vm)
+{
+	int	i;
+
+	i = -1;
+	while (++i < ac)
+	{
+		if (av[i] && av[i + 2] && ft_strcmp(av[i], "-n") == 0)
+		{
+			set_player_order(\
+				vm, av[i + 1], vm->player[find_player_id(vm, av[i + 2])]);
+		}
+	}
 }

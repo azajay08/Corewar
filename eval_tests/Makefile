@@ -29,17 +29,17 @@ norm:
 			@norminette -R CheckForbiddenSourceHeader ../srcs
 
 42:
-			@$(SCH_WAR) -n $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
+			@$(SCH_WAR) $(FLAGS) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
 
 test:		all
-			@$(OUR_WAR) $(FLAGS) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
+			@$(OUR_WAR) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3) $(FLAGS)
 
 pytest:		all
 			@mkdir -p $(LOG_DIR)
-			@python3 test.py
+			@python3 -u test.py
 
 compare:	all
 			@mkdir -p $(LOG_DIR)
 			@sh $(COMPARE)
 
-.PHONY: all clean fclean re norm test compare 42
+.PHONY: all clean fclean re norm test compare 42 pytest

@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:24:57 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/20 19:37:13 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,12 @@
 */
 static void	print_memory_line(t_vm *vm, int i, uint8_t octets)
 {
-	t_carriage	*temp_carriage;
 	int			j;
 
 	j = -1;
 	while (++j < octets)
 	{
-		temp_carriage = vm->carriages;
-		while (temp_carriage)
-		{
-			if (i + j == temp_carriage->pos && !temp_carriage->dead)
-			{
-				ft_printf("%s", REDB);
-				break ;
-			}
-			temp_carriage = temp_carriage->next;
-		}
-		ft_printf("%02x%s ", vm->arena[i + j], RESET);
+		ft_printf("%02x ", vm->arena[i + j]);
 	}
 	ft_printf("\n");
 }
@@ -63,7 +52,7 @@ void	introduce_players(t_vm *vm)
 	uint32_t	i;
 
 	i = 1;
-	ft_printf("Introducing our %d contestants!\n", vm->player_count);
+	ft_printf("Introducing contestants...\n", vm->player_count);
 	while (i <= vm->player_count)
 	{
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", \
@@ -71,7 +60,6 @@ void	introduce_players(t_vm *vm)
 		vm->player[i]->name, vm->player[i]->comment);
 		i++;
 	}
-	ft_putchar('\n');
 }
 
 /*

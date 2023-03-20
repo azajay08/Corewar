@@ -6,7 +6,7 @@
 #    By: sam <sam@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 10:56:43 by ajones            #+#    #+#              #
-#    Updated: 2023/03/10 13:18:50 by sam              ###   ########.fr        #
+#    Updated: 2023/03/20 18:44:37 by sam              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ ft_strnequ.c ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c ft_itoa.c \
 ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstmap.c ft_lstnew.c \
 ft_lstadd_toend.c ft_lstcount.c ft_lstfree.c ft_lstlast.c ft_abs.c ft_intlen.c \
 ft_isspace.c ft_2d_free.c ft_strjoin_free1.c ft_strjoin_free2.c ft_power.c \
-ft_power_double.c ft_round.c ft_is_neg.c ft_strjoin_line.c get_next_line.c
+ft_power_double.c ft_round.c ft_is_neg.c ft_strjoin_line.c get_next_line.c \
+ft_isnumber.c
 
 SRC_PATH := ./srcs/
 SRC_DIR := $(addprefix $(SRC_PATH), $(SRC_FILES))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/19 16:23:43 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/20 18:46:05 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdbool.h>
 
 // DEBUG: Set to 1 if you wish to see debug messages
-# define DEBUG 1
+# define DEBUG 0
 
 typedef struct s_player
 {
@@ -32,6 +32,7 @@ typedef struct s_player
 	unsigned char	*exec;
 	unsigned int	exec_size;
 	unsigned char	file[MEM_SIZE];
+	char			*input;
 	struct s_player	*next;
 }	t_player;
 
@@ -92,7 +93,7 @@ void		init_arena(t_vm *vm);
 
 // Parsing:
 void		parse_flags(t_vm *vm, int argc, char **argv);
-void		set_player_order(t_player *player, char *input_id);
+void		set_player_order(t_vm *vm, char *input_id, t_player *player);
 int			set_dump_cycle(t_vm *vm, char *input, char *value);
 void		parse(int argc, char **argv, t_vm *vm);
 int			read_cor(char **av, int i, t_player *player);
@@ -101,6 +102,8 @@ int			parse_file(\
 int			parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);
 int			get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
 void		get_player_count(int ac, char **av, uint32_t *player_count);
+void		read_flags(int ac, char **av, t_vm *vm);
+void		read_n_flags(int ac, char **av, t_vm *vm);
 
 // Game process:
 void		introduce_players(t_vm *vm);
