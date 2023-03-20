@@ -2,7 +2,7 @@
 WAR_DIR = ..
 OUR_WAR = $(WAR_DIR)/corewar
 SCH_WAR = ./42/corewar42
-FLAGS = -d 5
+FLAGS = -d 2
 
 CHAMP_D = ./champs/compiled
 CHAMP_1 = $(CHAMP_D)/Gagnant.cor
@@ -33,6 +33,10 @@ norm:
 
 test:		all
 			@$(OUR_WAR) $(FLAGS) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
+
+pytest:		all
+			@mkdir -p $(LOG_DIR)
+			@python3 test.py
 
 compare:	all
 			@mkdir -p $(LOG_DIR)

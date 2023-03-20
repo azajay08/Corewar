@@ -16,33 +16,23 @@ def blue(text):
     return '\033[34m' + text + '\033[0m'
 
 # Make and copy new corewar to this folder.
-os.system('cd .. && make vm && make clean && cp corewar ./vm_tests/corewar && cd vm_tests')
+os.system('cd .. && make corewar && cp corewar ./eval_tests/corewar && cd eval_tests')
 
 # Set the starting cycle of comparing outputs of our corewar and the original corewar.
-# First difference: 
-cycle = 990
+# First difference:
+cycle = 1
 # Set the cycle to print info.
-info = 1062
+info = 1
 
 # Define champs
-champs = ' ./champs/Kitty_miaou.cor ./champs/tchupka.cor ./compiled/Kappa.cor' #./champs/dubo.cor #./champs/Gagnant.cor'
+champs = ' ./champs/compiled/bigzork.cor ./champs/champs/tchupka.cor ./champs/compiled/Kappa.cor' #./champs/dubo.cor #./champs/Gagnant.cor'
 
 # Define commands and log files
-corewar = './corewar -b' + champs + ' -d '
-corewar42 = './corewar42' + champs + ' -d '
-corewar_info = './corewar' + champs + ' -c '
+corewar = './corewar' + champs + ' -d '
+corewar42 = './42/corewar42' + champs + ' -d '
 corewar_text = './logs/corewar.txt'
 corewar42_text = './logs/corewar42.txt'
 info_text = './logs/info.txt'
-# hmaronen and group corewar:
-corewar99 = './corewar99' + champs + ' -v 14 -dump '
-actions99_text = './logs/actions99.txt'
-# Our corewar with actions flag
-corewar_actions = './corewar' + champs + ' -a '
-actions_text = './logs/actions.txt'
-
-
-
 
 while cycle < 1000:
 	# Open text files, run the programs and write outputs to text files.
@@ -64,13 +54,3 @@ while cycle < 1000:
 		break
 	# Iterate cycle for dump.
 	cycle += 1
-
-
-with open(info_text, 'w') as f3:
-	subprocess.run(corewar_info + str(info), shell=True, stdout=f3)
-with open(actions_text, 'w') as f4:
-	subprocess.run(corewar_actions + str(cycle), shell=True, stdout=f4)
-with open(actions99_text, 'w') as f5:
-	subprocess.run(corewar99 + str(cycle), shell=True, stdout=f5)
-
-
