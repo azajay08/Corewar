@@ -32,7 +32,7 @@ norm:
 			@$(SCH_WAR) -n $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
 
 test:		all
-			@$(OUR_WAR) $(FLAGS) -n 3 $(CHAMP_1) -n 1 $(CHAMP_2) -n 2 $(CHAMP_3)
+			@$(OUR_WAR) $(FLAGS) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
 
 compare:	all
 			@mkdir -p $(LOG_DIR)
