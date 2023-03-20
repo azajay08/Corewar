@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/20 19:35:40 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/20 19:38:39 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	read_flags(int ac, char **av, t_vm *vm)
 	i = -1;
 	while (++i < ac)
 	{
-		if (av[i] && av[i + 1] && ft_strncmp(av[i], "-dump", 2) == 0 && vm->dump < 0)
+		if (av[i] && av[i + 1] && ft_strncmp(av[i], "-dump", 2) == 0)
 			i += set_dump_cycle(vm, av[i], av[i + 1]);
 		if (av[i] && ft_strncmp(av[i], "-a", 3) == 0 && vm->a_flag == false)
 			vm->a_flag = true;

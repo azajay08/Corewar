@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/20 19:37:13 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/20 19:38:09 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 */
 static void	print_memory_line(t_vm *vm, int i, uint8_t octets)
 {
-	int			j;
+	int	j;
 
 	j = -1;
 	while (++j < octets)
