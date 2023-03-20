@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/20 18:46:05 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/20 20:18:44 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int			get_n_byte(unsigned int n, unsigned char *data, unsigned int idx);
 void		get_player_count(int ac, char **av, uint32_t *player_count);
 void		read_flags(int ac, char **av, t_vm *vm);
 void		read_n_flags(int ac, char **av, t_vm *vm);
+int			is_valid_input(char *string);
 
 // Game process:
 void		introduce_players(t_vm *vm);

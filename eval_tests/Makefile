@@ -2,10 +2,10 @@
 WAR_DIR = ..
 OUR_WAR = $(WAR_DIR)/corewar
 SCH_WAR = ./42/corewar42
-FLAGS = -d 2
+FLAGS = -a
 
 CHAMP_D = ./champs/compiled
-CHAMP_1 = $(CHAMP_D)/Gagnant.cor
+CHAMP_1 = $(CHAMP_D)/gagnant.cor
 CHAMP_2 = $(CHAMP_D)/ex.cor
 CHAMP_3 = $(CHAMP_D)/slider2.cor
 
@@ -36,7 +36,19 @@ test:		all
 
 pytest:		all
 			@mkdir -p $(LOG_DIR)
-			@python3 -u test.py
+			@python3 test.py
+
+mayhem:		all
+			@mkdir -p $(LOG_DIR)
+			@python3 test_mayhem.py
+
+errors:		all
+			@mkdir -p $(LOG_DIR)
+			@python3 test_errors.py
+
+leaks:		all
+			@mkdir -p $(LOG_DIR)
+			@python3 test_leaks.py
 
 compare:	all
 			@mkdir -p $(LOG_DIR)

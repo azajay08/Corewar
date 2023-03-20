@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/20 19:38:39 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/20 20:47:10 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ static uint8_t	find_player_id(t_vm *vm, char *input)
 int	set_dump_cycle(t_vm *vm, char *input, char *value)
 {
 	if (!ft_isnumber(value))
-		exit_vm("Invalid dump value.");
+		exit_vm("Incorrect usage.");
 	vm->dump = ft_atoi(value);
 	if (vm->dump < 0)
-		exit_vm("Invalid dump cycle.");
+		exit_vm("Incorrect usage.");
 	if (ft_strlen(input) == 2)
 		vm->print_octets = 64;
 	else
@@ -53,13 +53,26 @@ int	set_dump_cycle(t_vm *vm, char *input, char *value)
 */
 void	read_flags(int ac, char **av, t_vm *vm)
 {
-	int	i;
+	int		i;
+	char	*ext;
 
-	i = -1;
+	i = 0;
 	while (++i < ac)
 	{
-		if (av[i] && av[i + 1] && ft_strncmp(av[i], "-dump", 2) == 0)
+		if (!is_valid_input(av[i]))
+		{
+			ext = ft_strrchr(av[i], '.');
+			if (ext && ft_strcmp(ext, ".cor") == 0)
+				continue ;
+			else
+				exit_vm("Incorrect usage.");
+		}
+		if (av[i] && ft_strncmp(av[i], "-dump", 2) == 0)
+		{
+			if (vm->dump >= 0 || !av[i + 1])
+				exit_vm("Incorrect usage.");
 			i += set_dump_cycle(vm, av[i], av[i + 1]);
+		}
 		if (av[i] && ft_strncmp(av[i], "-a", 3) == 0 && vm->a_flag == false)
 			vm->a_flag = true;
 	}
@@ -77,7 +90,7 @@ void	set_player_order(t_vm *vm, char *input_id, t_player *player)
 
 	temp_player = NULL;
 	if (!ft_isnumber(input_id))
-		exit_vm("Invalid player ID value given with -n flag.");
+		exit_vm("Incorrect usage.");
 	to_id = (uint8_t)ft_atoi(input_id);
 	from_id = player->id;
 	temp_player = vm->player[to_id];
@@ -86,7 +99,7 @@ void	set_player_order(t_vm *vm, char *input_id, t_player *player)
 	vm->player[from_id]->id = from_id;
 	vm->player[to_id]->id = to_id;
 	if (player->id < 1 || player->id > MAX_PLAYERS)
-		exit_vm("Invalid player ID value given with -n flag.");
+		exit_vm("Incorrect usage.");
 }
 
 /*
@@ -97,11 +110,13 @@ void	read_n_flags(int ac, char **av, t_vm *vm)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	while (++i < ac)
 	{
-		if (av[i] && av[i + 2] && ft_strcmp(av[i], "-n") == 0)
+		if (av[i] && ft_strcmp(av[i], "-n") == 0)
 		{
+			if (i + 2 >= ac)
+				exit_vm("Incorrect usage.");
 			set_player_order(\
 				vm, av[i + 1], vm->player[find_player_id(vm, av[i + 2])]);
 		}

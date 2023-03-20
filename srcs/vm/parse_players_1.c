@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/20 18:47:16 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/20 20:49:02 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	assign_player(t_vm *vm, t_player *player, int ret, char *input)
 	player->exec = ft_memalloc(ret - i);
 	parse_file(player->exec, &player->file[i], player->exec_size);
 	player->input = input;
+	if (player->exec_size == 0 || player->exec_size > 682)
+		exit_vm("Player executable code too big.");
 	vm->player[player->id] = player;
 }
 
@@ -41,7 +43,7 @@ static void	allocate_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 	char		*ext;
 	uint32_t	count;
 
-	i = -1;
+	i = 0;
 	count = 0;
 	player = ft_memalloc(sizeof(t_player));
 	if (!player)

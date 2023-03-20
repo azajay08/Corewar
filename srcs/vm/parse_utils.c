@@ -6,11 +6,20 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:12:14 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:27:14 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/20 20:18:13 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
+int	is_valid_input(char *string)
+{
+	if (ft_isnumber(string) || ft_strcmp(string, "-d") == 0 \
+		|| ft_strcmp(string, "-dump") == 0 || ft_strcmp(string, "-n") == 0 \
+		|| ft_strcmp(string, "-a") == 0)
+		return (1);
+	return (0);
+}
 
 /*
 * - Reads the given amount of bytes.
