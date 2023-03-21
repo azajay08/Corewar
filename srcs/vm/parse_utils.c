@@ -6,12 +6,15 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:12:14 by sam               #+#    #+#             */
-/*   Updated: 2023/03/20 20:18:13 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 13:03:00 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
+/*
+* - Checks whether the input is one of the valid usage flags.
+*/
 int	is_valid_input(char *string)
 {
 	if (ft_isnumber(string) || ft_strcmp(string, "-d") == 0 \

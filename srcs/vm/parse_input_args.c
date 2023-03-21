@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/20 20:47:10 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 13:05:42 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	set_dump_cycle(t_vm *vm, char *input, char *value)
 	if (vm->dump < 0)
 		exit_vm("Incorrect usage.");
 	if (ft_strlen(input) == 2)
-		vm->print_octets = 64;
-	else
 		vm->print_octets = 32;
+	else
+		vm->print_octets = 64;
 	return (2);
 }
 
