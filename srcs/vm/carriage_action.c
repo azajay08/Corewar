@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 13:21:01 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 17:51:59 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,10 @@ void	apply_statement(t_vm *vm, t_carriage *carriage)
 	int	byte_as_int;
 
 	byte_as_int = vm->arena[carriage->pos];
-	if (vm->b_flag == true)
-		ft_printf(" | %.2x : %3d", carriage->op_code, byte_as_int);
 	if (byte_as_int >= 1 && byte_as_int <= 16)
 	{
 		carriage->op_code = byte_as_int;
 		carriage->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
-		if (vm->b_flag == true)
-			ft_printf(" | Cycles until execution: %2d", \
-			carriage->cycles_until_exec);
 	}
 	else
 		carriage->pos = (carriage->pos + 1) % MEM_SIZE;

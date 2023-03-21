@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/21 13:28:45 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 14:11:32 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ int			is_valid_input(char *string);
 // Game process:
 void		introduce_players(t_vm *vm);
 void		print_arena(t_vm *vm);
-void		print_carriages(t_vm *vm);
 void		game_process(t_vm *vm);
 int			byte_to_int(uint8_t *arena, int position);
 void		cycle_check(t_vm *vm, t_corewar *corewar);

@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 13:28:17 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 14:02:33 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_memory_line(t_vm *vm, int i, uint8_t octets)
 
 	j = -1;
 	while (++j < octets)
-		ft_printf("%02x ", vm->arena[i + j]);
+		ft_printf("%.2x ", vm->arena[i + j]);
 	ft_printf("\n");
 }
 

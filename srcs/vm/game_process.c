@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 13:20:40 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 17:58:41 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,22 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 	t_carriage	*carriage;
 
 	if (vm->b_flag == true)
-		ft_printf("%sCycle %d%s\n", URED, corewar->cycles, RESET);
+		ft_printf("%sCycle %d:%s\n", URED, corewar->cycles, RESET);
 	carriage = vm->carriages;
 	while (carriage)
 	{
 		if (!carriage->dead)
 		{
 			if (vm->b_flag == true)
-				ft_printf("Carriage %d | Position %4d | Player: %1d", \
-				carriage->id, carriage->pos, carriage->player->id);
+				ft_printf("Carriage %d (P%d): Position %4d ", \
+				carriage->id, carriage->player->id, carriage->pos);
 			if (carriage->cycles_until_exec == 0)
 				apply_statement(vm, carriage);
 			if (carriage->cycles_until_exec > 0)
 				carriage->cycles_until_exec--;
+			if (vm->b_flag == true)
+				ft_printf(" | %.2x : %3d | Countdown: %d", carriage->op_code, \
+				(int)vm->arena[carriage->pos], carriage->cycles_until_exec);
 			if (carriage->cycles_until_exec == 0)
 				execute_statement(vm, carriage, corewar);
 			if (vm->b_flag == true)
@@ -79,7 +82,6 @@ void	game_process(t_vm *vm)
 			exit(EXIT_SUCCESS);
 		}
 		execute_cycle(vm, &corewar);
-		corewar.cycles_to_die--;
 		if (corewar.cycles_to_die <= 0 || \
 			corewar.cycles_since_check == corewar.cycles_to_die)
 			cycle_check(vm, &corewar);
