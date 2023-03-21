@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 18:07:41 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 18:09:09 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 /*
 * - Announces the winner after the game is over.
 */
-void	announce_winner(t_vm *vm)
+static void	announce_winner(t_vm *vm)
 {
 	ft_printf("Contestant %d, \"%s\", has won !\n",
 		vm->latest_live, vm->player[vm->latest_live]->name);
