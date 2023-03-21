@@ -2,7 +2,7 @@
 WAR_DIR = ..
 OUR_WAR = $(WAR_DIR)/corewar
 SCH_WAR = ./42/corewar42
-FLAGS = -a
+FLAGS = -b -d 10
 
 CHAMP_D = ./champs/compiled
 CHAMP_1 = $(CHAMP_D)/gagnant.cor

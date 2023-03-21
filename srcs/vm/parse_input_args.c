@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/21 13:05:42 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 13:20:03 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	read_flags(int ac, char **av, t_vm *vm)
 		}
 		if (av[i] && ft_strncmp(av[i], "-a", 3) == 0 && vm->a_flag == false)
 			vm->a_flag = true;
+		if (av[i] && ft_strncmp(av[i], "-b", 3) == 0 && vm->b_flag == false)
+			vm->b_flag = true;
 	}
 }
 

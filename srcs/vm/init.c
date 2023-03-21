@@ -25,6 +25,7 @@ void	init_vm(t_vm *vm)
 	vm->latest_live = 0;
 	vm->carriage_count = 0;
 	vm->a_flag = false;
+	vm->b_flag = false;
 	vm->carriages = NULL;
 }
 

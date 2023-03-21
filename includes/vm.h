@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/20 20:18:44 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 13:28:45 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 # include "op.h"
 # include "op_table.h"
 # include <stdbool.h>
-
-// DEBUG: Set to 1 if you wish to see debug messages
-# define DEBUG 0
 
 typedef struct s_player
 {
@@ -84,6 +81,7 @@ typedef struct s_vm
 	int				checks;
 	int				dump;
 	bool			a_flag;
+	bool			b_flag;
 }				t_vm;
 
 // Initialisation:
@@ -129,6 +127,7 @@ int			arg_byte_count(t_carriage *carriage, int type);
 int			reg_check(t_carriage *carriage, t_vm *vm);
 int			byte_to_int(uint8_t *arena, int position);
 int			arg_byte_count(t_carriage *carriage, int type);
+void		debug_print_memory_line(t_vm *vm, int i, uint8_t octets);
 
 // Exit program:
 void		exit_vm(char *error_message);

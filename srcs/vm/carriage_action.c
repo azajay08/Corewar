@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   carriage_action.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 15:23:29 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:21:01 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	apply_statement(t_vm *vm, t_carriage *carriage)
 	int	byte_as_int;
 
 	byte_as_int = vm->arena[carriage->pos];
-	if (DEBUG == true)
+	if (vm->b_flag == true)
 		ft_printf(" | %.2x : %3d", carriage->op_code, byte_as_int);
 	if (byte_as_int >= 1 && byte_as_int <= 16)
 	{
 		carriage->op_code = byte_as_int;
 		carriage->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
-		if (DEBUG == true)
+		if (vm->b_flag == true)
 			ft_printf(" | Cycles until execution: %2d", \
 			carriage->cycles_until_exec);
 	}
@@ -49,7 +49,7 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 {
 	int	position;
 
-	if (DEBUG == true)
+	if (vm->b_flag == true)
 		ft_printf(" | Executing...");
 	position = vm->arena[carriage->pos];
 	if (position >= 1 && position <= 16)

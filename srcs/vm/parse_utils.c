@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:12:14 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 13:03:00 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 13:19:09 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_valid_input(char *string)
 {
 	if (ft_isnumber(string) || ft_strcmp(string, "-d") == 0 \
 		|| ft_strcmp(string, "-dump") == 0 || ft_strcmp(string, "-n") == 0 \
-		|| ft_strcmp(string, "-a") == 0)
+		|| ft_strcmp(string, "-a") == 0 || ft_strcmp(string, "-b") == 0)
 		return (1);
 	return (0);
 }

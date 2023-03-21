@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/20 19:38:09 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 13:28:17 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 /*
 * - Prints the contents of the given line of memory in the arena.
-* - Highlights the byte of it is the position of a carriage.
 */
 static void	print_memory_line(t_vm *vm, int i, uint8_t octets)
 {
@@ -22,9 +21,7 @@ static void	print_memory_line(t_vm *vm, int i, uint8_t octets)
 
 	j = -1;
 	while (++j < octets)
-	{
 		ft_printf("%02x ", vm->arena[i + j]);
-	}
 	ft_printf("\n");
 }
 
@@ -39,7 +36,10 @@ void	print_arena(t_vm *vm)
 	while (i < MEM_SIZE)
 	{
 		ft_printf("%.4p : ", i);
-		print_memory_line(vm, i, vm->print_octets);
+		if (vm->b_flag)
+			debug_print_memory_line(vm, i, vm->print_octets);
+		else
+			print_memory_line(vm, i, vm->print_octets);
 		i += vm->print_octets;
 	}
 }
