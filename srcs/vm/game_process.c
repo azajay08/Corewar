@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 18:11:21 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 18:12:39 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 				carriage->id, carriage->player->id, carriage->pos);
 			if (carriage->cycles_until_exec == 0)
 				apply_statement(vm, carriage);
-			carriage->cycles_until_exec -= (carriage_cycles_until_exec > 0);
+			carriage->cycles_until_exec -= (carriage->cycles_until_exec > 0);
 			if (vm->b_flag == true)
 				ft_printf(" | %.2x : %3d | Countdown: %d\n", carriage->op_code, \
 				(int)vm->arena[carriage->pos], carriage->cycles_until_exec);

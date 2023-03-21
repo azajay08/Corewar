@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 17:51:59 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 18:12:57 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 {
 	int	position;
 
-	if (vm->b_flag == true)
-		ft_printf(" | Executing...");
 	position = vm->arena[carriage->pos];
 	if (position >= 1 && position <= 16)
 	{
