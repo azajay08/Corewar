@@ -167,7 +167,7 @@ print_fail() {
 
 	run_games "$NOT_PASS"
 	echo "${YELLOW}Diff at time of occurance${NOCOLOR}"
-	echo $(diff $OUR_OUTPUT $FT_OUTPUT)
+	echo $(diff -d -y $OUR_OUTPUT $FT_OUTPUT)
 }
 
 ARGS_AMOUNT=$#
