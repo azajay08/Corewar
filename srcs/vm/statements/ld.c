@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ld.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:30 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 16:07:41 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:09:21 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@
 * - If its a direct value then the value is loaded.
 * - If its an indirect value the bytes from the address will be loaded.
 */
-void	ft_ld(t_carriage *carriage)
+void	ft_ld(t_carriage *carriage, t_vm *vm)
 {
+	int	value;
+
 	if (carriage->args[0].type == T_IND)
-		carriage->registers[carriage->args[1].value - 1] \
-			= carriage->args[0].value % IDX_MOD;
+		value = read_bytes(carriage->args[0].value % IDX_MOD, vm, 4);
 	else
-		carriage->registers[carriage->args[1].value - 1] \
-			= carriage->args[0].value;
+		value = carriage->args[0].value;
+	carriage->registers[carriage->args[1].value - 1] = value;
 	if (carriage->args[0].value == 0)
 		carriage->carry = 1;
 	else

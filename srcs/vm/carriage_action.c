@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 14:59:53 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 17:02:51 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 {
 	int	position;
 
-	position = vm->arena[carriage->pos];
+	position = carriage->op_code;
 	if (position >= 1 && position <= 16)
 	{
 		carriage->result_code = (vm->arena[(carriage->pos + 1) % MEM_SIZE]);

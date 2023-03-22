@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/22 14:41:22 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 17:05:53 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,13 +131,13 @@ void		exit_vm(char *error_message);
 //Statements:
 void		ft_add(t_carriage *carriage);
 void		ft_aff(t_carriage *carriage, t_vm *vm);
-void		ft_and(t_carriage *carriage);
+void		ft_and(t_carriage *carriage, t_vm *vm);
 void		ft_fork(t_carriage *carriage, t_vm *vm);
-void		ft_ld(t_carriage *carriage);
+void		ft_ld(t_carriage *carriage, t_vm *vm);
 void		ft_ldi(t_carriage *carriage, t_vm *vm);
 void		ft_lfork(t_carriage *carriage, t_vm *vm);
 void		ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
-void		ft_lld(t_carriage *carriage);
+void		ft_lld(t_carriage *carriage, t_vm *vm);
 void		ft_lldi(t_carriage *carriage, t_vm *vm);
 void		ft_or(t_carriage *carriage);
 void		ft_st(t_carriage *carriage, t_vm *vm);
@@ -157,6 +157,7 @@ int			check_args_validity(t_carriage *carriage);
 int			check_reg_validity(t_carriage *carriage, t_vm *vm, int offset);
 int			fetch_value(t_carriage *carriage, t_args *arg);
 int8_t		get_bit_pair(int byte, u_int8_t nth_pair);
-t_carriage	*clone_carriage(t_carriage *old, int pos);
+t_carriage	*clone_carriage(t_carriage *old, t_vm *vm, int pos);
+int			read_bytes(int pos, t_vm *vm, int n);
 
 #endif

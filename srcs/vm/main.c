@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/22 15:07:35 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 17:03:47 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		print_usage();
 	init_vm(&vm);
-	if (vm.b_flag == true)
+	if (vm.b_flag)
 		ft_printf("%sParsing assembled files...%s\n", UGRN, RESET);
 	parse(argc, argv, &vm);
-	if (vm.b_flag == true)
+	if (vm.b_flag)
 		ft_printf("%sInitialising carriages...%s\n", UGRN, RESET);
 	set_carriages(&vm);
-	if (vm.b_flag == true)
+	if (vm.b_flag)
 		ft_printf("%sIntroducing players...%s\n", UGRN, RESET);
 	introduce_players(&vm);
-	if (vm.b_flag == true)
+	if (vm.b_flag)
 		ft_printf("%sInitiating Corewar carriage...%s\n", UGRN, RESET);
 	game_process(&vm);
 	exit(EXIT_SUCCESS);

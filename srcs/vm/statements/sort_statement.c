@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_statement.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/19 15:56:15 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/21 15:48:23 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	sort_state_16(int state, t_carriage *carriage, t_vm *vm)
 	else if (state == FORK)
 		ft_fork(carriage, vm);
 	else if (state == LLD)
-		ft_lld(carriage);
+		ft_lld(carriage, vm);
 	else if (state == LLDI)
 		ft_lldi(carriage, vm);
 	else if (state == LFORK)
@@ -43,7 +43,7 @@ void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	if (state == LIVE)
 		ft_live(carriage, cw, vm);
 	else if (state == LD)
-		ft_ld(carriage);
+		ft_ld(carriage, vm);
 	else if (state == ST)
 		ft_st(carriage, vm);
 	else if (state == ADD)
@@ -51,7 +51,7 @@ void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	else if (state == SUB)
 		ft_sub(carriage);
 	else if (state == AND)
-		ft_and(carriage);
+		ft_and(carriage, vm);
 	else if (state == OR)
 		ft_or(carriage);
 	else if (state == XOR)

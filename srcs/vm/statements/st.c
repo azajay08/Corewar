@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   st.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:46 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 16:18:30 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:08:00 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@
 */
 void	ft_st(t_carriage *carriage, t_vm *vm)
 {
+	int	result;
+
 	if (carriage->args[1].type == T_REG)
 		carriage->registers[carriage->args[1].value - 1] \
-				= carriage->args[0].value;
+		= carriage->registers[carriage->args[0].value];
 	else if (carriage->args[1].type == T_IND)
-		write_n_byte(vm, carriage->args[1].value, 3, \
+	{
+		result = carriage->pos + carriage->args[1].value % IDX_MOD;
+		// result = mod_calculator(result);
+		write_n_byte(vm, result, 3, \
 				carriage->registers[carriage->args[0].value - 1]);
+	}
 }

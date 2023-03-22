@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lfork.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:35 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 16:10:52 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:05:22 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ void	ft_lfork(t_carriage *carriage, t_vm *vm)
 
 	pos = carriage->pos + carriage->args[0].value;
 	pos = mod_calculator(pos);
-	new_carriage(&(vm->carriages), clone_carriage(carriage, pos));
+	new_carriage(&(vm->carriages), clone_carriage(carriage, vm, pos));
+	vm->carriage_count++;
 }
