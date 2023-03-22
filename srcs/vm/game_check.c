@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:38:21 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 16:27:01 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 16:31:51 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	check_lives(t_vm *vm, t_corewar *corewar)
 {
 	uint32_t	i;
 
-	i = -1;
+	i = 0;
 	if (corewar->lives_this_period >= NBR_LIVE || corewar->checks == MAX_CHECKS)
 	{
 		corewar->cycles_to_die -= CYCLE_DELTA;
@@ -64,8 +64,9 @@ static void	check_lives(t_vm *vm, t_corewar *corewar)
 void	cycle_check(t_vm *vm, t_corewar *corewar)
 {
 	corewar->checks++;
-	ft_printf("%sCheck %d | Lives this period: %d | ", \
-		YELHB, corewar->checks, corewar->lives_this_period);
+	if (vm->b_flag)
+		ft_printf("%sCheck %d | Lives this period: %d | ", \
+			YELHB, corewar->checks, corewar->lives_this_period);
 	check_carriages(vm, corewar);
 	check_lives(vm, corewar);
 	corewar->lives_this_period = 0;
