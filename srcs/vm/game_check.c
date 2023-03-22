@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:38:21 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 16:06:49 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 16:13:59 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ static void	check_lives(t_vm *vm, t_corewar *corewar)
 void	cycle_check(t_vm *vm, t_corewar *corewar)
 {
 	corewar->checks++;
-	ft_printf("%sCheck %d | Lives this period: %d | ", YELHB, corewar->checks, corewar->lives_this_period);
+	ft_printf("%sCheck %d | Lives this period: %d | ", \
+		YELHB, corewar->checks, corewar->lives_this_period);
 	check_carriages(vm, corewar);
 	check_lives(vm, corewar);
 	corewar->lives_this_period = 0;
