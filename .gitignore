@@ -8,4 +8,6 @@
 *.o
 *.a
 ./.DS_Store
-*.txt
+./*.txt
+./*.s
+./*.cor
