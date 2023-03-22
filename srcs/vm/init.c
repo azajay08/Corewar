@@ -18,10 +18,8 @@
 void	init_vm(t_vm *vm)
 {
 	vm->player_count = 0;
-	vm->checks = 0;
-	vm->cycle = 0;
 	vm->dump = -1;
-	vm->cycles_to_die = CYCLE_TO_DIE;
+	vm->total_carriages = 0;
 	vm->latest_live = 0;
 	vm->carriage_count = 0;
 	vm->a_flag = false;

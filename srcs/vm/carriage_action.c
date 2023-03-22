@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 13:49:28 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 14:44:56 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	apply_statement(t_vm *vm, t_carriage *carriage)
 	if (byte_as_int >= 1 && byte_as_int <= 16)
 		carriage->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
 }
+
 /*
 * - Executes the statement correlating to the op code at the arena position.
 * - We first make sure that statement is between 1 and 16. If it is, its saved,

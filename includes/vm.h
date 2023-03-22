@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/21 14:11:32 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 14:41:22 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,13 @@ typedef struct s_corewar
 typedef struct s_vm
 {
 	uint32_t		player_count;
-	t_carriage		*carriages;
 	t_player		*player[MAX_PLAYERS];
-	int				latest_live;
+	t_carriage		*carriages;
+	int				total_carriages;
 	uint8_t			arena[MEM_SIZE];
+	int				latest_live;
 	uint8_t			print_octets;
-	size_t			carriage_count;
-	size_t			total_carriagees;
-	int				cycle;
-	int				cycles_to_die;
-	int				checks;
+	int				carriage_count;
 	int				dump;
 	bool			a_flag;
 	bool			b_flag;
