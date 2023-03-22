@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:38:21 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 14:50:42 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 16:06:49 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	check_lives(t_vm *vm, t_corewar *corewar)
 {
 	uint32_t	i;
 
-	i = 0;
+	i = -1;
 	if (corewar->lives_this_period >= NBR_LIVE || corewar->checks == MAX_CHECKS)
 	{
 		corewar->cycles_to_die -= CYCLE_DELTA;

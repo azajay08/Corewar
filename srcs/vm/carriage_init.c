@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/22 15:02:22 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 16:11:05 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	set_carriages(t_vm *vm)
 	while (++id <= vm->player_count)
 	{
 		new_carriage(&(vm->carriages), \
-			initialise_carriage(vm->player[id], pos));
+			initialise_carriage(vm->player[id - 1], pos));
 		vm->carriage_count++;
 		++vm->total_carriages;
 		pos += MEM_SIZE / vm->player_count;

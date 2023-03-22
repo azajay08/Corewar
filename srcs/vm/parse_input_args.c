@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/21 13:20:03 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 16:10:20 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static uint8_t	find_player_id(t_vm *vm, char *input)
 	i = 0;
 	while (++i <= vm->player_count)
 	{
-		if (ft_strcmp(vm->player[i]->input, input) == 0)
-			return (vm->player[i]->id);
+		if (ft_strcmp(vm->player[i - 1]->input, input) == 0)
+			return (vm->player[i - 1]->id);
 	}
 	return (0);
 }
@@ -96,10 +96,10 @@ void	set_player_order(t_vm *vm, char *input_id, t_player *player)
 	to_id = (uint8_t)ft_atoi(input_id);
 	from_id = player->id;
 	temp_player = vm->player[to_id];
-	vm->player[to_id] = vm->player[from_id];
-	vm->player[from_id] = temp_player;
-	vm->player[from_id]->id = from_id;
-	vm->player[to_id]->id = to_id;
+	vm->player[to_id - 1] = vm->player[from_id - 1];
+	vm->player[from_id - 1] = temp_player;
+	vm->player[from_id - 1]->id = from_id;
+	vm->player[to_id - 1]->id = to_id;
 	if (player->id < 1 || player->id > MAX_PLAYERS)
 		exit_vm("Incorrect usage.");
 }

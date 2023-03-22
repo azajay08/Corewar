@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 12:44:19 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 16:12:11 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	introduce_players(t_vm *vm)
 	while (i <= vm->player_count)
 	{
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n", \
-		vm->player[i]->id, vm->player[i]->exec_size, \
-		vm->player[i]->name, vm->player[i]->comment);
+		vm->player[i - 1]->id, vm->player[i - 1]->exec_size, \
+		vm->player[i - 1]->name, vm->player[i - 1]->comment);
 		i++;
 	}
 }
@@ -95,9 +95,9 @@ void	init_arena(t_vm *vm)
 	ft_bzero(vm->arena, 4096);
 	while (++i <= vm->player_count)
 	{
-		if (vm->player[i] == NULL)
+		if (vm->player[i - 1] == NULL)
 			exit_vm("Invalid player.");
-		add_players_to_arena(vm->player[i], vm, starting_point);
+		add_players_to_arena(vm->player[i - 1], vm, starting_point);
 		starting_point += MEM_SIZE / vm->player_count;
 	}
 }

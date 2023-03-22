@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/20 20:49:02 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 16:09:01 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	assign_player(t_vm *vm, t_player *player, int ret, char *input)
 	player->input = input;
 	if (player->exec_size == 0 || player->exec_size > 682)
 		exit_vm("Player executable code too big.");
-	vm->player[player->id] = player;
+	vm->player[player->id - 1] = player;
 }
 
 /*
@@ -79,7 +79,7 @@ void	parse(int ac, char **av, t_vm *vm)
 	while (++player_id <= vm->player_count)
 	{
 		allocate_player(ac, av, vm, player_id);
-		if (!&vm->player[player_id])
+		if (!&vm->player[player_id - 1])
 			exit_vm("Error during player parsing.");
 	}
 	read_n_flags(ac, av, vm);
