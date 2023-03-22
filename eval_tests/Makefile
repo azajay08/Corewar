@@ -2,11 +2,11 @@
 WAR_DIR = ..
 OUR_WAR = $(WAR_DIR)/corewar
 SCH_WAR = ./42/corewar42
-FLAGS = -b -d 25
+FLAGS = -b
 
 CHAMP_D = ./champs/compiled
 CHAMP_1 = $(CHAMP_D)/zork.cor
-#CHAMP_2 = $(CHAMP_D)/ex.cor
+CHAMP_2 = $(CHAMP_D)/ex.cor
 #CHAMP_3 = $(CHAMP_D)/slider2.cor
 
 COMPARE = ./compare_multiple_players.sh

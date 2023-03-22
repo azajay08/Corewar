@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 18:12:39 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 10:42:39 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 {
 	t_carriage	*carriage;
 
+	corewar->cycles++;
+	corewar->cycles_since_check++;
 	if (vm->b_flag == true)
 		ft_printf("%sCycle %d:%s\n", URED, corewar->cycles, RESET);
 	carriage = vm->carriages;
@@ -55,8 +57,6 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 		}
 		carriage = carriage->next;
 	}
-	corewar->cycles++;
-	corewar->cycles_since_check++;
 }
 
 /*

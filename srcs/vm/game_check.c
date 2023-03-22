@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:38:21 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:40:03 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 10:28:20 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ static void	check_lives(t_vm *vm, t_corewar *corewar)
 
 /*
 * - At the end of each cycles_to_die rotation, a check is used to narrow down
-*   the constraints of the game. 
+*   the constraints of the game.
 */
 void	cycle_check(t_vm *vm, t_corewar *corewar)
 {
-	corewar->cycles++;
+	corewar->checks++;
 	check_carriages(vm, corewar);
 	check_lives(vm, corewar);
 	corewar->lives_this_period = 0;

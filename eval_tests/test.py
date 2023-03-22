@@ -16,7 +16,7 @@ def blue(text):
     return '\033[34m' + text + '\033[0m'
 
 # Make and copy new corewar to this folder.
-os.system('cd .. && make corewar && cp corewar ./eval_tests/corewar && cd eval_tests')
+#os.system('cd .. && make corewar && cp corewar ./eval_tests/corewar && cd eval_tests')
 
 # Set the starting cycle of comparing outputs of our corewar and the original corewar.
 # First difference:
@@ -28,7 +28,7 @@ info = 1
 champs = ' ./champs/compiled/bigzork.cor ./champs/champs/tchupka.cor ./champs/compiled/Kappa.cor' #./champs/dubo.cor #./champs/Gagnant.cor'
 
 # Define commands and log files
-corewar = './corewar' + champs + ' -d '
+corewar = '../corewar' + champs + ' -dump '
 corewar42 = './42/corewar42' + champs + ' -d '
 corewar_text = './logs/corewar.txt'
 corewar42_text = './logs/corewar42.txt'
