@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:38:21 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 16:13:59 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 16:27:01 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	check_lives(t_vm *vm, t_corewar *corewar)
 		corewar->checks = 0;
 	}
 	while (++i <= vm->player_count)
-		vm->player[i]->live_count = 0;
+		vm->player[i - 1]->live_count = 0;
 }
 
 /*

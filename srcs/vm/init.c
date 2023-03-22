@@ -36,5 +36,5 @@ void	init_players(t_vm *vm, unsigned int player_count)
 
 	i = 0;
 	while (++i < player_count)
-		vm->player[i]->id = 0;
+		vm->player[i - 1]->id = 0;
 }
