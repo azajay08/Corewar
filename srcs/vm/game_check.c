@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:38:21 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 17:17:44 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/22 17:25:58 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,6 @@ void	cycle_check(t_vm *vm, t_corewar *corewar)
 	check_lives(vm, corewar);
 	corewar->lives_this_period = 0;
 	corewar->cycles_since_check = 0;
+	if (vm->b_flag)
+		ft_printf("Cycles to die = %d%s\n", corewar->cycles_to_die, RESET);
 }
