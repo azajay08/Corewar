@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   carriage_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/17 16:21:05 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/22 15:02:22 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	set_carriages(t_vm *vm)
 		new_carriage(&(vm->carriages), \
 			initialise_carriage(vm->player[id], pos));
 		vm->carriage_count++;
+		++vm->total_carriages;
 		pos += MEM_SIZE / vm->player_count;
 	}
 }

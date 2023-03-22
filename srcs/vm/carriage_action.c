@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 14:44:56 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 14:59:53 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 			{
 				get_arg_values(carriage, vm, cw);
 				if (vm->b_flag)
-					ft_printf("%sExecuting %s%s\n", \
+					ft_printf("%s'-> executed %s%s\n", \
 					YEL, g_op_tab[carriage->op_code - 1].state_name, RESET);
 			}
 		}
