@@ -2,7 +2,7 @@
 WAR_DIR = ..
 OUR_WAR = $(WAR_DIR)/corewar
 SCH_WAR = ./42/corewar42
-FLAGS = -b -d 26
+FLAGS = -b -d 1537
 
 CHAMP_D = ./champs/compiled
 CHAMP_1 = $(CHAMP_D)/zork.cor
