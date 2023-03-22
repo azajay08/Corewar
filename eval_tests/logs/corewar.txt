@@ -1,0 +1,4 @@
+Introducing contestants...
+* Player 1, weighing 144 bytes, "lldi" ("long load index") !
+* Player 2, weighing 144 bytes, "lldi" ("long load index") !
+Contestant 2, "lldi", has won !
