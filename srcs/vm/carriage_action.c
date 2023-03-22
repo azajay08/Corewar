@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   carriage_action.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 18:12:57 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 00:53:53 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ void	apply_statement(t_vm *vm, t_carriage *carriage)
 	int	byte_as_int;
 
 	byte_as_int = vm->arena[carriage->pos];
+	carriage->op_code = byte_as_int;
 	if (byte_as_int >= 1 && byte_as_int <= 16)
 	{
-		carriage->op_code = byte_as_int;
+		// carriage->op_code = byte_as_int;
 		carriage->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
 	}
-	else
-		carriage->pos = (carriage->pos + 1) % MEM_SIZE;
 }
 
 /*
@@ -44,10 +43,10 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 {
 	int	position;
 
-	position = vm->arena[carriage->pos];
+	position = carriage->op_code;
 	if (position >= 1 && position <= 16)
 	{
-		carriage->op_code = position;
+		// carriage->op_code = position;
 		carriage->result_code = (vm->arena[(carriage->pos + 1) % MEM_SIZE]);
 		if (check_args_validity(carriage))
 		{
@@ -57,4 +56,6 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 		count_bytes_to_skip(carriage);
 		move_to_next_statement(carriage);
 	}
+	else
+		carriage->pos = (carriage->pos + 1) % MEM_SIZE;
 }

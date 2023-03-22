@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:50:04 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/17 16:21:05 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/21 19:45:27 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_carriage	*initialise_carriage(t_player *player, uint32_t pos)
 	new->dead = false;
 	new->next = NULL;
 	new->result_code = 0;
+	new->registers[0] = id * -1;
 	return (new);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/21 13:22:18 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 19:51:57 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		print_usage();
-	if (vm.b_flag == true)
+	if (DEBUG == true)
 		ft_printf("%sInitialising data...%s\n", UGRN, RESET);
 	init_vm(&vm);
-	if (vm.b_flag == true)
+	if (DEBUG == true)
 		ft_printf("%sParsing assembled files...%s\n", UGRN, RESET);
 	parse(argc, argv, &vm);
-	if (vm.b_flag == true)
+	if (DEBUG == true)
 		ft_printf("%sInitialising carriages...%s\n", UGRN, RESET);
 	set_carriages(&vm);
-	if (vm.b_flag == true)
+	if (DEBUG == true)
 		ft_printf("%sIntroducing players...%s\n", UGRN, RESET);
 	introduce_players(&vm);
-	if (vm.b_flag == true)
+	if (DEBUG == true)
 		ft_printf("%sInitiating Corewar carriage...%s\n", UGRN, RESET);
 	game_process(&vm);
 	exit(EXIT_SUCCESS);

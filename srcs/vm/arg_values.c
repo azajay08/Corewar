@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 18:08:35 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/19 15:21:21 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:43:26 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int	get_dir_value(t_carriage *carriage, t_vm *vm, int offset)
 	{
 		dir += vm->arena[(carriage->pos + offset) % MEM_SIZE] * 256;
 		dir += vm->arena[(carriage->pos + offset + 1) % MEM_SIZE];
+		return ((int16_t)dir);
 	}
 	return (dir);
 }
@@ -47,7 +48,7 @@ static int	get_ind_value(t_carriage *carriage, t_vm *vm, int offset)
 	ind = 0;
 	ind += vm->arena[(carriage->pos + offset) % MEM_SIZE] * 256;
 	ind += vm->arena[(carriage->pos + offset + 1) % MEM_SIZE];
-	return (ind);
+	return ((int16_t)ind);
 }
 
 /*

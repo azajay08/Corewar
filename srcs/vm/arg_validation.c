@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/19 16:28:31 by egaliber         ###   ########.fr       */
+/*   Updated: 2023/03/21 19:42:49 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	arg_validity(t_carriage *carriage)
 	int	type;
 
 	i = 0;
-	while (i < g_op_tab->arg_num)
+	while (i < g_op_tab[carriage->op_code - 1].arg_num)
 	{
 		type = carriage->args[i].type;
 		if (!(g_op_tab[carriage->op_code - 1].arg_type[i] & type))

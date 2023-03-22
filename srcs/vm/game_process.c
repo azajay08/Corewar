@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_process.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:32:02 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 18:12:39 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 20:22:05 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,20 @@ void	execute_cycle(t_vm *vm, t_corewar *corewar)
 {
 	t_carriage	*carriage;
 
-	if (vm->b_flag == true)
+	if (DEBUG == true)
 		ft_printf("%sCycle %d:%s\n", URED, corewar->cycles, RESET);
 	carriage = vm->carriages;
 	while (carriage)
 	{
 		if (!carriage->dead)
 		{
-			if (vm->b_flag == true)
+			if (DEBUG == true)
 				ft_printf("Carriage %d (P%d): Position %4d ", \
 				carriage->id, carriage->player->id, carriage->pos);
 			if (carriage->cycles_until_exec == 0)
 				apply_statement(vm, carriage);
 			carriage->cycles_until_exec -= (carriage->cycles_until_exec > 0);
-			if (vm->b_flag == true)
+			if (DEBUG == true)
 				ft_printf(" | %.2x : %3d | Countdown: %d\n", carriage->op_code, \
 				(int)vm->arena[carriage->pos], carriage->cycles_until_exec);
 			if (carriage->cycles_until_exec == 0)

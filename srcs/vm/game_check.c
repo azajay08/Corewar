@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:38:21 by sam               #+#    #+#             */
-/*   Updated: 2023/03/17 14:40:03 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/21 20:23:19 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	check_lives(t_vm *vm, t_corewar *corewar)
 */
 void	cycle_check(t_vm *vm, t_corewar *corewar)
 {
-	corewar->cycles++;
+	// corewar->cycles++;
 	check_carriages(vm, corewar);
 	check_lives(vm, corewar);
 	corewar->lives_this_period = 0;
