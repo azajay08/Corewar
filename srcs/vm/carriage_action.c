@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:57:40 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 12:38:32 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 13:43:44 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,10 @@ void	apply_statement(t_vm *vm, t_carriage *carriage)
 	int	byte_as_int;
 
 	byte_as_int = vm->arena[carriage->pos];
+	carriage->op_code = byte_as_int;
 	if (byte_as_int >= 1 && byte_as_int <= 16)
-	{
-		carriage->op_code = byte_as_int;
 		carriage->cycles_until_exec = g_op_tab[byte_as_int - 1].cycles;
-	}
-	else
-		carriage->pos = (carriage->pos + 1) % MEM_SIZE;
 }
-
 /*
 * - Executes the statement correlating to the op code at the arena position.
 * - We first make sure that statement is between 1 and 16. If it is, its saved,
@@ -62,4 +57,6 @@ void	execute_statement(t_vm *vm, t_carriage *carriage, t_corewar *cw)
 		count_bytes_to_skip(carriage);
 		move_to_next_statement(carriage);
 	}
+	else
+		carriage->pos = (carriage->pos + 1) % MEM_SIZE;
 }
