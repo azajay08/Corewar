@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:00:10 by sam               #+#    #+#             */
-/*   Updated: 2023/03/21 14:02:33 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 12:44:19 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void	print_arena(t_vm *vm)
 	i = 0;
 	while (i < MEM_SIZE)
 	{
-		ft_printf("%.4p : ", i);
+		if (vm->b_flag)
+			ft_printf("%s%.4p : %s", BLKHB, i, RESET);
+		else
+			ft_printf("%.4p : ", i);
 		if (vm->b_flag)
 			debug_print_memory_line(vm, i, vm->print_octets);
 		else
