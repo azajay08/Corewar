@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ldi.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:33 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 17:08:48 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 17:18:01 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	ft_ldi(t_carriage *carriage, t_vm *vm)
 	value_2 = fetch_value(carriage, &carriage->args[1]);
 	result = (value_1 + value_2) % IDX_MOD;
 	result = mod_calculator(carriage->pos + result);
-	// ft_printf("result: |%d|\n");
-	carriage->registers[carriage->args[2].value - 1] = read_bytes(result, vm, 4);
+	carriage->registers[carriage->args[2].value - 1] = \
+		read_bytes(result, vm, 4);
 }
