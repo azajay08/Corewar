@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:48 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 00:57:22 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/22 17:12:54 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,4 @@ void	ft_sti(t_carriage *carriage, t_vm *vm)
 	result = mod_calculator((carriage->pos + result));
 	write_n_byte(vm, result, 3, \
 				carriage->registers[carriage->args[0].value - 1]);
-	if (DEBUG == true)
-		ft_printf("args[0]type = |%d|  REG|%d| value is = |%d| was written to pos = |%d|", carriage->args[0].type, carriage->args[0].value, carriage->registers[15], result);
 }
