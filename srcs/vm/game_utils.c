@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 11:09:20 by sam               #+#    #+#             */
-/*   Updated: 2023/03/19 16:29:31 by egaliber         ###   ########.fr       */
+/*   Created: 2023/03/22 14:02:25 by sam               #+#    #+#             */
+/*   Updated: 2023/03/22 14:02:29 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,21 @@ void	count_bytes_to_skip(t_carriage *carriage)
 
 	i = 0;
 	carriage->bytes_to_next = 0;
-	carriage->bytes_to_next += \
-		g_op_tab[carriage->op_code - 1].arg_type_code + 1;
+	carriage->bytes_to_next += g_op_tab[carriage->op_code - 1].arg_type_code + 1;
 	while (i < g_op_tab[carriage->op_code - 1].arg_num)
 	{
 		if (carriage->args[i].type == T_REG)
 			carriage->bytes_to_next += 1;
 		else if (carriage->args[i].type == T_IND)
 			carriage->bytes_to_next += 2;
-		else
+		else if (carriage->args[i].type == T_DIR)
 			carriage->bytes_to_next += \
 			g_op_tab[carriage->op_code - 1].size_t_dir;
+		else
+		{
+			i++;
+			continue ;
+		}
 		i++;
 	}
 }
