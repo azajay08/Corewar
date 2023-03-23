@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ld.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:30 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 22:51:39 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/23 14:04:37 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	ft_ld(t_carriage *carriage, t_vm *vm)
 	int	value;
 
 	if (carriage->args[0].type == T_IND)
-		value = read_bytes(carriage->pos + carriage->args[0].value % IDX_MOD, vm, 4);
+		value = read_bytes(\
+		carriage->pos + carriage->args[0].value % IDX_MOD, vm, 4);
 	else
 		value = carriage->args[0].value;
 	carriage->registers[carriage->args[1].value - 1] = value;

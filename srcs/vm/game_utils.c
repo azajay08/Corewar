@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:02:25 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 18:25:29 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/23 14:04:17 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	count_bytes_to_skip(t_carriage *carriage)
 	carriage->bytes_to_next = 0;
 	carriage->bytes_to_next += \
 		g_op_tab[carriage->op_code - 1].arg_type_code + 1;
-	
 	while (i < g_op_tab[carriage->op_code - 1].arg_num)
 	{
 		if (carriage->args[i].type == T_REG)

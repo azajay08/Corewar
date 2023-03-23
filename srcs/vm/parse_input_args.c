@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/23 13:42:23 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/23 14:04:51 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,7 @@ void	read_flags(int ac, char **av, t_vm *vm)
 		if (!is_valid_input(av[i]))
 		{
 			ext = ft_strrchr(av[i], '.');
-			if (ext && ft_strcmp(ext, ".cor") == 0)
-				continue ;
-			else
+			if (ext && ft_strcmp(ext, ".cor") != 0)
 				exit_vm("Incorrect usage.");
 		}
 		if (av[i] && ft_strncmp(av[i], "-dump", 2) == 0)
