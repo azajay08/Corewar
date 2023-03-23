@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:42 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 17:20:11 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/23 16:20:14 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_lldi(t_carriage *carriage, t_vm *vm)
 			IDX_MOD, vm, 4);
 	else
 		value_1 = fetch_value(carriage, &carriage->args[0]);
-	value_1 = fetch_value(carriage, &carriage->args[0]);
 	value_2 = fetch_value(carriage, &carriage->args[1]);
 	result = carriage->pos + (value_1 + value_2);
 	result = mod_calculator(result);

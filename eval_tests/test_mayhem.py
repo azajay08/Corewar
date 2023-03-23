@@ -18,7 +18,7 @@ def blue(text):
 os.system('cd .. && make corewar && make clean && cp corewar ./eval_tests/corewar && cd eval_tests')
 
 # Define champs, commands, log files and variables
-champsDir = 'champs/champs/'
+champsDir = 'champs/compiled/'
 all_champs = os.listdir(champsDir)
 n = len(all_champs)
 i = 0
