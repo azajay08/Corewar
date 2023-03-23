@@ -7,4 +7,7 @@
 ./eval_tests/logs/*
 *.o
 *.a
+./*.txt
+./*.s
+./*.cor
 ./.DS_Store
