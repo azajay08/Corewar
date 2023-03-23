@@ -13,9 +13,10 @@ WAR_DIR = ..
 # ---------------------------------------------------------------------------- #
 
 # Assembler:
-# - asmtest: Compares the output of 42 and our assembler.
-# - asmspeed: Tests the assembly speed of each file.
-# - asmerror: Compares the output of invalid files with 42 and our assembler.
+# - asmtest: Compares the output of valid files between 42 and our assembler.
+# - asmspeed: Compares the assembly speed between 42 and our assembler.
+# - asmerror: Compares the output of error files between 42 and our assembler.
+# - asminv: Compares the output of invalid files with 42 and our assembler.
 OUR_ASM = $(WAR_DIR)/asm
 SCH_ASM = ./42/asm
 ASM_ERR = ./asm_error_files/error_files
