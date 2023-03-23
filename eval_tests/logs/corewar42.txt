@@ -1,4 +1,0 @@
-Introducing contestants...
-* Player 1, weighing 144 bytes, "lldi" ("long load index") !
-* Player 2, weighing 23 bytes, "zork" ("I'M ALIIIIVE") !
-Contestant 2, "zork", has won !

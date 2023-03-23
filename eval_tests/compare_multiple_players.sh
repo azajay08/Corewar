@@ -1,4 +1,4 @@
-FILE_DIR=( ./champs/op_champs/*)
+FILE_DIR=( ./champs/compiled/*)
 FT_OUTPUT="./logs/corewar42.txt"
 OUR_OUTPUT="./logs/corewar.txt"
 OUR_WAR="../corewar"
