@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egaliber <egaliber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:16:55 by egaliber          #+#    #+#             */
-/*   Updated: 2023/03/21 19:42:49 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/23 17:53:10 by egaliber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_reg_validity(t_carriage *carriage, t_vm *vm, int offset)
 {
 	int	reg;
 
-	reg = vm->arena[carriage->pos + offset];
+	reg = vm->arena[(carriage->pos + offset) % MEM_SIZE];
 	if (reg > 16 || reg < 1)
 		return (0);
 	return (1);
