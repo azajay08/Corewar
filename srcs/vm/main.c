@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/22 17:03:47 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/23 13:41:47 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	print_usage(void)
 		-d (n): Prints the arena with 32 bytes per line at cycle n.\n\
 		-n (n): The next player will be given the ID n.\n\
 		-a: Sets the a flag for the 'aff' statement command.\n\
-		-b: Enables debug messages.\n");
+		-b: Enables debug messages.\n\
+		-f: 'sti' command reads 4 bytes instead of 2, fixing 42s bug.\n");
 }
 
 /*

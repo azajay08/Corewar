@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/22 22:58:26 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/23 13:40:21 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_vm
 	int				dump;
 	bool			a_flag;
 	bool			b_flag;
+	bool			f_flag;
 }				t_vm;
 
 // Initialisation:

@@ -6,7 +6,7 @@
 /*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/22 16:10:20 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/23 13:42:23 by sam              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,12 @@ void	read_flags(int ac, char **av, t_vm *vm)
 				exit_vm("Incorrect usage.");
 			i += set_dump_cycle(vm, av[i], av[i + 1]);
 		}
-		if (av[i] && ft_strncmp(av[i], "-a", 3) == 0 && vm->a_flag == false)
+		if (av[i] && ft_strcmp(av[i], "-a") == 0 && vm->a_flag == false)
 			vm->a_flag = true;
-		if (av[i] && ft_strncmp(av[i], "-b", 3) == 0 && vm->b_flag == false)
+		if (av[i] && ft_strcmp(av[i], "-b") == 0 && vm->b_flag == false)
 			vm->b_flag = true;
+		if (av[i] && ft_strcmp(av[i], "-f") == 0 && vm->f_flag == false)
+			vm->f_flag = true;
 	}
 }
 
