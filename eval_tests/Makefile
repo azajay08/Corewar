@@ -18,7 +18,7 @@ WAR_DIR = ..
 # - asmerror: Compares the output of invalid files with 42 and our assembler.
 OUR_ASM = $(WAR_DIR)/asm
 SCH_ASM = ./42/asm
-ASM_ERR = ./asm_error_files
+ASM_ERR = ./asm_error_files/error_files
 ASM_INV = ./asm_test_files/invalid_files
 ASM_SPD = ./asm_test_files/speed_files
 ASM_VLD = ./asm_test_files/valid_files
@@ -31,6 +31,7 @@ ASM_VLD = ./asm_test_files/valid_files
 # - compare: Compares 42 and our VMs to find the cycle an error occurs.
 # - vmleaks: Runs champs against each other, testing for leaks.
 # - mayhem: Runs all champs against each other.
+# - mychamp: Runs our own champion against others.
 LOG_DIR = ./logs
 OUR_VM = $(WAR_DIR)/corewar
 SCH_VM = ./42/corewar42
@@ -69,6 +70,9 @@ asmtest:	all
 asmerror:	all
 			@bash asm_test.sh -a $(ASM_ERR)
 
+asminv:		all
+			@bash asm_test.sh -a $(ASM_INV)
+
 asmspeed:	all
 			@bash asm_test.sh -a $(ASM_SPD)
 
@@ -93,8 +97,11 @@ vmleaks:	all
 			@mkdir -p $(LOG_DIR)
 			@python3 vm_leaks.py
 
+mychamp:	all
+			@python3 vm_our_champ.py
+
 # ---------------------------------------------------------------------------- #
 # Phony:																	   #
 # ---------------------------------------------------------------------------- #
 .PHONY: all clean fclean re norm asmtest asmspeed asmerror 42 test compare \
-		mayhem vmerrors vmleaks
+		mayhem vmerrors vmleaks mychamp
