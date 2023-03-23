@@ -21,7 +21,8 @@ void	ft_lldi(t_carriage *carriage, t_vm *vm)
 {
 	int	value_1;
 	int	value_2;
-	int	result;
+	int	temp;
+	int result;
 
 	if (carriage->args[0].type == T_IND)
 		value_1 = read_bytes(carriage->pos + carriage->args[0].value % \
@@ -29,8 +30,13 @@ void	ft_lldi(t_carriage *carriage, t_vm *vm)
 	else
 		value_1 = fetch_value(carriage, &carriage->args[0]);
 	value_2 = fetch_value(carriage, &carriage->args[1]);
-	result = carriage->pos + (value_1 + value_2);
-	result = mod_calculator(result);
-	carriage->registers[carriage->args[2].value - 1] = \
-		read_bytes(result, vm, 4);
+	temp = carriage->pos + (value_1 + value_2);
+	temp = mod_calculator(temp);
+	result = \
+		read_bytes(temp, vm, 4);
+	carriage->registers[carriage->args[2].value - 1] = result;
+	if (result == 0)
+		carriage->carry = 1;
+	else
+		carriage->carry = 0;
 }
