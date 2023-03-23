@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:33 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 17:18:01 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/23 12:55:55 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void	ft_ldi(t_carriage *carriage, t_vm *vm)
 	int	result;
 
 	if (carriage->args[0].type == T_IND)
-		value_1 = carriage->pos + \
-		read_bytes(carriage->args[0].value % IDX_MOD, vm, 4);
+		value_1 = read_bytes(carriage->pos + carriage->args[0].value % IDX_MOD, vm, 4);
 	else
 		value_1 = fetch_value(carriage, &carriage->args[0]);
 	value_2 = fetch_value(carriage, &carriage->args[1]);
