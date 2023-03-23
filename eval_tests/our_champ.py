@@ -18,11 +18,8 @@ n = len(all_champs)
 i = 0
 j = 0
 
-
 # Do you want to print the output
 print_result = False
-
-
 
 while (i < n):
 	# Print contestants
@@ -40,6 +37,3 @@ while (i < n):
 		if (print_result):
 			print(result.stdout.decode('utf-8'))
 	i += 1
-
-
-

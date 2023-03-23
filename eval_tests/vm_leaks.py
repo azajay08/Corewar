@@ -23,8 +23,6 @@ corewar_text = './logs/corewar.txt'
 # Do you want to print the output
 print_result = False
 
-
-
 while (i < n):
 	j = 0
 	while (j < n):
@@ -47,6 +45,3 @@ while (i < n):
 				print(output)
 		j +=1
 	i += 1
-
-
-

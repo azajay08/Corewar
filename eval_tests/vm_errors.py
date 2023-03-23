@@ -30,7 +30,6 @@ def main():
 	test_error('-n flag without argument: ', '../corewar -n ./champs/champs/Gagnant.cor ./champs/champs/turtle.cor')
 	test_error('-n flag at the end: ', '../corewar ./champs/champs/Gagnant.cor ./champs/champs/turtle.cor -n 2')
 
-
 # Define colors.
 def red(text):
 	return '\033[31m' + text + '\033[0m'

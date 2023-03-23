@@ -23,7 +23,7 @@ int	read_cor(char **av, int i, t_player *player)
 	fd = open(av[i], O_RDONLY);
 	ret = read(fd, player->file, MEM_SIZE);
 	if (get_n_byte(4, player->file, 0) != COREWAR_EXEC_MAGIC)
-		exit_vm("Invalid magic header.");
+		exit_vm("Invalid file.");
 	close(fd);
 	return (ret);
 }

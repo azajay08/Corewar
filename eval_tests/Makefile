@@ -83,7 +83,7 @@ test:		all
 
 compare:	all
 			@mkdir -p $(LOG_DIR)
-			@sh compare_multiple_players.sh
+			@sh vm_compare.sh
 
 mayhem:		all
 			@mkdir -p $(LOG_DIR)

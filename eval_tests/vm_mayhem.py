@@ -14,9 +14,6 @@ def yellow(text):
 def blue(text):
     return '\033[34m' + text + '\033[0m'
 
-# Make and copy new corewar to this folder.
-os.system('cd .. && make corewar && make clean && cp corewar ./eval_tests/corewar && cd eval_tests')
-
 # Define champs, commands, log files and variables
 champsDir = 'champs/strugglers/'
 all_champs = os.listdir(champsDir)
@@ -106,4 +103,3 @@ total = passed + failed
 print(green('\nTests passed: ' + str(passed) + '/' + str(total)))
 if (failed != 0):
 	print(red('Tests failed: ' + str(failed) + '/' + str(total)))
-

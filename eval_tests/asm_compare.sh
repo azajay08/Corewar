@@ -7,7 +7,6 @@ YELLOW='\033[0;33m'
 NC='\033[0m'
 TIME='0.1'
 
-
 if test -f tmp1.cor; then
 	rm tmp1.cor
 fi
