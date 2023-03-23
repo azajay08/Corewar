@@ -38,10 +38,11 @@ OUR_VM = $(WAR_DIR)/corewar
 SCH_VM = ./42/corewar42
 FLAGS = -
 CHAMP_D = ./champs/compiled
+OUR_CHAMP = ./roadman.cor
 CHAMP_1 = $(CHAMP_D)/all_instructions.cor
-#CHAMP_2 = $(CHAMP_D)/THUNDER.cor
-#CHAMP_3 = $(CHAMP_D)/car.cor
-#CHAMP_4 = $(CHAMP_D)/NoIdea.cor
+CHAMP_2 = $(CHAMP_D)/THUNDER.cor
+CHAMP_3 = $(CHAMP_D)/car.cor
+CHAMP_4 = $(CHAMP_D)/NoIdea.cor
 
 # ---------------------------------------------------------------------------- #
 # General:																	   #
@@ -98,7 +99,11 @@ vmleaks:	all
 			@mkdir -p $(LOG_DIR)
 			@python3 vm_leaks.py
 
-mychamp:	all
+mychamp1:	all
+			@../asm ./roadman.s
+			@../corewar -b $(OUR_CHAMP) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3) -d 810
+
+mychamp2:	all
 			@python3 vm_our_champ.py
 
 # ---------------------------------------------------------------------------- #

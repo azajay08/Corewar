@@ -12,7 +12,7 @@ def blue(text):
     return '\033[34m' + text + '\033[0m'
 
 # Define champs, commands, log files and variables
-champsDir = 'champs/'
+champsDir = 'champs/compiled'
 all_champs = os.listdir(champsDir)
 n = len(all_champs)
 i = 0
@@ -23,17 +23,17 @@ print_result = False
 
 while (i < n):
 	# Print contestants
-	corewar = './corewar ./HansMoleman.cor ' + champsDir + all_champs[i]
-	print(blue('HansMoleman   vs   ' + all_champs[i] + ' '), end='')
+	corewar = '../corewar ./Roadman.cor ' + champsDir + all_champs[i]
+	print(blue('Roadman   vs   ' + all_champs[i] + ' '), end='')
 	# Get output of the program and check if leaks were found
 	result = subprocess.run(corewar.split(), capture_output=True)
 
-	if ('\"Hans\", has won !' in result.stdout.decode('utf-8')):
-		print(green('Hans has won!'))
+	if ('\"Roadman\", has won !' in result.stdout.decode('utf-8')):
+		print(green('Roadman won! Man\'s a big ting round \'ere ya get me'))
 		if (print_result):
 			print(result.stdout.decode('utf-8'))
 	else:
-		print(red('Hans has lost :('))
+		print(red('Roadman lost. Peak bruv :('))
 		if (print_result):
 			print(result.stdout.decode('utf-8'))
 	i += 1
