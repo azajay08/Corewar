@@ -11,9 +11,6 @@ def yellow(text):
 def blue(text):
     return '\033[34m' + text + '\033[0m'
 
-# Make and copy new corewar to this folder.
-os.system('cd .. && make && make clean && cp corewar ./vm_tests/corewar && cd vm_tests')
-
 # Define champs, commands, log files and variables
 champsDir = 'champs/'
 all_champs = os.listdir(champsDir)
