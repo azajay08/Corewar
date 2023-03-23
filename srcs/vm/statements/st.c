@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:46 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 17:18:45 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/23 01:54:12 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_st(t_carriage *carriage, t_vm *vm)
 
 	if (carriage->args[1].type == T_REG)
 		carriage->registers[carriage->args[1].value - 1] \
-		= carriage->registers[carriage->args[0].value];
+		= carriage->registers[carriage->args[0].value - 1];
 	else if (carriage->args[1].type == T_IND)
 	{
 		result = carriage->pos + carriage->args[1].value % IDX_MOD;

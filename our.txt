@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 Introducing contestants...
 * Player 1, weighing 394 bytes, "turtle" ("TURTLE FFS U LAMA") !
 * Player 2, weighing 325 bytes, "Celebration Funebre v0.99pl42" ("Jour J") !
 * Player 3, weighing 23 bytes, "zork" ("I'M ALIIIIVE") !
 Contestant 2, "Celebration Funebre v0.99pl42", has won !
-=======
->>>>>>> ccac8b5838fb0018f59e72351e2cd4d6c90059e9

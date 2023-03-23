@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/22 17:05:53 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 22:58:26 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,11 +139,11 @@ void		ft_lfork(t_carriage *carriage, t_vm *vm);
 void		ft_live(t_carriage *carriage, t_corewar *corewar, t_vm *vm);
 void		ft_lld(t_carriage *carriage, t_vm *vm);
 void		ft_lldi(t_carriage *carriage, t_vm *vm);
-void		ft_or(t_carriage *carriage);
+void		ft_or(t_carriage *carriage, t_vm *vm);
 void		ft_st(t_carriage *carriage, t_vm *vm);
 void		ft_sti(t_carriage *carriage, t_vm *vm);
 void		ft_sub(t_carriage *carriage);
-void		ft_xor(t_carriage *carriage);
+void		ft_xor(t_carriage *carriage, t_vm *vm);
 void		ft_zjmp(t_carriage *carriage);
 
 // Statement utilities:

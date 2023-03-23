@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 23:05:11 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/21 15:48:23 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/22 22:56:28 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	sort_state_8(int state, t_carriage *carriage, t_corewar *cw, t_vm *vm)
 	else if (state == AND)
 		ft_and(carriage, vm);
 	else if (state == OR)
-		ft_or(carriage);
+		ft_or(carriage, vm);
 	else if (state == XOR)
-		ft_xor(carriage);
+		ft_xor(carriage, vm);
 	else
 		sort_state_16(state, carriage, vm);
 }

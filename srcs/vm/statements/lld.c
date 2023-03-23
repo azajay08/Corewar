@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lld.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:39 by sam               #+#    #+#             */
-/*   Updated: 2023/03/22 17:07:46 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/22 22:20:57 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_lld(t_carriage *carriage, t_vm *vm)
 	else
 		value = carriage->args[0].value;
 	carriage->registers[carriage->args[1].value - 1] = value;
-	if (carriage->args[0].value == 0)
+	if (value == 0)
 		carriage->carry = 1;
 	else
 		carriage->carry = 0;
