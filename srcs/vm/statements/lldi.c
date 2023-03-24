@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 12:47:42 by sam               #+#    #+#             */
-/*   Updated: 2023/03/23 16:20:14 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 02:55:20 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_lldi(t_carriage *carriage, t_vm *vm)
 	int	value_1;
 	int	value_2;
 	int	temp;
-	int result;
+	int	result;
 
 	if (carriage->args[0].type == T_IND)
 		value_1 = read_bytes(carriage->pos + carriage->args[0].value % \
