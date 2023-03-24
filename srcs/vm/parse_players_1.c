@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_players_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/23 18:59:25 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/24 14:21:20 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ static void	assign_player(t_vm *vm, t_player *player, int ret, char *input)
 	vm->player[player->id - 1] = player;
 }
 
+static void	identify_player(
+t_vm *vm,
+t_player *player,
+char *input,
+uint32_t id)
+{
+	int	ret;
+
+	player->id = id;
+	ret = read_cor(input, player);
+	assign_player(vm, player, ret, input);
+}
+
 /*
 * - Allocates a fresh player, giving it the ascending player ID and stores
 *   the read .cor file data inside.
@@ -39,7 +52,6 @@ static void	allocate_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 {
 	t_player	*player;
 	int			i;
-	int			ret;
 	char		*ext;
 	uint32_t	count;
 
@@ -47,7 +59,7 @@ static void	allocate_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 	count = 0;
 	player = ft_memalloc(sizeof(t_player));
 	if (!player)
-		exit_vm("Memory allocation failure in do_player.");
+		exit_vm("Memory allocation failure in allocate_player.");
 	while (++i < ac && av[i])
 	{
 		ext = ft_strrchr(av[i], '.');
@@ -55,12 +67,13 @@ static void	allocate_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 		{
 			if (++count == player_id)
 			{
-				player->id = player_id;
-				ret = read_cor(av, i, player);
-				assign_player(vm, player, ret, av[i]);
+				identify_player(vm, player, av[i], player_id);
 				return ;
 			}
 		}
+		else
+			if (!is_valid_input(av[i]))
+				exit_vm("Incorrect usage.");
 	}
 }
 
@@ -76,6 +89,8 @@ void	parse(int ac, char **av, t_vm *vm)
 	player_id = 0;
 	read_flags(ac, av, vm);
 	get_player_count(ac, av, &vm->player_count);
+	if (vm->player_count == 0)
+		exit_vm("No participants found.");
 	while (++player_id <= vm->player_count)
 	{
 		allocate_player(ac, av, vm, player_id);

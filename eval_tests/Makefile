@@ -36,7 +36,7 @@ ASM_VLD = ./asm_test_files/valid_files
 LOG_DIR = ./logs
 OUR_VM = $(WAR_DIR)/corewar
 SCH_VM = ./42/corewar42
-FLAGS = -dump 2147483647 -b
+FLAGS = -dump 5 -b
 # Our champion:
 OUR_CHAMP = Conman
 OUR_CHAMP_S = ./$(OUR_CHAMP).s

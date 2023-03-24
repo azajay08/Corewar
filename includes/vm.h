@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:11:23 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/23 13:40:21 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/24 14:17:22 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		parse_flags(t_vm *vm, int argc, char **argv);
 void		set_player_order(t_vm *vm, char *input_id, t_player *player);
 int			set_dump_cycle(t_vm *vm, char *input, char *value);
 void		parse(int argc, char **argv, t_vm *vm);
-int			read_cor(char **av, int i, t_player *player);
+int			read_cor(char *input, t_player *player);
 int			parse_file(\
 			unsigned char *player_data, unsigned char *data, int len);
 int			parse_size(uint32_t *exec_size, unsigned char *data, uint32_t i);

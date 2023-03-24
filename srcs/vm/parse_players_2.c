@@ -15,12 +15,12 @@
 /*
 * - Reads the contents of the given .cor file.
 */
-int	read_cor(char **av, int i, t_player *player)
+int	read_cor(char *input, t_player *player)
 {
 	int	fd;
 	int	ret;
 
-	fd = open(av[i], O_RDONLY);
+	fd = open(input, O_RDONLY);
 	ret = read(fd, player->file, MEM_SIZE);
 	if (get_n_byte(4, player->file, 0) != COREWAR_EXEC_MAGIC)
 		exit_vm("Invalid file.");
