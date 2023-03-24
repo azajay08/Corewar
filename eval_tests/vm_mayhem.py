@@ -15,12 +15,12 @@ def blue(text):
     return '\033[34m' + text + '\033[0m'
 
 # Define champs, commands, log files and variables
-champsDir = 'champs/strugglers/'
+champsDir = 'champs/compiled/'
 all_champs = os.listdir(champsDir)
 n = len(all_champs)
 i = 0
 j = 0
-corewar = './corewar ' + champsDir + all_champs[i] + ' ' + champsDir + all_champs[j] + ' -dump '
+corewar = '../corewar ' + champsDir + all_champs[i] + ' ' + champsDir + all_champs[j] + ' -d '
 corewar42 = './42/corewar42 ' + champsDir + all_champs[i] + ' ' + champsDir + all_champs[j] + ' -d '
 corewar_text = './logs/corewar.txt'
 corewar42_text = './logs/corewar42.txt'
@@ -28,20 +28,20 @@ passed = 0
 failed = 0
 
 # Settings
-twenty = True
-thirty = True
+ten = True
+fifteen = True
 
 while (i < n):
 	j = 0
 	while (j < n):
 		# Introduce contestants
 		print(blue(all_champs[i] + '   vs   ' + all_champs[j]))
-		#print(yellow('Testing dump after 1k cycles...'))
-		# Open text files, run the programs w/dump after 10k cycles and write outputs to text files.
+		#print(yellow('Testing dump after 5k cycles...'))
+		# Open text files, run the programs w/dump after 5k cycles and write outputs to text files.
 		with open(corewar_text, 'w') as f1:
-			subprocess.run(corewar + str(1000), shell=True, stdout=f1)
+			subprocess.run(corewar + str(5000), shell=True, stdout=f1)
 		with open(corewar42_text, 'w') as f2:
-			subprocess.run(corewar42 + str(1000), shell=True, stdout=f2)
+			subprocess.run(corewar42 + str(5000), shell=True, stdout=f2)
 		# Compare text files.
 		with open(corewar_text, 'r') as f1:
 			output = f1.read()
@@ -50,48 +50,48 @@ while (i < n):
 		s = difflib.SequenceMatcher(None, output, output42)
 		# Print results w/dump after 10k cycles.
 		if s.ratio() == 1.0:
-			print(green('-dump 1000: OK'))
+			print(green('-dump 5000: OK |'), end=" ")
 			passed += 1
 		else:
-			print(red('-dump 1000: difference found!'))
+			print(red('-dump 5000: KO |'), end=" ")
 			failed += 1
 
-		# Same test after 20k cycles the settings is on (twenty = True)
-		if (twenty == True):
-			#print(yellow('Testing dump after 2k cycles...'))
+		# Same test after 10k cycles the settings is on (ten = True)
+		if (ten == True):
+			#print(yellow('Testing dump after 10k cycles...'))
 			with open(corewar_text, 'w') as f1:
-				subprocess.run(corewar + str(1000), shell=True, stdout=f1)
+				subprocess.run(corewar + str(5000), shell=True, stdout=f1)
 			with open(corewar42_text, 'w') as f2:
-				subprocess.run(corewar42 + str(1000), shell=True, stdout=f2)
+				subprocess.run(corewar42 + str(5000), shell=True, stdout=f2)
 			with open(corewar_text, 'r') as f1:
 				output = f1.read()
 			with open(corewar42_text, 'r') as f2:
 				output42 = f2.read()
 			s = difflib.SequenceMatcher(None, output, output42)
 			if s.ratio() == 1.0:
-				print(green('-dump 2000: OK'))
+				print(green('-dump 10000: OK |'), end=" ")
 				passed += 1
 			else:
-				print(red('-dump 2000: difference found!'))
+				print(red('-dump 10000: KO |'), end=" ")
 				failed += 1
 
-		# Same test after 30k cycles the settings is on (twenty = True)
-		if (twenty == True):
-			#print(yellow('Testing dump after 3k cycles..'))
+		# Same test after 15k cycles the settings is on (ten = True)
+		if (ten == True):
+			#print(yellow('Testing dump after 15k cycles..'))
 			with open(corewar_text, 'w') as f1:
-				subprocess.run(corewar + str(1000), shell=True, stdout=f1)
+				subprocess.run(corewar + str(5000), shell=True, stdout=f1)
 			with open(corewar42_text, 'w') as f2:
-				subprocess.run(corewar42 + str(1000), shell=True, stdout=f2)
+				subprocess.run(corewar42 + str(5000), shell=True, stdout=f2)
 			with open(corewar_text, 'r') as f1:
 				output = f1.read()
 			with open(corewar42_text, 'r') as f2:
 				output42 = f2.read()
 			s = difflib.SequenceMatcher(None, output, output42)
 			if s.ratio() == 1.0:
-				print(green('-dump 3000: OK'))
+				print(green('-dump 15000: OK'))
 				passed += 1
 			else:
-				print(red('-dump 3000: difference found!'))
+				print(red('-dump 15000: KO'))
 				failed += 1
 
 		# Iterate second champ.

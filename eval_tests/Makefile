@@ -19,7 +19,7 @@ WAR_DIR = ..
 # - asminv: Compares the output of invalid files with 42 and our assembler.
 OUR_ASM = $(WAR_DIR)/asm
 SCH_ASM = ./42/asm
-ASM_ERR = ./asm_error_files/error_files
+ASM_ERR = ./asm_test_files/error_files
 ASM_INV = ./asm_test_files/invalid_files
 ASM_SPD = ./asm_test_files/speed_files
 ASM_VLD = ./asm_test_files/valid_files
@@ -36,9 +36,13 @@ ASM_VLD = ./asm_test_files/valid_files
 LOG_DIR = ./logs
 OUR_VM = $(WAR_DIR)/corewar
 SCH_VM = ./42/corewar42
-FLAGS = -
+FLAGS = -dump 2147483647 -b
+# Our champion:
+OUR_CHAMP = roadman
+OUR_CHAMP_S = ./$(OUR_CHAMP).s
+OUR_CHAMP_C = ./$(OUR_CHAMP).cor
+# Champions to test:
 CHAMP_D = ./champs/compiled
-OUR_CHAMP = ./roadman.cor
 CHAMP_1 = $(CHAMP_D)/all_instructions.cor
 CHAMP_2 = $(CHAMP_D)/THUNDER.cor
 CHAMP_3 = $(CHAMP_D)/car.cor
@@ -100,8 +104,8 @@ vmleaks:	all
 			@python3 vm_leaks.py
 
 mychamp1:	all
-			@../asm ./roadman.s
-			@../corewar -b $(OUR_CHAMP) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3) -d 810
+			../asm $(OUR_CHAMP_S)
+			@../corewar -b $(OUR_CHAMP_C) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3) -d 0
 
 mychamp2:	all
 			@python3 vm_our_champ.py

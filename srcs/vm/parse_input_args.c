@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input_args.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/23 14:04:51 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/24 13:40:48 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	set_dump_cycle(t_vm *vm, char *input, char *value)
 	if (!ft_isnumber(value))
 		exit_vm("Incorrect usage.");
 	vm->dump = ft_atoi(value);
-	if (vm->dump < 0)
+	if (vm->dump < 0 || vm ->dump > 2147483647)
 		exit_vm("Incorrect usage.");
 	if (ft_strlen(input) == 2)
-		vm->print_octets = 32;
-	else
 		vm->print_octets = 64;
+	else
+		vm->print_octets = 32;
 	return (2);
 }
 
