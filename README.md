@@ -93,15 +93,7 @@ example_label2:
 ```
 </details>
 
-`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these `statements` are functions, they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written in bytecode. The arguments must be separated by the `SEPARATOR_CHAR` - `,`. The arguments for the `statements` can be one of three:
-* `T_REG` - __Registry__ 
-  * This argument is recognised with an `r` infront of number between 1-16 e.g. `r11`. `1` byte in size.
-* `T_DIR` -  __Direct Value__ 
-  * This argument is recognised with `%` before a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `%42`, `%-5`, `%:example_label`. A direct value can either be `2` or `4` bytes in size depending on the statement.
-* `T_IND` -  __Indirect Value__
-  * This argument doesn't have a specific character to recognise it but, it will just be a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `42`, `-5`, `:example_label`. `2` bytes in size.
-
-The `statements` themselves
+`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these `statements` are functions, they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written in bytecode. The arguments must be separated by the `SEPARATOR_CHAR` - `,`.
                 
 <details>
 <summary>Example</summary>
@@ -113,6 +105,14 @@ and 42, %:label, r3
 st r10, 42  
 ```
 </details>
+                
+  The arguments for the `statements` can be one of three:
+* `T_REG` - __Registry__ 
+  * This argument is recognised with an `r` infront of number between 1-16 e.g. `r11`. `1` byte in size.
+* `T_DIR` -  __Direct Value__ 
+  * This argument is recognised with `%` before a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `%42`, `%-5`, `%:example_label`. A direct value can either be `2` or `4` bytes in size depending on the statement.
+* `T_IND` -  __Indirect Value__
+  * This argument doesn't have a specific character to recognise it but, it will just be a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `42`, `-5`, `:example_label`. `2` bytes in size.
 
 <details>
 <summary>Statement Table</summary>
@@ -139,6 +139,9 @@ st r10, 42
 16	|`10`  |`aff`|	T_REG	|-	|-|
 
 </details>
+                
+The `statements` themselves
+          
 
 <details>
 <summary>Assembly to bytecode</summary>
