@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sam <sam@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:40 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/23 14:05:18 by sam              ###   ########.fr       */
+/*   Updated: 2023/03/25 00:26:03 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	print_usage(void)
 {
 	exit_vm("Usage:   ./corewar champ1.cor champ2.cor champ3.cor\n\
 		Flags:\n\
-		-dump (n): Prints the arena with 64 bytes per line at cycle n.\n\
-		-d (n): Prints the arena with 32 bytes per line at cycle n.\n\
+		-dump (n): Prints the arena with 32 bytes per line at cycle n.\n\
+		-d (n): Prints the arena with 64 bytes per line at cycle n.\n\
 		-n (n): The next player will be given the ID n.\n\
 		-a: Sets the a flag for the 'aff' statement command.\n\
 		-b: Enables debug messages.\n\
