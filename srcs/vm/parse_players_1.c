@@ -6,7 +6,7 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/24 14:21:20 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/24 14:34:49 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	parse(int ac, char **av, t_vm *vm)
 	player_id = 0;
 	read_flags(ac, av, vm);
 	get_player_count(ac, av, &vm->player_count);
-	if (vm->player_count == 0)
+	if (vm->player_count == 0 || vm->player_count > MAX_PLAYERS)
 		exit_vm("No participants found.");
 	while (++player_id <= vm->player_count)
 	{
