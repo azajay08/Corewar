@@ -65,8 +65,10 @@ The files are written in assembly language. A valid champion would have:
 * Labels (Not mandatory)
 * Statements
 
+### Comments
 `Comments` can either be on an individual line anywhere in the file, or placed on the end of a line after an instruction. `Comments` are indicated using one of two comment characters `#` or `;`.
 
+### Header
 The `header` consists of the `Champion's` name and a comment. The champion's name can be anything but has to be under 128 characters. The comment is usually a cheeky comment or some trash talk, which can also be anything but has to be under 2048 characters. The order that they are in doesn't matter. All that matters is that header comes before any `labels` or `statements`.
 
 <details>
@@ -79,7 +81,8 @@ The `header` consists of the `Champion's` name and a comment. The champion's nam
 ```
 </details>
 
-`Labels` are used as reference to the specific `statement` that follows it immediately. A `statement` does not have to be on the same line to be linked to the `label`. The `label` itself as a name means nothing to the program, they are named for readability. If a `label` is called as an argument, it represents a value. That value is the number of bytes between the beginning of the line in which the call is made from, and the beginning of the line in which the `label` is on. The name of the `label` can only consist of these characters `abcdefghijklmnopqrstuvwxyz_0123456789`. A `label` will end with the `LABEL_CHAR` - `:`.
+### Labels
+`Labels` are used as a reference to the specific `statement` that follows it immediately. A `statement` does not have to be on the same line to be linked to the `label`. The `label` itself as a name means nothing to the program, they are named for readability. If a `label` is called as an argument, it represents a value. That value is the number of bytes between the beginning of the line in which the call is made from, and the beginning of the line in which the `label` is on. The name of the `label` can only consist of these characters `abcdefghijklmnopqrstuvwxyz_0123456789`. A `label` will end with the `LABEL_CHAR` - `:`.
 
 <details>
 <summary>Example</summary>
@@ -93,6 +96,7 @@ example_label2:
 ```
 </details>
 
+### Statements
 `Statements` are functions that all have specific purposes (irrelevant to the assembler). As these `statements` are functions, they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written in bytecode. The arguments must be separated by the `SEPARATOR_CHAR` - `,`.
                 
 <details>
@@ -139,8 +143,7 @@ st r10, 42
 16	|`10`  |`aff`|	T_REG	|-	|-|
 
 </details>
-                
-The `statements` themselves
+
           
 
 <details>
@@ -159,6 +162,7 @@ The `statements` themselves
                 
 ## Virtual Machine
 
+_VM description_
                 
 <details>
 <summary>Usage</summary>
@@ -184,9 +188,6 @@ The `statements` themselves
 </details>
                 
                
-
-
-_VM description_
 
 ## Champion
 
