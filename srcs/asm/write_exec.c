@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:05:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/09 04:34:26 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:04:06 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 	These 3 functions write to the output file with the corresponding argument
 	byte values.
 */
-
 void	write_reg(int bytes, int fd)
 {
 	write(fd, &((unsigned char *)&bytes)[0], 1);
@@ -43,7 +42,6 @@ void	write_dir(t_state *state, int bytes, int fd)
 	This goes through all the statements and writes all the data and argument
 	results from the statements.
 */
-
 void	write_exec_code(t_asm *assem, int fd)
 {
 	int		i;

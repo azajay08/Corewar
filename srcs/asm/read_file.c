@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 13:57:49 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:10:04 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:03:57 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ t_line	*make_array_line(t_asm *assem, t_line *old)
 	This turns the t_line sturct into an array rather than a list so it can
 	be referred to by index.
 */
-
 t_line	**make_line_array(t_asm *assem)
 {
 	int		i;
@@ -53,7 +52,6 @@ t_line	**make_line_array(t_asm *assem)
 /*
 	Adds the line element to the end of the t_line list.
 */
-
 void	append_line(t_asm *assem, t_line *line)
 {
 	t_line	*tmp;
@@ -93,7 +91,6 @@ t_line	*make_line(t_asm *assem, char *line, int line_num)
 	to see if there is a newline at the end of the file. If one has not been
 	found then, it will exit the program.
 */
-
 void	read_file(t_asm *assem, char *file)
 {
 	int		fd;

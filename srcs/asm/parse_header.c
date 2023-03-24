@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:24:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:16:19 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:03:23 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	get_comment(t_asm *assem, t_line *line, int start, int end)
 	as the 'nl' character in the ascii table in the case of the name/comment
 	being on multiple lines.
 */
-
 void	get_name(t_asm *assem, t_line *line, int start, int end)
 {
 	int	i;
@@ -78,7 +77,6 @@ void	get_name(t_asm *assem, t_line *line, int start, int end)
 	be spread out over multiple lines. Depending on the command string given
 	as an argument, it will then go to get either the name or comment.
 */
-
 t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
 {
 	int		i;
@@ -113,7 +111,6 @@ t_line	*get_champ_cmd(t_asm *assem, t_line *line, t_line *temp, char *cmd)
 	aid the parsing process. line_check will check if the line is okay to
 	be parsed, or of the line is just a comment or empty line. 
 */
-
 t_line	*get_name_comment(t_asm *assem, t_line *line)
 {
 	t_line	*temp;
@@ -146,7 +143,6 @@ t_line	*get_name_comment(t_asm *assem, t_line *line)
 	If there is nothing found or the name or comment are invalid. It will
 	exit the program.
 */
-
 int	parse_header(t_asm *assem)
 {
 	t_line	*line;

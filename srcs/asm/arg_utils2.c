@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 15:02:19 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 01:50:37 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:02:13 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	arg_code(char *arg)
 	bit_shift uses the bitwise operator to shift 1s along the binary string
 	depending on the argument type
 */
-
 char	bit_shift(unsigned char byte, int type, int shift)
 {
 	if (type == DIR_CODE || type == IND_CODE)
@@ -48,7 +47,6 @@ char	bit_shift(unsigned char byte, int type, int shift)
 	11100100 = 228 in decimal, which = E4 in hexadecimal. That would be
 	the result.
 */
-
 char	get_arg_result(t_asm *assem, char **args)
 {
 	unsigned char	byte;

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 03:17:36 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:14:52 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:02:53 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
 	Gets the executable code size.
 */
-
 void	get_prog_size(t_asm *assem)
 {
 	int	i;
@@ -32,7 +31,6 @@ void	get_prog_size(t_asm *assem)
 	Parse_champ sorts out the order of the parsing. The index will return
 	the index of the line that is just after the name/comment.
 */
-
 void	parse_champ(t_asm *assem)
 {
 	int	index;
@@ -86,7 +84,6 @@ void	init_asm(t_asm *assem, char *file_input)
 	been used. All heads of the structs have been saved in the main t_asm
 	which makes it easier to free them all in one place.
 */
-
 int	main(int argc, char **argv)
 {
 	t_asm	*assem;

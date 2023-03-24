@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 16:58:16 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:36:54 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:04:01 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 	Verify_arguments checks what the argument types are and then goes onto
 	check if that argument type is in the correct format in arg_utils3.c
 */
-
 void	verify_arguments(t_asm *assem, t_state *state)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 02:23:35 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/10 18:19:43 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:04:47 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 	Writes the comment of the champion to the output file, translated into byte 
 	code, along with 4 null bytes at the end.
 */
-
 void	write_comment(t_asm *assem, int fd)
 {
 	int		i;
@@ -37,7 +36,6 @@ void	write_comment(t_asm *assem, int fd)
 /*
 	Writes the executable code size in between the name and the comment
 */
-
 void	write_prog_size(t_asm *assem, int fd)
 {
 	write(fd, &((unsigned char *)&assem->prog_size)[3], 1);
@@ -50,7 +48,6 @@ void	write_prog_size(t_asm *assem, int fd)
 	Writes the name of the champion to the output file, translated into byte 
 	code, along with 4 null bytes at the end.
 */
-
 void	write_name(t_asm *assem, int fd)
 {
 	int		i;
@@ -71,7 +68,6 @@ void	write_name(t_asm *assem, int fd)
 /*
 	Writes the magic header first which is provided with the subject
 */
-
 void	write_header(int fd)
 {
 	int	magic;
@@ -87,9 +83,7 @@ void	write_header(int fd)
 	Now everything has been parsed and values have been assigned, write_to_cor
 	will write everything to the .cor output file in the correct order. The 
 	.cor file is created and opened.
-	
 */
-
 void	write_to_cor(t_asm *assem)
 {
 	int	fd;

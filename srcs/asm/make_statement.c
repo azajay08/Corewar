@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 04:04:22 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:40:21 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:03:03 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 	label/labels. This is so the position of the label can be found easily
 	if a label is given as an argument.
 */
-
 void	label_check(t_asm *assem, int index)
 {
 	t_label	*label;
@@ -40,7 +39,6 @@ void	label_check(t_asm *assem, int index)
 	get_arguments returns a 2d array of arguments. Each argument will be
 	trimmed down to make it easier to extract the data from it.
 */
-
 char	**get_arguments(t_asm *assem, char **args)
 {
 	int		i;
@@ -77,7 +75,6 @@ char	**get_arguments(t_asm *assem, char **args)
 	get_arg_result goes to arg_utils2.c which returns result of the argument
 	types.
 */
-
 void	init_statement(t_asm *assem, t_state *statement, int i, char **args)
 {
 	statement->args = get_arguments(assem, args);
@@ -92,7 +89,6 @@ void	init_statement(t_asm *assem, t_state *statement, int i, char **args)
 	line_trim returns the line back but without all the uneccesary things such
 	as comments or trailing commas. This is also another verification check.
 */
-
 char	*line_trim(t_asm *assem, int index, char *line)
 {
 	int		start;
@@ -125,7 +121,6 @@ char	*line_trim(t_asm *assem, int index, char *line)
 
 	The byte count is added to the line array as the value of the line.
 */
-
 t_state	*make_statement(t_asm *assem, int index)
 {
 	t_state	*statement;

@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 03:25:34 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 01:49:18 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:02:04 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 	Byte_length checks the length of bytes needed for specific arguments to 
 	eventually get a total amount of bytes for the entire statement
 */
-
 int	byte_length(t_asm *assem, int type)
 {
 	if (type == T_REG)
@@ -46,7 +45,6 @@ int	arg_value(char *arg)
 	Using the bitwsie operator '&', we can check that the argument is a valid
 	one for that specific statement.
 */
-
 int	get_byte_count(t_asm *assem, char **args)
 {
 	int	byte_count;

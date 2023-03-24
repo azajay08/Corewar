@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:59:03 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:20:36 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:03:44 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
 	Adds the label element to the end of the t_label list
 */
-
 void	append_label(t_asm *assem, t_label *label)
 {
 	t_label	*temp;
@@ -32,7 +31,6 @@ void	append_label(t_asm *assem, t_label *label)
 	parse_utils1.c checks if there has previously been a label with the same
 	name in which case, we exit the program
 */
-
 char	*get_label(t_asm *assem, char *line, int i)
 {
 	int		start;
@@ -91,7 +89,6 @@ void	sort_label(t_asm *assem, t_label *label)
 	goes to the parse_utils1.c file and will check if a label has the same name
 	as a statement just so it won't mistaken for a statement rather than a label
 */
-
 void	parse_labels(t_asm *assem, int index)
 {
 	int		i;

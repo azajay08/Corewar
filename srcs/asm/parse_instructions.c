@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:56:46 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/11 17:29:47 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:03:33 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
 	Adds the stateement element to the end of the t_state list
 */
-
 void	append_statement(t_asm *assem, t_state *statement)
 {
 	t_state	*tmp;
@@ -54,7 +53,6 @@ int	is_statement(t_asm *assem, char *state)
 	parse_utils2.c checks whether the label is a duplicate so it can be
 	ignored for argument reference.
 */
-
 int	line_has_statement(t_asm *assem, int index, char *line)
 {
 	int		i;
@@ -99,7 +97,6 @@ int	line_has_statement(t_asm *assem, int index, char *line)
 	Once all statements have been parsed and verified, we then go to
 	parse_arguments.
 */
-
 void	parse_instructions(t_asm *assem, int index)
 {
 	t_state	*statement;

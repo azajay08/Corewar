@@ -6,7 +6,7 @@
 /*   By: ajones <ajones@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:23:45 by ajones            #+#    #+#             */
-/*   Updated: 2023/03/15 03:32:08 by ajones           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:03:14 by ajones           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 /*
 	label_index returns the index of a matching label name
 */
-
 int	label_index(t_asm *assem, char *arg)
 {
 	t_label	*label;
@@ -35,7 +34,6 @@ int	label_index(t_asm *assem, char *arg)
 	targeted label. The calculations differ slightly when moving forwards, to
 	moving to a label backwards.
 */
-
 int	label_value(t_asm *assem, t_state *state, int i)
 {
 	int	index;
@@ -76,7 +74,6 @@ int	label_value(t_asm *assem, t_state *state, int i)
 	LONG_MAX. If it is within the limits, a normal ft_atoi returns an integar
 	value.
 */
-
 int	get_arg_value(t_asm *assem, t_state *state, int i)
 {
 	if (arg_value(state->args[i]) == T_REG)
@@ -104,7 +101,6 @@ int	get_arg_value(t_asm *assem, t_state *state, int i)
 	Parse_arg_values goes through the arguments of the statement and gets
 	each value, only after being verified with verify_arguments in verify.c
 */
-
 void	parse_arg_values(t_asm *assem, t_state *state)
 {
 	int	i;
@@ -122,7 +118,6 @@ void	parse_arg_values(t_asm *assem, t_state *state)
 	Parse_arguments goes through the t_state list, verifies the arguments
 	for that particular statement and then gets the values for them.
 */
-
 void	parse_arguments(t_asm *assem)
 {
 	t_state	*state;
