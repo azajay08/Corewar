@@ -159,22 +159,32 @@ The `statements` themselves
                 
 ## Virtual Machine
 
-<img width="1163" alt="Screenshot 2023-03-25 at 0 08 14" src="https://user-images.githubusercontent.com/86073849/227654036-777bc421-8840-4a09-b909-e61afe3e46e9.png">
-
+                
 <details>
 <summary>Usage</summary>
 <br>
+ 
 
 ```
 ./corewar [-flags] [champion.cor] [champion.cor] [champion.cor]
- 
-Flags:
-     -a      Description
-     -dump   ...
-     -n      ...
+          Flags:
+                -dump (n): Prints the arena with 32 bytes per line at cycle n.
+                -d (n): Prints the arena with 64 bytes per line at cycle n.
+                -n (n): The next player will be given the ID n.
+                -a: Sets the a flag for the 'aff' statement command.
+                -b: Enables debug messages.
+                -f: 'lld' command reads 4 bytes instead of 2, fixing 42s bug.
 ```
 
 </details>
+<details>
+<summary>Game board</summary>
+<br>
+<img width="1163" alt="Screenshot 2023-03-25 at 0 08 14" src="https://user-images.githubusercontent.com/86073849/227654036-777bc421-8840-4a09-b909-e61afe3e46e9.png">
+</details>
+                
+               
+
 
 _VM description_
 
@@ -182,4 +192,4 @@ _VM description_
 
 
 
-<img width="329" alt="Screenshot 2023-03-25 at 0 21 58" src="https://user-images.githubusercontent.com/86073849/227654055-b641d10e-ced6-4955-99c8-6ca9ca0b532a.png">
+<img width="322" alt="Screenshot 2023-03-25 at 0 30 05" src="https://user-images.githubusercontent.com/86073849/227654990-c78e6965-76e3-4fd8-8ba2-7afbbd4866a2.png">
