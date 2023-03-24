@@ -38,7 +38,7 @@ OUR_VM = $(WAR_DIR)/corewar
 SCH_VM = ./42/corewar42
 FLAGS = -dump 2147483647 -b
 # Our champion:
-OUR_CHAMP = roadman
+OUR_CHAMP = Conman
 OUR_CHAMP_S = ./$(OUR_CHAMP).s
 OUR_CHAMP_C = ./$(OUR_CHAMP).cor
 # Champions to test:
@@ -108,6 +108,7 @@ mychamp1:	all
 			@../corewar -b $(OUR_CHAMP_C) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3) -d 0
 
 mychamp2:	all
+			../asm $(OUR_CHAMP_S)
 			@python3 vm_our_champ.py
 
 # ---------------------------------------------------------------------------- #

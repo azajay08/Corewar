@@ -23,17 +23,17 @@ print_result = False
 
 while (i < n):
 	# Print contestants
-	corewar = '../corewar ./Roadman.cor ' + champsDir + all_champs[i]
-	print(blue('Roadman   vs   ' + all_champs[i] + ' '), end='')
+	corewar = '../corewar ./Conman.cor ' + champsDir + all_champs[i]
+	print(blue('Conman   vs   ' + all_champs[i] + ' '), end='')
 	# Get output of the program and check if leaks were found
 	result = subprocess.run(corewar.split(), capture_output=True)
 
-	if ('\"Roadman\", has won !' in result.stdout.decode('utf-8')):
-		print(green('Roadman won! Man\'s a big ting round \'ere ya get me'))
+	if ('\"Conman\", has won !' in result.stdout.decode('utf-8')):
+		print(green('Conman won! Man\'s a big ting round \'ere ya get me'))
 		if (print_result):
 			print(result.stdout.decode('utf-8'))
 	else:
-		print(red('Roadman lost. Peak bruv :('))
+		print(red('Conman lost. Peak bruv :('))
 		if (print_result):
 			print(result.stdout.decode('utf-8'))
 	i += 1
