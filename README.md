@@ -159,6 +159,8 @@ The `statements` themselves
                 
 ## Virtual Machine
 
+<img width="1163" alt="Screenshot 2023-03-25 at 0 08 14" src="https://user-images.githubusercontent.com/86073849/227654036-777bc421-8840-4a09-b909-e61afe3e46e9.png">
+
 <details>
 <summary>Usage</summary>
 <br>
@@ -178,4 +180,6 @@ _VM description_
 
 ## Champion
 
-_Usage_
+
+
+<img width="329" alt="Screenshot 2023-03-25 at 0 21 58" src="https://user-images.githubusercontent.com/86073849/227654055-b641d10e-ced6-4955-99c8-6ca9ca0b532a.png">
