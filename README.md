@@ -112,7 +112,7 @@ st r10, 42
                 
   The arguments for the `statements` can be one of three:
 * `T_REG` - __Registry__ 
-  * This argument is recognised with an `r` infront of number between 1-16 e.g. `r11`. `1` byte in size.
+  * This argument is recognised with an `r` infront of a number between 1-16 e.g. `r11`. `1` byte in size.
 * `T_DIR` -  __Direct Value__ 
   * This argument is recognised with `%` before a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `%42`, `%-5`, `%:example_label`. A direct value can either be `2` or `4` bytes in size depending on the statement.
 * `T_IND` -  __Indirect Value__
