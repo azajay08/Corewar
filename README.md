@@ -39,6 +39,8 @@ As with all Hive projects, they come with restraints and limitations. We have to
 
 Core War is a 1984 programming game created by D. G. Jones and A. K. Dewdney in which two or more battle programs (called "warriors") compete for control of a virtual computer. These battle programs are written in an abstract assembly language called Redcode. The standards for the language and the virtual machine were initially set by the International Core Wars Society (ICWS), but later standards were determined by community consensus.
 
+For our project, we must assemble the champions and build the arena in which the champions fight in.
+
 The project is split into 3 mains parts:
 - [The Assembler](#assembler)
 - [The Virtual Machine](#virtual-machine)
@@ -156,12 +158,21 @@ st r10, 42
 
 
 </details> 
-                
+
+The byte code written to the `.cor` file must be formatted in a specific way:
+* Magic Header - `0xea83f3` This is so the file will be read as binary and not to be misinterpreted as a text file.
+* Champion name - 128 bytes maximum. Unused space filled with `00`s
+* NULL - 4 bytes of `00` representing NULL
+* Executable code size - 4 bytes representing the size of the executable code. Must be no bigger than 682.
+* Champion comment - 2048 bytes maximum. Unused space filled with `00`s
+* NULL - 4 bytes of `00` representing NULL
+* Executable code - The champions code turned into to hexadecimal bytes representing the statements and their argument values.
+
 <details>
 <summary>Byte Code - [.cor]</summary>
 <br>
 
-![champ_gif](https://user-images.githubusercontent.com/86073849/227749825-26ec57a5-4422-42a9-b0f2-e549e4576f46.gif)
+![byte_code_gif](https://user-images.githubusercontent.com/86073849/227809275-937e96b8-b3fc-4bca-8a54-595a141ac069.gif)
 
 
 
