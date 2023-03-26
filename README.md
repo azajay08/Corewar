@@ -189,5 +189,5 @@ _VM description_
 ## Champion
 
 
+![champion_gif](https://user-images.githubusercontent.com/86073849/227750598-dd6764d0-78ae-45c0-a7ca-cc31dac356f1.gif)
 
-<img width="322" alt="Screenshot 2023-03-25 at 0 30 05" src="https://user-images.githubusercontent.com/86073849/227654990-c78e6965-76e3-4fd8-8ba2-7afbbd4866a2.png">
