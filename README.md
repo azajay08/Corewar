@@ -159,6 +159,11 @@ st r10, 42
 
 </details> 
 
+
+<details>
+<summary>Byte Code - [.cor]</summary>
+<br>
+
 The byte code written to the `.cor` file must be formatted in a specific way:
 * Magic Header - `0xea83f3` This is so the file will be read as binary and not to be misinterpreted as a text file.
 * Champion name - 128 bytes maximum. Unused space filled with `00`s
@@ -166,11 +171,7 @@ The byte code written to the `.cor` file must be formatted in a specific way:
 * Executable code size - 4 bytes representing the size of the executable code. Must be no bigger than 682.
 * Champion comment - 2048 bytes maximum. Unused space filled with `00`s
 * NULL - 4 bytes of `00` representing NULL
-* Executable code - The champions code turned into to hexadecimal bytes representing the statements and their argument values.
-
-<details>
-<summary>Byte Code - [.cor]</summary>
-<br>
+* Executable code - The champions code turned into to hexadecimal bytes representing the statements and their argument values. 
 
 ![byte_code_gif](https://user-images.githubusercontent.com/86073849/227809275-937e96b8-b3fc-4bca-8a54-595a141ac069.gif)
 
