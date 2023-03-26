@@ -147,7 +147,18 @@ st r10, 42
           
 
 <details>
-<summary>Assembly to bytecode</summary>
+<summary>Assembly - [.s]</summary>
+<br>
+
+![champ_gif](https://user-images.githubusercontent.com/86073849/227749825-26ec57a5-4422-42a9-b0f2-e549e4576f46.gif)
+
+
+
+
+</details> 
+                
+<details>
+<summary>Byte Code - [.cor]</summary>
 <br>
 
 ![champ_gif](https://user-images.githubusercontent.com/86073849/227749825-26ec57a5-4422-42a9-b0f2-e549e4576f46.gif)
