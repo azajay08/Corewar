@@ -97,7 +97,7 @@ example_label2:
 </details>
 
 ### Statements
-`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these `statements` are functions, they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written in bytecode. The arguments must be separated by the `SEPARATOR_CHAR` - `,`.
+`Statements` are functions that all have specific purposes (irrelevant to the assembler). There are 16 in total. `Statements` are functions so they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written into bytecode. The arguments must be separated by the `SEPARATOR_CHAR` - `,`.
                 
 <details>
 <summary>Example</summary>
@@ -150,10 +150,7 @@ st r10, 42
 <summary>Assembly to bytecode</summary>
 <br>
 
-<img align="left" img width="217" alt="Screenshot 2023-03-18 at 4 28 31" src="https://user-images.githubusercontent.com/86073849/226078415-134316a6-1208-453b-9993-2acc4c0879b3.png">  
-
-
-<img width="425" alt="Screenshot 2023-03-18 at 4 20 35" src="https://user-images.githubusercontent.com/86073849/226078166-6922d23b-83a9-4c7a-9272-170691c023a3.png">
+![champ_gif](https://user-images.githubusercontent.com/86073849/227749825-26ec57a5-4422-42a9-b0f2-e549e4576f46.gif)
 
 
 
