@@ -57,7 +57,7 @@ The project is split into 3 mains parts:
 
 </details>
 
-The assembler takes a file with a `.s` extension (also known as a `champion`) and writes the contents to a file with the same name but with a `.cor` extension in the format of hexadecimal bytecode. The job of the assembler is to parse through the assembly language from the input file and make sure everything is valid, ready to translate it into bytecode. Of course the input file has to be formatted in a speicifc way to be correctly translated, so we must take care of edge cases and invalid inputs. 
+The assembler takes a file with a `.s` extension (also known as a `champion`) and writes the contents to a file with the same name but with a `.cor` extension in the format of hexadecimal byte code. The job of the assembler is to parse through the assembly language from the input file and make sure everything is valid, ready to translate it into byte code. Of course the input file has to be formatted in a specific way to be correctly translated, so we must take care of edge cases and invalid inputs. 
 
 The files are written in assembly language. A valid champion would have:
 * Comments (Not mandatory)
@@ -97,7 +97,7 @@ example_label2:
 </details>
 
 ### Statements
-`Statements` are functions that all have specific purposes (irrelevant to the assembler). There are 16 in total. `Statements` are functions so they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written into bytecode. The arguments must be separated by the `SEPARATOR_CHAR` - `,`.
+`Statements` are functions that all have specific purposes (irrelevant to the assembler). There are 16 in total. `Statements` are functions so they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written into byte code. The arguments must be separated by the `SEPARATOR_CHAR` - `,`.
                 
 <details>
 <summary>Example</summary>
@@ -112,11 +112,11 @@ st r10, 42
                 
   The arguments for the `statements` can be one of three:
 * `T_REG` - __Registry__ 
-  * This argument is recognised with an `r` infront of a number between 1-16 e.g. `r11`. `1` byte in size.
+  * This argument is recognised with an `r` in front of a number between 1-16 e.g. `r11`. `1` byte in size.
 * `T_DIR` -  __Direct Value__ 
-  * This argument is recognised with `%` before a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `%42`, `%-5`, `%:example_label`. A direct value can either be `2` or `4` bytes in size depending on the statement.
+  * This argument is recognised with `%` before a number (positive/negative). A label can be given as an argument too as this also represents a number (number of bytes to label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `%42`, `%-5`, `%:example_label`. A direct value can either be `2` or `4` bytes in size depending on the statement.
 * `T_IND` -  __Indirect Value__
-  * This argument doesn't have a specific character to recognise it but, it will just be a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `42`, `-5`, `:example_label`. `2` bytes in size.
+  * This argument doesn't have a specific character to recognise it but, it will just be a number (positive/negative). A label can be given as an argument too as this also represents a number (number of bytes to label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `42`, `-5`, `:example_label`. `2` bytes in size.
 
 <details>
 <summary>Statement Table</summary>
@@ -188,6 +188,17 @@ _VM description_
 
 ## Champion
 
+This part of the project was to create our own champion. The champion doesn't need to be a world beater, but it has to have some functionality and stay alive at least long enough to be considered a participant. Our champion's name is `Conman`. We could tell you a big story about `Conman's` strategy replicating traits of a con artist... but we just liked the name.
+
+
+<details>
+<summary>Conman</summary>
+<br>
+
 
 ![champion_gif](https://user-images.githubusercontent.com/86073849/227750598-dd6764d0-78ae-45c0-a7ca-cc31dac356f1.gif)
+
+
+</details> 
+
 
