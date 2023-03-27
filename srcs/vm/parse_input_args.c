@@ -6,7 +6,7 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/24 13:40:48 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:17:27 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,14 @@ void	set_player_order(t_vm *vm, char *input_id, t_player *player)
 	if (!ft_isnumber(input_id))
 		exit_vm("Incorrect usage.");
 	to_id = (uint8_t)ft_atoi(input_id);
+	if (to_id < 1 || to_id > vm->player_count)
+		exit_vm("Incorrect usage.");
 	from_id = player->id;
-	temp_player = vm->player[to_id];
+	temp_player = vm->player[to_id - 1];
 	vm->player[to_id - 1] = vm->player[from_id - 1];
 	vm->player[from_id - 1] = temp_player;
 	vm->player[from_id - 1]->id = from_id;
 	vm->player[to_id - 1]->id = to_id;
-	if (player->id < 1 || player->id > MAX_PLAYERS)
-		exit_vm("Incorrect usage.");
 }
 
 /*
@@ -111,16 +111,21 @@ void	set_player_order(t_vm *vm, char *input_id, t_player *player)
 void	read_n_flags(int ac, char **av, t_vm *vm)
 {
 	int	i;
+	int player_id;
 
 	i = 0;
+	player_id = 0;
 	while (++i < ac)
 	{
 		if (av[i] && ft_strcmp(av[i], "-n") == 0)
 		{
 			if (i + 2 >= ac)
 				exit_vm("Incorrect usage.");
+			player_id = (int)find_player_id(vm, av[i + 2]) - 1;
+			if (player_id < 0)
+				exit_vm("Error during player order setting.");
 			set_player_order(\
-				vm, av[i + 1], vm->player[find_player_id(vm, av[i + 2])]);
+				vm, av[i + 1], vm->player[player_id]);
 		}
 	}
 }

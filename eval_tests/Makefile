@@ -36,7 +36,7 @@ ASM_VLD = ./asm_test_files/valid_files
 LOG_DIR = ./logs
 OUR_VM = $(WAR_DIR)/corewar
 SCH_VM = ./42/corewar42
-FLAGS = -dump 5 -b
+FLAGS =
 # Our champion:
 OUR_CHAMP = Conman
 OUR_CHAMP_S = ./$(OUR_CHAMP).s
@@ -45,8 +45,8 @@ OUR_CHAMP_C = ./$(OUR_CHAMP).cor
 CHAMP_D = ./champs/compiled
 CHAMP_1 = $(CHAMP_D)/all_instructions.cor
 CHAMP_2 = $(CHAMP_D)/THUNDER.cor
-CHAMP_3 = $(CHAMP_D)/car.cor
-CHAMP_4 = $(CHAMP_D)/NoIdea.cor
+CHAMP_3 = $(CHAMP_D)/NoIdea.cor
+#CHAMP_4 = $(CHAMP_D)/NoIdea.cor
 
 # ---------------------------------------------------------------------------- #
 # General:																	   #
@@ -89,7 +89,7 @@ asmspeed:	all
 			@$(SCH_VM) $(FLAGS) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
 
 test:		all
-			@$(OUR_VM) $(FLAGS) $(CHAMP_1) $(CHAMP_2) $(CHAMP_3)
+			@$(OUR_VM) $(FLAGS) -n 2 $(CHAMP_1) -n 1 $(CHAMP_2) xfsdfsd
 
 compare:	all
 			@mkdir -p $(LOG_DIR)
