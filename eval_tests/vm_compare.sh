@@ -17,7 +17,7 @@ YELLOW='\033[33m'
 MAGENTA='\033[35m'
 NOCOLOR='\033[0m'
 run_games() {
-	$OUR_WAR -dump $1 ${FILE[@]} | tail -n 64 > $OUR_OUTPUT
+	$OUR_WAR -d $1 ${FILE[@]} | tail -n 64 > $OUR_OUTPUT
 	$SCHOOL_WAR -d $1 ${FILE[@]} | tail -n 64 > $FT_OUTPUT
 	DIFF=$(diff $OUR_OUTPUT $FT_OUTPUT)
 }

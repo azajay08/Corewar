@@ -39,6 +39,8 @@ As with all Hive projects, they come with restraints and limitations. We have to
 
 Core War is a 1984 programming game created by D. G. Jones and A. K. Dewdney in which two or more battle programs (called "warriors") compete for control of a virtual computer. These battle programs are written in an abstract assembly language called Redcode. The standards for the language and the virtual machine were initially set by the International Core Wars Society (ICWS), but later standards were determined by community consensus.
 
+For our project, we must assemble the champions and build the arena in which the champions fight in.
+
 The project is split into 3 mains parts:
 - [The Assembler](#assembler)
 - [The Virtual Machine](#virtual-machine)
@@ -57,7 +59,7 @@ The project is split into 3 mains parts:
 
 </details>
 
-The assembler takes a file with a `.s` extension (also known as a `champion`) and writes the contents to a file with the same name but with a `.cor` extension in the format of hexadecimal bytecode. The job of the assembler is to parse through the assembly language from the input file and make sure everything is valid, ready to translate it into bytecode. Of course the input file has to be formatted in a speicifc way to be correctly translated, so we must take care of edge cases and invalid inputs. 
+The assembler takes a file with a `.s` extension (also known as a `champion`) and writes the contents to a file with the same name but with a `.cor` extension in the format of hexadecimal byte code. The job of the assembler is to parse through the assembly language from the input file and make sure everything is valid, ready to translate it into byte code. Of course the input file has to be formatted in a specific way to be correctly translated, so we must take care of edge cases and invalid inputs. 
 
 The files are written in assembly language. A valid champion would have:
 * Comments (Not mandatory)
@@ -65,8 +67,10 @@ The files are written in assembly language. A valid champion would have:
 * Labels (Not mandatory)
 * Statements
 
+### Comments
 `Comments` can either be on an individual line anywhere in the file, or placed on the end of a line after an instruction. `Comments` are indicated using one of two comment characters `#` or `;`.
 
+### Header
 The `header` consists of the `Champion's` name and a comment. The champion's name can be anything but has to be under 128 characters. The comment is usually a cheeky comment or some trash talk, which can also be anything but has to be under 2048 characters. The order that they are in doesn't matter. All that matters is that header comes before any `labels` or `statements`.
 
 <details>
@@ -79,7 +83,8 @@ The `header` consists of the `Champion's` name and a comment. The champion's nam
 ```
 </details>
 
-`Labels` are used as reference to the specific `statement` that follows it immediately. A `statement` does not have to be on the same line to be linked to the `label`. The `label` itself as a name means nothing to the program, they are named for readability. If a `label` is called as an argument, it represents a value. That value is the number of bytes between the beginning of the line in which the call is made from, and the beginning of the line in which the `label` is on. The name of the `label` can only consist of these characters `abcdefghijklmnopqrstuvwxyz_0123456789`. A `label` will end with the `LABEL_CHAR` - `:`.
+### Labels
+`Labels` are used as a reference to the specific `statement` that follows it immediately. A `statement` does not have to be on the same line to be linked to the `label`. The `label` itself as a name means nothing to the program, they are named for readability. If a `label` is called as an argument, it represents a value. That value is the number of bytes between the beginning of the line in which the call is made from, and the beginning of the line in which the `label` is on. The name of the `label` can only consist of these characters `abcdefghijklmnopqrstuvwxyz_0123456789`. A `label` will end with the `LABEL_CHAR` - `:`.
 
 <details>
 <summary>Example</summary>
@@ -93,15 +98,8 @@ example_label2:
 ```
 </details>
 
-`Statements` are functions that all have specific purposes (irrelevant to the assembler). As these `statements` are functions, they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written in bytecode. The arguments must be separated by the `SEPARATOR_CHAR` - `,`. The arguments for the `statements` can be one of three:
-* `T_REG` - __Registry__ 
-  * This argument is recognised with an `r` infront of number between 1-16 e.g. `r11`
-* `T_DIR` -  __Direct Value__ 
-  * This argument is recognised with `%` before a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `%42`, `%-5`, `%:example_label`
-* `T_IND` -  __Indirect Value__
-  * This argument doesn't have a specific character to recognise it but, it will just be a number (positive/negative). A label can be given as an arguemnt too as this also represents a number (number of bytes to said label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `42`, `-5`, `:example_label`
-
-The `statements` themselves
+### Statements
+`Statements` are functions that all have specific purposes (irrelevant to the assembler). There are 16 in total. `Statements` are functions so they take arguments. It is the job of the assembler to parse these `statements` and their arguments, and make sure they are valid to their respective `statements`. If so, their values will be written into byte code. The arguments must be separated by the `SEPARATOR_CHAR` - `,`.
                 
 <details>
 <summary>Example</summary>
@@ -113,6 +111,14 @@ and 42, %:label, r3
 st r10, 42  
 ```
 </details>
+                
+  The arguments for the `statements` can be one of three:
+* `T_REG` - __Registry__ 
+  * This argument is recognised with an `r` in front of a number between 1-16 e.g. `r11`. `1` byte in size.
+* `T_DIR` -  __Direct Value__ 
+  * This argument is recognised with `%` before a number (positive/negative). A label can be given as an argument too as this also represents a number (number of bytes to label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `%42`, `%-5`, `%:example_label`. A direct value can either be `2` or `4` bytes in size depending on the statement.
+* `T_IND` -  __Indirect Value__
+  * This argument doesn't have a specific character to recognise it but, it will just be a number (positive/negative). A label can be given as an argument too as this also represents a number (number of bytes to label). To use a label as an argument, you must use the `LABEL_CHAR` `:` e.g. `42`, `-5`, `:example_label`. `2` bytes in size.
 
 <details>
 <summary>Statement Table</summary>
@@ -140,14 +146,34 @@ st r10, 42
 
 </details>
 
+          
+
 <details>
-<summary>Assembly to bytecode</summary>
+<summary>Assembly - [.s]</summary>
 <br>
 
-<img align="left" img width="217" alt="Screenshot 2023-03-18 at 4 28 31" src="https://user-images.githubusercontent.com/86073849/226078415-134316a6-1208-453b-9993-2acc4c0879b3.png">  
+![champ_gif](https://user-images.githubusercontent.com/86073849/227749825-26ec57a5-4422-42a9-b0f2-e549e4576f46.gif)
 
 
-<img width="425" alt="Screenshot 2023-03-18 at 4 20 35" src="https://user-images.githubusercontent.com/86073849/226078166-6922d23b-83a9-4c7a-9272-170691c023a3.png">
+
+
+</details> 
+
+
+<details>
+<summary>Byte Code - [.cor]</summary>
+<br>
+
+The byte code written to the `.cor` file must be formatted in a specific way:
+* **Magic Header** - `0xea83f3` This is so the file will be read as binary and not to be misinterpreted as a text file.
+* **Champion name** - 128 bytes maximum. Unused space filled with `00`s
+* **NULL** - 4 bytes of `00` representing NULL
+* **Executable code size** - 4 bytes representing the size of the executable code. Must be no bigger than 682.
+* **Champion comment** - 2048 bytes maximum. Unused space filled with `00`s
+* **NULL** - 4 bytes of `00` representing NULL
+* **Executable code** - The champions code turned into to hexadecimal bytes representing the statements and their argument values. 
+
+![byte_code_gif](https://user-images.githubusercontent.com/86073849/227809275-937e96b8-b3fc-4bca-8a54-595a141ac069.gif)
 
 
 
@@ -156,23 +182,46 @@ st r10, 42
                 
 ## Virtual Machine
 
+_VM description_
+                
 <details>
 <summary>Usage</summary>
 <br>
+ 
 
 ```
 ./corewar [-flags] [champion.cor] [champion.cor] [champion.cor]
- 
-Flags:
-     -a      Description
-     -dump   ...
-     -n      ...
+          Flags:
+                -dump (n): Prints the arena with 32 bytes per line at cycle n.
+                -d (n): Prints the arena with 64 bytes per line at cycle n.
+                -n (n): The next player will be given the ID n.
+                -a: Sets the a flag for the 'aff' statement command.
+                -b: Enables debug messages.
+                -f: 'lld' command reads 4 bytes instead of 2, fixing 42s bug.
 ```
 
 </details>
-
-_VM description_
+<details>
+<summary>Game board</summary>
+<br>
+<img width="1163" alt="Screenshot 2023-03-25 at 0 08 14" src="https://user-images.githubusercontent.com/86073849/227654036-777bc421-8840-4a09-b909-e61afe3e46e9.png">
+</details>
+                
+               
 
 ## Champion
 
-_Usage_
+This part of the project was to create our own champion. The champion doesn't need to be a world beater, but it has to have some functionality and stay alive at least long enough to be considered a participant. Our champion's name is [Conman](https://github.com/azajay08/Corewar/blob/main/eval_tests/Conman.s). We could tell you a big story about `Conman's` strategy replicating traits of a con artist... but we just liked the name.
+
+
+<details>
+<summary>Conman</summary>
+<br>
+
+
+![champion_gif](https://user-images.githubusercontent.com/86073849/227750598-dd6764d0-78ae-45c0-a7ca-cc31dac356f1.gif)
+
+
+</details> 
+
+
