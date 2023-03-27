@@ -131,7 +131,7 @@ choose_file() {
 print_commands() {
 	echo "Commands, used to run last games:"
 
-	echo "\t$OUR_WAR -dump $1 ${FILE[@]} | tail -n 64 > $OUR_OUTPUT"
+	echo "\t$OUR_WAR -d $1 ${FILE[@]} | tail -n 64 > $OUR_OUTPUT"
 	echo "\t$SCHOOL_WAR -d $1 ${FILE[@]} | tail -n 64 > $FT_OUTPUT"
 }
 

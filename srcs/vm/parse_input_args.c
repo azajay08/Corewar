@@ -6,7 +6,7 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:50:15 by swilliam          #+#    #+#             */
-/*   Updated: 2023/03/27 15:17:27 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:35:55 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	set_player_order(t_vm *vm, char *input_id, t_player *player)
 void	read_n_flags(int ac, char **av, t_vm *vm)
 {
 	int	i;
-	int player_id;
+	int	player_id;
 
 	i = 0;
 	player_id = 0;

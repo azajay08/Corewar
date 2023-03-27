@@ -6,7 +6,7 @@
 /*   By: swilliam <swilliam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:49:15 by sam               #+#    #+#             */
-/*   Updated: 2023/03/24 14:34:49 by swilliam         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:44:47 by swilliam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,16 @@ uint32_t id)
 	assign_player(vm, player, ret, input);
 }
 
+static int	is_valid_flag_nb(char *string, char *previous_string)
+{
+	if (ft_isnumber(string) && \
+		(ft_strcmp(previous_string, "-n") != 0 && \
+		ft_strcmp(previous_string, "-d") != 0 && \
+		ft_strcmp(previous_string, "-dump") != 0))
+		return (0);
+	return (1);
+}
+
 /*
 * - Allocates a fresh player, giving it the ascending player ID and stores
 *   the read .cor file data inside.
@@ -66,13 +76,10 @@ static void	allocate_player(int ac, char **av, t_vm *vm, uint32_t player_id)
 		if (ext && ft_strcmp(ext, ".cor") == 0)
 		{
 			if (++count == player_id)
-			{
 				identify_player(vm, player, av[i], player_id);
-				return ;
-			}
 		}
 		else
-			if (!is_valid_input(av[i]))
+			if (!is_valid_input(av[i]) || !is_valid_flag_nb(av[i], av[i - 1]))
 				exit_vm("Incorrect usage.");
 	}
 }
