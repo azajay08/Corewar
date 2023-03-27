@@ -211,7 +211,7 @@ _VM description_
 
 ## Champion
 
-This part of the project was to create our own champion. The champion doesn't need to be a world beater, but it has to have some functionality and stay alive at least long enough to be considered a participant. Our champion's name is `Conman`. We could tell you a big story about `Conman's` strategy replicating traits of a con artist... but we just liked the name.
+This part of the project was to create our own champion. The champion doesn't need to be a world beater, but it has to have some functionality and stay alive at least long enough to be considered a participant. Our champion's name is [Conman](https://github.com/azajay08/Corewar/blob/main/eval_tests/Conman.s). We could tell you a big story about `Conman's` strategy replicating traits of a con artist... but we just liked the name.
 
 
 <details>
