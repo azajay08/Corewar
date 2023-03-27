@@ -245,3 +245,4 @@ then
 	echo ${GREEN}Test passed${NOCOLOR}
 else
 	echo "${RED}Test didn't pass ${NOCOLOR}"
+fi
