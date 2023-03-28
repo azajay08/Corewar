@@ -182,8 +182,6 @@ The byte code written to the `.cor` file must be formatted in a specific way:
                 
 ## Virtual Machine
 
-_VM description_
-                
 <details>
 <summary>Usage</summary>
 <br>
@@ -200,7 +198,10 @@ _VM description_
                 -f: 'lld' command reads 4 bytes instead of 2, fixing 42s bug.
 ```
 
-</details>
+</details>                
+
+The virtual machine is the arena in which the champions will fight off against one another. We create the virtual arena and set the environment for the game along with all its rules.
+                
 <details>
 <summary>Game board</summary>
 <br>
