@@ -182,7 +182,7 @@ The byte code written to the `.cor` file must be formatted in a specific way:
                 
 ## Virtual Machine
 
-_VM description_
+The virtual machine is the arena in which the champions will fight off against one another. 
                 
 <details>
 <summary>Usage</summary>
