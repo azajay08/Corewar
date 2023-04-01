@@ -206,7 +206,7 @@ The virtual machine is the arena in which the champions will fight off against o
 <summary>Game board</summary>
 <br>
 
-This is how the gameboard will look when 4 champions are loaded in to the game (This is an image of the 42 provided corewar's visualiser)
+This is how the gameboard will look when 4 champions are loaded in to the game (This is an image of the visualiser provided by the original 42 corewar)
 
 <img width="1163" alt="Screenshot 2023-03-25 at 0 08 14" src="https://user-images.githubusercontent.com/86073849/227654036-777bc421-8840-4a09-b909-e61afe3e46e9.png">
 </details>
