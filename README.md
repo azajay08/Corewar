@@ -201,7 +201,9 @@ The byte code written to the `.cor` file must be formatted in a specific way:
 </details>                
 
 The virtual machine is the arena in which the champions will fight off against one another. We create the virtual arena and set the environment for the game along with all its rules.
-                
+
+### Carriages
+
 <details>
 <summary>Game board</summary>
 <br>
