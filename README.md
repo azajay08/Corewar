@@ -204,6 +204,22 @@ The virtual machine is the arena in which the champions will fight off against o
 
 ### Carriages
 
+A carriage is a process that performs the statement on which it stands.
+Suppose we run a virtual machine with three champions who have to fight for the victory.
+The executable codes of the champions will be placed in the memory of the virtual machine. A carriage will be placed at the beginning of each of the memory sections.
+3 champions. 3 sections of memory with executable codes placed on them. 3 carriages.
+                
+Each carriage contains several important elements:
+
+* PC (Program Counter)- A variable that contains the carriage position.
+* Registrys - The registrys, the number of which is determined by the constant REG_NUMBER.
+* Carry flag - A special variable that affects the statement of the zjmp function and can take one of two values: 1 or 0 (true or false).
+* The number of the cycle in which the live statement was last performed by this carriage
+                
+This information is needed to determine if the carriage is alive.                
+                
+                
+                
 <details>
 <summary>Game board</summary>
 <br>
